@@ -2,6 +2,8 @@
 title: HashMap的长度为什么必须是2的n次方
 date: 2021-07-04 12:48:22
 tags: Java
+categories:
+  - Java基础
 ---
 # HashMap的长度为什么必须是2的n次方
 

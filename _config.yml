@@ -4,16 +4,18 @@
 
 # Site
 title: 技術工程51區
-subtitle: ''
-description: ''
-keywords:
+subtitle: '子标题'
+description: 'Java编程的学习文章博客，在Java框架学习中使用了Spring Framework、Spring Boot、Spring Cloud，覆盖了Elasticsearch、Redis、RocketMQ'
+keywords: 喜马拉雅以南,技術工程51區,技术工程51区,杨双龙,贾从谦,塔里木以南
 author: 喜马拉雅以南 & Yoni
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://www.marcus659.com
+# 文章的 永久链接 格式
+root: /blog
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -68,6 +70,8 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  - Java专栏
+  - Elasticsearch
 tag_map:
 
 # Metadata elements
@@ -97,9 +101,31 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: ayer
-
+theme: technology51
+# theme_config: _config.ayer.yml
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+# RSS订阅
+plugin:
+- hexo-generator-feed
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+  template:
+# 使用搜索插件
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html

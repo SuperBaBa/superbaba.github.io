@@ -1,5 +1,6 @@
 ---
-title: categories
-date: 2019-03-27 16:30:02
+title: 专栏
+date: 2020-07-01 16:30:02
 type: "categories"
+layout: "categories"
 ---
