@@ -105,9 +105,16 @@ theme: technology51
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  repo: https://github.com/SuperBaBa/technology51.github.io.git
-  branch: master
+  - type: git
+    repo: https://github.com/SuperBaBa/technology51.github.io.git
+    branch: master
+  - type: git
+    repo: https://gitee.com/SuperBaBa/blog.git
+    branch: master
+    message: now('YYYY-MM-DD HH:mm:ss') }}
+  - type: git
+    repo: https://e.coding.net/marcus659/tecnology51region/technology51StaticPage.git
+    branch: master
 # RSS订阅
 plugin:
 - hexo-generator-feed
