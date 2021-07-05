@@ -17,10 +17,10 @@ npm install cnpm --regitry=https://taobo.npm.com
 
 3. 在已安装`npm`的前提下进行在本地代码仓库安装依赖
 ```shell
-npm install
+cnpm install
 ```
 
 4. 执行`hexo server`命令访问本地`http://localhost:4000`
 ```bash
-npx hexo server
+hexo server
 ```

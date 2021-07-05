@@ -95,7 +95,7 @@ copyright_type: 2
 # 是否启用搜索
 # 需要安装hexo-generator-searchdb(https://github.com/theme-next/hexo-generator-searchdb)
 search:
-  path: search.xml
+  path: blog/search.xml
   field: post
   format: html
 
@@ -152,7 +152,7 @@ busuanzi:
 # 友盟cnzz统计(url填js代码src链接)
 cnzz:
   enable: true
-  url: https://s9.cnzz.com/z_stat.php?id=1280077954&web_id=1280077954
+  url: https://v1.cnzz.com/z_stat.php?id=1280081107&web_id=1280081107
 
 # Google Analytics
 google_analytics: ""
@@ -201,10 +201,10 @@ friends_link:
     #网站图片(可忽略不写)
     img: /images/ayer.png
   GitHub:
-    url: https://github.com/Shen-Yu
+    url: https://github.com/superbaba
     img: https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/github.png
   码云:
-    url: https://gitee.com/shen-yu
+    url: https://gitee.com/superbaba
     img: https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/gitee.png
   Hexo官网:
     url: https://hexo.io
@@ -219,12 +219,12 @@ friends_link:
 # 启用Valine必须先创建leancloud应用， 获取 id|key 填入即可
 leancloud:
   enable: true
-  app_id: #
-  app_key: #
+  app_id: wt5diD2a7Ty5R1nazvYl1Flg-9Nh9j0Va #
+  app_key: c2NgwzpipAPk5HCfR8rlq4ej #
 # Valine配置
 valine:
-  enable: false # 是否启用
-  avatar: monsterid # 头像样式(https://valine.js.org/avatar.html)
+  enable: true # 是否启用
+  avatar: robohash # 头像样式(https://valine.js.org/avatar.html)
   placeholder: 给我的文章加点评论吧~ # placeholder
 
 # 2、Gitalk(https://github.com/gitalk/gitalk)

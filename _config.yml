@@ -15,7 +15,6 @@ timezone: 'Asia/Shanghai'
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://www.marcus659.com
 # 文章的 永久链接 格式
-root: 
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -107,7 +106,7 @@ theme: technology51
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://gitee.com/SuperBaBa/blog.git
+  repo: https://github.com/SuperBaBa/technology51.github.io.git
   branch: master
 # RSS订阅
 plugin:
@@ -127,7 +126,7 @@ feed:
   template:
 # 使用搜索插件
 search:
-  path: search.xml
+  path: blog/search.xml
   field: post
   content: true
   format: html
