@@ -30,7 +30,7 @@ tags:
    * webSphere
    * JBoss
    * Tomcat：Apache基金组织
-<!--more-->
+   <!--more-->
 # 2. Tomcat的架构
 
 ## HTTP工作原理
@@ -96,7 +96,7 @@ Tomcat支持的应用层协议：
    * `load(args)`方法，调用`Catalina`对象`load()`方法，使用流去加载Catalina配置，如`conf/server.xml`，然后由交付于`Digester`对象进行拆解xml，`Server`对象就是在解析中进行初始化的
    * `start()`方法，调用`Server`对象的`start()`方法，并同步代码执行`Lifecycle`、`LifecycleBase`的方法实现。
 
-![image-20210403122110189](C:\Users\Lovel\AppData\Roaming\Typora\typora-user-images\image-20210403122110189.png)
+![tomcat_sequence_chart](http://images.marcus659.com/blog/tomcat_sequence_chart.png)
 
 ### Lifecycle接口定义
 
@@ -107,7 +107,7 @@ Tomcat支持的应用层协议：
 3. `stop()`：停止组件
 4. `destroy()`：销毁组件
 
-![StandardEngine](C:\Users\Lovel\Desktop\StandardEngine.png)
+![StandardEngine](http://qwgrj2bek.hd-bkt.clouddn.com/blog/tomcat_standard_engine.png)
 
 ## Tomcat请求处理流程
 
