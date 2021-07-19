@@ -21,7 +21,7 @@ categories:
 
   被所有线程共享，且只有一份，如：方法区、堆内存区域
 
-  ![运行时数据区](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20210323152206793.png)
+  ![运行时数据区](http://images.marcus659.com/blog/jvm_memory_region.jpg)
 
 # Java方法和虚拟机栈
 
