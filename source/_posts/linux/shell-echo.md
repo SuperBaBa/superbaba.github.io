@@ -20,6 +20,7 @@ Hello World\n
 [roc@roclinux ~]$ echo -e "Hello World\n"
 Hello World
 ```
+<!--more-->
 ## echo用于显示变量
 ```bash
 #我们定义了一个变量, 叫作str

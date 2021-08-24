@@ -6,6 +6,7 @@ categories: Git手札
 tags: [git]
 thumbnail: /images/artilce-banner/git.jpg
 ---
+[TOC]
 #### 0. 日常操作
 1. 拉取项目(默认master)
 git clonse 地址
@@ -18,7 +19,7 @@ git push
 
 4. 查看所有分支
 git branch -a 
-
+<!--more-->
 5. 切换分支
 git checkout <branch>
 

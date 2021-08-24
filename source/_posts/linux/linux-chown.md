@@ -16,7 +16,7 @@ thumbnail: /images/linux.jpg
 ```bash
 chown [-cfhvR] [--help] [--version] user[:group] file...
 ```
-
+<!--more-->
 ---
 
 #### 命令功能

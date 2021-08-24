@@ -18,6 +18,7 @@ systemctl stop firewalld.service #停止firewall
 ```bash
 systemctl disable firewalld.service #禁止firewall开机启动
 ```
+<!--more-->
 &emsp;
 ```bash
 firewall-cmd --state #查看状态，running 表示运行

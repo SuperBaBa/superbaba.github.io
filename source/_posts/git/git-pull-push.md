@@ -7,7 +7,7 @@ categories:
 tags:
 thumbnail: /images/artilce-banner/git.jpg
 ---
-### git push/pull 远程库学习
+# git push/pull 远程库学习
 git push 命令用于将本地分支更新，推送到远程主机。
 ```shell
 $ git push <远程主机名> <本地分支名>:<远程分支名>

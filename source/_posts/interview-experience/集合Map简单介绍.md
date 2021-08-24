@@ -1,7 +1,7 @@
 ---
 title: 集合Map简单介绍
 date: 2021-07-03 11:48:22
-tags: 面经
+tags: Java
 ---
 
 # 集合Map简单介绍
@@ -9,7 +9,7 @@ tags: 面经
 Map是一种**键值对集合**，每一个元素都包含一个键对象和一个值对象。其中键对象是不允许重复的。
 
 Map接口与Collection接口是不同的，Map接口有两个主要实现类`HashMap类`、`TreeMap类`，**HashMap类按哈希算法来存取键值对象，而TreeMap类可以对键值对象进行排序。**
-
+<!--more-->
 ```mermaid
 graph LR
 Map-->HashMap
@@ -29,7 +29,7 @@ Collection-->Set
 Collection-->Queue
 Collection-->SortedSet
 ```
-<!--more-->
+
 
 | 方法签名              | 说明                                                         |
 | :-------------------- | ------------------------------------------------------------ |

@@ -7,7 +7,8 @@ categories:
 tags:
 thumbnail: /images/artilce-banner/git.jpg
 ---
-## git add -A 和 git add . 的区别
+[TOC]
+# git add -A 和 git add . 的区别
 * git add -A  提交**所有变化**
 (git add --all 的缩写)
 &emsp;
@@ -15,3 +16,4 @@ thumbnail: /images/artilce-banner/git.jpg
 (git add --update 的缩写)
 &emsp;
 * git add   提交 **新文件(new)** 和被 **修改(modified)**  文件，不包括被删除(deleted)文件
+<!--more-->

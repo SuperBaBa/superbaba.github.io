@@ -106,7 +106,7 @@ theme: technology51
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   - type: git
-    repo: https://github.com/SuperBaBa/technology51.github.io.git
+    repo: https://github.com/SuperBaBa/superbaba.github.io.git
     branch: master
   - type: git
     repo: https://gitee.com/SuperBaBa/blog.git

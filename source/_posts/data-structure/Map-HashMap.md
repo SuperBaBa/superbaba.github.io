@@ -1,3 +1,10 @@
+---
+title: Java集合(一) | Map集合之HashMap的介绍-上
+date: 2021-04-04 12:48:22
+tags: Java
+categories:
+  - Java基础
+---
 [TOC]
 
 # Java集合(一) | Map集合之HashMap的介绍-上
@@ -10,7 +17,7 @@
 - `Map`的数据结构、原理
 - `HashMap1.8`的源码分析
 - `HashMap1.7`和`HashMap1.8`之间的区别
-
+<!--more-->
 # 1. 集合容器概述
 
 ## 什么是集合

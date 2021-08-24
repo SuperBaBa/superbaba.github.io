@@ -27,7 +27,7 @@ $ cat /proc/cpuinfo | grep 'model name' |uniq
 
 model name : Intel(R) Xeon(R) CPU E5630 @ 2.53GHz
 ```
-
+<!--more-->
 
 总结：该服务器有2个4核CPU，型号Intel(R) Xeon(R) CPU E5630 @ 2.53GHz
 #### 2. 查看内存
