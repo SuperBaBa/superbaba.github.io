@@ -1,0 +1,1425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>随意留言区</title>
+    <url>/2019/08/08/CommentArea/</url>
+    <content><![CDATA[<h1 id="此处可以随意留言"><a href="#此处可以随意留言" class="headerlink" title="此处可以随意留言"></a>此处可以随意留言</h1><p>留下自己那些曾经想说却说不出口的话吧<br><strong>匿名留言</strong><br><strong>当然大爷们也可以留下自己的邮箱哟</strong></p>
+]]></content>
+      <tags>
+        <tag>树洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>贾从谦</title>
+    <url>/2019/03/28/me/</url>
+    <content><![CDATA[<h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><p>From：长春理工大学<br>专业：经济学<br>岗位：Java开发工程师<br>座右铭：不怕从零开始,只怕从未启程</p>
+<h2 id="收获与感悟"><a href="#收获与感悟" class="headerlink" title="收获与感悟"></a>收获与感悟</h2><blockquote>
+<p><strong>客服</strong>：<br>感悟：在客服实践时，开始只是单纯以为接电话或者是挨挨骂，实际证实，还是我太单纯了。客服的工作一方面得保证公司形象，另一方面得解决客户的问题，在工作过程当中备受煎熬，但也有一些客户和我聊得很开心，有欢笑也有憋屈。<br>收获：沟通基本上是客服的全部工作内容了，在客服实践过程中，磨了脾气、历了性子。耐心、细心、敢于直面问题是我在客服工作中最大的收获。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>转运中心</strong>：<br>感悟：在转运中心实践过程中，我感受到了夜班的艰辛，同时也能感受到了信息化技术对生产效率的提升。在很多工作中都需要团队进行执行，有的团队配合默契，也有的团队存在内部问题（譬如:堵多头领导）。<br>收获：坚持和稳定是工作的根基，同时也要学会为人处世，办事多考虑。</p>
+</blockquote>
+<h2 id="职业规划"><a href="#职业规划" class="headerlink" title="职业规划"></a>职业规划</h2><ol>
+<li>掌握工作必备技能，规划学习计划，弥补自身专业缺陷；</li>
+<li>结合自身专业和技能，实现拟定的目标；</li>
+</ol>
+]]></content>
+      <categories>
+        <category>云服务器</category>
+      </categories>
+      <tags>
+        <tag>biaoqian</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>文章版式</title>
+    <url>/1999/03/12/%E5%85%AC%E4%BC%97%E5%8F%B7/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="文章版式"><a href="#文章版式" class="headerlink" title="文章版式"></a>文章版式</h1><ol>
+<li>文字间距，需要经过调整</li>
+<li>文章插图需要进行二次修整</li>
+<li>公众号发文之前<strong>需要草稿视检</strong></li>
+<li>推文封面图需要风格统一，<strong>简约风格</strong></li>
+<li>推文分类<ul>
+<li>正经八百分享技术推文，<code>简约图文风格</code></li>
+<li>趣味推文</li>
+<li>恰饭卖课</li>
+</ul>
+</li>
+<li>标题得整个标题党！！<strong>营销标题</strong></li>
+</ol>
+<h1 id="工具统一"><a href="#工具统一" class="headerlink" title="工具统一"></a>工具统一</h1>]]></content>
+      <tags>
+        <tag>排版</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>权重随机算法</title>
+    <url>/2020/08/08/algorithm/weightRandom/</url>
+    <content><![CDATA[<h1 id="权重随机算法"><a href="#权重随机算法" class="headerlink" title="权重随机算法"></a>权重随机算法</h1><blockquote>
+<p>  在平时生活中我们往往会遇到一些权重选择的场景，如<strong>广告投放</strong>按照不同广告的权重比进行投放，<strong>流量负载</strong>也需要根据不同的权重选择不同策略。</p>
+</blockquote>
+<p>假如有4个元素A,B,C,D权重分别是1,2,3,4 ，随机请求的结果，命中各个元素的比例需要是1:2:3:4，那么我们可以先绘制一个第一象限的数轴，然后依据权重比例，分别在坐标轴上找出每个权重累加后对应的点。</p>
+<p><img src="http://images.marcus659.com/typoraimage-20210812193417818.png" alt="image-20210812193417818"></p>
+<p>试想一下，如果我们的所有请求均散落在区间[0,10)中，那么每个区间散落的散点比例，则应该正好是我们每个元素之间的权重比例。</p>
+<p>根据上面的绘图和思考，我们来总结一下思路：</p>
+<ol>
+<li><p>依次累加权重，在散落区间中确定在数轴上的坐标点</p>
+</li>
+<li><p>绘制一条第一象限坐标，此处我们使用<code>SortedMap</code>的实现类<code>TreeMap</code>进行实现</p>
+</li>
+<li><p>按照顺序在坐标轴上进行标点，也就是每个点都是<code>TreeMap</code>中的一个Entry，且是从小到大的排列顺序(<code>TreeMap</code>是红黑树)</p>
+</li>
+<li><p>在<code>TreeMap</code>中key为权重叠加的值，value是权重的标识</p>
+</li>
+<li><p>使用随机函数进行区间落点，请求散点期待正态分布，散点均匀</p>
+</li>
+<li><p>利用treemap.tailMap().firstKey()即可找到目标元素</p>
+</li>
+<li><p>也可以使用数组+二分法实现</p>
+<span id="more"></span>
+<h3 id="使用TreeMap实现"><a href="#使用TreeMap实现" class="headerlink" title="使用TreeMap实现"></a>使用TreeMap实现</h3></li>
+<li><p>声明一个权重随机类，<code>累加权重值</code>，<code>构建顺序区间</code>，<code>区间随机落点</code></p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> javafx.util.Pair;</span><br><span class="line"><span class="keyword">import</span> org.assertj.core.util.Preconditions;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Objects;</span><br><span class="line"><span class="keyword">import</span> java.util.SortedMap;</span><br><span class="line"><span class="keyword">import</span> java.util.TreeMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 权重随机算法</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Lovel</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/7/8-0:06</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeightRandom</span>&lt;<span class="title">K</span>, <span class="title">V</span> <span class="keyword">extends</span> <span class="title">Number</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// 顺序区间构建</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> TreeMap&lt;Double, K&gt; weightMap = <span class="keyword">new</span> TreeMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(WeightRandom.class);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WeightRandom</span><span class="params">(List&lt;Pair&lt;K, V&gt;&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 权重和标识的 key-value 集合校验</span></span><br><span class="line">        Objects.requireNonNull(list, <span class="string">&quot;list can NOT be null!&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Pair&lt;K, V&gt; pair : list) &#123;</span><br><span class="line">            Preconditions.checkArgument(pair.getValue().doubleValue() &gt; <span class="number">0</span>, String.format(<span class="string">&quot;非法权重值：pair=%s&quot;</span>, pair));</span><br><span class="line">            <span class="keyword">double</span> lastWeight = <span class="keyword">this</span>.weightMap.size() == <span class="number">0</span> ? <span class="number">0</span> : <span class="keyword">this</span>.weightMap.lastKey();<span class="comment">// 权重值统一转为double</span></span><br><span class="line">            <span class="keyword">this</span>.weightMap.put(pair.getValue().doubleValue() + lastWeight, pair.getKey());<span class="comment">// 权重值累加</span></span><br><span class="line">        &#125;</span><br><span class="line">        logger.info(<span class="string">&quot;Weight interval construction is completed. &#123;&#125;&quot;</span>, weightMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> K <span class="title">random</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 延伸 [0,1) 区间到权重区间</span></span><br><span class="line">        <span class="keyword">double</span> randomWeight = <span class="keyword">this</span>.weightMap.lastKey() * Math.random();</span><br><span class="line">        <span class="comment">// 根据随机散落区间的坐标，找到落点值到区间最大值的子区间，以下两行代码主要利用treemap.tailMap().firstKey()即可找到目标元素</span></span><br><span class="line">        SortedMap&lt;Double, K&gt; tailMap = <span class="keyword">this</span>.weightMap.tailMap(randomWeight);</span><br><span class="line">        <span class="comment">// 返回子区间最小值的标的</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.weightMap.get(tailMap.firstKey());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>权重测试类，<code>声明标识与权重占比</code>,<code>随机</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> javafx.util.Pair;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Lovel</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/7/8-0:09</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeightRandomTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 权重标识-占比的 key-value 集合</span></span><br><span class="line">    <span class="keyword">static</span> List&lt;Pair&lt;String, Integer&gt;&gt; list;</span><br><span class="line">    <span class="comment">// 随机权重区间</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> WeightRandom&lt;String, Integer&gt; random;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger logger = LoggerFactory.getLogger(WeightRandomTest.class);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, Integer&gt; countMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// 利用 treeMap 的 tailMap 和 lastKey 找到区间</span></span><br><span class="line">            String randomKey = random.random();</span><br><span class="line">            countMap.put(randomKey, countMap.getOrDefault(randomKey, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//遍历100000000次落点后的权重结果</span></span><br><span class="line">        <span class="keyword">for</span> (Pair&lt;String, Integer&gt; pair : list) &#123;</span><br><span class="line">            logger.debug(<span class="string">&quot;&#123;&#125;:&#123;&#125;&quot;</span>, pair.getKey(), countMap.get(pair.getKey()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line"></span><br><span class="line">        list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="keyword">new</span> Pair(<span class="string">&quot;A&quot;</span>, <span class="number">1</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Pair(<span class="string">&quot;B&quot;</span>, <span class="number">2</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Pair(<span class="string">&quot;C&quot;</span>, <span class="number">3</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Pair(<span class="string">&quot;D&quot;</span>, <span class="number">4</span>));</span><br><span class="line">        <span class="comment">//list.add(new Pair(&quot;E&quot;, 0));</span></span><br><span class="line">        random = <span class="keyword">new</span> WeightRandom(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法 - Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AQS到底是什么</title>
+    <url>/2021/03/12/concurrent-programming/AQS%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="AQS到底是什么"><a href="#AQS到底是什么" class="headerlink" title="AQS到底是什么"></a>AQS到底是什么</h1>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reentrantlock重入锁</title>
+    <url>/2021/06/12/concurrent-programming/Reentrantlock%E9%87%8D%E5%85%A5%E9%94%81/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="Reentrantlock重入锁"><a href="#Reentrantlock重入锁" class="headerlink" title="Reentrantlock重入锁"></a>Reentrantlock重入锁</h1>]]></content>
+      <categories>
+        <category>Java基础</category>
+        <category>集合框架</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HashMap的长度为什么必须是2的n次方</title>
+    <url>/2021/06/12/concurrent-programming/Synchronized%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <content><![CDATA[<h1 id="HashMap的长度为什么必须是2的n次方"><a href="#HashMap的长度为什么必须是2的n次方" class="headerlink" title="HashMap的长度为什么必须是2的n次方"></a>HashMap的长度为什么必须是2的n次方</h1>]]></content>
+      <categories>
+        <category>Java并发编程</category>
+        <category>线程锁</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Volatiel关键字使用</title>
+    <url>/2021/06/12/concurrent-programming/Volatiel%E5%85%B3%E9%94%AE%E5%AD%97%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="Volatiel关键字使用"><a href="#Volatiel关键字使用" class="headerlink" title="Volatiel关键字使用"></a>Volatiel关键字使用</h1>]]></content>
+      <categories>
+        <category>并发编程</category>
+        <category>Java高级</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HashMap的长度为什么必须是2的n次方</title>
+    <url>/2021/06/12/data-structure/HashMap%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%98%AF2%E7%9A%84n%E6%AC%A1%E5%B9%82/</url>
+    <content><![CDATA[<h1 id="HashMap的长度为什么必须是2的n次方"><a href="#HashMap的长度为什么必须是2的n次方" class="headerlink" title="HashMap的长度为什么必须是2的n次方"></a>HashMap的长度为什么必须是2的n次方</h1><p>首先我们看下<code>HashMap</code>中的源码当中那里奠定了长度是<strong>2的n次方</strong>，并且是靠近<code>cap</code>这个值<code>最近的2的n次方</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 首先cap-1使得n的最后一位和cap最后一位绝对不一样</span></span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 向右无符号的移动了1位，并使用或运算使n的所有有1的位上全部是1</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 向右无符号移动2位，使用或运算将低位填充为1</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// 同理可得</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="comment">// 已经向右移动多个位，最终 00011111 = 31 那么 +1 既成为了2的n次方</span></span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由上方代码可以看出，上方的方法是<strong>将<code>cap</code>无符号的向右移动，再启动期间，使用<code>|</code>运算保证低位全部是1。</strong></p>
+<p>看起来有点复杂，那咱们举个例子：</p>
+<span id="more"></span>
+<ol>
+<li>首先我们传入<code>cap</code>初始值为17</li>
+<li>经过<code>int n = cap -1 </code>也就是17-1后<code>n = 16</code></li>
+<li>将n进行如下的<strong>位移动和逻辑运算</strong>，最后得到<code>n = 31</code></li>
+<li>返回是根据三目运算符，得值返回值是<code>n + 1 = 32</code>，正好是 <strong>2的5次方</strong></li>
+</ol>
+<p><img src="C:\Users\Lovel\Desktop\image-20210629004830300.png" alt="image-20210629004830300"></p>
+<p>通过上方的容量计算，我们已经确定在HashMap中<code>capacity </code>一定是<strong>2的n次方</strong>，那么为什么我们必须要</p>
+<ul>
+<li><p>&amp;运算速度快，至少比%取模运算快</p>
+</li>
+<li><p>能保证索引值肯定在 capacity 中，不会超出数组长度，<code>(n - 1) &amp; hash</code>，当为2的n次方时，会满足一个公式：<code>(n - 1) &amp; hash = hash % n</code></p>
+</li>
+</ul>
+<p><img src="C:\Users\Lovel\Desktop\image-20210629004830300.png" alt="image-20210628235807090"></p>
+<p>两种运算效率差别到底有多少，这里可以直接做个测试：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> times = Integer.MAX_VALUE;</span><br><span class="line">    <span class="comment">/* 此处计算2^31-1次9999整数对1024的取模，使用的数学计算</span></span><br><span class="line"><span class="comment">     * 多次执行放大时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">long</span> currentTimeMillis = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; times; i++) &#123;</span><br><span class="line">        a = <span class="number">9999</span> % <span class="number">1024</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> currentTimeMillis2 = System.currentTimeMillis();</span><br><span class="line">    <span class="comment">/* 此处计算2^31-1次9999整数对1024的取模，使用的位运算</span></span><br><span class="line"><span class="comment">     * 因为要求 hash&amp;(n-1) 中n必须为2的n次方，这里取1024</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; times; i++) &#123;</span><br><span class="line">        b = <span class="number">9999</span> &amp; (<span class="number">1024</span> - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> currentTimeMillis3 = System.currentTimeMillis();</span><br><span class="line">    System.out.println(a + <span class="string">&quot;,&quot;</span> + b);<span class="comment">//最后的结果应该是一样的</span></span><br><span class="line">    System.out.println(<span class="string">&quot;数学计算耗时: &quot;</span> + (currentTimeMillis2 - currentTimeMillis));<span class="comment">// 1839ms</span></span><br><span class="line">    System.out.println(<span class="string">&quot;位运算耗时: &quot;</span> + (currentTimeMillis3 - currentTimeMillis2));<span class="comment">// 852ms</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>那么当我们在HashMap初始化时，如果指定非2的n次方整数为初始化容量<code>initialCapacity</code>，那么会不会致使HashMap中的数组变更</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Illegal initial capacity: &quot;</span> +</span><br><span class="line">                                           initialCapacity);</span><br><span class="line">    <span class="keyword">if</span> (initialCapacity &gt; MAXIMUM_CAPACITY)</span><br><span class="line">        initialCapacity = MAXIMUM_CAPACITY;</span><br><span class="line">    <span class="keyword">if</span> (loadFactor &lt;= <span class="number">0</span> || Float.isNaN(loadFactor))</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Illegal load factor: &quot;</span> +</span><br><span class="line">                                           loadFactor);</span><br><span class="line">    <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">    <span class="comment">// 此处可以看到下一次扩容的值已经经过转换，是2的n次方，并且只有在put时才会有Entry数组的创建</span></span><br><span class="line">    <span class="keyword">this</span>.threshold = tableSizeFor(initialCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由上面的源码咱们可以看到，HashMap的容量经过了tableSizeFor方法处理，能保证容量永远都是2次幂。</p>
+]]></content>
+      <categories>
+        <category>Java基础</category>
+        <category>集合框架</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java集合(二) | Map集合之HashTable的介绍</title>
+    <url>/2021/04/15/data-structure/Map-HashTable/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="Java集合-二-Map集合之HashTable的介绍"><a href="#Java集合-二-Map集合之HashTable的介绍" class="headerlink" title="Java集合(二) | Map集合之HashTable的介绍"></a>Java集合(二) | Map集合之HashTable的介绍</h1>]]></content>
+      <categories>
+        <category>Java基础</category>
+        <category>集合框架</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java集合(四) | Map集合之LinkedHashMap的介绍</title>
+    <url>/2021/04/20/data-structure/Map-LinkedHashMap/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="Java集合-四-Map集合之LinkedHashMap的介绍"><a href="#Java集合-四-Map集合之LinkedHashMap的介绍" class="headerlink" title="Java集合(四) | Map集合之LinkedHashMap的介绍"></a>Java集合(四) | Map集合之LinkedHashMap的介绍</h1>]]></content>
+      <categories>
+        <category>Java基础</category>
+        <category>集合框架</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java集合(三) | Map集合之TreeMap的介绍</title>
+    <url>/2021/04/11/data-structure/Map-TreeMap/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="Java集合-三-Map集合之TreeMap的介绍"><a href="#Java集合-三-Map集合之TreeMap的介绍" class="headerlink" title="Java集合(三) | Map集合之TreeMap的介绍"></a>Java集合(三) | Map集合之TreeMap的介绍</h1>]]></content>
+      <categories>
+        <category>Java基础</category>
+        <category>集合框架</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git add 相关命令学习</title>
+    <url>/2019/09/22/git/git-add/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="git-add-A-和-git-add-的区别"><a href="#git-add-A-和-git-add-的区别" class="headerlink" title="git add -A 和 git add . 的区别"></a>git add -A 和 git add . 的区别</h1><ul>
+<li>git add -A  提交<strong>所有变化</strong><br>(git add –all 的缩写)<br>&emsp;</li>
+<li>git add -u  提交被<strong>修改(modified)</strong> 和被 <strong>删除(deleted)</strong> 文件，不包括新文件(new)<br>(git add –update 的缩写)<br>&emsp;</li>
+<li>git add   提交 <strong>新文件(new)</strong> 和被 <strong>修改(modified)</strong>  文件，不包括被删除(deleted)文件<span id="more"></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git手札</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>常用Git命令</title>
+    <url>/2019/08/08/git/git-commond-collection/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h4 id="0-日常操作"><a href="#0-日常操作" class="headerlink" title="0. 日常操作"></a>0. 日常操作</h4><ol>
+<li><p>拉取项目(默认master)<br>git clonse 地址</p>
+</li>
+<li><p>抓取远程仓库代码到本地<br>git pull</p>
+</li>
+<li><p>推送本地代码到仓库<br>git push</p>
+</li>
+<li><p>查看所有分支<br>git branch -a </p>
+<span id="more"></span></li>
+<li><p>切换分支<br>git checkout <branch></p>
+</li>
+<li><p>合并指定分支到当前分支<br>git merge origin/<branch></p>
+</li>
+<li><p>从当前本地分支创建新的本地分支,并切换到新分支<br>git checkout -b <branch></p>
+</li>
+<li><p>提交本地分支到远程仓库<br>git push origin <branch></p>
+</li>
+<li><p>仓库指针指向设置<br>git branch –set-upstream-to=origin/<branch></p>
+</li>
+<li><p>删除本地分支<br>git branch -D <branch></p>
+</li>
+<li><p>删除远程分支<br>git push origin –delete <branch></p>
+</li>
+<li><p>打标签<br>git tag v1.0.0.1 –m “版本说明”  —-标签版本号，说明<br>git push origin v1.0.0.1   ——–推送至服务端</p>
+</li>
+<li><p> 生成一个可供发布的压缩包<br>git archive</p>
+</li>
+<li><p>Git 仓库地址修改方法<br>git remote set-url origin [NEW_URL]</p>
+</li>
+</ol>
+<p><img src="en-resource://database/1363:1" alt="3bc9d5f2c49a713c776e69676d7d56c5.png"></p>
+<ul>
+<li>Workspace：工作区</li>
+<li>Index / Stage：暂存区</li>
+<li>Repository：仓库区（或本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ul>
+<p>[TOC]</p>
+<h4 id="1-新建代码库"><a href="#1-新建代码库" class="headerlink" title="1. 新建代码库"></a>1. 新建代码库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在当前目录新建一个Git代码库</span></span><br><span class="line">$ git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个目录，将其初始化为Git代码库</span></span><br><span class="line">$ git init [project-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载一个项目和它的整个代码历史</span></span><br><span class="line">$ git <span class="built_in">clone</span> [url]</span><br></pre></td></tr></table></figure>
+<h4 id="2-设置配置文件"><a href="#2-设置配置文件" class="headerlink" title="2. 设置配置文件"></a>2. 设置配置文件</h4><p>&emsp;Git的设置文件为.gitconfig，用户主目录下（全局配置），项目目录下（项目配置）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 显示当前的Git配置</span></span><br><span class="line">$ git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑Git配置文件</span></span><br><span class="line">$ git config -e [--global]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置提交代码时的用户信息</span></span><br><span class="line">$ git config [--global] user.name <span class="string">&quot;[name]&quot;</span></span><br><span class="line">$ git config [--global] user.email <span class="string">&quot;[email address]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-增加-删除文件"><a href="#3-增加-删除文件" class="headerlink" title="3. 增加/删除文件"></a>3. 增加/删除文件</h4><p>添加到暂存区或移除暂存区</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 添加指定文件到暂存区</span></span><br><span class="line">$ git add [file1] [file2] ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加指定目录到暂存区，包括子目录</span></span><br><span class="line">$ git add [dir]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加当前目录的所有文件到暂存区</span></span><br><span class="line">$ git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加每个变化前，都会要求确认</span></span><br><span class="line"><span class="comment"># 对于同一个文件的多处变化，可以实现分次提交</span></span><br><span class="line">$ git add -p</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除工作区文件，并且将这次删除放入暂存区</span></span><br><span class="line">$ git rm [file1] [file2] ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止追踪指定文件，但该文件会保留在工作区</span></span><br><span class="line">$ git rm --cached [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改名文件，并且将这个改名放入暂存区</span></span><br><span class="line">$ git mv [file-original] [file-renamed]</span><br></pre></td></tr></table></figure>
+<h4 id="4-代码提交到仓库"><a href="#4-代码提交到仓库" class="headerlink" title="4. 代码提交到仓库"></a>4. 代码提交到仓库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 提交暂存区到仓库区</span></span><br><span class="line">$ git commit -m [message]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交暂存区的指定文件到仓库区</span></span><br><span class="line">$ git commit [file1] [file2] ... -m [message]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交工作区自上次commit之后的变化，直接到仓库区</span></span><br><span class="line">$ git commit -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交时显示所有diff信息</span></span><br><span class="line">$ git commit -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用一次新的commit，替代上一次提交</span></span><br><span class="line"><span class="comment"># 如果代码没有任何新变化，则用来改写上一次commit的提交信息</span></span><br><span class="line">$ git commit --amend -m [message]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重做上一次commit，并包括指定文件的新变化</span></span><br><span class="line">$ git commit --amend [file1] [file2] ...</span><br></pre></td></tr></table></figure>
+<h4 id="5-分支相关操作"><a href="#5-分支相关操作" class="headerlink" title="5. 分支相关操作"></a>5. 分支相关操作</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 列出所有本地分支</span></span><br><span class="line">$ git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有远程分支</span></span><br><span class="line">$ git branch -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有本地分支和远程分支</span></span><br><span class="line">$ git branch -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，但依然停留在当前分支</span></span><br><span class="line">$ git branch [branch-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，并切换到该分支</span></span><br><span class="line">$ git checkout -b [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，指向指定commit</span></span><br><span class="line">$ git branch [branch] [commit]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，与指定的远程分支建立追踪关系</span></span><br><span class="line">$ git branch --track [branch] [remote-branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到指定分支，并更新工作区</span></span><br><span class="line">$ git checkout [branch-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到上一个分支</span></span><br><span class="line">$ git checkout -</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立追踪关系，在现有分支与指定的远程分支之间</span></span><br><span class="line">$ git branch --set-upstream [branch] [remote-branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并指定分支到当前分支</span></span><br><span class="line">$ git merge [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择一个commit，合并进当前分支</span></span><br><span class="line">$ git cherry-pick [commit]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">$ git branch -d [branch-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程分支</span></span><br><span class="line">$ git push origin --delete [branch-name]</span><br><span class="line">$ git branch -dr [remote/branch]</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-标签操作"><a href="#6-标签操作" class="headerlink" title="6. 标签操作"></a>6. 标签操作</h4><p>tag作用，为当前代码版本标记别名，下次拉取代码时，可根据tag直接拉取该版本的代码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 列出所有tag</span></span><br><span class="line">$ git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个tag在当前commit</span></span><br><span class="line">$ git tag [tag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个tag在指定commit</span></span><br><span class="line">$ git tag [tag] [commit]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除本地tag</span></span><br><span class="line">$ git tag -d [tag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程tag</span></span><br><span class="line">$ git push origin :refs/tags/[tagName]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看tag信息</span></span><br><span class="line">$ git show [tag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交指定tag</span></span><br><span class="line">$ git push [remote] [tag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交所有tag</span></span><br><span class="line">$ git push [remote] --tags</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，指向某个tag</span></span><br><span class="line">$ git checkout -b [branch] [tag]</span><br></pre></td></tr></table></figure>
+<h4 id="7-查看信息"><a href="#7-查看信息" class="headerlink" title="7. 查看信息"></a>7. 查看信息</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 显示有变更的文件</span></span><br><span class="line">$ git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示当前分支的版本历史</span></span><br><span class="line">$ git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示commit历史，以及每次commit发生变更的文件</span></span><br><span class="line">$ git <span class="built_in">log</span> --<span class="built_in">stat</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索提交历史，根据关键词</span></span><br><span class="line">$ git <span class="built_in">log</span> -S [keyword]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某个commit之后的所有变动，每个commit占据一行</span></span><br><span class="line">$ git <span class="built_in">log</span> [tag] HEAD --pretty=format:%s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某个commit之后的所有变动，其&quot;提交说明&quot;必须符合搜索条件</span></span><br><span class="line">$ git <span class="built_in">log</span> [tag] HEAD --grep feature</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某个文件的版本历史，包括文件改名</span></span><br><span class="line">$ git <span class="built_in">log</span> --follow [file]</span><br><span class="line">$ git whatchanged [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示指定文件相关的每一次diff</span></span><br><span class="line">$ git <span class="built_in">log</span> -p [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示过去5次提交</span></span><br><span class="line">$ git <span class="built_in">log</span> -5 --pretty --oneline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示所有提交过的用户，按提交次数排序</span></span><br><span class="line">$ git shortlog -sn</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示指定文件是什么人在什么时间修改过</span></span><br><span class="line">$ git blame [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示暂存区和工作区的差异</span></span><br><span class="line">$ git diff</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示暂存区和上一个commit的差异</span></span><br><span class="line">$ git diff --cached [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示工作区与当前分支最新commit之间的差异</span></span><br><span class="line">$ git diff HEAD</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示两次提交之间的差异</span></span><br><span class="line">$ git diff [first-branch]...[second-branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示今天你写了多少行代码</span></span><br><span class="line">$ git diff --shortstat <span class="string">&quot;@&#123;0 day ago&#125;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某次提交的元数据和内容变化</span></span><br><span class="line">$ git show [commit]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某次提交发生变化的文件</span></span><br><span class="line">$ git show --name-only [commit]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某次提交时，某个文件的内容</span></span><br><span class="line">$ git show [commit]:[filename]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示当前分支的最近几次提交</span></span><br><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
+<h4 id="8-远程同步"><a href="#8-远程同步" class="headerlink" title="8. 远程同步"></a>8. 远程同步</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 下载远程仓库的所有变动</span></span><br><span class="line">$ git fetch [remote]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示所有远程仓库</span></span><br><span class="line">$ git remote -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示某个远程仓库的信息</span></span><br><span class="line">$ git remote show [remote]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加一个新的远程仓库，并命名</span></span><br><span class="line">$ git remote add [shortname] [url]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取回远程仓库的变化，并与本地分支合并</span></span><br><span class="line">$ git pull [remote] [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上传本地指定分支到远程仓库</span></span><br><span class="line">$ git push [remote] [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强行推送当前分支到远程仓库，即使有冲突</span></span><br><span class="line">$ git push [remote] --force</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送所有分支到远程仓库</span></span><br><span class="line">$ git push [remote] --all</span><br></pre></td></tr></table></figure>
+<h4 id="9-撤销部分操作"><a href="#9-撤销部分操作" class="headerlink" title="9. 撤销部分操作"></a>9. 撤销部分操作</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 恢复暂存区的指定文件到工作区</span></span><br><span class="line">$ git checkout [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复某个commit的指定文件到暂存区和工作区</span></span><br><span class="line">$ git checkout [commit] [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复暂存区的所有文件到工作区</span></span><br><span class="line">$ git checkout .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</span></span><br><span class="line">$ git reset [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置暂存区与工作区，与上一次commit保持一致</span></span><br><span class="line">$ git reset --hard</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</span></span><br><span class="line">$ git reset [commit]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</span></span><br><span class="line">$ git reset --hard [commit]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置当前HEAD为指定commit，但保持暂存区和工作区不变</span></span><br><span class="line">$ git reset --keep [commit]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个commit，用来撤销指定commit</span></span><br><span class="line"><span class="comment"># 后者的所有变化都将被前者抵消，并且应用到当前分支</span></span><br><span class="line">$ git revert [commit]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 暂时将未提交的变化移除，稍后再移入</span></span><br><span class="line">$ git stash</span><br><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Git手札</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git push/pull 远程库学习</title>
+    <url>/2019/09/22/git/git-pull-push/</url>
+    <content><![CDATA[<h1 id="git-push-pull-远程库学习"><a href="#git-push-pull-远程库学习" class="headerlink" title="git push/pull 远程库学习"></a>git push/pull 远程库学习</h1><p>git push 命令用于将本地分支更新，推送到远程主机。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong> ： 分支推送顺序写法是&lt;来源地&gt;:&lt;目的地&gt;</p>
+<ul>
+<li>git pull 是&lt;远程分支&gt;:&lt;本地分支&gt;</li>
+<li>git push 是&lt;本地分支&gt;:&lt;远程分支&gt;<h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3></li>
+</ul>
+<p>1.本地分支与远程分支存在追踪关系</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push origin master</span></span><br></pre></td></tr></table></figure>
+<p>以上命令，将本地master分支推送到origin主机的master分支。<br>&nbsp;<br>2.省略本地分支</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push origin :master</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 等同于</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push origin --delete master</span></span><br></pre></td></tr></table></figure>
+<p>以上推送一个空的本地分支到远程分支，表示删除远程分支<br>&nbsp;<br>3.使用-u选项制定一个默认主机，这样在后面就可以不添加任何参数，使用git push</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master</span></span><br></pre></td></tr></table></figure>
+<p>以上表示将本地的master分支推送到origin主机，同时指定origin为默认主机，</p>
+]]></content>
+      <categories>
+        <category>Git手札</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git merge命令解析</title>
+    <url>/2019/09/22/git/gitmerge%E5%92%8Cgitbase/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h2 id="git-merge用途："><a href="#git-merge用途：" class="headerlink" title="git-merge用途："></a>git-merge用途：</h2><ol>
+<li>用于git-pull中，来整合另一代码仓库中的变化（即：git pull = git fetch + git merge）</li>
+<li>用于从一个分支到另一个分支的合并<blockquote>
+<p>警告：运行git-merge时含有大量的未commit文件很容易让你陷入困境，这将使你在冲突中难以回退。因此非常不鼓励在使用git-merge时存在未commit的文件，建议使用git-stash命令将这些未commit文件暂存起来，并在解决冲突以后使用git stash pop把这些未commit文件还原出来。</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Git手札</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>得物社招(上海)Java开发面经(凉)</title>
+    <url>/2021/06/12/interview-experience/%E5%BE%97%E7%89%A9%E9%9D%A2%E7%BB%8F20210323/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="集合Map简单介绍"><a href="#集合Map简单介绍" class="headerlink" title="集合Map简单介绍"></a>集合Map简单介绍</h1><p>Map是一种<strong>键值对集合</strong>，每一个元素都包含一个键对象和一个值对象。其中键对象是不允许重复的。</p>
+<p>Map接口与Collection接口是不同的，Map接口有两个主要实现类<code>HashMap类</code>、<code>TreeMap类</code>，<strong>HashMap类按哈希算法来存取键值对象，而TreeMap类可以对键值对象进行排序。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Map--&gt;HashMap</span><br><span class="line">Map--&gt;HashTable</span><br><span class="line">Map--&gt;TreeMap</span><br><span class="line">Map--&gt;IdentityHashMap</span><br><span class="line">Map--&gt;WeakHashMap</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Collection--&gt;List</span><br><span class="line">List--&gt;ArrayList</span><br><span class="line">List--&gt;LinkedList</span><br><span class="line">List--&gt;Vetor</span><br><span class="line">Collection--&gt;Set</span><br><span class="line">Collection--&gt;Queue</span><br><span class="line">Collection--&gt;SortedSet</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">方法签名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">V get(Object key)</td>
+<td>返回Map结合中指定键值对所对应的值</td>
+</tr>
+<tr>
+<td align="left">V put(K key, V value)</td>
+<td>向Map集合中添加键-值对，返回key以前对应的value，如果没有，则返回null</td>
+</tr>
+<tr>
+<td align="left">V remove(Object  key)</td>
+<td>从Map集合中删除key对应的键值对，返回key对应的value，如果没有则返回null</td>
+</tr>
+<tr>
+<td align="left">Set entrySet()</td>
+<td>返回Map集合中所有键值对的Set集合，类型为Map内部类，Map.Entry</td>
+</tr>
+<tr>
+<td align="left">Set keySet()</td>
+<td>返回Map集合中所有<strong>键对象</strong>的Set集合</td>
+</tr>
+</tbody></table>
+<p>在java1.8以后采用<strong>数组+链表+红黑树</strong>的形势来进行存储，通过散列映射来存储键值对</p>
+<ul>
+<li><p>对key的hashcode进行一个取模操作得到数组下标</p>
+</li>
+<li><p>数组存储的是一个单链表</p>
+</li>
+<li><p>数组下标相同将会被放在同一个链表中进行存储</p>
+</li>
+<li><p>元素是无序排列的</p>
+</li>
+<li><p>链表超过一定长度(<code>TREEIFY_THRESHOLD=8</code>)会转化为红黑树</p>
+</li>
+<li><p>红黑树在满足一定条件会再次退回链表</p>
+<p><img src="D:\workRemote\jvm-doc\interview-experience\images\HashMap-structure.png" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+<h2 id="内部重要属性"><a href="#内部重要属性" class="headerlink" title="内部重要属性"></a>内部重要属性</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 默认初始化容量，值为16，必须是2的n次方</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 默认加载因子</span></span><br><span class="line"><span class="comment"> * 当size&gt;capacity*DEFAULT_LOAD_FACTOR时则进行resize(扩容)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;  </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 链表需要转红黑树时的长度。</span></span><br><span class="line"><span class="comment"> * 此时未必会做换红黑树的操作，需要结合MIN_TREEIFY_CAPACITY，即链表长度达到8且容量达到64时，才会做红黑树的转换；</span></span><br><span class="line"><span class="comment"> * 否则，进行扩容操作。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;    </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 红黑树转链表时的元素个数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 链表树形化，最小数组容量阈值</span></span><br><span class="line"><span class="comment"> * 数组容量超过这个，链表将会树形化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;        </span><br></pre></td></tr></table></figure>
+
+<h2 id="不同类型结点结构"><a href="#不同类型结点结构" class="headerlink" title="不同类型结点结构"></a>不同类型结点结构</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 链表结点，实现Map.Entry接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> hash;</span><br><span class="line">    <span class="keyword">final</span> K key;</span><br><span class="line">    V value;</span><br><span class="line">    Node&lt;K,V&gt; next;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ... </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * LinkedHashMap中元素的结点类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">HashMap</span>.<span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    Entry&lt;K,V&gt; before, after;</span><br><span class="line">    Entry(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">        <span class="keyword">super</span>(hash, key, value, next);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 红黑树结点，继承了LinkedHashMap.Entry，间接继承了HashMap.Node，所以也具有链表的性质。</span></span><br><span class="line"><span class="comment"> * 实际上该结点类型既可以作为红黑树结点，又可以作为双向链表结点。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">LinkedHashMap</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    TreeNode&lt;K,V&gt; parent;  <span class="comment">// red-black tree links</span></span><br><span class="line">    TreeNode&lt;K,V&gt; left;</span><br><span class="line">    TreeNode&lt;K,V&gt; right;</span><br><span class="line">    TreeNode&lt;K,V&gt; prev;    <span class="comment">// needed to unlink next upon deletion</span></span><br><span class="line">    <span class="keyword">boolean</span> red;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h1><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><h2 id="保证并发"><a href="#保证并发" class="headerlink" title="保证并发"></a>保证并发</h2><h1 id="多线程场景和使用"><a href="#多线程场景和使用" class="headerlink" title="多线程场景和使用"></a>多线程场景和使用</h1><p>核心线程数，最大线程数，任务队列</p>
+<h1 id="Tomcat默认核心线程池是200"><a href="#Tomcat默认核心线程池是200" class="headerlink" title="Tomcat默认核心线程池是200"></a>Tomcat默认核心线程池是200</h1><p>IO 密集型和计算密集型</p>
+<h1 id="JVM内存模型"><a href="#JVM内存模型" class="headerlink" title="JVM内存模型"></a>JVM内存模型</h1><p>S0和S1比例是8:1:1</p>
+<h1 id="Java的内存泄漏"><a href="#Java的内存泄漏" class="headerlink" title="Java的内存泄漏"></a>Java的内存泄漏</h1><p>内存泄漏的定义：<strong>GC无法回收内存中不再使用的对象，则定义为内存有泄漏</strong></p>
+<p>什么时候存在内存泄漏的代码：ThreadLocal没有clear会造成</p>
+<h1 id="ThreadLocal简单介绍"><a href="#ThreadLocal简单介绍" class="headerlink" title="ThreadLocal简单介绍"></a>ThreadLocal简单介绍</h1><p>定时任务Qurzt和ThreadExecutorPool</p>
+]]></content>
+      <categories>
+        <category>面经</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面经</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>得物社招(上海)Java开发面经(凉)</title>
+    <url>/2021/06/12/interview-experience/%E6%90%BA%E7%A8%8B%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="携程社招-上海-Java开发面经20210517"><a href="#携程社招-上海-Java开发面经20210517" class="headerlink" title="携程社招(上海)Java开发面经20210517"></a>携程社招(上海)Java开发面经20210517</h1><p>一面：</p>
+<p>携程总部大楼（上海市长宁区金钟路），汽车票船票组，面试官两位(项目经理+开发工程师)</p>
+<p>1、项目了解</p>
+<p>此处手绘系统架构图，并表明自己负责的哪一块，我们项目中对ES和RocketMQ使用比较多</p>
+<p>2、线程池参数（最好是自己手写过线程池）</p>
+<ul>
+<li>corePoolSize 指定了线程池里的线程数量</li>
+<li>maximumPoolSize 指定了线程池里的最大线程数量</li>
+<li>RejectPolicy 拒绝策略，当任务过多时候，如何拒绝任务<ul>
+<li><strong>AbortPolicy</strong> 丢弃任务并抛出RejectedExecutionException异常。</li>
+<li><strong>DiscardPolicy</strong> 丢弃任务，但是不抛出异常。如果线程队列已满，则后续提交的任务都会被丢弃，且是静默丢弃</li>
+<li><strong>CallerRunsPolicy</strong> 丢弃队列最前面的任务，然后重新提交被拒绝的任务</li>
+<li><strong>DiscardOldestPolicy</strong> 由调用线程处理该任务</li>
+</ul>
+</li>
+<li>keepAliveTime 当线程池线程数量大于corePoolSize时候，多出来的空闲线程，多长时间会被销毁。</li>
+<li>ThreadFactory 线程工厂，用于创建线程，一般可以用默认的</li>
+<li>workQueue 任务队列，用于存放提交但是尚未被执行的任务</li>
+<li>unit 时间单位</li>
+</ul>
+<p>3、MQ的顺序消费痛点</p>
+<p>异常后会阻塞</p>
+<p>多个队列，分布式全局不太好处理</p>
+<p>3、JVM内存模型</p>
+<p>jdk1.7</p>
+<p>jdk1.8</p>
+<p>jvm调优参数，jstack查看其</p>
+<p>4、并发编程</p>
+<p>我在项目中CountDown等待所有线程<strong>减一</strong>结束，然后主线程获取<code>Future</code>中的结果</p>
+<p>Volatile关键字使用</p>
+<p>5、锁</p>
+<p>synchronize 互斥锁</p>
+<p>ReentrantLock 可重入锁(自旋锁)</p>
+<p>6、MYSQL索引执行查看策略</p>
+<p>使用<code>explain</code>查看执行策略</p>
+<p>改个文章</p>
+]]></content>
+      <categories>
+        <category>面经</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面经</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>得物社招(上海)Java开发面经(凉)</title>
+    <url>/2021/06/12/interview-experience/%E7%BE%8E%E5%9B%A2%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="美团社招-上海-Java开发面经"><a href="#美团社招-上海-Java开发面经" class="headerlink" title="美团社招(上海)Java开发面经"></a>美团社招(上海)Java开发面经</h1><p>先搞个前提，各位同学可以根据自身情况仅做参考，本人非计算机专业，学历一般吧，工作目前两年左右，因为工作日实在没有时间，所以和HR约定的是视频面试。</p>
+<p>招聘的岗位描述：Java开发工程师，但可能需要学习Go语言，非业务开发部门</p>
+<p>地点：上海市长宁区北新泾地铁站附近吧，一年之后极有可能搬到杨浦区</p>
+<h3 id="技术一面"><a href="#技术一面" class="headerlink" title="技术一面"></a>技术一面</h3><ol>
+<li><p>项目相关的一些问题，主要是阐述了下项目是什么业务场景，解决什么问题，在进行项目描述过程汇总面试官比较关注的貌似是<strong>并发量</strong>和<strong>业务总量</strong></p>
+</li>
+<li><p>因为我在项目中使用了很多的ES作为持久层，所以面试官就针对我熟悉的中间件进行了提问</p>
+<ul>
+<li><p>ES在写入时它是怎么完成一次写入操作的？</p>
+<p>此处我给出了两种层面的回答</p>
+<blockquote>
+<ol>
+<li><p>架构层面</p>
+<p>在架构层面，由于ES分为了<code>master</code>、<code>client</code>、<code>data</code>、<code>ingest</code>四种角色，每次写入和读取的HTTP请求都会先落到client角色的节点上，然后再<strong>负载</strong>到各个data节点上，完成写入和读取的操作后又将响应给应用程序。其中需要注意的是<code>data</code>节点在进行查询时，是由多个分片进行查询后，在内存中拼接而成的，所系查询时也需要很大的内存，</p>
+</li>
+<li><p>持久化操作层面</p>
+<p>这层面的话就只是在写入操作上进行了藐视，首先是数据请求到达了data节点进行存储，存储时刷盘存在了两种方式，<code>buffer</code>刷入磁盘和<code>translog</code>进行存储</p>
+</li>
+</ol>
+</blockquote>
+<span id="more"></span>  </li>
+<li><p>ES集群写入是怎么优化的</p>
+</li>
+</ul>
+</li>
+<li><p>关于<code>HashMap</code>源码方面的理解，主要是存储运算过程</p>
+<ul>
+<li>HashMap的容量为什么是2的n次方幂</li>
+<li>HashMap线程不安全会有哪些影响</li>
+<li>HashMap的resize过程是怎么样的</li>
+<li>对于其他集合框架的了解</li>
+</ul>
+<p>关于这个HashMap，我之前有专门研究过两天源码，笔记放着同学们自行拿取<a href="https://blog.csdn.net/qq_26125865/article/details/115221949?spm=1001.2014.3001.5501">HashMap源码学习笔记</a></p>
+</li>
+<li><p> JVM堆内存模型相关问题</p>
+</li>
+</ol>
+<p>   <img src="http://images.marcus659.com/blog/jvm_memory_region.jpg" alt="jvm_memory_region"></p>
+<ul>
+<li><p>新建对象内存分配过程(没太答上来)</p>
+<blockquote>
+<p>这里应该会涉及到<strong>指针碰撞</strong>、<strong>空闲列表</strong>、<strong>并发安全(CAS机制和分配缓冲)</strong></p>
+</blockquote>
+</li>
+<li><p>堆内存中的GC分类，我在回答时分为了youngGC和FullGC</p>
+</li>
+<li><p>出现GC时什么情况下会有阻塞用户线程的情况</p>
+</li>
+<li><p>GC算法进行标记的时候，<strong>可达性分析算法中，根可达算法(GC Roots)有哪些根</strong></p>
+<p>作为 GC Roots 的对象包括下面几种:</p>
+<blockquote>
+<ol>
+<li>虚拟机栈（栈帧中的本地变量表）中引用的对象；各个线程调用方法堆栈中使用到的参数、局部变量、临时变量等。 </li>
+<li>方法区中类静态属性引用的对象；java 类的引用类型静态变量。 </li>
+<li>方法区中常量引用的对象；比如：字符串常量池里的引用。 </li>
+<li>本地方法栈中 JNI（即一般说的 Native 方法）引用的对象。 </li>
+<li>JVM 的内部引用（class 对象、异常对象 NullPointException、OutofMemoryError，系统类加载器）。（非重点） </li>
+<li>所有被同步锁(synchronized 关键)持有的对象。（非重点） </li>
+<li>JVM 内部的 JMXBean、JVMTI 中注册的回调、本地代码缓存等（非重点） </li>
+<li>JVM 实现中的“临时性”对象，跨代引用的对象</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<ol start="5">
+<li><p>Spring框架是如何解决循环依赖的问题</p>
+</li>
+<li><p>SpringMVC框架中Filter和Interceptor有什么区别，平时会怎么使用它们</p>
+</li>
+<li><p>ThreadLocal的实现原理，为什么能保证线程安全</p>
+</li>
+<li><p>设计模式，手写一个静态工厂模式</p>
+<blockquote>
+<p>之前另一个面试手写过三种单例模式，这些设计模式考的都还挺简单的，目前我自己掌握的有</p>
+<p>三种创建模式：</p>
+<p>单例、工厂、原形</p>
+<p>四种行为模式：</p>
+<p>模板、策略、监听(写的不多，要百度才能手写出来)、责任链</p>
+</blockquote>
+</li>
+<li><p>一个业务场景的算法选择，<strong>字典树算法</strong></p>
+<p>给出的业务场景：目前有一堆单词，给定开头的前缀，如<code>ab</code>找出这对单词中以<code>ab</code>开头的单词。这个没有手写，但是之前在业务上自己用过，放这里方便大家参考</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initTrie</span><span class="params">(Set&lt;String&gt; sensitiveWords)</span> </span>&#123;</span><br><span class="line">    words = <span class="keyword">new</span> HashMap(sensitiveWords.size());</span><br><span class="line">    Map temp;</span><br><span class="line">    Map&lt;String, String&gt; temp2;</span><br><span class="line">    <span class="comment">//遍历传入的敏感词集合，构建字典树</span></span><br><span class="line">    <span class="keyword">for</span> (String word : sensitiveWords) &#123;</span><br><span class="line">        temp = words;</span><br><span class="line">        <span class="comment">//将每个词转为字符数组，每个字符都是一个状态，构建有限状态集合</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> character : word.toCharArray()) &#123;</span><br><span class="line">            <span class="comment">//先查看字典树内是否存在这个状态</span></span><br><span class="line">            Object var1 = temp.get(character);</span><br><span class="line">            <span class="keyword">if</span> (var1 != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">//如果存在，则指向下一个节点</span></span><br><span class="line">                temp = (Map) var1;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//如果不存在则进行创建节点</span></span><br><span class="line">                temp2 = <span class="keyword">new</span> HashMap();</span><br><span class="line">                temp2.put(<span class="string">&quot;isEnd&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line">                <span class="comment">//放置该字符，并标记其状态</span></span><br><span class="line">                temp.put(character, temp2);</span><br><span class="line">                <span class="comment">//指向下一个节点</span></span><br><span class="line">                temp = temp2;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (word.charAt(word.length() - <span class="number">1</span>) == character) &#123;</span><br><span class="line">                temp.put(<span class="string">&quot;isEnd&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(words);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(String text, <span class="keyword">int</span> matchType)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i == text.length() - <span class="number">1</span>) &#123;</span><br><span class="line">        text.substring(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    initTrie(<span class="keyword">new</span> HashSet&lt;&gt;(Arrays.asList(<span class="string">&quot;搓搓手&quot;</span>, <span class="string">&quot;扣扣脚&quot;</span>, <span class="string">&quot;深深懒腰&quot;</span>)));</span><br><span class="line">    System.out.println(contains(<span class="string">&quot;搓手&quot;</span>,<span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="反问环节"><a href="#反问环节" class="headerlink" title="反问环节"></a>反问环节</h3><ol>
+<li><p>团队代码规范是否严苛，是否有注释</p>
+<p>A：代码注释可能不会特别多，但是对于变量的命名有绝对的CodeReview标准，代码仓库也是自研，如果代码不是太规范标准的话，将不能编译</p>
+</li>
+<li><p>招人团队属于哪个业务线，如果一起奋斗的话，会在哪个模块</p>
+<p>A：主要是负责公司自研的<code>代码仓库</code>，只有部分命令传输模块使用的是开源组件，其他均为公司自研，非业务方面，并且能够看到公司所有的代码</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>面经</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面经</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>集合Map简单介绍</title>
+    <url>/2021/07/03/interview-experience/%E9%9B%86%E5%90%88Map%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h1 id="集合Map简单介绍"><a href="#集合Map简单介绍" class="headerlink" title="集合Map简单介绍"></a>集合Map简单介绍</h1><p>Map是一种<strong>键值对集合</strong>，每一个元素都包含一个键对象和一个值对象。其中键对象是不允许重复的。</p>
+<p>Map接口与Collection接口是不同的，Map接口有两个主要实现类<code>HashMap类</code>、<code>TreeMap类</code>，<strong>HashMap类按哈希算法来存取键值对象，而TreeMap类可以对键值对象进行排序。</strong></p>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Map--&gt;HashMap</span><br><span class="line">Map--&gt;HashTable</span><br><span class="line">Map--&gt;TreeMap</span><br><span class="line">Map--&gt;IdentityHashMap</span><br><span class="line">Map--&gt;WeakHashMap</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Collection--&gt;List</span><br><span class="line">List--&gt;ArrayList</span><br><span class="line">List--&gt;LinkedList</span><br><span class="line">List--&gt;Vetor</span><br><span class="line">Collection--&gt;Set</span><br><span class="line">Collection--&gt;Queue</span><br><span class="line">Collection--&gt;SortedSet</span><br></pre></td></tr></table></figure>
+
+
+<table>
+<thead>
+<tr>
+<th align="left">方法签名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">V get(Object key)</td>
+<td>返回Map结合中指定键值对所对应的值</td>
+</tr>
+<tr>
+<td align="left">V put(K key, V value)</td>
+<td>向Map集合中添加键-值对，返回key以前对应的value，如果没有，则返回null</td>
+</tr>
+<tr>
+<td align="left">V remove(Object  key)</td>
+<td>从Map集合中删除key对应的键值对，返回key对应的value，如果没有则返回null</td>
+</tr>
+<tr>
+<td align="left">Set entrySet()</td>
+<td>返回Map集合中所有键值对的Set集合，类型为Map内部类，Map.Entry</td>
+</tr>
+<tr>
+<td align="left">Set keySet()</td>
+<td>返回Map集合中所有<strong>键对象</strong>的Set集合</td>
+</tr>
+</tbody></table>
+<p>在java1.8以后采用<strong>数组+链表+红黑树</strong>的形势来进行存储，通过散列映射来存储键值对</p>
+<ul>
+<li><p>对key的hashcode进行一个取模操作得到数组下标</p>
+</li>
+<li><p>数组存储的是一个单链表</p>
+</li>
+<li><p>数组下标相同将会被放在同一个链表中进行存储</p>
+</li>
+<li><p>元素是无序排列的</p>
+</li>
+<li><p>链表超过一定长度(<code>TREEIFY_THRESHOLD=8</code>)会转化为红黑树</p>
+</li>
+<li><p>红黑树在满足一定条件会再次退回链表</p>
+<p><img src="D:\workRemote\jvm-doc\interview-experience\images\HashMap-structure.png" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+<h2 id="内部重要属性"><a href="#内部重要属性" class="headerlink" title="内部重要属性"></a>内部重要属性</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 默认初始化容量，值为16，必须是2的n次方</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 默认加载因子</span></span><br><span class="line"><span class="comment"> * 当size&gt;capacity*DEFAULT_LOAD_FACTOR时则进行resize(扩容)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;  </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 链表需要转红黑树时的长度。</span></span><br><span class="line"><span class="comment"> * 此时未必会做换红黑树的操作，需要结合MIN_TREEIFY_CAPACITY，即链表长度达到8且容量达到64时，才会做红黑树的转换；</span></span><br><span class="line"><span class="comment"> * 否则，进行扩容操作。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;    </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 红黑树转链表时的元素个数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 链表树形化，最小数组容量阈值</span></span><br><span class="line"><span class="comment"> * 数组容量超过这个，链表将会树形化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;        </span><br></pre></td></tr></table></figure>
+
+<h2 id="不同类型结点结构"><a href="#不同类型结点结构" class="headerlink" title="不同类型结点结构"></a>不同类型结点结构</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 链表结点，实现Map.Entry接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> hash;</span><br><span class="line">    <span class="keyword">final</span> K key;</span><br><span class="line">    V value;</span><br><span class="line">    Node&lt;K,V&gt; next;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ... </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * LinkedHashMap中元素的结点类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">HashMap</span>.<span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    Entry&lt;K,V&gt; before, after;</span><br><span class="line">    Entry(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">        <span class="keyword">super</span>(hash, key, value, next);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 红黑树结点，继承了LinkedHashMap.Entry，间接继承了HashMap.Node，所以也具有链表的性质。</span></span><br><span class="line"><span class="comment"> * 实际上该结点类型既可以作为红黑树结点，又可以作为双向链表结点。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">LinkedHashMap</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    TreeNode&lt;K,V&gt; parent;  <span class="comment">// red-black tree links</span></span><br><span class="line">    TreeNode&lt;K,V&gt; left;</span><br><span class="line">    TreeNode&lt;K,V&gt; right;</span><br><span class="line">    TreeNode&lt;K,V&gt; prev;    <span class="comment">// needed to unlink next upon deletion</span></span><br><span class="line">    <span class="keyword">boolean</span> red;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h1><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><h2 id="保证并发"><a href="#保证并发" class="headerlink" title="保证并发"></a>保证并发</h2><h1 id="多线程场景和使用"><a href="#多线程场景和使用" class="headerlink" title="多线程场景和使用"></a>多线程场景和使用</h1><p>核心线程数，最大线程数，任务队列</p>
+<h1 id="Tomcat默认核心线程池是200"><a href="#Tomcat默认核心线程池是200" class="headerlink" title="Tomcat默认核心线程池是200"></a>Tomcat默认核心线程池是200</h1><p>IO 密集型和计算密集型</p>
+<h1 id="JVM内存模型"><a href="#JVM内存模型" class="headerlink" title="JVM内存模型"></a>JVM内存模型</h1><p>S0和S1比例是8:1:1</p>
+<h1 id="Java的内存泄漏"><a href="#Java的内存泄漏" class="headerlink" title="Java的内存泄漏"></a>Java的内存泄漏</h1><p>内存泄漏的定义：<strong>GC无法回收内存中不再使用的对象，则定义为内存有泄漏</strong></p>
+<p>什么时候存在内存泄漏的代码：ThreadLocal没有clear会造成</p>
+<h1 id="ThreadLocal简单介绍"><a href="#ThreadLocal简单介绍" class="headerlink" title="ThreadLocal简单介绍"></a>ThreadLocal简单介绍</h1><p>定时任务Qurzt和ThreadExecutorPool</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux解压打包命令</title>
+    <url>/2019/09/21/linux/linux-achriveOrUnzip/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="tar命令常用参数"><a href="#tar命令常用参数" class="headerlink" title="tar命令常用参数"></a><strong>tar命令常用参数</strong></h1><hr>
+<p>-c: 建立压缩档案<br>-x：解压<br>-t：查看内容<br>-r：向压缩归档文件末尾追加文件<br>-u：更新原压缩包中的文件这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。<br>-z：有gzip属性的<br>-j：有bz2属性的<br>-Z：有compress属性的<br>-v：显示所有过程<br>-O：将文件解开到标准输出下面的参数-f是必须的<br>-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。</p>
+<span id="more"></span>
+<hr>
+<h1 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a><strong>压缩</strong></h1><hr>
+<p>将目录里所有jpg文件打包成tar.jpg</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar –cvf jpg.tar *.jpg</span><br></pre></td></tr></table></figure>
+<p>&emsp;<br>将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gz</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar –czf jpg.tar.gz *.jpg</span><br></pre></td></tr></table></figure>
+<p>&emsp;<br>将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar –cjf jpg.tar.bz2 *.jpg</span><br></pre></td></tr></table></figure>
+<p>&emsp;<br>将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Z</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar –cZf jpg.tar.Z *.jpg</span><br></pre></td></tr></table></figure>
+<p>&emsp;<br>rar格式的压缩，需要先下载rar for linux</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rar a jpg.rar *.jpg</span><br></pre></td></tr></table></figure>
+<p>&emsp;<br>//zip格式的压缩，需要先下载zip for linux解压</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">zip jpg.zip *.jpg</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a><strong>解压</strong></h3><hr>
+<p>tar –xvf file.tar //解压 tar包<br>tar -xzvf file.tar.gz //解压tar.gz<br>tar -xjvf file.tar.bz2 //解压 tar.bz2<br>tar –xZvf file.tar.Z //解压tar.Z<br>unrar e file.rar //解压rar<br>unzip file.zip //解压zip总结</p>
+<hr>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><strong>注意：</strong></h3><hr>
+<p>1、.tar 用 tar –xvf 解压<br>2、.gz 用 gzip -d或者gunzip 解压<br>3、.tar.gz和.tgz 用 tar –xzf 解压<br>4、.bz2 用 bzip2 -d或者用bunzip2 解压<br>5、.tar.bz2用tar –xjf 解压<br>6、.Z 用 uncompress 解压<br>7、.tar.Z 用tar –xZf 解压<br>8、.rar 用 unrar e解压<br>9、.zip 用 unzip 解压</p>
+<p>作者：醋留香<br>链接：<a href="https://www.jianshu.com/p/3d9effeef575">https://www.jianshu.com/p/3d9effeef575</a><br>来源：简书<br>简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。</p>
+]]></content>
+      <categories>
+        <category>linux之旅</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>chown命令</title>
+    <url>/2019/09/21/linux/linux-chown/</url>
+    <content><![CDATA[<p>[TOC]<br><strong>chown将指定文件的拥有者改为指定的用户或组</strong></p>
+<hr>
+<h4 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chown [-cfhvR] [--<span class="built_in">help</span>] [--version] user[:group] file...</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<hr>
+<h4 id="命令功能"><a href="#命令功能" class="headerlink" title="命令功能"></a>命令功能</h4><p>&emsp;通过chown改变文件的拥有者和群组。在更改文件的所有者或所属群组时，可以使用用户名称和用户识别码设置。普通用户不能将自己的文件改变成其他的拥有者。其操作权限一般为管理员。</p>
+<hr>
+<h4 id="命令参数："><a href="#命令参数：" class="headerlink" title="命令参数："></a>命令参数：</h4><blockquote>
+<p>必要参数:　　　　</p>
+<ul>
+<li> -c 显示更改的部分的信息　　　　</li>
+<li> -f 忽略错误信息　　　　</li>
+<li>-h 修复符号链接　　　　</li>
+<li>-R 处理指定目录以及其子目录下的所有文件　　　　</li>
+<li>-v 显示详细的处理信息　　　　</li>
+<li>-deference 作用于符号链接的指向，而不是链接文件本身　　</li>
+</ul>
+</blockquote>
+<p>&emsp;</p>
+<blockquote>
+<p><strong>选择参数</strong>:</p>
+<ul>
+<li>–reference=<br>&lt;目录或文件&gt; 把指定的目录/文件作为参考，把操作的文件/目录设置成参考文件/目录相同拥有者和群组　　　　</li>
+<li>–from=<br>&lt;当前用户：当前群组&gt; 只有当前用户和群组跟指定的用户和群组相同时才进行改变　　　　</li>
+<li>–help <br>显示帮助信息　　　　</li>
+<li>–version <br>显示版本信息</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h4>]]></content>
+      <categories>
+        <category>linux之旅</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CentOS 7.0的是firewall防火墙设置</title>
+    <url>/2019/09/21/linux/linux-firewall-config/</url>
+    <content><![CDATA[<p>CentOS 7.0默认使用的是firewall作为防火墙，使用iptables必须重新设置一下</p>
+<ol>
+<li>直接关闭防火墙<br>&emsp;<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service <span class="comment">#停止firewall</span></span><br></pre></td></tr></table></figure>
+&emsp;<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> firewalld.service <span class="comment">#禁止firewall开机启动</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+&emsp;<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --state <span class="comment">#查看状态，running 表示运行</span></span><br></pre></td></tr></table></figure>
+&emsp;<br>在不改变状态的条件下重新加载防火墙：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+&emsp;</li>
+</ol>
+<p>启用某个服务 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-service=https <span class="comment">#临时</span></span><br><span class="line"></span><br><span class="line">firewall-cmd --permanent --zone=public --add-service=https <span class="comment">#永久</span></span><br></pre></td></tr></table></figure>
+
+<p>开启某个端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=public --add-port=8080-8081/tcp //永久</span><br><span class="line"></span><br><span class="line">firewall-cmd --zone=public --add-port=8080-8081/tcp //临时</span><br></pre></td></tr></table></figure>
+<p>使用命令加载设置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>查看开启的端口和服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=public --list-services </span><br><span class="line"><span class="comment">#服务空格隔开   </span></span><br><span class="line"></span><br><span class="line">例如 dhcpv6-client https ss</span><br><span class="line"></span><br><span class="line">firewall-cmd --permanent --zone=public --list-ports</span><br><span class="line"><span class="comment">#端口空格隔开 </span></span><br><span class="line"></span><br><span class="line">例如 8080-8081/tcp 8388/tcp 80/tcp</span><br></pre></td></tr></table></figure>
+<p>设置某个ip 访问某个服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=public --add-rich-rule=<span class="string">&quot;rule family=&quot;</span>ipv4<span class="string">&quot; source address=&quot;</span>192.168.0.4/24<span class="string">&quot; service name=&quot;</span>http<span class="string">&quot; accept&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#ip 192.168.0.4/24 访问 http</span></span><br></pre></td></tr></table></figure>
+<p>删除上面设置的规则</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=public --remove-rich-rule=<span class="string">&quot;rule family=&quot;</span>ipv4<span class="string">&quot; source address=&quot;</span>192.168.0.4/24<span class="string">&quot; service name=&quot;</span>http<span class="string">&quot; accept&quot;</span></span><br></pre></td></tr></table></figure>
+<p>检查设定是否生效</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iptables -L -n | grep 21</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:21 ctstate NEW</span><br></pre></td></tr></table></figure>
+<p>执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
+<p>显示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public (default)</span><br><span class="line">  interfaces:</span><br><span class="line">  sources:</span><br><span class="line">  services: dhcpv6-client ftp ssh</span><br><span class="line">  ports:</span><br><span class="line">  masquerade: no</span><br><span class="line">  forward-ports:</span><br><span class="line">  icmp-blocks:</span><br><span class="line">  rich rules:</span><br></pre></td></tr></table></figure>
+<p>查询服务的启动状态</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-service ftp</span><br><span class="line">yes</span><br><span class="line">firewall-cmd --query-service ssh</span><br><span class="line">yes</span><br><span class="line">firewall-cmd --query-service samba</span><br><span class="line">no</span><br><span class="line">firewall-cmd --query-service http</span><br><span class="line">no</span><br></pre></td></tr></table></figure>
+<p>&emsp;<br>&emsp;<br>2. 设置<br>iptables serviceyum -y install iptables-services<br>如果要修改防火墙配置，<br>如增加防火墙端口3306<br>vi /etc/sysconfig/iptables 增加规则-A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT保存退出后</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart iptables.service </span><br><span class="line"><span class="comment">#重启防火墙使配置生效</span></span><br><span class="line">systemctl <span class="built_in">enable</span> iptables.service </span><br><span class="line"><span class="comment">#设置防火墙开机启动最后重启系统使设置生效即可。</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux之旅</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Linux之间文件传输scp</title>
+    <url>/2019/09/21/linux/linux-scp/</url>
+    <content><![CDATA[<p>把本地的source.txt文件拷贝到192.168.0.10机器上的/home/work目录下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scp /home/work/source.txt work@192.168.0.10:/home/work/ </span><br></pre></td></tr></table></figure>
+<p>把192.168.0.10机器上的source.txt文件拷贝到本地的/home/work目录下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scp work@192.168.0.10:/home/work/source.txt /home/work/ </span><br></pre></td></tr></table></figure>
+<p>把192.168.0.10机器上的source.txt文件拷贝到192.168.0.11机器的/home/work目录下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scp work@192.168.0.10:/home/work/source.txt work@192.168.0.11:/home/work/ </span><br></pre></td></tr></table></figure>
+<p>拷贝文件夹，加-r参数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scp -r /home/work/sourcedir work@192.168.0.10:/home/work/ </span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux之旅</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Linux下查看CPU型号,内存大小,硬盘空间的命令</title>
+    <url>/2019/09/21/linux/linux%E6%A3%80%E6%9F%A5%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/</url>
+    <content><![CDATA[<h4 id="1-查看CPU"><a href="#1-查看CPU" class="headerlink" title="1. 查看CPU"></a>1. 查看CPU</h4><p>1.1 查看CPU个数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat /proc/cpuinfo | grep <span class="string">&quot;physical id&quot;</span> | uniq | wc -l</span><br></pre></td></tr></table></figure>
+<p> <strong>uniq命令：删除重复行;wc –l命令：统计行数</strong></p>
+<p>1.2 查看CPU核数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat /proc/cpuinfo | grep <span class="string">&quot;cpu cores&quot;</span> | uniq</span><br><span class="line"></span><br><span class="line">cpu cores : 4</span><br></pre></td></tr></table></figure>
+<p>1.3 查看CPU型号</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat /proc/cpuinfo | grep <span class="string">&#x27;model name&#x27;</span> |uniq</span><br><span class="line"></span><br><span class="line">model name : Intel(R) Xeon(R) CPU E5630 @ 2.53GHz</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<p>总结：该服务器有2个4核CPU，型号Intel(R) Xeon(R) CPU E5630 @ 2.53GHz</p>
+<h4 id="2-查看内存"><a href="#2-查看内存" class="headerlink" title="2. 查看内存"></a>2. 查看内存</h4><p>2.1 查看内存总数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat /proc/meminfo | grep MemTotal</span><br><span class="line"></span><br><span class="line">MemTotal: 32941268 kB <span class="comment"># 内存32G</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-查看硬盘"><a href="#3-查看硬盘" class="headerlink" title="3. 查看硬盘"></a>3. 查看硬盘</h4><p>3.1 查看硬盘大小</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ fdisk -l | grep Disk</span><br></pre></td></tr></table></figure>
+
+<p>df -hl 查看磁盘剩余空间<br> <br>df -h 查看每个根路径的分区大小<br> <br>du -sh [目录名] 返回该目录的大小<br> <br>du -sm [文件夹] 返回该文件夹总M数<br> <br>du -h [目录名] 查看指定文件夹下的所有文件大小（包含子文件夹）</p>
+]]></content>
+      <categories>
+        <category>linux之旅</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>echo命令常用方法总结</title>
+    <url>/2019/09/21/linux/shell-echo/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<p>echo 用于字符串的输出。命令格式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> string</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不带-e选项的 echo，将 \n 认为是普通字符；</span></span><br><span class="line">[roc@roclinux ~]$ <span class="built_in">echo</span> <span class="string">&quot;Hello World\n&quot;</span></span><br><span class="line">Hello World\n</span><br><span class="line"><span class="comment"># 使用了-e选项的 echo，会将 \n 认为是换行符。</span></span><br><span class="line">[roc@roclinux ~]$ <span class="built_in">echo</span> -e <span class="string">&quot;Hello World\n&quot;</span></span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="echo用于显示变量"><a href="#echo用于显示变量" class="headerlink" title="echo用于显示变量"></a>echo用于显示变量</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#我们定义了一个变量, 叫作str</span></span><br><span class="line">[roc@roclinux ~]$ str=<span class="string">&quot;Hello World&quot;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">#在echo后面加上str变量, 照样可以显示出来</span></span><br><span class="line">[roc@roclinux ~]$ <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$str</span>, good morning&quot;</span></span><br><span class="line">Hello World, good morning</span><br></pre></td></tr></table></figure>
+<h2 id="echo-后面的引号"><a href="#echo-后面的引号" class="headerlink" title="echo 后面的引号"></a>echo 后面的引号</h2><table>
+<thead>
+<tr>
+<th>输入命令</th>
+<th>输出内容</th>
+<th>解 释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>echo ‘$USER * $(date)’</td>
+<td>$USER * $(date)</td>
+<td>单引号无视所有特殊字符，所有字符在它眼里 都是普通字符，都是芸芸众生</td>
+</tr>
+<tr>
+<td>echo “$USER * $(date)”</td>
+<td>root * Thu Feb 25 12:03:48 CST 2016</td>
+<td>双引号会无视文件通配符，但“$”、“\”、 会起作用，我管它们叫“美金”、“砍刀”、 “硫酸雨”</td>
+</tr>
+<tr>
+<td>echo $USER * $(date)</td>
+<td>root book others Thu Feb 25 12:03:48 CST 2016</td>
+<td>$USER 被翻译了 root, * 被翻译成了当前目录下的目录结构</td>
+</tr>
+</tbody></table>
+<h2 id="在-Shell-中显示色彩"><a href="#在-Shell-中显示色彩" class="headerlink" title="在 Shell 中显示色彩"></a>在 Shell 中显示色彩</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\033[颜色1;颜色2m 要展示的文字 \033[0m&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>格式详解：</p>
+<ul>
+<li>-e选项：表示允许反斜杠（对字符）转义。</li>
+<li>\033[颜色1；颜色2m：称为**                                                                                  转义序列**，它本身是一个整体，中间不要有空格。</li>
+<li>\033[：转义序列的开始。其中\033代表Esc符号，也可以使用\E或\e来代替。</li>
+<li>颜色1和颜色2：表示字体的前景色或背景色，至于颜色1和颜色2哪一个表示前景色，哪一个表示背景色，由其设定的数值来决定，前景色和背景色的数值空间是不同的。</li>
+<li>m：转义序列的终止标志。</li>
+<li> \033[0m：表示将颜色恢复回原来的配色。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>色彩</th>
+<th>黑</th>
+<th>红</th>
+<th>绿</th>
+<th>黄</th>
+<th>蓝</th>
+<th>洋红</th>
+<th>青</th>
+<th>白</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>前景色</td>
+<td>30</td>
+<td>31</td>
+<td>32</td>
+<td>33</td>
+<td>34</td>
+<td>35</td>
+<td>36</td>
+<td>37</td>
+</tr>
+<tr>
+<td>背景色</td>
+<td>40</td>
+<td>41</td>
+<td>42</td>
+<td>43</td>
+<td>44</td>
+<td>45</td>
+<td>46</td>
+<td>47</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>linux之旅</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JVM内存区域</title>
+    <url>/2021/07/04/memory-area/JVM-Memory-Region/</url>
+    <content><![CDATA[<h1 id="JVM内存区域"><a href="#JVM内存区域" class="headerlink" title="JVM内存区域"></a>JVM内存区域</h1><h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><p>定义：JVM在执行Java程序过程中，会将其所管理的内存分为多个区域，同时会有一些<strong>直接内存</strong>不在运行时数据区，但JVM也会使用一些工具对其进行频繁使用。</p>
+<ul>
+<li><p>线程私有区</p>
+<p>每一个线程都有一份单独的内存区域，即线程栈。包括虚拟机栈(内含栈帧)、程序计数器</p>
+<span id="more"></span></li>
+<li><p>线程共享区</p>
+<p>被所有线程共享，且只有一份，如：方法区、堆内存区域</p>
+<p><img src="http://images.marcus659.com/blog/jvm_memory_region.jpg" alt="运行时数据区"></p>
+</li>
+</ul>
+<h1 id="Java方法和虚拟机栈"><a href="#Java方法和虚拟机栈" class="headerlink" title="Java方法和虚拟机栈"></a>Java方法和虚拟机栈</h1><ul>
+<li><p>虚拟机栈</p>
+<p>虚拟机栈的生命周期和线程生命周期是一样的，虚拟机栈默认大小为<code>1M</code>，可用参数<code>-Xss</code>调整大小</p>
+<p><strong>数据结构</strong>：是先进先出的数据结构</p>
+<p><strong>作用</strong>：存储当前线程运行方法所需的数据(<code>局部变量</code>)，指令、返回地址</p>
+</li>
+<li><p>栈帧</p>
+<p>在每个Java方法被调用是，都会创建一个栈帧，并入栈，完成调用则出栈，栈帧大体包含所含区域：<strong>局部变量表</strong>、<strong>操作数栈</strong>、<strong>动态连接</strong>、<strong>返回地址</strong>。</p>
+<ul>
+<li><p>局部变量表</p>
+</li>
+<li><p>操作数栈</p>
+</li>
+<li><p>动态连接</p>
+<p>动态分派，多见于方法重写使其具有多态性，重写时使用<code>invokevirtual</code>指令，器解析过程如下</p>
+<ol>
+<li>找到操作数栈第一个元素所指向的对象实际类型，记做A</li>
+<li></li>
+</ol>
+</li>
+<li><p>返回地址</p>
+</li>
+</ul>
+</li>
+<li><p>程序计数器</p>
+</li>
+<li><p>栈帧与内存区域</p>
+<p>使用<code>javap -c XXXX.class</code>对class文件进行反汇编，<a href="https://cloud.tencent.com/developer/article/1333540">字节码助记地址</a></p>
+<p><img src="C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20210323153430793.png" alt="image-20210323153430793"></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MYSQL数据库索引为什么要用B+树</title>
+    <url>/2021/06/12/mysql/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8B+%E6%A0%91/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="MYSQL数据库索引为什么要用B-树"><a href="#MYSQL数据库索引为什么要用B-树" class="headerlink" title="MYSQL数据库索引为什么要用B+树"></a>MYSQL数据库索引为什么要用B+树</h1>]]></content>
+      <categories>
+        <category>关系型数据库</category>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tomcat的简介</title>
+    <url>/2021/07/03/tomcat/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="1-Tomcat的简介"><a href="#1-Tomcat的简介" class="headerlink" title="1. Tomcat的简介"></a>1. Tomcat的简介</h1><h2 id="web概念"><a href="#web概念" class="headerlink" title="web概念"></a>web概念</h2><ol>
+<li>软件架构</li>
+<li>资源分类<ol>
+<li>静态资源：所有用户访问后得到结果都是一样，可以直接被浏览器解析</li>
+<li>动态资源：每个用户访问都是不一样的，需要进行</li>
+</ol>
+</li>
+<li>网络通信三要素<ol>
+<li>IP地址</li>
+<li>端口号：应用程序在计算机上的唯一标识。0-65536</li>
+<li>传输协议<ul>
+<li>TPC协议：三次握手</li>
+<li>UDP协议</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a>web服务器</h2><ol>
+<li>服务器</li>
+<li>服务器软件：接收用户请求</li>
+<li>web服务器软件：接收用户请求，处理器扭曲做出相应</li>
+<li>常见web服务器<ul>
+<li>webLogic</li>
+<li>webSphere</li>
+<li>JBoss</li>
+<li>Tomcat：Apache基金组织<span id="more"></span>
+<h1 id="2-Tomcat的架构"><a href="#2-Tomcat的架构" class="headerlink" title="2. Tomcat的架构"></a>2. Tomcat的架构</h1></li>
+</ul>
+</li>
+</ol>
+<h2 id="HTTP工作原理"><a href="#HTTP工作原理" class="headerlink" title="HTTP工作原理"></a>HTTP工作原理</h2><p>HTTP协议是浏览器与服务器之间的数据传输协议，作为应用层协议，HTTP是基于TCP/IP协议，因此传输数据包都是由TCP/IP协议进行传输，HTTP只是定义了数据包的封装格式。</p>
+<h2 id="HTTP服务器请求处理"><a href="#HTTP服务器请求处理" class="headerlink" title="HTTP服务器请求处理"></a>HTTP服务器请求处理</h2><p>浏览器发送个服务端一个HTTP格式请求，HTTP服务器接收到请求后，需要调用服务端程序</p>
+<h2 id="Servlet容器工作流程"><a href="#Servlet容器工作流程" class="headerlink" title="Servlet容器工作流程"></a>Servlet容器工作流程</h2><p>HTTP服务器不直接调用Servlet，而且将请求交给Servlet容器，具体步骤如下：</p>
+<ol>
+<li>客户端请求资源，HTTP服务器凤凰组昂成一个ServletRequest队形</li>
+<li>然后调用Servlet容器的<code>service</code>方法</li>
+<li>Servlet容器拿到请求后，根据<code>URL和Servlet的映射关系</code>找到相应的Servlet</li>
+<li>加载Servlet，使用反射创建这个Servlet，并调动<code>init</code>方法初始化</li>
+<li>调用Servlet的<code>service</code>方法用来处理请求</li>
+</ol>
+<h2 id="Tomcat的两个核心功能"><a href="#Tomcat的两个核心功能" class="headerlink" title="Tomcat的两个核心功能"></a>Tomcat的两个核心功能</h2><ol>
+<li>处理Socket连接，负责网络字节流与Request和Response对象的转化</li>
+<li>加载和管理Servlet，以及具体处理Request请求</li>
+</ol>
+<p>两个核心组件连接器<code>Connector</code>和<code>Container</code>来分别做两件事情。</p>
+<h2 id="连接器-coyote"><a href="#连接器-coyote" class="headerlink" title="连接器 - coyote"></a>连接器 - coyote</h2><p>coyote是Tomcat的连接器框架名称，是Tomcat服务器提供的客户端访问外部接口，客户端通过coyote月服务器建立连接、发送请求并接受响应。</p>
+<p><strong>coyote封装了底层网络通信</strong>，并未Catalina容器提供了统一的接口，是Catalina容器月具体的请求协议及IO操作方式完全解耦。Coyote将Socket输入封装为Request对象，交由Catalina容器进行处理，处理完后，Catalina通过Coyote提供的Response对象将结果写入到输出流。</p>
+<p>Coyote负责接受请求并进行封装响应，作为独立的模块只负责具体的协议解析和IO相关操作，与Servlet规范实现没有直接关系，因此Request和Response对象也并未实现Servlet规范的对应接口。</p>
+<p><strong>一个容器支持多个连接器</strong></p>
+<h2 id="IO模型与协议"><a href="#IO模型与协议" class="headerlink" title="IO模型与协议"></a>IO模型与协议</h2><p>在Coyote中，Tomcat支持多种I/O模型和应用层协议，在Tomcat 8.5/9.0版本起，移除了对<code>BIO</code>的支持。</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>IO模型</strong></th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">NIO</td>
+<td>非阻塞I/O，采用Java NIO类库实现</td>
+</tr>
+<tr>
+<td align="left">NIO2</td>
+<td>异步I/O，采用JDK 7的NIO2类库实现</td>
+</tr>
+<tr>
+<td align="left">APR</td>
+<td>采用Apache可移植运行库实现，是C/C++编写的本地库，</td>
+</tr>
+</tbody></table>
+<p>Tomcat支持的应用层协议：</p>
+<table>
+<thead>
+<tr>
+<th>应用层协议</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTP/1.1</td>
+<td>大部分web应用采用的访问协议</td>
+</tr>
+<tr>
+<td>AJP</td>
+<td>在用于和Apache Web服务器集成，已实现对静态资源优化及集群部署</td>
+</tr>
+<tr>
+<td>HTTP/2</td>
+<td>HTTP 2.0大幅提升Web性能，下一代HTTP协议，自8.5及9.0版本后支持</td>
+</tr>
+</tbody></table>
+<h2 id="Tomcat启动流程"><a href="#Tomcat启动流程" class="headerlink" title="Tomcat启动流程"></a>Tomcat启动流程</h2><ol>
+<li>启动tomcat，运行bin/startup.bat（如果是linux环境，则需要调用bin/startup.sh），在startup.bat脚本中，调用了catalina.bat脚本</li>
+<li>在<code>catalina.bat</code>脚本中进行了<code>JAVA_OPTS</code>参数的配置，然后调用了<code>org.apache.catalina.startup.Bootstrap</code>类中的<code>main</code>方法</li>
+<li>在<code>Bootstrap</code>的<code>main</code>方法中调用了<code>init</code>方法，用于初始化<code>Catalina</code>类并调用<code>setParentClassLoader()</code>方法设置其<strong>类加载器</strong></li>
+<li>在<code>Bootstrap</code>的<code>main</code>方法中调用了<code>load</code>方法，然后分别调用三个方法<code>setAwait(true)</code>、<code>load(args)</code>、<code>start()</code><ul>
+<li><code>setAwait(true)</code>方法，用于设置<code>Catalina</code>对象是阻塞的</li>
+<li><code>load(args)</code>方法，调用<code>Catalina</code>对象<code>load()</code>方法，使用流去加载Catalina配置，如<code>conf/server.xml</code>，然后由交付于<code>Digester</code>对象进行拆解xml，<code>Server</code>对象就是在解析中进行初始化的</li>
+<li><code>start()</code>方法，调用<code>Server</code>对象的<code>start()</code>方法，并同步代码执行<code>Lifecycle</code>、<code>LifecycleBase</code>的方法实现。</li>
+</ul>
+</li>
+</ol>
+<p><img src="http://images.marcus659.com/blog/tomcat_sequence_chart.png" alt="tomcat_sequence_chart"></p>
+<h3 id="Lifecycle接口定义"><a href="#Lifecycle接口定义" class="headerlink" title="Lifecycle接口定义"></a>Lifecycle接口定义</h3><p>在Tomcat中的所有组件均存在<strong>初始化</strong>、<strong>启动</strong>、<strong>停止</strong>等生命周期方法，所以在Tomcat设计时，便基于生命周期管理抽象出一个<code>Lifecycle</code>接口，而组件Server、Service、Container、Executor、Connector都实现了<code>Lifecycle</code>接口，其中部分方法有使用<strong>模板设计模式</strong>抽取出公共逻辑，进行复用。</p>
+<ol>
+<li><code>init()</code>：初始化组件</li>
+<li><code>start()</code>：启动组件</li>
+<li><code>stop()</code>：停止组件</li>
+<li><code>destroy()</code>：销毁组件</li>
+</ol>
+<p><img src="http://qwgrj2bek.hd-bkt.clouddn.com/blog/tomcat_standard_engine.png" alt="StandardEngine"></p>
+<h2 id="Tomcat请求处理流程"><a href="#Tomcat请求处理流程" class="headerlink" title="Tomcat请求处理流程"></a>Tomcat请求处理流程</h2><h1 id="3-Tomcat服务器配置"><a href="#3-Tomcat服务器配置" class="headerlink" title="3. Tomcat服务器配置"></a>3. Tomcat服务器配置</h1><h1 id="4-Tomcat的管理配置"><a href="#4-Tomcat的管理配置" class="headerlink" title="4. Tomcat的管理配置"></a>4. Tomcat的管理配置</h1><h1 id="5-Tomcat集群"><a href="#5-Tomcat集群" class="headerlink" title="5. Tomcat集群"></a>5. Tomcat集群</h1><h2 id="tomcat集群简介"><a href="#tomcat集群简介" class="headerlink" title="tomcat集群简介"></a>tomcat集群简介</h2><p>tomcat集群是由多个tomcat进程，通过<code>ngnix</code>进行反向代理，使用<code>轮询</code>、<code>权重</code>、<code>ip_hash</code>的方式去进行负载策略，</p>
+<h2 id="session共享问题"><a href="#session共享问题" class="headerlink" title="session共享问题"></a>session共享问题</h2><ol>
+<li><p>ip_hash策略</p>
+<p>同一个ip的hash值肯定是相同的，顾可以使用此类方式将用户请求负载到之前有session的那个tomcat进程上。</p>
+</li>
+<li><p>session复制</p>
+<p>session复制可以在小型集群中进行session复制，官方建议此方案适用于四及四个以下tomcat集群</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Tomcat</tag>
+        <tag>Java Web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java集合(一) | Map集合之HashMap的介绍-上</title>
+    <url>/2021/04/04/data-structure/Map-HashMap/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="Java集合-一-Map集合之HashMap的介绍-上"><a href="#Java集合-一-Map集合之HashMap的介绍-上" class="headerlink" title="Java集合(一) | Map集合之HashMap的介绍-上"></a>Java集合(一) | Map集合之HashMap的介绍-上</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>本文我们来共同探究Java集合，首先会介绍一些集合相关知识点的概念，如：<strong>集合是什么</strong>、<strong>集合有哪些特点</strong>、<strong>集合的优劣之处</strong>，然后探究的<code>java.util.Map</code>究竟是怎么样一个数据结构，并且通过<code>java.util.HashMap</code>作为切入点来走进Map集合的结构学习。</p>
+</blockquote>
+<ul>
+<li>集合概述、特点、好处以及常见的集合</li>
+<li><code>Map</code>的数据结构、原理</li>
+<li><code>HashMap1.8</code>的源码分析</li>
+<li><code>HashMap1.7</code>和<code>HashMap1.8</code>之间的区别<span id="more"></span>
+<h1 id="1-集合容器概述"><a href="#1-集合容器概述" class="headerlink" title="1. 集合容器概述"></a>1. 集合容器概述</h1></li>
+</ul>
+<h2 id="什么是集合"><a href="#什么是集合" class="headerlink" title="什么是集合"></a>什么是集合</h2><p><strong>集合框架</strong>：为了保存数量不确定的数据，以及保存具有映射关系的数据（也被称为关联数组），Java提供了集合类用于存储数据的容器，集合类都位于 <code>java.util</code>包下。</p>
+<blockquote>
+<p> 集合框架是为表示和操作集合而规定的一种统一的标准的体系结构。任何集合框架都包含三大块内容：对外的接口、接口的实现和对集合运算的算法。</p>
+</blockquote>
+<p><strong>接口</strong>：表示集合的抽象数据类型。接口允许我们操作集合时不必关注具体实现，从而达到“多态”。在面向对象编程语言中，接口通常用来形成规范。</p>
+<p><strong>实现</strong>：集合接口的具体实现，是重用性很高的数据结构。</p>
+<p><strong>算法</strong>：某个集合框架接口的实现类汇中完成某种有用的操作的计算方法，例如查找、排序等。这些算法通常是多态的，因为相同的方法可以在同一个接口被多个类实现时有不同的表现。事实上，算法是可复用的函数。它减少了程序设计的辛劳。</p>
+<blockquote>
+<p>集合框架通过<strong>提供有用的数据结构和算法</strong>使你能集中注意力于你的程序的重要部分上，而不是为了让程序能正常运转而将注意力于低层设计上。通过这些在无关API之间的简易的互用性，使你免除了为改编对象或转换代码以便联合这些API而去写大量的代码。 它提高了程序速度和质量。</p>
+</blockquote>
+<h2 id="集合和数组的区别"><a href="#集合和数组的区别" class="headerlink" title="集合和数组的区别"></a>集合和数组的区别</h2><ul>
+<li><p>数组是固定长度的；集合可变长度的。</p>
+</li>
+<li><p>数组可以存储基本数据类型，也可以存储引用数据类型；<strong>集合只能存储引用数据类型。</strong><code>基本数据类型存的是值 引用数据类型存的是地址</code></p>
+</li>
+</ul>
+<p><img src="http://images.marcus659.com/blog/collection_and_array_code.png" alt="collection_and_array_code"></p>
+<ul>
+<li>数组存储的元素必须是同一个数据类型；集合存储的对象可以是不同数据类型。</li>
+</ul>
+<h2 id="使用集合框架的好处"><a href="#使用集合框架的好处" class="headerlink" title="使用集合框架的好处"></a>使用集合框架的好处</h2><ol>
+<li>容量自增长；</li>
+<li>提供了高性能的数据结构和算法，使编码更轻松，提高了程序速度和质量；</li>
+<li>提供各类转换API，允许不同 API 之间的互操作，API之间可以来回传递集合；</li>
+<li>可以方便地扩展或改写集合，提高代码复用性和可操作性。</li>
+</ol>
+<h2 id="常用的集合类有哪些？"><a href="#常用的集合类有哪些？" class="headerlink" title="常用的集合类有哪些？"></a>常用的集合类有哪些？</h2><p>Java 容器分两大类，Map接口和Collection接口是所有集合框架的父接口：</p>
+<ul>
+<li><p>Collection 接口：该接口是最基本的集合接口，Collection接口的子接口包括：Queue接口、Set接口和List接口。</p>
+</li>
+<li><p>List 接口：该接口继承了 Collection 接口，List 是有序集合，允许有相同的元素。使用 List 能够精确地控制每个元素插入的位置，用户能够使用索引（元素在List 中的位置，类似于数组下标）来访问 List 中的元素，与数组类似，List接口的实现类主要有：ArrayList、LinkedList、Stack以及Vector等</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">接口</th>
+<th>底层数据结构</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ArrayList</td>
+<td>Object数组</td>
+<td>顺序存取，查询快、增删慢、线程不安全、效率高。<br />默认长度是10 超过就会new一个新的数组50%延长<code> oldCapacity + (oldCapacity &gt;&gt; 1)</code>节省空间</td>
+</tr>
+<tr>
+<td align="left">Vector</td>
+<td>Object数组</td>
+<td>查询快、增删慢、线程安、 效率低 <br />默认长度是10 超过就会100%延长<code>oldCapacity + ((capacityIncrement &gt; 0)? capacityIncrement:oldCapacity)</code> 变成20 浪费空间</td>
+</tr>
+<tr>
+<td align="left">LinkedList</td>
+<td>双向循环链表</td>
+<td>查询慢、增删快、线程不安全、效率高</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Set 接口：该接口也继承了 Collection 接口，它不能包含重复的元素，Set接口的实现类主要有：HashSet、TreeSet、LinkedHashSet等SortedSet 是按升序排列的 Set 集合。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">接口</th>
+<th>底层数据结构</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HashSet</td>
+<td>哈希表</td>
+<td>底层实现使用的<code>HashMap的key</code>做保证唯一，所以必须实现<code>hashCode()</code>和<code>equals()</code>两个方法</td>
+</tr>
+<tr>
+<td align="left">LinkedHashSet</td>
+<td>数据结构是链表和哈希表</td>
+<td>FIFO插入有序、链表保证元素有序、哈希表保证元素唯一</td>
+</tr>
+<tr>
+<td align="left">TreeSet</td>
+<td>红黑树</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Map 接口：包含键值对，Map 不能包含重复的键。SortedMap 是一个按升序排列的 Map 集合，Map接口的实现类主要有：HashMap、TreeMap、Hashtable、ConcurrentHashMap以及Properties等</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">接口</th>
+<th>底层数据结构</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HashMap</td>
+<td>数组+链表+红黑树</td>
+<td>效率较高、但线程不安全</td>
+</tr>
+<tr>
+<td align="left">TreeMap</td>
+<td>Map.Entry红黑树</td>
+<td>查询快、增删慢、线程安、 效率低 <br />默认长度是10 超过就会100%延长<code>oldCapacity + ((capacityIncrement &gt; 0)? capacityIncrement:oldCapacity)</code> 变成20 浪费空间</td>
+</tr>
+<tr>
+<td align="left">Hashtable</td>
+<td>双向循环链表</td>
+<td>效率较低、线程安全(使用<code>synchronized</code>)</td>
+</tr>
+</tbody></table>
+<p><img src="http://images.marcus659.com/blog/hasp_inherit_hierarchy.png" alt="hasp_inherit_hierarchy"></p>
+<h2 id="实现集合存储的基本数据结构"><a href="#实现集合存储的基本数据结构" class="headerlink" title="实现集合存储的基本数据结构"></a>实现集合存储的基本数据结构</h2><p><strong>数据结构</strong>：就是容器中存储数据的方式。对于集合容器，有很多种。因为每一个容器的自身特点不同，其实原理在于每个容器的内部数据结构不同。在使用一个体系的原则：参阅顶层内容。建立底层对象。</p>
+<p><strong>数组</strong>：采用<code>一段连续的存储单元来存储数据</code>。对于指定下标的查找，时间复杂度为O(1)；通过给定值进行查找，需要遍历数组，逐一比对给定关键字和数组元素，时间复杂度为O(n)，当然，对于有序数组，则可采用二分查找，插值查找，斐波那契查找等方式，可将查找复杂度提高为O(logn)；对于一般的插入删除操作，涉及到数组元素的移动，其平均复杂度也为O(n)</p>
+<p><strong>线性链表</strong>：对于链表的新增，删除等操作（在找到指定操作位置后），仅需处理结点间的引用即可，时间复杂度为O(1)，而查找操作需要遍历链表逐一进行比对，复杂度为O(n)</p>
+<p><strong>二叉树</strong>：对一棵相对平衡的有序二叉树，对其进行插入，查找，删除等操作，平均复杂度均为O(logn)。</p>
+<p><strong>哈希表</strong>：相比上述几种数据结构，在哈希表中进行添加，删除，查找等操作，性能十分之高，不考虑哈希冲突的情况下（后面会探讨下哈希冲突的情况），仅需一次定位即可完成，时间复杂度为O(1)，接下来我们就来看看哈希表是如何实现达到惊艳的常数阶O(1)的。</p>
+<p>我们知道，数据结构的物理存储结构只有两种：<strong>顺序存储结构</strong>和<strong>链式存储结构</strong>（像栈，队列，树，图等是从逻辑结构去抽象的，映射到内存中，也这两种物理组织形式），而在上面我们提到过，在数组中根据下标查找某个元素，一次定位就可以达到，哈希表利用了这种特性，<strong>哈希表的主干就是数组</strong>。</p>
+<p><strong>哈希冲突</strong>：</p>
+<p>当我们对某个元素进行哈希运算，得到一个存储地址，然后要进行插入的时候，发现已经被其他元素占用了，其实这就是所谓的<strong>哈希冲突</strong>，也叫<strong>哈希碰撞</strong>。前面我们提到过，哈希函数的设计至关重要，<strong>好的哈希函数会尽可能地保证计算简单和散列地址分布均匀</strong>，但是，我们需要清楚的是，数组是一块连续的固定长度的内存空间，再好的哈希函数也不能保证得到的存储地址绝对不发生冲突。那么哈希冲突如何解决呢？</p>
+<p><strong>哈希冲突的解决方案有多种</strong>:</p>
+<ul>
+<li>开放定址法（发生冲突，继续寻找下一块未被占用的存储地址），</li>
+<li>散列函数法</li>
+<li>链地址法，如HashMap即是采用了<strong>链地址法</strong>，也就是<strong>数组+链表</strong>的方式。</li>
+</ul>
+<h1 id="2-Map的简介"><a href="#2-Map的简介" class="headerlink" title="2.Map的简介"></a>2.Map的简介</h1><p>Map是一种<strong>键值对集合</strong>，每一个元素都包含一个键对象和一个值对象。其中键对象是不允许重复的。</p>
+<p>Map接口与Collection接口是不同的，Map接口有三个主要实现类<code>java.util.HashMap</code>、<code>java.util.TreeMap</code>、<code>java.util.HashTable</code>，<strong>HashMap类按哈希算法来存取键值对象，而TreeMap类可以对键值对象进行排序。</strong></p>
+<ul>
+<li>TreeMap是有序的，HashMap和HashTable是无序的。</li>
+<li>Hashtable的方法是同步的，HashMap的方法不是同步的，因此Hashtable是线程安全的，HashMap不是线程安全的</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TB</span><br><span class="line">Map--&gt;HashMap</span><br><span class="line">Map--&gt;HashTable</span><br><span class="line">Map--&gt;TreeMap</span><br><span class="line">Map--&gt;IdentityHashMap</span><br><span class="line">Map--&gt;WeakHashMap</span><br><span class="line">Map--&gt;SortedhMap</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">方法签名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">V get(Object key)</td>
+<td>返回Map结合中指定键值对所对应的值</td>
+</tr>
+<tr>
+<td align="left">V put(K key, V value)</td>
+<td>向Map集合中添加键-值对，返回key以前对应的value，如果没有，则返回null</td>
+</tr>
+<tr>
+<td align="left">V remove(Object  key)</td>
+<td>从Map集合中删除key对应的键值对，返回key对应的value，如果没有则返回null</td>
+</tr>
+<tr>
+<td align="left">Set entrySet()</td>
+<td>返回Map集合中所有键值对的Set集合，类型为Map内部类，Map.Entry</td>
+</tr>
+<tr>
+<td align="left">Set keySet()</td>
+<td>返回Map集合中所有<strong>键对象</strong>的Set集合</td>
+</tr>
+</tbody></table>
+<p>在java1.8以后采用<strong>数组+链表+红黑树</strong>的形势来进行存储，通过散列映射来存储键值对</p>
+<ul>
+<li><p>对key的hashcode进行一个取模操作得到数组下标</p>
+</li>
+<li><p>数组存储的是一个单链表</p>
+</li>
+<li><p>数组下标相同将会被放在同一个链表中进行存储</p>
+</li>
+<li><p>元素是无序排列的</p>
+</li>
+<li><p>链表超过一定长度(<code>TREEIFY_THRESHOLD=8</code>)会转化为红黑树</p>
+</li>
+<li><p>红黑树在满足一定条件会再次退回链表</p>
+<p><img src="images.marcus659.com/blog/HashMap-structure.png" alt="hashmap_structure"></p>
+</li>
+</ul>
+<h1 id="HashMap原理"><a href="#HashMap原理" class="headerlink" title="HashMap原理"></a>HashMap原理</h1><p>HashMap在我们Map接口的实现类中的使用中占有很高的频率，在初始化时将会给定<code>默认容量为16</code>,扩容的<code>加载因子为0.75</code>，当实例内的<code>结点数量&gt;16*0.75</code>就会进行扩容，每次扩容都是<code>1&lt;&lt;2也就是2倍</code>。</p>
+<blockquote>
+<p>Hashmap不能用于多线程场景中，多线程下推荐使用concurrentHashmap！</p>
+<p>原因在于扩容机制！扩容机制！扩容机制！  下文会进行仔细剖析</p>
+</blockquote>
+<p>那么接下来怎们结合使用代码，对HashMap的数据结构进行深入剖析。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map hashMap=<span class="keyword">new</span> HashMap(<span class="number">3</span>);</span><br><span class="line">hashMap.put(<span class="string">&quot;小林&quot;</span>,<span class="number">666</span>);</span><br><span class="line">hashMap.put(<span class="string">&quot;小马&quot;</span>,<span class="number">777</span>);</span><br></pre></td></tr></table></figure>
+
+<p>那么在咱们HashMap中数据结构就应该只存了一个Node</p>
+<p><img src="http://images.marcus659.com/blog/hashmap_structure_1.png" alt="hashmap_structure_1"></p>
+<p>其中这个<code>Node[]数组的index</code>是通过key对象的hash值取模得出的，源码公式采用位运算<code>(length-1)&amp;hash</code>取模然后放置到Node数组的<code>Node[(length-1)&amp;hash]</code>。</p>
+<p>当然如果**小林和小马的hash值可能相同(<code>发生哈希碰撞</code>)**，则将会在小林的出追加一个结点，形成了链表。</p>
+<p><img src="http://images.marcus659.com/blog/hashmap_structure_2.png" alt="hashmap_structure_2"></p>
+<p>在追加节点时成为链表，那么这里就会分为<strong>头插法</strong>和<strong>尾插法</strong>了。</p>
+<h2 id="头插法"><a href="#头插法" class="headerlink" title="头插法"></a>头插法</h2><p>首先我们声明下<strong>单向链表结点</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="comment">//结点上存储的数据</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    <span class="comment">//单向链表指针</span></span><br><span class="line">    ListNode next;</span><br><span class="line"></span><br><span class="line">    ListNode() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val) &#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val, ListNode next) &#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setVal</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">getNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNext</span><span class="params">(ListNode next)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来使用头插法进行数据存储</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">List</span> </span>&#123;</span><br><span class="line">       <span class="comment">// 头结点</span></span><br><span class="line">       <span class="keyword">private</span> ListNode headNode = <span class="keyword">new</span> ListNode();</span><br><span class="line">      <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * 头插法</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">headInsert</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">           <span class="comment">// 实例化新节点，也就是待插入结点</span></span><br><span class="line">           ListNode node = <span class="keyword">new</span> ListNode();</span><br><span class="line">           <span class="comment">// 先放入value对象</span></span><br><span class="line">           node.setVal(val);</span><br><span class="line">           <span class="comment">// 待插入结点next指针指向头结点next指针域</span></span><br><span class="line">           node.setNext(headNode.getNext());</span><br><span class="line">           <span class="comment">// 头结点指针指向待插入结点</span></span><br><span class="line">           headNode.setNext(node);</span><br><span class="line">           <span class="comment">// 判断是否指向成功</span></span><br><span class="line">           <span class="keyword">if</span> (headNode.getNext()==node)&#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>头插法单向链表的插入动作如下图</p>
+<p><img src="http://images.marcus659.com/blog/hashmap_structure_3.png" alt="hashmap_structure_3"></p>
+<h2 id="尾插法"><a href="#尾插法" class="headerlink" title="尾插法"></a>尾插法</h2><p>还是以上方头插法的结点数据结构为基础，咱们来简单表示下尾插法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">List</span> </span>&#123;</span><br><span class="line">     <span class="comment">// 尾结点</span></span><br><span class="line">     <span class="keyword">private</span> ListNode tailNode = <span class="keyword">new</span> ListNode();</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">      * 尾插法</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tailInsert</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">         <span class="comment">// 实例化新节点，也就是待插入结点</span></span><br><span class="line">         ListNode node = <span class="keyword">new</span> ListNode();</span><br><span class="line">         <span class="comment">// 先放入value对象</span></span><br><span class="line">         node.setVal(val);</span><br><span class="line">         <span class="comment">// 尾结点指针指向待插入结点</span></span><br><span class="line">         tailNode.setNext(node);</span><br><span class="line">         <span class="comment">// 尾结点直接改变为当前插入的节点</span></span><br><span class="line">         tailNode=node;</span><br><span class="line">         <span class="comment">// 判断尾结点是否是当前节点</span></span><br><span class="line">         <span class="keyword">if</span> (tailNode.getNext()==<span class="keyword">null</span>)&#123;</span><br><span class="line">             <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>尾插法动作如下图</p>
+<p><img src="http://images.marcus659.com/blog/hashmap_structure_4.png" alt="hashmap_structure_4"></p>
+<h2 id="为什么Java8要使用尾插法呢"><a href="#为什么Java8要使用尾插法呢" class="headerlink" title="为什么Java8要使用尾插法呢"></a>为什么Java8要使用尾插法呢</h2><p>在Java7中Map的链表新增还是头插法，而在Java8中使用的就是尾插法了，其原因有两个：</p>
+<ul>
+<li>头插法会造成死链</li>
+<li>Java7考虑是热点数据可能会更早的用到，<strong>如果发生链表迁移，头插法还是会扰乱插入的顺序</strong></li>
+</ul>
+<h1 id="内部重要属性"><a href="#内部重要属性" class="headerlink" title="内部重要属性"></a>内部重要属性</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 默认初始化容量，值为16，必须是2的n次方</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 默认加载因子</span></span><br><span class="line"><span class="comment"> * 当size&gt;capacity*DEFAULT_LOAD_FACTOR时则进行resize(扩容)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;  </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 链表需要转红黑树时的长度。</span></span><br><span class="line"><span class="comment"> * 此时未必会做换红黑树的操作，需要结合MIN_TREEIFY_CAPACITY，即链表长度达到8且容量达到64时，才会做红黑树的转换；</span></span><br><span class="line"><span class="comment"> * 否则，进行扩容操作。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;    </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 红黑树转链表时的元素个数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 链表树形化，最小数组容量阈值</span></span><br><span class="line"><span class="comment"> * 数组容量超过这个，链表将会树形化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;        </span><br></pre></td></tr></table></figure>
+
+<h2 id="不同类型结点结构"><a href="#不同类型结点结构" class="headerlink" title="不同类型结点结构"></a>不同类型结点结构</h2><p>无论是<code>LinkedMap</code>还是<code>HashMap</code>内部都离不开<code>Node</code>节点、这是我们数据存储的最基本结构，在Java7叫<code>Entry</code>，在Java8叫<code>Node</code>，其本质都是<code>Map.Entry</code>的实现，但其内部结构却不太一样，可能是HashMap中是链表，LinkedMap中是双向链表，在TreeMap中可以排序，又可以是红黑树。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 链表结点，实现Map.Entry接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> hash;</span><br><span class="line">    <span class="keyword">final</span> K key;</span><br><span class="line">    V value;</span><br><span class="line">    Node&lt;K,V&gt; next;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ... </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * LinkedHashMap中元素的结点类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">HashMap</span>.<span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    Entry&lt;K,V&gt; before, after;</span><br><span class="line">    Entry(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">        <span class="keyword">super</span>(hash, key, value, next);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 红黑树结点，继承了LinkedHashMap.Entry，间接继承了HashMap.Node，所以也具有链表的性质。</span></span><br><span class="line"><span class="comment"> * 实际上该结点类型既可以作为红黑树结点，又可以作为双向链表结点。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">LinkedHashMap</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    TreeNode&lt;K,V&gt; parent;  <span class="comment">// red-black tree links</span></span><br><span class="line">    TreeNode&lt;K,V&gt; left;</span><br><span class="line">    TreeNode&lt;K,V&gt; right;</span><br><span class="line">    TreeNode&lt;K,V&gt; prev;    <span class="comment">// needed to unlink next upon deletion</span></span><br><span class="line">    <span class="keyword">boolean</span> red;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+
+<h1 id="HashMap中的重要操作"><a href="#HashMap中的重要操作" class="headerlink" title="HashMap中的重要操作"></a>HashMap中的重要操作</h1><p>在HashMap中，我们常用到<code>get</code>、<code>set</code>这些操作，但除了这些操作还有一些其他的<code>链表转红黑树</code>、<code>红黑树转链表</code>等一系列扩容或者是迭代的其他操作，通过这些操作影响着HashMap的内部结构，同时这也是HashMap之所以<strong>线程不安全</strong>、<strong>性能比较高</strong>的原因。</p>
+<h2 id="HashMap实例化"><a href="#HashMap实例化" class="headerlink" title="HashMap实例化"></a>HashMap实例化</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 可以通过构造参数，指定当前新Map的初始化容量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  initialCapacity 初始化容量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  loadFactor      影响扩容的加载因子</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Illegal initial capacity: &quot;</span> +</span><br><span class="line">                                           initialCapacity);</span><br><span class="line">    <span class="keyword">if</span> (initialCapacity &gt; MAXIMUM_CAPACITY)</span><br><span class="line">        initialCapacity = MAXIMUM_CAPACITY;</span><br><span class="line">    <span class="keyword">if</span> (loadFactor &lt;= <span class="number">0</span> || Float.isNaN(loadFactor))</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Illegal load factor: &quot;</span> +</span><br><span class="line">                                           loadFactor);</span><br><span class="line">    <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">    <span class="keyword">this</span>.threshold = tableSizeFor(initialCapacity);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constructs a new &lt;tt&gt;HashMap&lt;/tt&gt; with the same mappings as the</span></span><br><span class="line"><span class="comment"> * specified &lt;tt&gt;Map&lt;/tt&gt;.  The &lt;tt&gt;HashMap&lt;/tt&gt; is created with</span></span><br><span class="line"><span class="comment"> * default load factor (0.75) and an initial capacity sufficient to</span></span><br><span class="line"><span class="comment"> * hold the mappings in the specified &lt;tt&gt;Map&lt;/tt&gt;.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>   m the map whose mappings are to be placed in this map</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span>  NullPointerException if the specified map is null</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(Map&lt;? extends K, ? extends V&gt; m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loadFactor = DEFAULT_LOAD_FACTOR;</span><br><span class="line">    putMapEntries(m, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="put新增结点"><a href="#put新增结点" class="headerlink" title="put新增结点"></a>put新增结点</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Implements Map.put and related methods</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> hash 键对象的hash值</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> key 键对象</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> value 键值对中的值对象，主要就是用于存储这个对象</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> onlyIfAbsent 如果同样的键对象是否替换当前已存在的值对象</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> evict if false, the table is in creation mode.</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 如果是替换的话则返回oldValue，否则返回null</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,</span></span></span><br><span class="line"><span class="params"><span class="function">                  <span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">       Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="keyword">int</span> n, i;</span><br><span class="line">       <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">           n = (tab = resize()).length;</span><br><span class="line">       <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">           tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">       <span class="keyword">else</span> &#123;</span><br><span class="line">           Node&lt;K,V&gt; e; K k;</span><br><span class="line">           <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">               ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">               e = p;</span><br><span class="line">           <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">               e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">           <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                   <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                       p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                       <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                           treeifyBin(tab, hash);</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                       ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">                   p = e;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">               V oldValue = e.value;</span><br><span class="line">               <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                   e.value = value;</span><br><span class="line">               afterNodeAccess(e);</span><br><span class="line">               <span class="keyword">return</span> oldValue;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       ++modCount;</span><br><span class="line">       <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">           resize();</span><br><span class="line">       afterNodeInsertion(evict);</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="treeifyBin树形化链表"><a href="#treeifyBin树形化链表" class="headerlink" title="treeifyBin树形化链表"></a>treeifyBin树形化链表</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 当达到两个阈值后，替换所有数组上的链表节点</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">treeifyBin</span><span class="params">(Node&lt;K,V&gt;[] tab, <span class="keyword">int</span> hash)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, index; Node&lt;K,V&gt; e;</span><br><span class="line">    <span class="keyword">if</span> (tab == <span class="keyword">null</span> || (n = tab.length) &lt; MIN_TREEIFY_CAPACITY)</span><br><span class="line">        resize();</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ((e = tab[index = (n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        TreeNode&lt;K,V&gt; hd = <span class="keyword">null</span>, tl = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            TreeNode&lt;K,V&gt; p = replacementTreeNode(e, <span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">if</span> (tl == <span class="keyword">null</span>)</span><br><span class="line">                hd = p;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                p.prev = tl;</span><br><span class="line">                tl.next = p;</span><br><span class="line">            &#125;</span><br><span class="line">            tl = p;</span><br><span class="line">        &#125; <span class="keyword">while</span> ((e = e.next) != <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">if</span> ((tab[index] = hd) != <span class="keyword">null</span>)</span><br><span class="line">            hd.treeify(tab);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="resize扩容"><a href="#resize扩容" class="headerlink" title="resize扩容"></a>resize扩容</h1><p>Node数组的容量是优先的，当数据多次插入达到一定数量就会进行扩容<code>resize()</code></p>
+<p><strong>那什么时候进行resize呢</strong>，有两个因素</p>
+<ul>
+<li>Capacity：HashMap当前的容量</li>
+<li>LoadFactor：负载因子</li>
+</ul>
+<p>当Map的长度大于<code>capacity * load factor</code>，如容量为16时，当Map中节点数量超过12则需要进行扩容，那么怎么扩容呢？</p>
+<ol>
+<li><p>判断旧数组的容量是否大于等于最大容量<code>1&lt;&lt;30</code>，将新<strong>数组容量</strong>和<strong>阈值</strong>参数扩大2倍</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">      Node&lt;K,V&gt;[] oldTab = table;</span><br><span class="line"><span class="comment">//判断当前数组的长度，如果是0则新建数组，容量和负载因子都是默认值16*0.75</span></span><br><span class="line">      <span class="keyword">int</span> oldCap = (oldTab == <span class="keyword">null</span>) ? <span class="number">0</span> : oldTab.length;</span><br><span class="line">      <span class="keyword">int</span> oldThr = threshold;</span><br><span class="line">      <span class="keyword">int</span> newCap, newThr = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//判断当前数组是否有容量，且不超过最大容量1&lt;&lt;30</span></span><br><span class="line">      <span class="keyword">if</span> (oldCap &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (oldCap &gt;= MAXIMUM_CAPACITY) &#123;</span><br><span class="line">              threshold = Integer.MAX_VALUE;</span><br><span class="line">              <span class="keyword">return</span> oldTab;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//若有容量，并且新扩容的容量值没有超过最大容量值，则将阈值和容量扩大二倍，也就是容量总是2的幂次方</span></span><br><span class="line">          <span class="keyword">else</span> <span class="keyword">if</span> ((newCap = oldCap &lt;&lt; <span class="number">1</span>) &lt; MAXIMUM_CAPACITY &amp;&amp;</span><br><span class="line">                   oldCap &gt;= DEFAULT_INITIAL_CAPACITY)</span><br><span class="line">              newThr = oldThr &lt;&lt; <span class="number">1</span>; <span class="comment">// double threshold</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (oldThr &gt; <span class="number">0</span>) <span class="comment">// initial capacity was placed in threshold</span></span><br><span class="line">          newCap = oldThr;</span><br><span class="line">      <span class="keyword">else</span> &#123;               <span class="comment">// zero initial threshold signifies using defaults</span></span><br><span class="line">          <span class="comment">//如果阈值为0则使用默认值</span></span><br><span class="line">          newCap = DEFAULT_INITIAL_CAPACITY;</span><br><span class="line">          newThr = (<span class="keyword">int</span>)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (newThr == <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">float</span> ft = (<span class="keyword">float</span>)newCap * loadFactor;</span><br><span class="line">          newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (<span class="keyword">float</span>)MAXIMUM_CAPACITY ?</span><br><span class="line">                    (<span class="keyword">int</span>)ft : Integer.MAX_VALUE);</span><br><span class="line">      &#125;</span><br><span class="line">      threshold = newThr;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>根据新阈值创建新数组</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//根据新容量参数，创建一个新数组</span></span><br><span class="line">Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])<span class="keyword">new</span> Node[newCap];</span><br><span class="line"><span class="comment">//Node数组引用指向新数组</span></span><br><span class="line">      table = newTab;</span><br><span class="line">      <span class="keyword">if</span> (oldTab != <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; oldCap; ++j) &#123;</span><br><span class="line">              Node&lt;K,V&gt; e;</span><br><span class="line">              <span class="keyword">if</span> ((e = oldTab[j]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                  oldTab[j] = <span class="keyword">null</span>;</span><br><span class="line">                  <span class="keyword">if</span> (e.next == <span class="keyword">null</span>)<span class="comment">// 表示j下标处只有一个结点</span></span><br><span class="line">                      <span class="comment">//根据新数组的容量值，取模计算在新数组中的位置</span></span><br><span class="line">                      newTab[e.hash &amp; (newCap - <span class="number">1</span>)] = e;</span><br><span class="line">                  <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                      <span class="comment">// 将红黑树分解为两个双向链表，如果双向链表长度大于6，则分解出来的双向链表转换为红黑树。</span></span><br><span class="line">                      <span class="comment">// 然后将双向链表或红黑树放入新table的相应下标处</span></span><br><span class="line">                      ((TreeNode&lt;K,V&gt;)e).split(<span class="keyword">this</span>, newTab, j, oldCap);</span><br><span class="line">                  <span class="keyword">else</span> &#123; <span class="comment">// preserve order</span></span><br><span class="line">                      <span class="comment">//将原链表拆分为两个（至少一个）链表，并且维持元素在原链表中的相对顺序</span></span><br><span class="line">                      Node&lt;K,V&gt; loHead = <span class="keyword">null</span>, loTail = <span class="keyword">null</span>;</span><br><span class="line">                      Node&lt;K,V&gt; hiHead = <span class="keyword">null</span>, hiTail = <span class="keyword">null</span>;</span><br><span class="line">                      Node&lt;K,V&gt; next;</span><br><span class="line">                      <span class="keyword">do</span> &#123;</span><br><span class="line">                          next = e.next;</span><br><span class="line">                          <span class="keyword">if</span> ((e.hash &amp; oldCap) == <span class="number">0</span>) &#123;</span><br><span class="line">                              <span class="keyword">if</span> (loTail == <span class="keyword">null</span>)</span><br><span class="line">                                  loHead = e;</span><br><span class="line">                              <span class="keyword">else</span></span><br><span class="line">                                  loTail.next = e;</span><br><span class="line">                              loTail = e;</span><br><span class="line">                          &#125;</span><br><span class="line">                          <span class="keyword">else</span> &#123;</span><br><span class="line">                              <span class="keyword">if</span> (hiTail == <span class="keyword">null</span>)</span><br><span class="line">                                  hiHead = e;</span><br><span class="line">                              <span class="keyword">else</span></span><br><span class="line">                                  hiTail.next = e;</span><br><span class="line">                              hiTail = e;</span><br><span class="line">                          &#125;</span><br><span class="line">                      &#125; <span class="keyword">while</span> ((e = next) != <span class="keyword">null</span>);</span><br><span class="line">                      <span class="keyword">if</span> (loTail != <span class="keyword">null</span>) &#123;</span><br><span class="line">                          loTail.next = <span class="keyword">null</span>;</span><br><span class="line">                          <span class="comment">// 将新的链表放入新table的相应下标处</span></span><br><span class="line">                          newTab[j] = loHead;</span><br><span class="line">                      &#125;</span><br><span class="line">                      <span class="keyword">if</span> (hiTail != <span class="keyword">null</span>) &#123;</span><br><span class="line">                          hiTail.next = <span class="keyword">null</span>;</span><br><span class="line">                          newTab[j + oldCap] = hiHead;</span><br><span class="line">                      &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> newTab;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="get获取Value对象"><a href="#get获取Value对象" class="headerlink" title="get获取Value对象"></a>get获取Value对象</h2><p>返回key关联的value值；如果key不存在，返回null。</p>
+<ol>
+<li>计算key的hash值，根据hash值计算key在table数组中的位置</li>
+</ol>
+<ul>
+<li><p>如果该位置不为null，则比较key和其hash值是否相等</p>
+</li>
+<li><p>如果相等，则返回该结点</p>
+</li>
+<li><p>否则</p>
+<ul>
+<li>如果结点是红黑树，则从红黑树中查找该key对应的结点</li>
+<li>否则，就是从链表中查找该key对应的结点<ul>
+<li>否则，返回null</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>根据1获取结点的value值，或者返回null</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt; e;</span><br><span class="line">    <span class="keyword">return</span> (e = getNode(hash(key), key)) == <span class="keyword">null</span> ? <span class="keyword">null</span> : e.value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现了Map接口的get方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> Node&lt;K,V&gt; <span class="title">getNode</span><span class="params">(<span class="keyword">int</span> hash, Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; <span class="keyword">int</span> n; K k;</span><br><span class="line">    <span class="keyword">if</span> ((tab = table) != <span class="keyword">null</span> &amp;&amp; (n = tab.length) &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">        <span class="comment">//哈希值取模后在数组中存在至少一个节点，在该index位置有一个Node存在</span></span><br><span class="line">        (first = tab[(n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (first.hash == hash &amp;&amp; <span class="comment">// always check first node</span></span><br><span class="line">            ((k = first.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">            <span class="keyword">return</span> first;</span><br><span class="line">        <span class="keyword">if</span> ((e = first.next) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//如果链表的头结点不是目标元素，则判断是不是树形化的节点</span></span><br><span class="line">            <span class="keyword">if</span> (first <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                <span class="keyword">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(hash, key);</span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                <span class="comment">//遍历这个链表，一直到找到key和hash值都相同的节点</span></span><br><span class="line">                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                    ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                    <span class="keyword">return</span> e;</span><br><span class="line">            &#125; <span class="keyword">while</span> ((e = e.next) != <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="remove删除key对象"><a href="#remove删除key对象" class="headerlink" title="remove删除key对象"></a>remove删除key对象</h2><p>删除key，返回key关联的value；如果key不存在，返回null</p>
+<ol>
+<li><p>查找key对应的结点</p>
+</li>
+<li><p>从链表或者红黑树删除该结点</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">remove</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt; e;</span><br><span class="line">    <span class="keyword">return</span> (e = removeNode(hash(key), key, <span class="keyword">null</span>, <span class="keyword">false</span>, <span class="keyword">true</span>)) == <span class="keyword">null</span> ?</span><br><span class="line">        <span class="keyword">null</span> : e.value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现了Map接口中remove方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> Node&lt;K,V&gt; <span class="title">removeNode</span><span class="params">(<span class="keyword">int</span> hash, Object key, Object value,</span></span></span><br><span class="line"><span class="params"><span class="function">                           <span class="keyword">boolean</span> matchValue, <span class="keyword">boolean</span> movable)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="keyword">int</span> n, index;</span><br><span class="line">    <span class="keyword">if</span> ((tab = table) != <span class="keyword">null</span> &amp;&amp; (n = tab.length) &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">        (p = tab[index = (n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        Node&lt;K,V&gt; node = <span class="keyword">null</span>, e; K k; V v;</span><br><span class="line">        <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">            ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">            node = p;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((e = p.next) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                node = ((TreeNode&lt;K,V&gt;)p).getTreeNode(hash, key);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">do</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key ||</span><br><span class="line">                         (key != <span class="keyword">null</span> &amp;&amp; key.equals(k)))) &#123;</span><br><span class="line">                        node = e;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    p = e;</span><br><span class="line">                &#125; <span class="keyword">while</span> ((e = e.next) != <span class="keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (node != <span class="keyword">null</span> &amp;&amp; (!matchValue || (v = node.value) == value ||</span><br><span class="line">                             (value != <span class="keyword">null</span> &amp;&amp; value.equals(v)))) &#123;</span><br><span class="line">            <span class="keyword">if</span> (node <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                ((TreeNode&lt;K,V&gt;)node).removeTreeNode(<span class="keyword">this</span>, tab, movable);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (node == p)</span><br><span class="line">                tab[index] = node.next;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                p.next = node.next;</span><br><span class="line">            ++modCount;</span><br><span class="line">            --size;</span><br><span class="line">            afterNodeRemoval(node);</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="什么情况下会进行扩容？"><a href="#什么情况下会进行扩容？" class="headerlink" title="什么情况下会进行扩容？"></a>什么情况下会进行扩容？</h2><ul>
+<li><p>size属性 &gt; 数组容量 * 加载因子时</p>
+</li>
+<li><p>为解决hash冲突而形成的链表长度 &gt;= TREEIFY_THRESHOLD（8），但是table数组长度 &lt;= MIN_TREEIFY_CAPACITY（64）时</p>
+</li>
+</ul>
+<h2 id="什么情况下会进行转红黑树操作？"><a href="#什么情况下会进行转红黑树操作？" class="headerlink" title="什么情况下会进行转红黑树操作？"></a>什么情况下会进行转红黑树操作？</h2><ul>
+<li><p>为解决hash冲突而形成的链表长度 &gt;= TREEIFY_THRESHOLD（8），并且table数组长度 &gt; MIN_TREEIFY_CAPACITY（64）时</p>
+</li>
+<li><p>在扩容时，如果从原红黑树拆解出的新的链表长度 &gt;= TREEIFY_THRESHOLD（8）</p>
+</li>
+</ul>
+<h2 id="为什么是非线程安全的？"><a href="#为什么是非线程安全的？" class="headerlink" title="为什么是非线程安全的？"></a>为什么是非线程安全的？</h2><p>为了性能及安全。在多线程环境下，请使用ConcurrentHashMap</p>
+<ul>
+<li>如果多线程写HashMap实例，会有什么问题？</li>
+</ul>
+<ol>
+<li><p>多线程put（不考虑resize） </p>
+<p>如果hash冲突，后一个线程覆盖前一个线程的key-value，如在一系列线程中出现hash冲突的键值对个数为N，则最多可能丢失N-1个键值对，即只有一个线程的键值对最终被加入到table内的链表或红黑树中</p>
+</li>
+<li><p>多线程resize</p>
+<p>A、B线程执行顺序如下</p>
+<p>A线程</p>
+<ol>
+<li>oldTab = table; // 赋值旧数组的引用</li>
+<li>Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])new Node[newCap]; // 创建扩容后的数组</li>
+<li>table = newTab; // 将新数组赋值给旧数组</li>
+<li>将oldTab中的全部元素放入newTab // A线程还未执行到这里</li>
+</ol>
+<p>B线程</p>
+<ol>
+<li>oldTab = table; // B线程拿到的table实际上是A线程刚创建的没有任何元素的newTab</li>
+<li>Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])new Node[newCap]; // 创建扩容后的数组</li>
+<li>table = newTab; // 将新数组赋值给旧数组，这里会覆盖掉A线程创建的newTable</li>
+<li>将oldTab中的全部元素放入newTab // B线程先于A线程执行完这一步骤，oldTab中没有任何元素，所以newTab中也不会有任何元素，即table中也不会有任何元素。这样，元素就全部丢失了</li>
+</ol>
+<p>以上是全部丢失的情况，如果在A线程执行步骤4的过程中，B线程开始执行上述逻辑，那么有可能不会丢失全部元素，而是丢失A线程还未放入newTable的部分元素。</p>
+</li>
+<li><p>多线程remove</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java基础</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+</search>
