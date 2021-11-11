@@ -56,7 +56,7 @@ categories:
 
   使用`javap -c XXXX.class`对class文件进行反汇编，[字节码助记地址](https://cloud.tencent.com/developer/article/1333540)
 
-  ![image-20210323153430793](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20210323153430793.png)
+  ![visualstackandmemory](http://images.marcus659.com/typora/visualstackandmemory)
 
 
 

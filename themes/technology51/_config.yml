@@ -84,9 +84,9 @@ reward_type: 2
 # 打赏wording
 reward_wording: "请我喝杯咖啡吧~"
 # 支付宝二维码图片地址，跟你设置logo的方式一样。比如：/images/alipay.jpg
-alipay: http://images.marcus659.com/typoraalipay.jpg
+alipay: http://images.marcus659.com/alipay.jpg
 # 微信二维码图片地址
-weixin: http://images.marcus659.com/typorawechatPay.jpg
+weixin: http://images.marcus659.com/wechatPay.jpg
 
 # 版权声明
 # 版权声明type设定：0-关闭版权声明； 1-文章对应的md文件里有copyright: true属性，才有版权声明； 2-所有文章均有版权声明
@@ -179,7 +179,7 @@ mermaid:
 since: 2015
 
 # 是否显示页脚信息(建议保留)
-pageFooter: true
+pageFooter: false
 
 # ICP备案信息尾部显示
 icp:
