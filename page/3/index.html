@@ -147,6 +147,130 @@
     
     
     <article
+  id="post-git/git-add"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/22/git/git-add/"
+    >git add 相关命令学习</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/22/git/git-add/" class="article-date">
+  <time datetime="2019-09-22T02:56:32.000Z" itemprop="datePublished">2019-09-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git%E6%89%8B%E6%9C%AD/">Git手札</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[TOC]</p>
+<h1 id="git-add-A-和-git-add-的区别"><a href="#git-add-A-和-git-add-的区别" class="headerlink" title="git add -A 和 git add . 的区别"></a>git add -A 和 git add . 的区别</h1><ul>
+<li>git add -A  提交<strong>所有变化</strong><br>(git add –all 的缩写)<br>&emsp;</li>
+<li>git add -u  提交被<strong>修改(modified)</strong> 和被 <strong>删除(deleted)</strong> 文件，不包括新文件(new)<br>(git add –update 的缩写)<br>&emsp;</li>
+<li>git add   提交 <strong>新文件(new)</strong> 和被 <strong>修改(modified)</strong>  文件，不包括被删除(deleted)文件 
+      <a class="article-more-link" href="/2019/09/22/git/git-add/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-git/git-pull-push"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/22/git/git-pull-push/"
+    >git push/pull 远程库学习</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/22/git/git-pull-push/" class="article-date">
+  <time datetime="2019-09-22T02:56:16.000Z" itemprop="datePublished">2019-09-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git%E6%89%8B%E6%9C%AD/">Git手札</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="git-push-pull-远程库学习"><a href="#git-push-pull-远程库学习" class="headerlink" title="git push/pull 远程库学习"></a>git push/pull 远程库学习</h1><p>git push 命令用于将本地分支更新，推送到远程主机。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong> ： 分支推送顺序写法是&lt;来源地&gt;:&lt;目的地&gt;</p>
+<ul>
+<li>git pull 是&lt;远程分支&gt;:&lt;本地分支&gt;</li>
+<li>git push 是&lt;本地分支&gt;:&lt;远程分支&gt;<h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3></li>
+</ul>
+<p>1.本地分支与远程分支存在追踪关系</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push origin master</span></span><br></pre></td></tr></table></figure>
+<p>以上命令，将本地master分支推送到origin主机的master分支。<br>&nbsp;<br>2.省略本地分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push origin :master</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 等同于</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push origin --delete master</span></span><br></pre></td></tr></table></figure>
+<p>以上推送一个空的本地分支到远程分支，表示删除远程分支<br>&nbsp;<br>3.使用-u选项制定一个默认主机，这样在后面就可以不添加任何参数，使用git push</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master</span></span><br></pre></td></tr></table></figure>
+<p>以上表示将本地的master分支推送到origin主机，同时指定origin为默认主机，</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-linux/linux-firewall-config"
   class="article article-type-post"
   itemscope
@@ -609,141 +733,13 @@
 </article>
 
     
-    <article
-  id="post-me"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/03/28/me/"
-    >贾从谦</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/03/28/me/" class="article-date">
-  <time datetime="2019-03-28T07:47:26.000Z" itemprop="datePublished">2019-03-28</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">云服务器</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><p>From：长春理工大学<br>专业：经济学<br>岗位：Java开发工程师<br>座右铭：不怕从零开始,只怕从未启程</p>
-<h2 id="收获与感悟"><a href="#收获与感悟" class="headerlink" title="收获与感悟"></a>收获与感悟</h2><blockquote>
-<p><strong>客服</strong>：<br>感悟：在客服实践时，开始只是单纯以为接电话或者是挨挨骂，实际证实，还是我太单纯了。客服的工作一方面得保证公司形象，另一方面得解决客户的问题，在工作过程当中备受煎熬，但也有一些客户和我聊得很开心，有欢笑也有憋屈。<br>收获：沟通基本上是客服的全部工作内容了，在客服实践过程中，磨了脾气、历了性子。耐心、细心、敢于直面问题是我在客服工作中最大的收获。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p><strong>转运中心</strong>：<br>感悟：在转运中心实践过程中，我感受到了夜班的艰辛，同时也能感受到了信息化技术对生产效率的提升。在很多工作中都需要团队进行执行，有的团队配合默契，也有的团队存在内部问题（譬如:堵多头领导）。<br>收获：坚持和稳定是工作的根基，同时也要学会为人处世，办事多考虑。</p>
-</blockquote>
-<h2 id="职业规划"><a href="#职业规划" class="headerlink" title="职业规划"></a>职业规划</h2><ol>
-<li>掌握工作必备技能，规划学习计划，弥补自身专业缺陷；</li>
-<li>结合自身专业和技能，实现拟定的目标；</li>
-</ol>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/biaoqian/" rel="tag">biaoqian</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-公众号"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/1999/03/12/%E5%85%AC%E4%BC%97%E5%8F%B7/"
-    >文章版式</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/1999/03/12/%E5%85%AC%E4%BC%97%E5%8F%B7/" class="article-date">
-  <time datetime="1999-03-12T04:48:22.000Z" itemprop="datePublished">1999-03-12</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>[TOC]</p>
-<h1 id="文章版式"><a href="#文章版式" class="headerlink" title="文章版式"></a>文章版式</h1><ol>
-<li>文字间距，需要经过调整</li>
-<li>文章插图需要进行二次修整</li>
-<li>公众号发文之前<strong>需要草稿视检</strong></li>
-<li>推文封面图需要风格统一，<strong>简约风格</strong></li>
-<li>推文分类<ul>
-<li>正经八百分享技术推文，<code>简约图文风格</code></li>
-<li>趣味推文</li>
-<li>恰饭卖课</li>
-</ul>
-</li>
-<li>标题得整个标题党！！<strong>营销标题</strong></li>
-</ol>
-<h1 id="工具统一"><a href="#工具统一" class="headerlink" title="工具统一"></a>工具统一</h1> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E7%89%88/" rel="tag">排版</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
   
 </section>
@@ -759,12 +755,6 @@
     </ul>
     <ul>
       <li>
-        
-        
-        
-        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
-        <span class="division">|</span>
-        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
         
       </li>
     </ul>
@@ -883,13 +873,13 @@
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <img class="reward-img" src="http://images.marcus659.com/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <img class="reward-img" src="http://images.marcus659.com/wechatPay.jpg">
       <span class="reward-type">微信</span>
     </div>
     

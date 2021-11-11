@@ -147,6 +147,113 @@
     
     
     <article
+  id="post-tools/VS-CodeGettingStrated"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2021/11/11/tools/VS-CodeGettingStrated/" class="article-date">
+  <time datetime="2021-11-11T15:30:13.408Z" itemprop="datePublished">2021-11-11</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="VS-Code-开发-Java-指南"><a href="#VS-Code-开发-Java-指南" class="headerlink" title="VS Code 开发 Java 指南"></a>VS Code 开发 Java 指南</h1><p>  在进行开发时，如果你厌倦了使用EditPlus开发，那么必然需要选择一个IDE(Integrated Development Environment )，也就是集成开发环境，通常大家耳熟听过的有<code>InteillJ Idea</code>、<code>Eclipse</code>、<code>MyEclipse</code>，这些开发工具，其中我觉得最好用的当属<code>Idea</code>莫属，特别它的旗舰版，其中只有旗舰版才有的**<code>Diagram</code>**功能让我每次查看类关系时，屡试不爽，不仅清晰明了还能当做png图片进行导出，上图感受下。</p>
+<p><img src="http://images.marcus659.com/typora/idea-digram01.gif" alt="Diagram"></p>
+<h2 id="配置Java开发支持"><a href="#配置Java开发支持" class="headerlink" title="配置Java开发支持"></a>配置Java开发支持</h2><p>首先我们必须得安装VS Code 和 Java开发环境，这两个配置就不在此处赘述了，无论是解压缩安装还是二进制安装都可以，此处只分享进行Java开发必须装的插件扩展。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=redhat.java">Language Support for Java(TM) by Red Hat</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug">Debugger for Java</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test">Java Test Runner</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven">Maven for Java</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-dependency">Project Manager for Java</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode">Visual Studio IntelliCode</a></li>
+</ul>
+<p>这些插件都是进行Java开发必须要的，在vscode打开的情况下，可以点击这里<a href="vscode:extension/vscjava.vscode-java-pack">一键安装</a>所有扩展包。当然如果你不想安装这么多，也可以分开安装，其中<code>Language Support for Java(TM) by Red Hat</code>和<code>Debugger for Java</code>这两个扩展是需要安装的，不然可能无法支持Java程序编译、代码高亮、代码补全等开发必要功能</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-elasticsearch/Elasticsearch的集群从概念到搭建"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/"
+    >Elasticsearch集群从概念到搭建</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2021-11-04T04:48:22.000Z" itemprop="datePublished">2021-11-04</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/">文档型数据库</a> / <a class="article-category-link" href="/categories/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/">全文搜索</a> / <a class="article-category-link" href="/categories/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/NoSQL/">NoSQL</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[TOC]</p>
+<h1 id="Elasticsearch从概念到搭建"><a href="#Elasticsearch从概念到搭建" class="headerlink" title="Elasticsearch从概念到搭建"></a>Elasticsearch从概念到搭建</h1><p>Elasticsearch是一个开源的高扩展的<code>分布式全文搜索和分析引擎</code>，是整个Elastic Stack的核心。在咱们即将接触到的Elastic Stack中还有出了Elasticsearch以外的其他组件，<code>Logstash</code>和<code>Beats</code>充当了数据收集、聚合、处理非结构化数据的角色，在数据存储到Elasticsearch之前不可缺少的前置项目。Kibana使咱们存储在Elasticsearch中的各个维度数据有了可视化的功能，同时结合<code>X-Pack</code>套件，将能够获得更多扩展功能，如：ILM、Dashboard、Alarm、Aggregation 等更多大数据所需要的各类功能。</p>
+<p>Elasticsearch的很多操作都是可以通过<code>RESTful API</code>进行调用触发，这样一来隐藏Lucene的复杂性，让全文搜索变得简单，同时也能够在各平台进行扩展时，有了更好的扩展性。</p> 
+      <a class="article-more-link" href="/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Elastcisearch/" rel="tag">Elastcisearch</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-memory-area/JVM-Memory-Region"
   class="article article-type-post"
   itemscope
@@ -676,180 +783,13 @@
 </article>
 
     
-    <article
-  id="post-interview-experience/携程社招(上海)Java开发面经"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/06/12/interview-experience/%E6%90%BA%E7%A8%8B%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/"
-    >得物社招(上海)Java开发面经(凉)</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/06/12/interview-experience/%E6%90%BA%E7%A8%8B%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/" class="article-date">
-  <time datetime="2021-06-12T04:48:22.000Z" itemprop="datePublished">2021-06-12</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>[TOC]</p>
-<h1 id="携程社招-上海-Java开发面经20210517"><a href="#携程社招-上海-Java开发面经20210517" class="headerlink" title="携程社招(上海)Java开发面经20210517"></a>携程社招(上海)Java开发面经20210517</h1><p>一面：</p>
-<p>携程总部大楼（上海市长宁区金钟路），汽车票船票组，面试官两位(项目经理+开发工程师)</p>
-<p>1、项目了解</p>
-<p>此处手绘系统架构图，并表明自己负责的哪一块，我们项目中对ES和RocketMQ使用比较多</p>
-<p>2、线程池参数（最好是自己手写过线程池）</p>
-<ul>
-<li>corePoolSize 指定了线程池里的线程数量</li>
-<li>maximumPoolSize 指定了线程池里的最大线程数量</li>
-<li>RejectPolicy 拒绝策略，当任务过多时候，如何拒绝任务<ul>
-<li><strong>AbortPolicy</strong> 丢弃任务并抛出RejectedExecutionException异常。</li>
-<li><strong>DiscardPolicy</strong> 丢弃任务，但是不抛出异常。如果线程队列已满，则后续提交的任务都会被丢弃，且是静默丢弃</li>
-<li><strong>CallerRunsPolicy</strong> 丢弃队列最前面的任务，然后重新提交被拒绝的任务</li>
-<li><strong>DiscardOldestPolicy</strong> 由调用线程处理该任务</li>
-</ul>
-</li>
-<li>keepAliveTime 当线程池线程数量大于corePoolSize时候，多出来的空闲线程，多长时间会被销毁。</li>
-<li>ThreadFactory 线程工厂，用于创建线程，一般可以用默认的</li>
-<li>workQueue 任务队列，用于存放提交但是尚未被执行的任务</li>
-<li>unit 时间单位</li>
-</ul>
-<p>3、MQ的顺序消费痛点</p>
-<p>异常后会阻塞</p>
-<p>多个队列，分布式全局不太好处理</p>
-<p>3、JVM内存模型</p>
-<p>jdk1.7</p>
-<p>jdk1.8</p>
-<p>jvm调优参数，jstack查看其</p>
-<p>4、并发编程</p>
-<p>我在项目中CountDown等待所有线程<strong>减一</strong>结束，然后主线程获取<code>Future</code>中的结果</p>
-<p>Volatile关键字使用</p>
-<p>5、锁</p>
-<p>synchronize 互斥锁</p>
-<p>ReentrantLock 可重入锁(自旋锁)</p>
-<p>6、MYSQL索引执行查看策略</p>
-<p>使用<code>explain</code>查看执行策略</p>
-<p>改个文章</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-interview-experience/美团社招(上海)Java开发面经"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/06/12/interview-experience/%E7%BE%8E%E5%9B%A2%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/"
-    >得物社招(上海)Java开发面经(凉)</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/06/12/interview-experience/%E7%BE%8E%E5%9B%A2%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/" class="article-date">
-  <time datetime="2021-06-12T04:48:22.000Z" itemprop="datePublished">2021-06-12</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>[TOC]</p>
-<h1 id="美团社招-上海-Java开发面经"><a href="#美团社招-上海-Java开发面经" class="headerlink" title="美团社招(上海)Java开发面经"></a>美团社招(上海)Java开发面经</h1><p>先搞个前提，各位同学可以根据自身情况仅做参考，本人非计算机专业，学历一般吧，工作目前两年左右，因为工作日实在没有时间，所以和HR约定的是视频面试。</p>
-<p>招聘的岗位描述：Java开发工程师，但可能需要学习Go语言，非业务开发部门</p>
-<p>地点：上海市长宁区北新泾地铁站附近吧，一年之后极有可能搬到杨浦区</p>
-<h3 id="技术一面"><a href="#技术一面" class="headerlink" title="技术一面"></a>技术一面</h3><ol>
-<li><p>项目相关的一些问题，主要是阐述了下项目是什么业务场景，解决什么问题，在进行项目描述过程汇总面试官比较关注的貌似是<strong>并发量</strong>和<strong>业务总量</strong></p>
-</li>
-<li><p>因为我在项目中使用了很多的ES作为持久层，所以面试官就针对我熟悉的中间件进行了提问</p>
-<ul>
-<li><p>ES在写入时它是怎么完成一次写入操作的？</p>
-<p>此处我给出了两种层面的回答</p>
-<blockquote>
-<ol>
-<li><p>架构层面</p>
-<p>在架构层面，由于ES分为了<code>master</code>、<code>client</code>、<code>data</code>、<code>ingest</code>四种角色，每次写入和读取的HTTP请求都会先落到client角色的节点上，然后再<strong>负载</strong>到各个data节点上，完成写入和读取的操作后又将响应给应用程序。其中需要注意的是<code>data</code>节点在进行查询时，是由多个分片进行查询后，在内存中拼接而成的，所系查询时也需要很大的内存，</p>
-</li>
-<li><p>持久化操作层面</p>
-<p>这层面的话就只是在写入操作上进行了藐视，首先是数据请求到达了data节点进行存储，存储时刷盘存在了两种方式，<code>buffer</code>刷入磁盘和<code>translog</code>进行存储</p>
-</li>
-</ol>
-</blockquote> 
-      <a class="article-more-link" href="/2021/06/12/interview-experience/%E7%BE%8E%E5%9B%A2%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>
@@ -865,12 +805,6 @@
     </ul>
     <ul>
       <li>
-        
-        
-        
-        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
-        <span class="division">|</span>
-        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
         
       </li>
     </ul>
@@ -989,13 +923,13 @@
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <img class="reward-img" src="http://images.marcus659.com/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <img class="reward-img" src="http://images.marcus659.com/wechatPay.jpg">
       <span class="reward-type">微信</span>
     </div>
     
