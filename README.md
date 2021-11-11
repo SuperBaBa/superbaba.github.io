@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 简介
 这是一个使用`Hexo`框架进行建站的工程，主要使用静态页面进行部署
 # 步骤
@@ -24,3 +25,6 @@ cnpm install
 ```bash
 hexo server
 ```
+=======
+#technology51-Hexo
+>>>>>>> f6b798a (Initial Commit)
