@@ -1,20 +1,19 @@
+<!-- 引入头标签模板 -->
 <!DOCTYPE html>
 
 
 <html lang="zh-CN">
-  
+
 
     <head>
       <meta charset="utf-8" />
        
+      
       <meta name="keywords" content="喜马拉雅以南,技術工程51區,技术工程51区,杨双龙,贾从谦,塔里木以南" />
        
       <meta name="description" content="Java编程的学习文章博客，在Java框架学习中使用了Spring Framework、Spring Boot、Spring Cloud，覆盖了Elasticsearch、Redis、RocketMQ" />
       
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1"
-      />
+      <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1"/>
       <title> 技術工程51區</title>
   <meta name="generator" content="hexo-theme-ayer">
       
@@ -35,21 +34,28 @@
 
       <!-- mermaid -->
       
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js"></script>
+      
+      <!--enable vue-->
+      
+      <!-- 生产环境版本，优化了尺寸和速度 -->
+      <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+      
     <link rel="alternate" href="/atom.xml" title="技術工程51區" type="application/atom+xml">
 </head>
-  </html>
-</html>
-
 
 <body>
   <div id="app">
+    <!-- 鼠标点击效果 2：爆炸烟花 -->
     
-      
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
-      
+      <!-- 鼠标点击效果 3：粒子烟花 -->
+    
+      <canvas width="1777" height="841" style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+    
     <main class="content on">
-      
+      <!-- body引入的是index.ejs -->
+      <!-- theme configuration import -->
+
 <section class="cover">
     
   <div class="cover-frame">
@@ -97,9 +103,11 @@
   
 <div id="main">
   <section class="outer">
+  <!-- advertising space -->
   
+  <!-- broadcast space -->
   
-  
+    
 
 <div class="notice" style="margin-top:50px">
     <i class="ri-heart-fill"></i>
@@ -141,12 +149,73 @@
     }
 </style>
   
+
+  <!-- The article space -->
   <article class="articles">
     
     
     
+      
+      <article
+  id="post-git/gitmerge和gitbase"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    <article
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/22/git/gitmerge%E5%92%8Cgitbase/"
+    >git merge命令解析</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/22/git/gitmerge%E5%92%8Cgitbase/" class="article-date">
+  <time datetime="2019-09-22T02:56:45.000Z" itemprop="datePublished">2019-09-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git%E6%89%8B%E6%9C%AD/">Git手札</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[TOC]</p>
+<h2 id="git-merge用途："><a href="#git-merge用途：" class="headerlink" title="git-merge用途："></a>git-merge用途：</h2><ol>
+<li>用于git-pull中，来整合另一代码仓库中的变化（即：git pull = git fetch + git merge）</li>
+<li>用于从一个分支到另一个分支的合并<blockquote>
+<p>警告：运行git-merge时含有大量的未commit文件很容易让你陷入困境，这将使你在冲突中难以回退。因此非常不鼓励在使用git-merge时存在未commit的文件，建议使用git-stash命令将这些未commit文件暂存起来，并在解决冲突以后使用git stash pop把这些未commit文件还原出来。</p>
+</blockquote>
+</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
   id="post-git/git-add"
   class="article article-type-post"
   itemscope
@@ -184,7 +253,7 @@
 <li>git add -u  提交被<strong>修改(modified)</strong> 和被 <strong>删除(deleted)</strong> 文件，不包括新文件(new)<br>(git add –update 的缩写)<br>&emsp;</li>
 <li>git add   提交 <strong>新文件(new)</strong> 和被 <strong>修改(modified)</strong>  文件，不包括被删除(deleted)文件 
       <a class="article-more-link" href="/2019/09/22/git/git-add/"
-        >阅读更多...</a
+        >还想看到更多吗？</a
       >
        
       <!-- reward -->
@@ -204,8 +273,8 @@
     
 </article>
 
-    
-    <article
+      
+      <article
   id="post-git/git-pull-push"
   class="article article-type-post"
   itemscope
@@ -269,8 +338,8 @@
     
 </article>
 
-    
-    <article
+      
+      <article
   id="post-linux/linux-firewall-config"
   class="article article-type-post"
   itemscope
@@ -307,7 +376,7 @@
 <li>直接关闭防火墙<br>&emsp;<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service <span class="comment">#停止firewall</span></span><br></pre></td></tr></table></figure>
 &emsp;<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> firewalld.service <span class="comment">#禁止firewall开机启动</span></span><br></pre></td></tr></table></figure> 
       <a class="article-more-link" href="/2019/09/21/linux/linux-firewall-config/"
-        >阅读更多...</a
+        >还想看到更多吗？</a
       >
        
       <!-- reward -->
@@ -327,8 +396,8 @@
     
 </article>
 
-    
-    <article
+      
+      <article
   id="post-linux/linux-chown"
   class="article article-type-post"
   itemscope
@@ -364,7 +433,7 @@
 <hr>
 <h4 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown [-cfhvR] [--<span class="built_in">help</span>] [--version] user[:group] file...</span><br></pre></td></tr></table></figure> 
       <a class="article-more-link" href="/2019/09/21/linux/linux-chown/"
-        >阅读更多...</a
+        >还想看到更多吗？</a
       >
        
       <!-- reward -->
@@ -384,8 +453,8 @@
     
 </article>
 
-    
-    <article
+      
+      <article
   id="post-linux/linux-achriveOrUnzip"
   class="article article-type-post"
   itemscope
@@ -421,7 +490,7 @@
 <h1 id="tar命令常用参数"><a href="#tar命令常用参数" class="headerlink" title="tar命令常用参数"></a><strong>tar命令常用参数</strong></h1><hr>
 <p>-c: 建立压缩档案<br>-x：解压<br>-t：查看内容<br>-r：向压缩归档文件末尾追加文件<br>-u：更新原压缩包中的文件这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。<br>-z：有gzip属性的<br>-j：有bz2属性的<br>-Z：有compress属性的<br>-v：显示所有过程<br>-O：将文件解开到标准输出下面的参数-f是必须的<br>-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。</p> 
       <a class="article-more-link" href="/2019/09/21/linux/linux-achriveOrUnzip/"
-        >阅读更多...</a
+        >还想看到更多吗？</a
       >
        
       <!-- reward -->
@@ -441,8 +510,8 @@
     
 </article>
 
-    
-    <article
+      
+      <article
   id="post-linux/linux检查系统配置命令集合"
   class="article article-type-post"
   itemscope
@@ -482,7 +551,7 @@
 <p>1.3 查看CPU型号</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat /proc/cpuinfo | grep <span class="string">&#x27;model name&#x27;</span> |uniq</span><br><span class="line"></span><br><span class="line">model name : Intel(R) Xeon(R) CPU E5630 @ 2.53GHz</span><br></pre></td></tr></table></figure> 
       <a class="article-more-link" href="/2019/09/21/linux/linux%E6%A3%80%E6%9F%A5%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/"
-        >阅读更多...</a
+        >还想看到更多吗？</a
       >
        
       <!-- reward -->
@@ -502,8 +571,8 @@
     
 </article>
 
-    
-    <article
+      
+      <article
   id="post-linux/linux-scp"
   class="article article-type-post"
   itemscope
@@ -560,8 +629,8 @@
     
 </article>
 
-    
-    <article
+      
+      <article
   id="post-linux/shell-echo"
   class="article article-type-post"
   itemscope
@@ -597,7 +666,7 @@
 <p>echo 用于字符串的输出。命令格式：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> string</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不带-e选项的 echo，将 \n 认为是普通字符；</span></span><br><span class="line">[roc@roclinux ~]$ <span class="built_in">echo</span> <span class="string">&quot;Hello World\n&quot;</span></span><br><span class="line">Hello World\n</span><br><span class="line"><span class="comment"># 使用了-e选项的 echo，会将 \n 认为是换行符。</span></span><br><span class="line">[roc@roclinux ~]$ <span class="built_in">echo</span> -e <span class="string">&quot;Hello World\n&quot;</span></span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure> 
       <a class="article-more-link" href="/2019/09/21/linux/shell-echo/"
-        >阅读更多...</a
+        >还想看到更多吗？</a
       >
        
       <!-- reward -->
@@ -617,8 +686,8 @@
     
 </article>
 
-    
-    <article
+      
+      <article
   id="post-git/git-commond-collection"
   class="article article-type-post"
   itemscope
@@ -660,7 +729,7 @@
 </li>
 <li><p>查看所有分支<br>git branch -a </p> 
       <a class="article-more-link" href="/2019/08/08/git/git-commond-collection/"
-        >阅读更多...</a
+        >还想看到更多吗？</a
       >
        
       <!-- reward -->
@@ -682,57 +751,7 @@
     
 </article>
 
-    
-    <article
-  id="post-CommentArea"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/08/08/CommentArea/"
-    >随意留言区</a> 
-</h2>
- 
-
       
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/08/08/CommentArea/" class="article-date">
-  <time datetime="2019-08-08T13:34:36.000Z" itemprop="datePublished">2019-08-08</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="此处可以随意留言"><a href="#此处可以随意留言" class="headerlink" title="此处可以随意留言"></a>此处可以随意留言</h1><p>留下自己那些曾经想说却说不出口的话吧<br><strong>匿名留言</strong><br><strong>当然大爷们也可以留下自己的邮箱哟</strong></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E6%B4%9E/" rel="tag">树洞</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
@@ -744,6 +763,7 @@
   
 </section>
 </div>
+      <!--脚步标签引入-->>
       <footer class="footer">
   <div class="outer">
     <ul>
@@ -833,10 +853,6 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/friends">友链</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about">关于我们</a>
     </li>
     
   </ul>

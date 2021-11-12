@@ -140,7 +140,7 @@ var gallery_main = (function($) { var _ = {
 
 		// Window, body.
 			_.$window = $(window);
-			_.$body = $('body');
+			_.$body = $('#gallery_region');
 
 		// gallery_thumbnails.
 			_.$gallery_thumbnails = $('#gallery_thumbnails');
