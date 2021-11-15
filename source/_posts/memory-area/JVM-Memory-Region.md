@@ -3,9 +3,7 @@ title: JVM内存区域
 date: 2021-07-04 13:48:22
 tags: 
   - JVM
-  - Java
-categories: 
-  - Java
+categories: Java
 ---
 # JVM内存区域
 

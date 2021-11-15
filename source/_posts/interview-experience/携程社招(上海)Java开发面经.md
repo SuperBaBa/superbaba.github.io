@@ -1,11 +1,7 @@
 ---
-title: 得物社招(上海)Java开发面经(凉)
-date: 2021-06-12 12:48:22
-tags: 
-  - Java
-  - 面经
-categories:
-  - 面经
+title: 携程社招(上海)Java开发面经20210517
+date: 2021-05-18 12:48:22
+categories: 面经
 ---
 [TOC]
 # 携程社招(上海)Java开发面经20210517
@@ -61,7 +57,3 @@ ReentrantLock 可重入锁(自旋锁)
 6、MYSQL索引执行查看策略
 
 使用`explain`查看执行策略
-
-
-
-改个文章

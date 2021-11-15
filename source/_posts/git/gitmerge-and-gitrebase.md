@@ -2,9 +2,9 @@
 title: git merge命令解析
 comments: true
 date: 2019-09-22 10:56:45
-categories:
-	- Git手札
+categories: 开发工具
 tags:
+  - Git
 thumbnail: /images/artilce-banner/git.jpg
 ---
 [TOC]

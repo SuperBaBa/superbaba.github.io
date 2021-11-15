@@ -2,9 +2,9 @@
 title: linux解压打包命令
 comments: true
 date: 2019-09-21 18:15:50
-categories:
-	- linux之旅
+categories: shell
 tags:
+  - Linux
 thumbnail: /images/linux.jpg
 ---
 [TOC]
@@ -21,8 +21,8 @@ thumbnail: /images/linux.jpg
 -v：显示所有过程
 -O：将文件解开到标准输出下面的参数-f是必须的
 -f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。
+
 <!--more-->
----
 
 # **压缩**
 ---
