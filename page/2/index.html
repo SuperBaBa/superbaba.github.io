@@ -157,6 +157,67 @@
     
       
       <article
+  id="post-data-structure/HashMap的长度为什么必须是2的n次幂"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/06/12/data-structure/HashMap%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%98%AF2%E7%9A%84n%E6%AC%A1%E5%B9%82/"
+    >HashMap的长度为什么必须是2的n次方</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/06/12/data-structure/HashMap%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%98%AF2%E7%9A%84n%E6%AC%A1%E5%B9%82/" class="article-date">
+  <time datetime="2021-06-12T04:48:22.000Z" itemprop="datePublished">2021-06-12</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a> / <a class="article-category-link" href="/categories/Java%E5%9F%BA%E7%A1%80/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">集合框架</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="HashMap的长度为什么必须是2的n次方"><a href="#HashMap的长度为什么必须是2的n次方" class="headerlink" title="HashMap的长度为什么必须是2的n次方"></a>HashMap的长度为什么必须是2的n次方</h1><p>首先我们看下<code>HashMap</code>中的源码当中那里奠定了长度是<strong>2的n次方</strong>，并且是靠近<code>cap</code>这个值<code>最近的2的n次方</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 首先cap-1使得n的最后一位和cap最后一位绝对不一样</span></span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 向右无符号的移动了1位，并使用或运算使n的所有有1的位上全部是1</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 向右无符号移动2位，使用或运算将低位填充为1</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// 同理可得</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="comment">// 已经向右移动多个位，最终 00011111 = 31 那么 +1 既成为了2的n次方</span></span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由上方代码可以看出，上方的方法是<strong>将<code>cap</code>无符号的向右移动，再启动期间，使用<code>|</code>运算保证低位全部是1。</strong></p>
+<p>看起来有点复杂，那咱们举个例子：</p> 
+      <a class="article-more-link" href="/2021/06/12/data-structure/HashMap%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%98%AF2%E7%9A%84n%E6%AC%A1%E5%B9%82/"
+        >还想看到更多吗？</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
   id="post-interview-experience/得物面经20210323"
   class="article article-type-post"
   itemscope
@@ -764,83 +825,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
-  id="post-algorithm/weightRandom"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/08/08/algorithm/weightRandom/"
-    >权重随机算法</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/08/08/algorithm/weightRandom/" class="article-date">
-  <time datetime="2020-08-08T13:34:36.000Z" itemprop="datePublished">2020-08-08</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="权重随机算法"><a href="#权重随机算法" class="headerlink" title="权重随机算法"></a>权重随机算法</h1><blockquote>
-<p>  在平时生活中我们往往会遇到一些权重选择的场景，如<strong>广告投放</strong>按照不同广告的权重比进行投放，<strong>流量负载</strong>也需要根据不同的权重选择不同策略。</p>
-</blockquote>
-<p>假如有4个元素A,B,C,D权重分别是1,2,3,4 ，随机请求的结果，命中各个元素的比例需要是1:2:3:4，那么我们可以先绘制一个第一象限的数轴，然后依据权重比例，分别在坐标轴上找出每个权重累加后对应的点。</p>
-<p><img src="http://images.marcus659.com/typora/weight-section.png" alt="image-20210812193417818"></p>
-<p>试想一下，如果我们的所有请求均散落在区间[0,10)中，那么每个区间散落的散点比例，则应该正好是我们每个元素之间的权重比例。</p>
-<p>根据上面的绘图和思考，我们来总结一下思路：</p>
-<ol>
-<li><p>依次累加权重，在散落区间中确定在数轴上的坐标点</p>
-</li>
-<li><p>绘制一条第一象限坐标，此处我们使用<code>SortedMap</code>的实现类<code>TreeMap</code>进行实现</p>
-</li>
-<li><p>按照顺序在坐标轴上进行标点，也就是每个点都是<code>TreeMap</code>中的一个Entry，且是从小到大的排列顺序(<code>TreeMap</code>是红黑树)</p>
-</li>
-<li><p>在<code>TreeMap</code>中key为权重叠加的值，value是权重的标识</p>
-</li>
-<li><p>使用随机函数进行区间落点，请求散点期待正态分布，散点均匀</p>
-</li>
-<li><p>利用treemap.tailMap().firstKey()即可找到目标元素</p>
-</li>
-<li><p>也可以使用数组+二分法实现</p> 
-      <a class="article-more-link" href="/2020/08/08/algorithm/weightRandom/"
-        >还想看到更多吗？</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95-Java/" rel="tag">算法 - Java</a></li></ul>
 
     </footer>
   </div>
