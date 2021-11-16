@@ -1,7 +1,7 @@
 # 侧边栏菜单
 menu:
   主页: /
-  归档: /archives
+  # 归档: /archives
   分类: /categories
   标签: /tags
   旅行: https://www.ctrip.com
