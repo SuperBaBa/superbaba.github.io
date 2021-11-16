@@ -2,8 +2,9 @@
 title: 常用Git命令
 comments: true
 date: 2019-08-08 21:37:56
-categories: Git手札
-tags: [git]
+categories: 开发工具
+tags:
+  - Git
 thumbnail: /images/artilce-banner/git.jpg
 ---
 [TOC]

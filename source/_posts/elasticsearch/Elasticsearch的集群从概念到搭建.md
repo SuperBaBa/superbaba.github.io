@@ -1,11 +1,11 @@
 ---
 title: Elasticsearch集群从概念到搭建
 date: 2021-11-04 12:48:22
-tags: Elastcisearch
-categories:
+tags: 
   - 文档型数据库
   - 全文搜索
   - NoSQL
+categories: Elastcisearch
 ---
 
 [TOC]

@@ -1,11 +1,7 @@
 ---
 title: 携程社招(上海)Java开发面经20210517
 date: 2021-05-18 12:48:22
-tags: 
-  - Java
-  - 面经
-categories:
-  - 面经
+categories: 面经
 ---
 [TOC]
 # 携程社招(上海)Java开发面经20210517

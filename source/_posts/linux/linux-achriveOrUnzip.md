@@ -2,9 +2,9 @@
 title: linux解压打包命令
 comments: true
 date: 2019-09-21 18:15:50
-categories:
-	- linux之旅
+categories: shell
 tags:
+  - Linux
 thumbnail: /images/linux.jpg
 ---
 [TOC]

@@ -2,9 +2,9 @@
 title: chown命令
 comments: true
 date: 2019-09-21 18:16:49
-categories:
-	- linux之旅
+categories: shell
 tags:
+  - Linux
 thumbnail: /images/linux.jpg
 ---
 [TOC]

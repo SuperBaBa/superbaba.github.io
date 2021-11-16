@@ -2,9 +2,9 @@
 title: Linux之间文件传输scp
 comments: true
 date: 2019-09-21 18:11:09
-categories:
-	- linux之旅
+categories: shell
 tags:
+  - Linux
 thumbnail: /images/linux.jpg
 ---
 

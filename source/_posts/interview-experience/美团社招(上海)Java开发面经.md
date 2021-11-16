@@ -1,11 +1,7 @@
 ---
 title: 美团社招(上海)Java开发面经
 date: 2021-06-12 12:48:22
-tags: 
-  - Java
-  - 面经
-categories:
-  - 面经
+categories: 面经
 ---
 [TOC]
 # 美团社招(上海)Java开发面经

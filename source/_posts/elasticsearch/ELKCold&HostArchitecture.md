@@ -5,7 +5,7 @@ tags:
   - 文档型数据库
   - 全文搜索
   - NoSQL
-categories: Elastcisearch  
+categories: Elastcisearch
 ---
 
 [TOC]
