@@ -377,7 +377,7 @@
   <time datetime="2021-11-11T02:56:16.000Z" itemprop="datePublished">2021-11-11</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Git%E6%89%8B%E6%9C%AD/">Git手札</a>
+    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
   </div>
    
     </div>
@@ -394,8 +394,73 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
 
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
+  id="post-vim/VimCursorMove"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/11/10/vim/VimCursorMove/"
+    >Vim的光标移动</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/11/10/vim/VimCursorMove/" class="article-date">
+  <time datetime="2021-11-10T06:48:22.000Z" itemprop="datePublished">2021-11-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vim/">Vim</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[TOC]</p>
+<h1 id="单位级"><a href="#单位级" class="headerlink" title="单位级"></a>单位级</h1><p><code>h</code> 向左一字符<br><code>j</code> 下一行<br><code>k</code> 上一行<br><code>l</code> 向右一字符</p>
+<h1 id="单词级"><a href="#单词级" class="headerlink" title="单词级"></a>单词级</h1><p><code>w</code> or <code>W</code> 向右移动到下一单词开头<br><code>e</code> or <code>E</code> 向右移动到单词结尾<br><code>b</code> or <code>B</code> 向左移动到单词开头</p>
+<blockquote>
+<p><strong>注意</strong>：所有小写单词都是以分词符作为单词界限，大写字母以空格作为界限</p>
+</blockquote>
+<blockquote>
+<p>在下面字符块中感受一下各种移动吧！<br>This project’s GitHub url is <a target="_blank" rel="noopener" href="https://github.com/dofy/learn-vimPlease">https://github.com/dofy/learn-vimPlease</a> clone it to your local folder and open the first file which isnamed file-one.md via following command “vim file-one.md”and welcome to <a target="_blank" rel="noopener" href="http://geekpark.net/">http://geekpark.net</a> :)</p>
+</blockquote>
+<h1 id="块级"><a href="#块级" class="headerlink" title="块级"></a>块级</h1><p><code>gg</code> 到文档第一行<br><code>G</code> 到文档最后一行<br><code>0</code> 到行首（第 1 列）<br><code>^</code> 到第一个非空白字符<br><code>$</code> 到行尾<br><code>Ctrl-d</code>    向下移动半页<br><code>Ctrl-u</code>    向上移动半页<br><code>Ctrl-f </code>    向下移动一页<br><code>Ctrl-b</code>    向上移动一页<br><code>:&lt;N&gt;</code> or <code>&lt;N&gt;gg</code> 跳转到第 N 行<br><code>:+&lt;N&gt;</code> or <code>&lt;N&gt;j</code> 向下跳 N 行<br><code>:-&lt;N&gt;</code> or <code>&lt;N&gt;k</code> 向上跳 N 行</p>
+<blockquote>
+<p>注意：<br>所有命令前都可以加一个数字 N，表示对后面的命令执行 N 次，例如你想向下移动 3 行，除了<br>可以用 :+3 之外，还可以用 3j 来实现同样的效果。<br>另外，上面实际上有两种命令：<br>一种是键入后<br>立即执行的，比如 gg；<br>还有一种是先输入 : 的（后面还会出现先按 / 的），这类命令需要在<br>输入完成后按回车执行，后面的教程中也是一样。</p>
+</blockquote>
+<h1 id="简单设置-vim"><a href="#简单设置-vim" class="headerlink" title="简单设置 vim"></a>简单设置 vim</h1><p><code>:set number</code> 显示行号<br><code>:set relativenumber</code> 显示相对行号（这个非常重要，慢慢体会）<br><code>:set hlsearch</code> 搜索结果高亮<br><code>:set autoindent</code> 自动缩进<br><code>:set smartindent</code> 智能缩进<br><code>:set tabstop=4</code> 设置 tab 制表符所占宽度为 4<br>:set softtabstop=4 设置按 tab 时缩进的宽度为 4<br>:set shiftwidth=4 设置自动缩进宽度为 4<br>:set expandtab 缩进时将 tab 制表符转换为空格<br>:filetype on 开启文件类型检测<br>:syntax on 开启语法高亮</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
     </footer>
   </div>
 
@@ -430,7 +495,7 @@
   <time datetime="2021-11-04T04:48:22.000Z" itemprop="datePublished">2021-11-04</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/">文档型数据库</a> / <a class="article-category-link" href="/categories/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/">全文搜索</a> / <a class="article-category-link" href="/categories/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/NoSQL/">NoSQL</a>
+    <a class="article-category-link" href="/categories/Elastcisearch/">Elastcisearch</a>
   </div>
    
     </div>
@@ -453,7 +518,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Elastcisearch/" rel="tag">Elastcisearch</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/" rel="tag">全文搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">文档型数据库</a></li></ul>
 
     </footer>
   </div>
@@ -576,7 +641,7 @@
   <time datetime="2021-09-15T04:48:22.000Z" itemprop="datePublished">2021-09-15</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a> / <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDE/">IDE</a>
+    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
   </div>
    
     </div>
@@ -605,7 +670,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VS-Code-IDE/" rel="tag">VS Code - IDE</a></li></ul>
 
     </footer>
   </div>
@@ -665,7 +730,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
 
     </footer>
   </div>
@@ -756,60 +821,6 @@
 
       
       <article
-  id="post-data-structure/集合Map简单介绍"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/03/data-structure/%E9%9B%86%E5%90%88Map%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/"
-    >集合Map简单介绍</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/07/03/data-structure/%E9%9B%86%E5%90%88Map%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/" class="article-date">
-  <time datetime="2021-07-03T03:48:22.000Z" itemprop="datePublished">2021-07-03</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="集合Map简单介绍"><a href="#集合Map简单介绍" class="headerlink" title="集合Map简单介绍"></a>集合Map简单介绍</h1><p>Map是一种<strong>键值对集合</strong>，每一个元素都包含一个键对象和一个值对象。其中键对象是不允许重复的。</p>
-<p>Map接口与Collection接口是不同的，Map接口有两个主要实现类<code>HashMap类</code>、<code>TreeMap类</code>，<strong>HashMap类按哈希算法来存取键值对象，而TreeMap类可以对键值对象进行排序。</strong></p> 
-      <a class="article-more-link" href="/2021/07/03/data-structure/%E9%9B%86%E5%90%88Map%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/"
-        >还想看到更多吗？</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
   id="post-concurrent-programming/Reentrantlock重入锁"
   class="article article-type-post"
   itemscope
@@ -834,7 +845,7 @@
   <time datetime="2021-06-12T04:48:22.000Z" itemprop="datePublished">2021-06-12</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
   </div>
    
     </div>
@@ -852,7 +863,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/" rel="tag">Java - Java - 集合框架</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="tag">并发编程</a></li></ul>
 
     </footer>
   </div>
