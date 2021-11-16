@@ -17,7 +17,6 @@ thumbnail: /images/linux.jpg
 chown [-cfhvR] [--help] [--version] user[:group] file...
 ```
 <!--more-->
----
 
 #### 命令功能
 

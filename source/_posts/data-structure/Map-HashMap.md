@@ -159,7 +159,7 @@ Map-->SortedhMap
 
 * 红黑树在满足一定条件会再次退回链表
 
-  ![hashmap_structure](images.marcus659.com/blog/HashMap-structure.png)
+  ![hashmap_structure](https://images.marcus659.com/blog/HashMap-structure.png)
 
 # HashMap原理
 

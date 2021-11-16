@@ -7,8 +7,6 @@ categories:
   - IDE
 ---
 
-# VS Code 开发 Java 指南
-
   在进行开发时，如果你厌倦了使用EditPlus开发，那么必然需要选择一个IDE(Integrated Development Environment )，也就是集成开发环境，通常大家耳熟听过的有`InteillJ Idea`、`Eclipse`、`MyEclipse`，这些开发工具，其中我觉得最好用的当属`Idea`莫属，特别它的旗舰版，其中只有旗舰版才有的**`Diagram`**功能让我每次查看类关系时，屡试不爽，不仅清晰明了还能当做png图片进行导出，上图感受下。
 
 ![Diagram](http://images.marcus659.com/typora/idea-digram01.gif)

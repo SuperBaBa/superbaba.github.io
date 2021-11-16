@@ -107,7 +107,7 @@ Tomcat支持的应用层协议：
 3. `stop()`：停止组件
 4. `destroy()`：销毁组件
 
-![StandardEngine](http://qwgrj2bek.hd-bkt.clouddn.com/blog/tomcat_standard_engine.png)
+![StandardEngine](https://images.marcus659.com/blog/tomcat_standard_engine.png)
 
 ## Tomcat请求处理流程
 
@@ -121,7 +121,7 @@ Tomcat支持的应用层协议：
 
 tomcat集群是由多个tomcat进程，通过`ngnix`进行反向代理，使用`轮询`、`权重`、`ip_hash`的方式去进行负载策略，
 
-## session共享问题
+## session共享(保持)问题
 
 1. ip_hash策略
 
