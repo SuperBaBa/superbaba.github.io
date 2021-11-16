@@ -218,9 +218,9 @@
 <li><code>stop()</code>：停止组件</li>
 <li><code>destroy()</code>：销毁组件</li>
 </ol>
-<p><img src="http://qwgrj2bek.hd-bkt.clouddn.com/blog/tomcat_standard_engine.png" alt="StandardEngine"></p>
+<p><img src="https://images.marcus659.com/blog/tomcat_standard_engine.png" alt="StandardEngine"></p>
 <h2 id="Tomcat请求处理流程"><a href="#Tomcat请求处理流程" class="headerlink" title="Tomcat请求处理流程"></a>Tomcat请求处理流程</h2><h1 id="3-Tomcat服务器配置"><a href="#3-Tomcat服务器配置" class="headerlink" title="3. Tomcat服务器配置"></a>3. Tomcat服务器配置</h1><h1 id="4-Tomcat的管理配置"><a href="#4-Tomcat的管理配置" class="headerlink" title="4. Tomcat的管理配置"></a>4. Tomcat的管理配置</h1><h1 id="5-Tomcat集群"><a href="#5-Tomcat集群" class="headerlink" title="5. Tomcat集群"></a>5. Tomcat集群</h1><h2 id="tomcat集群简介"><a href="#tomcat集群简介" class="headerlink" title="tomcat集群简介"></a>tomcat集群简介</h2><p>tomcat集群是由多个tomcat进程，通过<code>ngnix</code>进行反向代理，使用<code>轮询</code>、<code>权重</code>、<code>ip_hash</code>的方式去进行负载策略，</p>
-<h2 id="session共享问题"><a href="#session共享问题" class="headerlink" title="session共享问题"></a>session共享问题</h2><ol>
+<h2 id="session共享-保持-问题"><a href="#session共享-保持-问题" class="headerlink" title="session共享(保持)问题"></a>session共享(保持)问题</h2><ol>
 <li><p>ip_hash策略</p>
 <p>同一个ip的hash值肯定是相同的，顾可以使用此类方式将用户请求负载到之前有session的那个tomcat进程上。</p>
 </li>

@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">783</span>
+            <span class="post-count">786</span>
         </span>
     </span>
 
@@ -103,35 +103,35 @@
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="HashMap的长度为什么必须是2的n次方"><a href="#HashMap的长度为什么必须是2的n次方" class="headerlink" title="HashMap的长度为什么必须是2的n次方"></a>HashMap的长度为什么必须是2的n次方</h1><p>首先我们看下<code>HashMap</code>中的源码当中那里奠定了长度是<strong>2的n次方</strong>，并且是靠近<code>cap</code>这个值<code>最近的2的n次方</code></p>
+  <p>首先我们看下<code>HashMap</code>中的源码当中那里奠定了长度是<strong>2的n次方</strong>，并且是靠近<code>cap</code>这个值<code>最近的2的n次方</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 首先cap-1使得n的最后一位和cap最后一位绝对不一样</span></span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 向右无符号的移动了1位，并使用或运算使n的所有有1的位上全部是1</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 向右无符号移动2位，使用或运算将低位填充为1</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// 同理可得</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="comment">// 已经向右移动多个位，最终 00011111 = 31 那么 +1 既成为了2的n次方</span></span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>由上方代码可以看出，上方的方法是<strong>将<code>cap</code>无符号的向右移动，再启动期间，使用<code>|</code>运算保证低位全部是1。</strong></p>
 <p>看起来有点复杂，那咱们举个例子：</p>
 <span id="more"></span>
+
 <ol>
 <li>首先我们传入<code>cap</code>初始值为17</li>
 <li>经过<code>int n = cap -1 </code>也就是17-1后<code>n = 16</code></li>
 <li>将n进行如下的<strong>位移动和逻辑运算</strong>，最后得到<code>n = 31</code></li>
 <li>返回是根据三目运算符，得值返回值是<code>n + 1 = 32</code>，正好是 <strong>2的5次方</strong></li>
 </ol>
-<p><img src="C:\Users\Lovel\Desktop\image-20210629004830300.png" alt="image-20210629004830300"></p>
-<p>通过上方的容量计算，我们已经确定在HashMap中<code>capacity </code>一定是<strong>2的n次方</strong>，那么为什么我们必须要</p>
+<p><img src="https://images.marcus659.com/typora/hashmap-calculate01.png" alt="image-20211116152759541"></p>
+<p>通过上方的容量计算，我们已经确定在HashMap中<code>capacity </code>一定是<strong>2的n次方</strong>。</p>
+<p>在进行取模运算时，为什么我们必须要使用位运算进行取模</p>
 <ul>
-<li><p>&amp;运算速度快，至少比%取模运算快</p>
+<li><p><code>&amp;</code>运算速度快，至少比<code>%</code>取模运算快</p>
 </li>
 <li><p>能保证索引值肯定在 capacity 中，不会超出数组长度，<code>(n - 1) &amp; hash</code>，当为2的n次方时，会满足一个公式：<code>(n - 1) &amp; hash = hash % n</code></p>
 </li>
 </ul>
-<p><img src="C:\Users\Lovel\Desktop\image-20210629004830300.png" alt="image-20210628235807090"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210629011049948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI2MTI1ODY1,size_16,color_FFFFFF,t_70#pic_center" alt="hashmap-calculate02.png"></p>
 <p>两种运算效率差别到底有多少，这里可以直接做个测试：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> times = Integer.MAX_VALUE;</span><br><span class="line">    <span class="comment">/* 此处计算2^31-1次9999整数对1024的取模，使用的数学计算</span></span><br><span class="line"><span class="comment">     * 多次执行放大时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">long</span> currentTimeMillis = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; times; i++) &#123;</span><br><span class="line">        a = <span class="number">9999</span> % <span class="number">1024</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> currentTimeMillis2 = System.currentTimeMillis();</span><br><span class="line">    <span class="comment">/* 此处计算2^31-1次9999整数对1024的取模，使用的位运算</span></span><br><span class="line"><span class="comment">     * 因为要求 hash&amp;(n-1) 中n必须为2的n次方，这里取1024</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; times; i++) &#123;</span><br><span class="line">        b = <span class="number">9999</span> &amp; (<span class="number">1024</span> - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> currentTimeMillis3 = System.currentTimeMillis();</span><br><span class="line">    System.out.println(a + <span class="string">&quot;,&quot;</span> + b);<span class="comment">//最后的结果应该是一样的</span></span><br><span class="line">    System.out.println(<span class="string">&quot;数学计算耗时: &quot;</span> + (currentTimeMillis2 - currentTimeMillis));<span class="comment">// 1839ms</span></span><br><span class="line">    System.out.println(<span class="string">&quot;位运算耗时: &quot;</span> + (currentTimeMillis3 - currentTimeMillis2));<span class="comment">// 852ms</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -222,9 +222,9 @@
       </a>
     
     
-      <a href="/2021/06/12/interview-experience/%E5%BE%97%E7%89%A9%E9%9D%A2%E7%BB%8F20210323/" class="article-nav-link">
+      <a href="/2021/06/12/interview-experience/%E7%BE%8E%E5%9B%A2%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">得物社招(上海)Java开发面经(凉)</div>
+        <div class="article-nav-title">美团社招(上海)Java开发面经</div>
       </a>
     
   </nav>

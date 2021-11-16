@@ -57,7 +57,7 @@
   <entry>
     <title>权重随机算法</title>
     <url>/2020/08/08/algorithm/weightRandom/</url>
-    <content><![CDATA[<h1 id="权重随机算法"><a href="#权重随机算法" class="headerlink" title="权重随机算法"></a>权重随机算法</h1><blockquote>
+    <content><![CDATA[<blockquote>
 <p>  在平时生活中我们往往会遇到一些权重选择的场景，如<strong>广告投放</strong>按照不同广告的权重比进行投放，<strong>流量负载</strong>也需要根据不同的权重选择不同策略。</p>
 </blockquote>
 <p>假如有4个元素A,B,C,D权重分别是1,2,3,4 ，随机请求的结果，命中各个元素的比例需要是1:2:3:4，那么我们可以先绘制一个第一象限的数轴，然后依据权重比例，分别在坐标轴上找出每个权重累加后对应的点。</p>
@@ -125,9 +125,9 @@
       </tags>
   </entry>
   <entry>
-    <title>HashMap的长度为什么必须是2的n次方</title>
+    <title>Synchronized关键字</title>
     <url>/2021/06/12/concurrent-programming/Synchronized%E5%85%B3%E9%94%AE%E5%AD%97/</url>
-    <content><![CDATA[<h1 id="HashMap的长度为什么必须是2的n次方"><a href="#HashMap的长度为什么必须是2的n次方" class="headerlink" title="HashMap的长度为什么必须是2的n次方"></a>HashMap的长度为什么必须是2的n次方</h1>]]></content>
+    <content><![CDATA[]]></content>
       <categories>
         <category>Java并发编程</category>
         <category>线程锁</category>
@@ -151,27 +151,29 @@
   <entry>
     <title>HashMap的长度为什么必须是2的n次方</title>
     <url>/2021/06/12/data-structure/HashMap%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%98%AF2%E7%9A%84n%E6%AC%A1%E5%B9%82/</url>
-    <content><![CDATA[<h1 id="HashMap的长度为什么必须是2的n次方"><a href="#HashMap的长度为什么必须是2的n次方" class="headerlink" title="HashMap的长度为什么必须是2的n次方"></a>HashMap的长度为什么必须是2的n次方</h1><p>首先我们看下<code>HashMap</code>中的源码当中那里奠定了长度是<strong>2的n次方</strong>，并且是靠近<code>cap</code>这个值<code>最近的2的n次方</code></p>
+    <content><![CDATA[<p>首先我们看下<code>HashMap</code>中的源码当中那里奠定了长度是<strong>2的n次方</strong>，并且是靠近<code>cap</code>这个值<code>最近的2的n次方</code></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 首先cap-1使得n的最后一位和cap最后一位绝对不一样</span></span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 向右无符号的移动了1位，并使用或运算使n的所有有1的位上全部是1</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 向右无符号移动2位，使用或运算将低位填充为1</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// 同理可得</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="comment">// 已经向右移动多个位，最终 00011111 = 31 那么 +1 既成为了2的n次方</span></span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>由上方代码可以看出，上方的方法是<strong>将<code>cap</code>无符号的向右移动，再启动期间，使用<code>|</code>运算保证低位全部是1。</strong></p>
 <p>看起来有点复杂，那咱们举个例子：</p>
 <span id="more"></span>
+
 <ol>
 <li>首先我们传入<code>cap</code>初始值为17</li>
 <li>经过<code>int n = cap -1 </code>也就是17-1后<code>n = 16</code></li>
 <li>将n进行如下的<strong>位移动和逻辑运算</strong>，最后得到<code>n = 31</code></li>
 <li>返回是根据三目运算符，得值返回值是<code>n + 1 = 32</code>，正好是 <strong>2的5次方</strong></li>
 </ol>
-<p><img src="C:\Users\Lovel\Desktop\image-20210629004830300.png" alt="image-20210629004830300"></p>
-<p>通过上方的容量计算，我们已经确定在HashMap中<code>capacity </code>一定是<strong>2的n次方</strong>，那么为什么我们必须要</p>
+<p><img src="https://images.marcus659.com/typora/hashmap-calculate01.png" alt="image-20211116152759541"></p>
+<p>通过上方的容量计算，我们已经确定在HashMap中<code>capacity </code>一定是<strong>2的n次方</strong>。</p>
+<p>在进行取模运算时，为什么我们必须要使用位运算进行取模</p>
 <ul>
-<li><p>&amp;运算速度快，至少比%取模运算快</p>
+<li><p><code>&amp;</code>运算速度快，至少比<code>%</code>取模运算快</p>
 </li>
 <li><p>能保证索引值肯定在 capacity 中，不会超出数组长度，<code>(n - 1) &amp; hash</code>，当为2的n次方时，会满足一个公式：<code>(n - 1) &amp; hash = hash % n</code></p>
 </li>
 </ul>
-<p><img src="C:\Users\Lovel\Desktop\image-20210629004830300.png" alt="image-20210628235807090"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210629011049948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI2MTI1ODY1,size_16,color_FFFFFF,t_70#pic_center" alt="hashmap-calculate02.png"></p>
 <p>两种运算效率差别到底有多少，这里可以直接做个测试：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> times = Integer.MAX_VALUE;</span><br><span class="line">    <span class="comment">/* 此处计算2^31-1次9999整数对1024的取模，使用的数学计算</span></span><br><span class="line"><span class="comment">     * 多次执行放大时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">long</span> currentTimeMillis = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; times; i++) &#123;</span><br><span class="line">        a = <span class="number">9999</span> % <span class="number">1024</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> currentTimeMillis2 = System.currentTimeMillis();</span><br><span class="line">    <span class="comment">/* 此处计算2^31-1次9999整数对1024的取模，使用的位运算</span></span><br><span class="line"><span class="comment">     * 因为要求 hash&amp;(n-1) 中n必须为2的n次方，这里取1024</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; times; i++) &#123;</span><br><span class="line">        b = <span class="number">9999</span> &amp; (<span class="number">1024</span> - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> currentTimeMillis3 = System.currentTimeMillis();</span><br><span class="line">    System.out.println(a + <span class="string">&quot;,&quot;</span> + b);<span class="comment">//最后的结果应该是一样的</span></span><br><span class="line">    System.out.println(<span class="string">&quot;数学计算耗时: &quot;</span> + (currentTimeMillis2 - currentTimeMillis));<span class="comment">// 1839ms</span></span><br><span class="line">    System.out.println(<span class="string">&quot;位运算耗时: &quot;</span> + (currentTimeMillis3 - currentTimeMillis2));<span class="comment">// 852ms</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -379,7 +381,7 @@
 <li><p>链表超过一定长度(<code>TREEIFY_THRESHOLD=8</code>)会转化为红黑树</p>
 </li>
 <li><p>红黑树在满足一定条件会再次退回链表</p>
-<p><img src="images.marcus659.com/blog/HashMap-structure.png" alt="hashmap_structure"></p>
+<p><img src="https://images.marcus659.com/blog/HashMap-structure.png" alt="hashmap_structure"></p>
 </li>
 </ul>
 <h1 id="HashMap原理"><a href="#HashMap原理" class="headerlink" title="HashMap原理"></a>HashMap原理</h1><p>HashMap在我们Map接口的实现类中的使用中占有很高的频率，在初始化时将会给定<code>默认容量为16</code>,扩容的<code>加载因子为0.75</code>，当实例内的<code>结点数量&gt;16*0.75</code>就会进行扩容，每次扩容都是<code>1&lt;&lt;2也就是2倍</code>。</p>
@@ -647,123 +649,6 @@
   </entry>
   <entry>
     <title>Elasticsearch集群从概念到搭建</title>
-    <url>/2021/11/04/elasticsearch/1-Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<p>[TOC]</p>
-<h1 id="Elasticsearch从概念到搭建"><a href="#Elasticsearch从概念到搭建" class="headerlink" title="Elasticsearch从概念到搭建"></a>Elasticsearch从概念到搭建</h1><p>Elasticsearch是一个开源的高扩展的<code>分布式全文搜索和分析引擎</code>，是整个Elastic Stack的核心。在咱们即将接触到的Elastic Stack中还有出了Elasticsearch以外的其他组件，<code>Logstash</code>和<code>Beats</code>充当了数据收集、聚合、处理非结构化数据的角色，在数据存储到Elasticsearch之前不可缺少的前置项目。Kibana使咱们存储在Elasticsearch中的各个维度数据有了可视化的功能，同时结合<code>X-Pack</code>套件，将能够获得更多扩展功能，如：ILM、Dashboard、Alarm、Aggregation 等更多大数据所需要的各类功能。</p>
-<p>Elasticsearch的很多操作都是可以通过<code>RESTful API</code>进行调用触发，这样一来隐藏Lucene的复杂性，让全文搜索变得简单，同时也能够在各平台进行扩展时，有了更好的扩展性。</p>
-<span id="more"></span>
-
-<p><strong>ES作为一个分布式搜索和分析引擎，解决的并不只是搜索相关问题，根据各类用例和官方解释可归纳为：</strong></p>
-<ul>
-<li><p>在应用程序或网站中增加垂直搜索</p>
-</li>
-<li><p>存储日志、指标和安全事件的海量数据  ，同时以数据维度提供各类可视化的分析报表</p>
-</li>
-<li><p>为机器学习自动模拟实时数据提供数据捅，同时还可为算法平台提供模拟行为 </p>
-</li>
-<li><p>使用Elasticsearch作为存储引擎实现业务工作流的自动化  </p>
-</li>
-<li><p>使用Elasticsearch作为地理信息系统(GIS)管理、集成和分析空间信息  </p>
-</li>
-<li><p>使用Elasticsearch作为生物信息学研究工具存储和处理遗传数据 (非机构化并且数据量很大)</p>
-</li>
-</ul>
-<h2 id="1-高可用性"><a href="#1-高可用性" class="headerlink" title="1. 高可用性"></a>1. 高可用性</h2><p>通过适合场景的设计减少系统不能提供服务的时间，集群的部署方式不仅能提供可用性更高的服务，同时也会对<code>数据的安全性和可用性加以保障</code>。为了保证在<code>宕机期间</code>，ES的数据安全和依然可用，则需要对其数据进行备份，在单个集群或单个节点中，为了提高数据的可用性，需要有<code>分片和副本的概念</code>，在进行跨集群复制，<code>follower cluster</code>也需要进行了解。</p>
-<h3 id="分片和副本"><a href="#分片和副本" class="headerlink" title="分片和副本"></a>分片和副本</h3><p><strong>分片</strong>：将数据切分成多个部分，在ES中所有数据都存储于<code>索引(index)</code> 之上，但实际索引只是维护了与多个分片之间的联系，数据则是被路由到多个分片。例如一个索引有5个分片，则该索引将会有<code>0,1,2,3,4,这五个分片</code> ，起指定每个文档数据存储在哪个分片是根据路由运算公式<code>has(_routing)%number_of_primary_shards</code>指定，使数据<code>均匀分布</code>在集群当中。</p>
-<p><strong>副本</strong>：副本是<code>主分片</code> 的复制分片，可以灵活调整，提高了整个集群的<code>容错性</code> ，且需要注意的是<code>副本分片不能与主分片在同一个节点</code>。一般来说，Elasticsearch 会尽量把一个索引的不同分片存储在不同的主机上，分片的副本也尽可能存在不同的主机上，这样可以提高容错率，从而提高高可用性。</p>
-<p><img src="http://images.marcus659.com/typora/elasticsearch-write-processes.png" alt="elasticsearch-write-processes"></p>
-<blockquote>
-<p>如果存在某个或某几个分片存储数据量特别大，可以使用<code>索引分区</code>既<code>index.routring_partition_size</code>， 但使用后限制有</p>
-<ol>
-<li>无法创建<code>join_feild</code> 关系映射</li>
-<li><code>_routing</code> 将成为写入数据必要传入参数</li>
-</ol>
-</blockquote>
-<h3 id="集群设计"><a href="#集群设计" class="headerlink" title="集群设计"></a>集群设计</h3><h3 id="跨集群复制"><a href="#跨集群复制" class="headerlink" title="跨集群复制"></a>跨集群复制</h3><h2 id="2-健康状态"><a href="#2-健康状态" class="headerlink" title="2. 健康状态"></a>2. 健康状态</h2><p>elasticsearch集群存在三种健康状态，单节点elasticsearch也可以算是一个集群。</p>
-<ul>
-<li>green(绿色)：代表所有索引的主分片和副本均已分配且可用，集群是100%可用</li>
-<li>yellow(黄色)：主分片已分配且全部主分片可用，但所有的副本不全部可用，可能是缺失，也有可能是某个索引的副本<code>未被分配</code>，可以通过<code>move</code> <code>cancel</code> <code>allocate</code> 命令所属的API进行分配或移动分片到指定节点，使用这里要注意<code>主分片和其副本绝不能在同一节点</code>。此时系统容错性和集群高可用被弱化。</li>
-<li>red(红色)：所有的主分片不全部可用，这代表很有可能存在丢失数据的风险。<br>如果只有一个单节点Elasticsearch那么属于一种yellow状态，因为没有副本。</li>
-</ul>
-<h2 id="3-存储空间"><a href="#3-存储空间" class="headerlink" title="3. 存储空间"></a>3. 存储空间</h2><p>多个节点的ES集群，那么相对单节点来说拥有更多的存储空间，可以设置<code>elasticsearch.yml</code> 设置<code>data</code> 和<code>log</code> 的挂载目录。</p>
-<h1 id="ES集群Set-up"><a href="#ES集群Set-up" class="headerlink" title="ES集群Set up"></a>ES集群Set up</h1><h2 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h2><p>集群由多个节点构成，每一台主机则称为一台节点，在伪集群中每一个ES实例则为一个节点。<br><img src="http://images.marcus659.com/typora/elastic-cluster01.png" alt="elastic-cluster01"><br>上述图中则为一个集群，其中Node-1是<code>主节点</code>，主节点有权限控制整个集群，有权限控制整个集群。每个节点都有三个分片，其中<code>P0 P1 P2</code> 代表Primary为主分片，R开头的则代表为每个主分片对应的副本分片，一共是3个主分片，每个主分片有两个对应的副本分片。</p>
-<ul>
-<li><p>主节点：即 Master 节点。主节点的主要职责是和集群操作相关的内容，如创建或删除索引，跟踪哪些节点是群集的一部分，并决定哪些分片分配给相关的节点。稳定的主节点对集群的健康是非常重要的。默认情况下任何一个集群中的节点都有可能被选为主节点。索引数据和搜索查询等操作会占用大量的cpu，内存，io资源，为了确保一个集群的稳定，分离主节点和数据节点是一个比较好的选择。虽然主节点也可以协调节点，路由搜索和从客户端新增数据到数据节点，但最好不要使用这些专用的主节点。一个重要的原则是，尽可能做尽量少的工作。</p>
-</li>
-<li><p>数据节点：即 Data 节点。数据节点主要是存储索引数据的节点，主要对文档进行增删改查操作，聚合操作等。数据节点对 CPU、内存、IO 要求较高，在优化的时候需要监控数据节点的状态，当资源不够的时候，需要在集群中添加新的节点。</p>
-</li>
-<li><p>负载均衡节点：也称作 Client 节点，也称作客户端节点。当一个节点既不配置为主节点，也不配置为数据节点时，该节点只能处理路由请求，处理搜索，分发索引操作等，从本质上来说该客户节点表现为智能负载平衡器。独立的客户端节点在一个比较大的集群中是非常有用的，他协调主节点和数据节点，客户端节点加入集群可以得到集群的状态，根据集群的状态可以直接路由请求。但是过多的协调节点也会增加Master节点管理难度，增加Master节点管理集群的负担。</p>
-</li>
-<li><p>预处理节点：也称作 Ingest 节点，在索引数据之前可以先对数据做预处理操作，所有节点其实默认都是支持 Ingest 操作的，也可以专门将某个节点配置为 Ingest 节点。以上就是节点几种类型，一个节点其实可以对应不同的类型，如一个节点可以同时成为主节点和数据节点和预处理节点，但如果一个节点既不是主节点也不是数据节点，那么它就是负载均衡节点。具体的类型可以通过具体的配置文件来设置。</p>
-</li>
-<li><p>冷热节点：在Elasticsearch集群中，如果存在冷热架构那么，在数据节点上就会存在 <code>node.attr.box_type: hot</code> 、<code>node.attr.box_type: warm</code>、<code>node.attr.box_type: cold</code> 三种不同的<strong>数据节点</strong>，这三类数据节点可以使用不同配置的机器，从而节约集群的机器成本</p>
-</li>
-</ul>
-<p><strong>Elasticsearch处理查询请求时节点工作流程：</strong></p>
-<ol>
-<li>请求被交给主节点</li>
-<li>主节点接收请求，将请求广播到该索引在数据节点上的每个分片(shard)</li>
-<li>每个分片执行搜索请求，并将结果返回</li>
-<li>分片的Result在主节点上进行合并。排序后返回给用户<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2>Elasticsearch有很好的默认配置，更多地设置可以使用 <code>Cluster update settings API</code> 在集群运行中进行设置，官方指导集群设置如下：<br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html</a></li>
-</ol>
-<p><strong>Elasticsearch 有三个配置文件</strong>：</p>
-<ul>
-<li><code>elasticsearch.yml</code> elasticsearch单个实例的配置文件</li>
-<li><code>jvm.options</code>  elasticsearch<strong>JVM虚拟机内存设置</strong>，并可以使用<code>bootstrap.memory_lock</code> 锁定虚拟内存的大小</li>
-<li><code>log4j2.properties</code> elasticsearch日志设置，可以设置<strong>慢索引</strong>/<strong>慢查询</strong>日志打印</li>
-</ul>
-<p><strong>配置文件location</strong>：<br> <code>ES_HOME/config</code> 目录下，如果想更改的话可以在<strong>环境变量中</strong>设置<code>ES_PATH_CONF=/path/to/my/config</code>或者<strong>启动参数</strong>设置<code>ES_PATH_CONF=/path/to/my/config ./bin/elasticsearch</code></p>
-<p><strong>GC日志</strong>:<br>ES默认启动GC日志，被配置在<code>jvm.options</code>中，日志输出位置默认与es日志位置相同，<code>/path/data/log</code>并且最多只占用<code>2G</code>磁盘空间，每<code>64M</code> 进行一次打包。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## JDK 8 GC logging</span></span><br><span class="line"></span><br><span class="line">8:-XX:+PrintGCDetails</span><br><span class="line">8:-XX:+PrintGCDateStamps</span><br><span class="line">8:-XX:+PrintTenuringDistribution</span><br><span class="line">8:-XX:+PrintGCApplicationStoppedTime</span><br><span class="line">8:-Xloggc:logs/gc.log</span><br><span class="line">8:-XX:+UseGCLogFileRotation</span><br><span class="line">8:-XX:NumberOfGCLogFiles=32</span><br><span class="line">8:-XX:GCLogFileSize=64m</span><br><span class="line"></span><br><span class="line"><span class="comment"># JDK 9+ GC logging 更改路径即可改变gc日志输出位置</span></span><br><span class="line">9-:-Xlog:gc*,gc+age=trace,safepoint:file=logs/gc.log:utctime,pid,tags:filecount=32,filesize=64m</span><br><span class="line"><span class="comment"># due to internationalization enhancements in JDK 9 Elasticsearch need to set the provider to COMPAT otherwise</span></span><br><span class="line"><span class="comment"># time/date parsing will break in an incompatible way for some date patterns and locals</span></span><br><span class="line">9-:-Djava.locale.providers=COMPAT</span><br></pre></td></tr></table></figure>
-<h1 id="搭建Elasticsearch7-X伪集群"><a href="#搭建Elasticsearch7-X伪集群" class="headerlink" title="搭建Elasticsearch7.X伪集群"></a>搭建Elasticsearch7.X伪集群</h1><p><strong>1. 下载ES</strong><br>这里我们把ES安装在服务器的<code>opt</code> 目录下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用华为镜像超快！！ 并重命名未 elasticsearch7.4-x86.tar.gz（x86是系统指令架构）</span></span><br><span class="line">$ wget -O elasticsearch7.4-x86.tar.gz https://mirrors.huaweicloud.com/elasticsearch/7.4.0/elasticsearch-7.4.0-linux-x86_64.tar.gz</span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">$ tar -zxvf elasticsearch7.4-x86.tar.gz</span><br></pre></td></tr></table></figure>
-<p><strong>2. 修改 <code>jvm.options</code> 和 <code>elasticsearch.yml</code> 配置ES</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入es配置目录</span></span><br><span class="line">$ <span class="built_in">cd</span> /opt/elasticsearch7.4-x86/config</span><br><span class="line"><span class="comment"># 修改jvm相关参数，调整jvm堆内存大小</span></span><br><span class="line">$ vim jvm.options</span><br><span class="line"><span class="comment"># 对es进行配置</span></span><br><span class="line">$ vim elasticsearch.yml</span><br></pre></td></tr></table></figure>
-<ul>
-<li>jvm.options配置<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 修改 IMPORTANT: JVM heap size ，内存小我就设置成这样了</span></span><br><span class="line">-Xms512m</span><br><span class="line">-Xmx512m</span><br></pre></td></tr></table></figure></li>
-<li>配置elasticsearch.yml<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 不要在该文件中设置索引相关配置</span></span><br><span class="line"><span class="attr">cluster.name:</span> <span class="string">waybill-center</span> <span class="comment"># 设置集群名比较重要！</span></span><br><span class="line"><span class="comment"># ------------------------------------ Node ------------------------------------</span></span><br><span class="line"><span class="attr">node.name:</span> <span class="string">es-master</span> <span class="comment"># 配置节点名</span></span><br><span class="line"><span class="attr">node.master:</span> <span class="literal">true</span> <span class="comment"># 是否有资格被选举为master，ES默认集群中第一台机器为主节点</span></span><br><span class="line"><span class="attr">node.data:</span> <span class="literal">false</span> <span class="comment"># 是否存储索引数据，默认 true，大集群中推荐一个角色一个类节点，不要身兼多职</span></span><br><span class="line"><span class="attr">node.ingest:</span> <span class="literal">false</span> <span class="comment">#默认情况下所有节点均可以做ingest节点</span></span><br><span class="line"><span class="attr">node.attr.box_type:</span> <span class="string">hot</span></span><br><span class="line"><span class="comment"># ----------------------------------- Paths ------------------------------------</span></span><br><span class="line"><span class="comment">#path.conf: /opt/elasticsearch7.4-x86/config # 设置配置文件存储路径，默认是es根目录下的config目录</span></span><br><span class="line"><span class="attr">path.data:</span> <span class="string">/data/es-master/data</span> <span class="comment"># 设置索引数据存储路径，默认是es根目录下的data目录</span></span><br><span class="line"><span class="attr">path.logs:</span> <span class="string">/data/es-master/log</span> <span class="comment"># 设置日志文件存储路径，默认是es根目录下的log目录</span></span><br><span class="line"><span class="comment"># ----------------------------------- Memory -----------------------------------</span></span><br><span class="line"><span class="comment">#bootstrap.memory_lock: true # 锁住内存不进行swapping，避免系统内存不够时压制JVM虚拟内存</span></span><br><span class="line"><span class="comment"># ---------------------------------- Network -----------------------------------</span></span><br><span class="line"><span class="comment">#network.host: 192.168.0.1 # 同时设置bind_host 和 publish_host</span></span><br><span class="line"><span class="attr">network.bind_host:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> <span class="comment"># 设置节点绑定ip，可用于http访问</span></span><br><span class="line"><span class="attr">network.publish_host:</span> <span class="number">10.130</span><span class="number">.9</span><span class="number">.129</span> <span class="comment"># 设置其他节点与该节点交互ip，可以使内网ip单必须是真实ip</span></span><br><span class="line"><span class="comment"># Set a custom port for HTTP:</span></span><br><span class="line"><span class="attr">http.port:</span> <span class="number">9200</span> <span class="comment"># 设置对外服务http端口</span></span><br><span class="line"><span class="attr">transport.tcp.port:</span> <span class="number">9300</span> <span class="comment"># 设置节点之间交互的tcp端口</span></span><br><span class="line"><span class="attr">transport.tcp.compress:</span> <span class="literal">true</span> <span class="comment"># 设置是否压缩tcp传输时的数据，默认为false</span></span><br><span class="line"><span class="comment"># --------------------------------- Discovery ----------------------------------</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Pass an initial list of hosts to perform discovery when this node is started:</span></span><br><span class="line"><span class="comment"># The default list of hosts is [&quot;127.0.0.1&quot;, &quot;[::1]&quot;]</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="attr">discovery.seed_hosts:</span> [<span class="string">&quot;10.130.9.129:9300&quot;</span>, <span class="string">&quot;10.130.9.129:9301&quot;</span>,<span class="string">&quot;10.130.9.129:9302&quot;</span>]</span><br><span class="line"><span class="comment"># 集群个节点IP地址，也可以使用els、els.shuaiguoxia.com等名称，需要各节点能够解析</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Bootstrap the cluster using an initial set of master-eligible nodes:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="attr">cluster.initial_master_nodes:</span> [<span class="string">&quot;es-master&quot;</span>]</span><br><span class="line"><span class="comment"># 也可以如下配置，二选一</span></span><br><span class="line"><span class="attr">discovery.seed_hosts:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.10</span><span class="string">:9300</span></span><br><span class="line">   <span class="bullet">-</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.11</span> <span class="comment"># 端口默认是9300</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">seeds.mydomain.com</span> <span class="comment"># 域名解析出来多个地址，则es会尝试发现所有节点</span></span><br><span class="line">   <span class="bullet">-</span> [<span class="number">0</span><span class="string">:0:0:0:0:ffff:c0a8:10c</span>]<span class="string">:9301</span> <span class="comment">#IPV6 地址必须用中括号括起来</span></span><br><span class="line"><span class="attr">cluster.initial_master_nodes:</span> </span><br><span class="line">   <span class="bullet">-</span> <span class="string">master-node-a</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">master-node-b</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">master-node-c</span></span><br><span class="line">   </span><br><span class="line"><span class="attr">discovery.zen.minimum_master_nodes:</span> <span class="number">2</span>  <span class="comment"># 为了避免脑裂，集群节点数最少为 半数+1</span></span><br><span class="line"><span class="comment"># For more information, consult the discovery and cluster formation module documentation.</span></span><br><span class="line"><span class="comment"># ---------------------------------- Gateway -----------------------------------</span></span><br><span class="line"><span class="attr">gateway.recover_after_nodes:</span> <span class="number">3</span> <span class="comment"># 设置集群中N个节点启动时进行数据恢复，默认为1</span></span><br><span class="line"><span class="comment"># 是否支持跨域，是：true，在使用head插件时需要此配置,“*” 表示支持所有域名</span></span><br><span class="line"><span class="attr">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">http.cors.allow-origin:</span> <span class="string">&quot;*&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><em>3. 配置ES使用自己的所带的jdk(推荐)</em>*</li>
-<li>修改 <code>bin</code> 目录下的<code>elasticsearch</code> 脚本文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> <span class="string">&quot;`dirname &quot;</span><span class="variable">$0</span><span class="string">&quot;`&quot;</span>/elasticsearch-env <span class="comment"># 这里可以看出先加载的 elasticsearch-env 脚本设置环境</span></span><br><span class="line"><span class="comment"># use es internal jdk</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=<span class="variable">$ES_HOME</span>/jdk/</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></li>
-<li>查看<code>elasticsearch-env</code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> -e -o pipefail</span><br><span class="line"></span><br><span class="line">CDPATH=<span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">SCRIPT=<span class="string">&quot;<span class="variable">$0</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># SCRIPT might be an arbitrarily deep series of symbolic links; loop until we</span></span><br><span class="line"><span class="comment"># have the concrete path</span></span><br><span class="line"><span class="keyword">while</span> [ -h <span class="string">&quot;<span class="variable">$SCRIPT</span>&quot;</span> ] ; <span class="keyword">do</span></span><br><span class="line">  ls=`ls -ld <span class="string">&quot;<span class="variable">$SCRIPT</span>&quot;</span>`</span><br><span class="line">  <span class="comment"># Drop everything prior to -&gt;</span></span><br><span class="line">  link=`expr <span class="string">&quot;<span class="variable">$ls</span>&quot;</span> : <span class="string">&#x27;.*-&gt; \(.*\)$&#x27;</span>`</span><br><span class="line">  <span class="keyword">if</span> expr <span class="string">&quot;<span class="variable">$link</span>&quot;</span> : <span class="string">&#x27;/.*&#x27;</span> &gt; /dev/null; <span class="keyword">then</span></span><br><span class="line">    SCRIPT=<span class="string">&quot;<span class="variable">$link</span>&quot;</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    SCRIPT=`dirname <span class="string">&quot;<span class="variable">$SCRIPT</span>&quot;</span>`/<span class="string">&quot;<span class="variable">$link</span>&quot;</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># determine Elasticsearch home; to do this, we strip from the path until we find</span></span><br><span class="line"><span class="comment"># bin, and then strip bin (there is an assumption here that there is no nested</span></span><br><span class="line"><span class="comment"># directory under bin also named bin)</span></span><br><span class="line">ES_HOME=`dirname <span class="string">&quot;<span class="variable">$SCRIPT</span>&quot;</span>` <span class="comment"># 这里可以看出已经设置了ES_HOME</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># now make ES_HOME absolute</span></span><br><span class="line">ES_HOME=`<span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$ES_HOME</span>&quot;</span>; <span class="built_in">pwd</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ <span class="string">&quot;`basename &quot;</span><span class="variable">$ES_HOME</span><span class="string">&quot;`&quot;</span> != <span class="string">&quot;bin&quot;</span> ]; <span class="keyword">do</span></span><br><span class="line">  ES_HOME=`dirname <span class="string">&quot;<span class="variable">$ES_HOME</span>&quot;</span>`</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">ES_HOME=`dirname <span class="string">&quot;<span class="variable">$ES_HOME</span>&quot;</span>`</span><br></pre></td></tr></table></figure></li>
-<li><em>4. 复制当前es构建其他数据节点</em>*</li>
-<li>复制当前ES目录<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 复制两份数据节点的目录</span></span><br><span class="line">cp -r /opt/elasticsearch7.4-x86 /opt/es-data-node1 </span><br><span class="line">cp -r /opt/elasticsearch7.4-x86 /opt/es-data-node2</span><br></pre></td></tr></table></figure></li>
-<li>修改两个数据节点的配置文件，先修改第一数据节点<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /opt/es-data-node1/config/elasticsearch.yml</span><br></pre></td></tr></table></figure>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">node.name:</span> <span class="string">es-node1</span> <span class="comment"># 配置节点名</span></span><br><span class="line"><span class="attr">node.ingest:</span> <span class="literal">false</span> <span class="comment">#默认情况下所有节点均可以做ingest节点</span></span><br><span class="line"><span class="attr">node.master:</span> <span class="literal">false</span> <span class="comment"># 是否有资格被选举为master，ES默认集群中第一台机器为主节点</span></span><br><span class="line"><span class="attr">node.data:</span> <span class="literal">true</span> <span class="comment"># 是否存储索引数据，默认 true</span></span><br><span class="line"><span class="attr">node.attr.box_type:</span> <span class="string">hot</span></span><br><span class="line"><span class="comment">#path.conf: /opt/es-data-node1/config # 设置配置文件存储路径，默认是es根目录下的config目录</span></span><br><span class="line"><span class="attr">path.data:</span> <span class="string">/data/es-node1/data</span> <span class="comment"># 设置索引数据存储路径，默认是es根目录下的data目录</span></span><br><span class="line"><span class="attr">path.logs:</span> <span class="string">/data/es-node1/log</span> <span class="comment"># 设置日志文件存储路径，默认是es根目录下的log目录</span></span><br><span class="line"><span class="attr">http.port:</span> <span class="number">9201</span> <span class="comment"># 设置对外服务http端口</span></span><br><span class="line"><span class="attr">transport.tcp.port:</span> <span class="number">9301</span> <span class="comment"># 设置节点之间交互的tcp端口</span></span><br></pre></td></tr></table></figure></li>
-<li>修改两个数据节点的配置文件，再修改第二个数据节点<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /opt/es-data-node2/config/elasticsearch.yml</span><br></pre></td></tr></table></figure>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">node.name:</span> <span class="string">es-node2</span> <span class="comment"># 配置节点名</span></span><br><span class="line"><span class="attr">node.master:</span> <span class="literal">false</span> <span class="comment"># 是否有资格被选举为master，ES默认集群中第一台机器为主节点</span></span><br><span class="line"><span class="attr">node.data:</span> <span class="literal">true</span> <span class="comment"># 是否存储索引数据，默认 true</span></span><br><span class="line"><span class="attr">node.attr.box_type:</span> <span class="string">hot</span></span><br><span class="line"><span class="comment">#path.conf: /opt/es-data-node2/config # 设置配置文件存储路径，默认是es根目录下的config目录</span></span><br><span class="line"><span class="attr">path.data:</span> <span class="string">/data/es-node2/data</span> <span class="comment"># 设置索引数据存储路径，默认是es根目录下的data目录</span></span><br><span class="line"><span class="attr">path.logs:</span> <span class="string">/data/es-node2/log</span> <span class="comment"># 设置日志文件存储路径，默认是es根目录下的log目录</span></span><br><span class="line"><span class="attr">http.port:</span> <span class="number">9202</span> <span class="comment"># 设置对外服务http端口</span></span><br><span class="line"><span class="attr">transport.tcp.port:</span> <span class="number">9302</span> <span class="comment"># 设置节点之间交互的tcp端口</span></span><br></pre></td></tr></table></figure></li>
-<li><em>5. 创建ES存储数据和log目录</em>*<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 根据之前每个节点的配置文件内配置path进行创建或修改</span></span><br><span class="line">mkdir -p /data/es-master/data</span><br><span class="line">mkdir -p /data/es-node1/data</span><br><span class="line">mkdir -p /data/es-node2/data</span><br><span class="line">mkdir -p /data/es-master/<span class="built_in">log</span></span><br><span class="line">mkdir -p /data/es-node1/<span class="built_in">log</span></span><br><span class="line">mkdir -p /data/es-node2/<span class="built_in">log</span></span><br></pre></td></tr></table></figure></li>
-<li><em>6. 因为ES不能用root用户启动，所以要新建用户</em>*<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">groupadd es <span class="comment"># 新建用户组es</span></span><br><span class="line">useradd es -g es<span class="comment"># 新建用户并添加到es用户组</span></span><br><span class="line">passwd es <span class="comment"># 也可以更改用户密码（输入 123123）</span></span><br></pre></td></tr></table></figure></li>
-<li><em>7. 授权es用户对目录的操作权限</em>*<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chown -R es:es  /data/es-master/</span><br><span class="line">chown -R es:es  /data/es-node1/</span><br><span class="line">chown -R es:es  /data/es-node2/</span><br></pre></td></tr></table></figure></li>
-<li><em>8. 启动ES集群</em>*<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 需切换为es用户</span></span><br><span class="line">su es</span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">./opt/elasticsearch7.4-x86/bin/elasticsearch -d</span><br><span class="line">./opt/es-data-node1/bin/elasticsearch -d</span><br><span class="line">./opt/es-data-node2/bin/elasticsearch -d</span><br></pre></td></tr></table></figure></li>
-<li>后台运行ES可以加入-p 命令 让es在后台运行， -p 参数 记录进程ID为一个文件# 设置后台启动<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./opt/elasticsearch7.4-x86/bin/elasticsearch  -p /tmp/elasticsearch-pid -d</span><br></pre></td></tr></table></figure></li>
-<li>结束进程<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看运行的pid</span></span><br><span class="line">cat /tmp/elasticsearch-pid &amp;&amp; <span class="built_in">echo</span></span><br><span class="line"><span class="comment"># 结束进程</span></span><br><span class="line"><span class="built_in">kill</span> -SIGTERM &#123;pid&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Docker安装Elasticsearch集群"><a href="#Docker安装Elasticsearch集群" class="headerlink" title="Docker安装Elasticsearch集群"></a>Docker安装Elasticsearch集群</h1><h1 id="生产环境重要系统配置"><a href="#生产环境重要系统配置" class="headerlink" title="生产环境重要系统配置"></a>生产环境重要系统配置</h1><h2 id="禁用交换区"><a href="#禁用交换区" class="headerlink" title="禁用交换区"></a>禁用交换区</h2>多数操作系统尝试为文件系统缓存使用更多的内存，会迫切的交换未使用的应用内存。这可能导致JVM堆内存部分或者执行页被置换出到磁盘。<br>交换对节点的稳定性非常不友好，并且<br>有三种方式禁用交换，首选是完全禁用交换，如果不能完全禁用交换区，那么需要跟你环境来决定是最小化交换区还是内存锁定</li>
-</ul>
-<p><strong>1. 超过当前最大文件描述符</strong><br>如果出现 <code>max file descriptions</code>，修改<code>limits.conf</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/security/limits.conf <span class="comment"># 修改限制文件</span></span><br></pre></td></tr></table></figure>
-<p>向文件内添加文件数</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*  soft nofile 65536</span><br><span class="line">*  hard nofile 65536</span><br><span class="line">* soft memlock unlimited </span><br><span class="line">* hard memlock unlimited</span><br></pre></td></tr></table></figure>
-<p><strong>2. 超过当前最大线程数</strong><br>如果出现 <code>max number of threads</code>，修改<code>limits.d/20-nproc.conf</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/security/limits.d/20-nproc.conf</span><br></pre></td></tr></table></figure>
-<p>修改参数</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*  soft    nproc   4096</span><br><span class="line">*  hard   nproc   4096</span><br><span class="line"><span class="comment"># 或者不限制也行</span></span><br><span class="line"><span class="comment"># root       soft    nproc     unlimited </span></span><br></pre></td></tr></table></figure>
-<p><strong>3. 超过当前最大虚拟内存</strong><br>如果出现 <code>virtual memory areas</code>，修改<code>sysctl.conf</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
-<p>修改参数</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vm.max_map_count=262144</span><br><span class="line"><span class="comment"># 也可使用下面命令临时修改内存限制</span></span><br><span class="line">sysctl -w vm.max_map_count=262144</span><br></pre></td></tr></table></figure>
-<h1 id="在主节点机器上进行验证"><a href="#在主节点机器上进行验证" class="headerlink" title="在主节点机器上进行验证"></a>在主节点机器上进行验证</h1><p>当我们配置好并启动集群后，因为主节点打开了 <code>http.port</code> 并且主节点主要用于整个集群的管理，所以建议在配置 <code>kibana</code> 时只配置主节点就好。<br>不过在我们验证时可以<strong>通过以下命令进行验证集群的搭建状况</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl  -X GET http://localhost:9200/_cat/nodes <span class="comment">#get请求查看集群健康状态</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#将会响应如下，带星号的就是指向的主节点</span></span><br><span class="line">127.0.0.1 69 93 1 0.06 0.07 0.06 dilm * es-master</span><br><span class="line">127.0.0.1 69 93 1 0.06 0.07 0.06 dil  - es-node1</span><br><span class="line">127.0.0.1 56 93 1 0.06 0.07 0.06 dil  - es-node2</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>文档型数据库</category>
-        <category>全文搜索</category>
-        <category>NoSQL</category>
-      </categories>
-      <tags>
-        <tag>Elastcisearch</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Elasticsearch集群从概念到搭建</title>
     <url>/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h1 id="Elasticsearch从概念到搭建"><a href="#Elasticsearch从概念到搭建" class="headerlink" title="Elasticsearch从概念到搭建"></a>Elasticsearch从概念到搭建</h1><p>Elasticsearch是一个开源的高扩展的<code>分布式全文搜索和分析引擎</code>，是整个Elastic Stack的核心。在咱们即将接触到的Elastic Stack中还有出了Elasticsearch以外的其他组件，<code>Logstash</code>和<code>Beats</code>充当了数据收集、聚合、处理非结构化数据的角色，在数据存储到Elasticsearch之前不可缺少的前置项目。Kibana使咱们存储在Elasticsearch中的各个维度数据有了可视化的功能，同时结合<code>X-Pack</code>套件，将能够获得更多扩展功能，如：ILM、Dashboard、Alarm、Aggregation 等更多大数据所需要的各类功能。</p>
@@ -1008,7 +893,7 @@
   </entry>
   <entry>
     <title>得物社招(上海)Java开发面经(凉)</title>
-    <url>/2021/06/12/interview-experience/%E5%BE%97%E7%89%A9%E9%9D%A2%E7%BB%8F20210323/</url>
+    <url>/2021/05/12/interview-experience/%E5%BE%97%E7%89%A9%E9%9D%A2%E7%BB%8F20210323/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h1 id="集合Map简单介绍"><a href="#集合Map简单介绍" class="headerlink" title="集合Map简单介绍"></a>集合Map简单介绍</h1><p>Map是一种<strong>键值对集合</strong>，每一个元素都包含一个键对象和一个值对象。其中键对象是不允许重复的。</p>
 <p>Map接口与Collection接口是不同的，Map接口有两个主要实现类<code>HashMap类</code>、<code>TreeMap类</code>，<strong>HashMap类按哈希算法来存取键值对象，而TreeMap类可以对键值对象进行排序。</strong></p>
@@ -1082,8 +967,8 @@
       </tags>
   </entry>
   <entry>
-    <title>得物社招(上海)Java开发面经(凉)</title>
-    <url>/2021/06/12/interview-experience/%E6%90%BA%E7%A8%8B%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/</url>
+    <title>携程社招(上海)Java开发面经20210517</title>
+    <url>/2021/05/18/interview-experience/%E6%90%BA%E7%A8%8B%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h1 id="携程社招-上海-Java开发面经20210517"><a href="#携程社招-上海-Java开发面经20210517" class="headerlink" title="携程社招(上海)Java开发面经20210517"></a>携程社招(上海)Java开发面经20210517</h1><p>一面：</p>
 <p>携程总部大楼（上海市长宁区金钟路），汽车票船票组，面试官两位(项目经理+开发工程师)</p>
@@ -1120,7 +1005,6 @@
 <p>ReentrantLock 可重入锁(自旋锁)</p>
 <p>6、MYSQL索引执行查看策略</p>
 <p>使用<code>explain</code>查看执行策略</p>
-<p>改个文章</p>
 ]]></content>
       <categories>
         <category>面经</category>
@@ -1131,7 +1015,7 @@
       </tags>
   </entry>
   <entry>
-    <title>得物社招(上海)Java开发面经(凉)</title>
+    <title>美团社招(上海)Java开发面经</title>
     <url>/2021/06/12/interview-experience/%E7%BE%8E%E5%9B%A2%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h1 id="美团社招-上海-Java开发面经"><a href="#美团社招-上海-Java开发面经" class="headerlink" title="美团社招(上海)Java开发面经"></a>美团社招(上海)Java开发面经</h1><p>先搞个前提，各位同学可以根据自身情况仅做参考，本人非计算机专业，学历一般吧，工作目前两年左右，因为工作日实在没有时间，所以和HR约定的是视频面试。</p>
@@ -1242,7 +1126,7 @@
 <h1 id="tar命令常用参数"><a href="#tar命令常用参数" class="headerlink" title="tar命令常用参数"></a><strong>tar命令常用参数</strong></h1><hr>
 <p>-c: 建立压缩档案<br>-x：解压<br>-t：查看内容<br>-r：向压缩归档文件末尾追加文件<br>-u：更新原压缩包中的文件这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。<br>-z：有gzip属性的<br>-j：有bz2属性的<br>-Z：有compress属性的<br>-v：显示所有过程<br>-O：将文件解开到标准输出下面的参数-f是必须的<br>-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。</p>
 <span id="more"></span>
-<hr>
+
 <h1 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a><strong>压缩</strong></h1><hr>
 <p>将目录里所有jpg文件打包成tar.jpg</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar –cvf jpg.tar *.jpg</span><br></pre></td></tr></table></figure>
@@ -1276,7 +1160,7 @@
 <hr>
 <h4 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chown [-cfhvR] [--<span class="built_in">help</span>] [--version] user[:group] file...</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<hr>
+
 <h4 id="命令功能"><a href="#命令功能" class="headerlink" title="命令功能"></a>命令功能</h4><p>&emsp;通过chown改变文件的拥有者和群组。在更改文件的所有者或所属群组时，可以使用用户名称和用户识别码设置。普通用户不能将自己的文件改变成其他的拥有者。其操作权限一般为管理员。</p>
 <hr>
 <h4 id="命令参数："><a href="#命令参数：" class="headerlink" title="命令参数："></a>命令参数：</h4><blockquote>
@@ -1651,9 +1535,9 @@
 <li><code>stop()</code>：停止组件</li>
 <li><code>destroy()</code>：销毁组件</li>
 </ol>
-<p><img src="http://qwgrj2bek.hd-bkt.clouddn.com/blog/tomcat_standard_engine.png" alt="StandardEngine"></p>
+<p><img src="https://images.marcus659.com/blog/tomcat_standard_engine.png" alt="StandardEngine"></p>
 <h2 id="Tomcat请求处理流程"><a href="#Tomcat请求处理流程" class="headerlink" title="Tomcat请求处理流程"></a>Tomcat请求处理流程</h2><h1 id="3-Tomcat服务器配置"><a href="#3-Tomcat服务器配置" class="headerlink" title="3. Tomcat服务器配置"></a>3. Tomcat服务器配置</h1><h1 id="4-Tomcat的管理配置"><a href="#4-Tomcat的管理配置" class="headerlink" title="4. Tomcat的管理配置"></a>4. Tomcat的管理配置</h1><h1 id="5-Tomcat集群"><a href="#5-Tomcat集群" class="headerlink" title="5. Tomcat集群"></a>5. Tomcat集群</h1><h2 id="tomcat集群简介"><a href="#tomcat集群简介" class="headerlink" title="tomcat集群简介"></a>tomcat集群简介</h2><p>tomcat集群是由多个tomcat进程，通过<code>ngnix</code>进行反向代理，使用<code>轮询</code>、<code>权重</code>、<code>ip_hash</code>的方式去进行负载策略，</p>
-<h2 id="session共享问题"><a href="#session共享问题" class="headerlink" title="session共享问题"></a>session共享问题</h2><ol>
+<h2 id="session共享-保持-问题"><a href="#session共享-保持-问题" class="headerlink" title="session共享(保持)问题"></a>session共享(保持)问题</h2><ol>
 <li><p>ip_hash策略</p>
 <p>同一个ip的hash值肯定是相同的，顾可以使用此类方式将用户请求负载到之前有session的那个tomcat进程上。</p>
 </li>
@@ -1670,7 +1554,7 @@
   <entry>
     <title>VS Code 开发 Java 指南</title>
     <url>/2021/09/15/tools/VS-CodeGettingStrated/</url>
-    <content><![CDATA[<h1 id="VS-Code-开发-Java-指南"><a href="#VS-Code-开发-Java-指南" class="headerlink" title="VS Code 开发 Java 指南"></a>VS Code 开发 Java 指南</h1><p>  在进行开发时，如果你厌倦了使用EditPlus开发，那么必然需要选择一个IDE(Integrated Development Environment )，也就是集成开发环境，通常大家耳熟听过的有<code>InteillJ Idea</code>、<code>Eclipse</code>、<code>MyEclipse</code>，这些开发工具，其中我觉得最好用的当属<code>Idea</code>莫属，特别它的旗舰版，其中只有旗舰版才有的**<code>Diagram</code>**功能让我每次查看类关系时，屡试不爽，不仅清晰明了还能当做png图片进行导出，上图感受下。</p>
+    <content><![CDATA[<p>  在进行开发时，如果你厌倦了使用EditPlus开发，那么必然需要选择一个IDE(Integrated Development Environment )，也就是集成开发环境，通常大家耳熟听过的有<code>InteillJ Idea</code>、<code>Eclipse</code>、<code>MyEclipse</code>，这些开发工具，其中我觉得最好用的当属<code>Idea</code>莫属，特别它的旗舰版，其中只有旗舰版才有的**<code>Diagram</code>**功能让我每次查看类关系时，屡试不爽，不仅清晰明了还能当做png图片进行导出，上图感受下。</p>
 <p><img src="http://images.marcus659.com/typora/idea-digram01.gif" alt="Diagram"></p>
 <h2 id="配置Java开发支持"><a href="#配置Java开发支持" class="headerlink" title="配置Java开发支持"></a>配置Java开发支持</h2><p>首先我们必须得安装VS Code 和 Java开发环境，这两个配置就不在此处赘述了，无论是解压缩安装还是二进制安装都可以，此处只分享进行Java开发必须装的插件扩展。</p>
 <ul>

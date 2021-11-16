@@ -297,7 +297,7 @@
 <li><p>链表超过一定长度(<code>TREEIFY_THRESHOLD=8</code>)会转化为红黑树</p>
 </li>
 <li><p>红黑树在满足一定条件会再次退回链表</p>
-<p><img src="images.marcus659.com/blog/HashMap-structure.png" alt="hashmap_structure"></p>
+<p><img src="https://images.marcus659.com/blog/HashMap-structure.png" alt="hashmap_structure"></p>
 </li>
 </ul>
 <h1 id="HashMap原理"><a href="#HashMap原理" class="headerlink" title="HashMap原理"></a>HashMap原理</h1><p>HashMap在我们Map接口的实现类中的使用中占有很高的频率，在初始化时将会给定<code>默认容量为16</code>,扩容的<code>加载因子为0.75</code>，当实例内的<code>结点数量&gt;16*0.75</code>就会进行扩容，每次扩容都是<code>1&lt;&lt;2也就是2倍</code>。</p>
