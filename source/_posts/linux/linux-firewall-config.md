@@ -92,7 +92,7 @@ public (default)
   icmp-blocks:
   rich rules:
 ```
-  
+
 查询服务的启动状态
 ```
 firewall-cmd --query-service ftp

@@ -12,7 +12,7 @@ categories:
 
 # Elasticsearch从概念到搭建
 
-Elasticsearch是一个开源的高扩展的`分布式全文搜索和分析引擎`，是整个Elastic Stack的核心。在咱们即将接触到的Elastic Stack中还有出了Elasticsearch以外的其他组件，`Logstash`和`Beats`充当了数据收集、聚合、处理非结构化数据的角色，在数据存储到Elasticsearch之前不可缺少的前置项目。Kibana使咱们存储在Elasticsearch中的各个维度数据有了可视化的功能，同时结合`X-Pack`套件，将能够获得更多扩展功能，如：ILM、Dashboard、Alarm、Aggregation 等更多大数据所需要的各类功能。
+Elasticsearch是一个开源的高扩展的`分布式全文搜索和分析引擎`，是整个Elastic Stack的核心。在咱们即将接触到的Elastic Stack中还有出了Elasticsearch以外的其他组件，`Logstash`和`Beats`充当了数据收集、聚合、处理非结构化数据的角色，在数据存储到Elasticsearch之前不可缺少的前置项目。Kibana 使咱们存储在Elasticsearch中的各个维度数据有了可视化的功能，同时结合`X-Pack`套件，将能够获得更多扩展功能，如：ILM、Dashboard、Alarm、Aggregation 等更多大数据所需要的各类功能。
 
 Elasticsearch的很多操作都是可以通过`RESTful API`进行调用触发，这样一来隐藏Lucene的复杂性，让全文搜索变得简单，同时也能够在各平台进行扩展时，有了更好的扩展性。
 

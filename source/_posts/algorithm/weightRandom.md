@@ -2,8 +2,8 @@
 title: 权重随机算法
 date: 2020-08-08 21:34:36
 tags:
-	- 算法
-    - Java
+  - 算法
+  - Java
 categories:
   - 算法
 ---
