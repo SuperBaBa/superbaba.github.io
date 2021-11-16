@@ -105,11 +105,11 @@
     <content><![CDATA[<p>[TOC]</p>
 <h1 id="AQS到底是什么"><a href="#AQS到底是什么" class="headerlink" title="AQS到底是什么"></a>AQS到底是什么</h1>]]></content>
       <categories>
-        <category>算法</category>
-        <category>并发编程</category>
+        <category>Java</category>
       </categories>
       <tags>
-        <tag>Java</tag>
+        <tag>算法</tag>
+        <tag>并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -119,10 +119,9 @@
 <h1 id="Reentrantlock重入锁"><a href="#Reentrantlock重入锁" class="headerlink" title="Reentrantlock重入锁"></a>Reentrantlock重入锁</h1>]]></content>
       <categories>
         <category>Java基础</category>
-        <category>集合框架</category>
       </categories>
       <tags>
-        <tag>Java</tag>
+        <tag>Java - Java - 集合框架</tag>
       </tags>
   </entry>
   <entry>
