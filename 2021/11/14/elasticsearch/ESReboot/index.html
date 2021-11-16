@@ -14,7 +14,7 @@
       <meta name="description" content="Java编程的学习文章博客，在Java框架学习中使用了Spring Framework、Spring Boot、Spring Cloud，覆盖了Elasticsearch、Redis、RocketMQ" />
       
       <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1"/>
-      <title>git rebase 合并 |  技術工程51區</title>
+      <title>安全并正确地重启Elasticsearch集群 |  技術工程51區</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -56,7 +56,7 @@
       <!-- body引入的是index.ejs -->
       <section class="outer">
   <article
-  id="post-git/git-rebase"
+  id="post-elasticsearch/ESReboot"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  git rebase 合并
+  安全并正确地重启Elasticsearch集群
 </h1>
  
 
@@ -75,11 +75,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/11/11/git/git-rebase/" class="article-date">
-  <time datetime="2021-11-11T02:56:16.000Z" itemprop="datePublished">2021-11-11</time>
+      <a href="/2021/11/14/elasticsearch/ESReboot/" class="article-date">
+  <time datetime="2021-11-14T15:48:22.000Z" itemprop="datePublished">2021-11-14</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Git%E6%89%8B%E6%9C%AD/">Git手札</a>
+    <a class="article-category-link" href="/categories/Elastcisearch/">Elastcisearch</a>
   </div>
   
 <div class="word_count">
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">966</span>
         </span>
     </span>
 
@@ -96,20 +96,79 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <p>[TOC]</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>elasticsearch本身具有高可用性，可以做到停机不停服务，在重启elasticsearch后可能存在数据丢失，或者是“启动ES后，怎么一直有大量的数据在迁移？”</p>
+<h1 id="问题原因其本质"><a href="#问题原因其本质" class="headerlink" title="问题原因其本质"></a>问题原因其本质</h1><p><strong>原因有两点：</strong></p>
+<ol>
+<li>ES中的数据<code>不是实时写入</code>磁盘的。<br>数据进入ES后先进入data buffer <code>segment</code>和<code>transientLog</code>这两个buffer，（此处又涉及到数据防丢失的机制）然后进入操作系统文件系统缓存的数据段，最后再特定时机（两个条件，一个是segment到达容量，一个是到达refresh时间间隔）下才刷入磁盘。即在内存中有很多数据是没写入磁盘的。</li>
+<li>ES的分片自动分配迁移机制。<br>当集群发现经过<code>一分钟</code>后（index.unassigned.node_left.delayed_timeout参数设置）还连接不上某个节点，就会把集群内的数据重新进行分布，即使后来节点重新连接上，原来的数据因为重新分布也无效了。</li>
+</ol>
+<h1 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h1><ol>
+<li>检查废弃日志查看你使用的所有废弃功能，并更新相关的代码</li>
+<li>检阅Elasticsearch的迭代变更，并对代码和新版本的配置有必要更改的地方进行更改</li>
+<li>如果你有使用插件，确保每一个插件能够兼容新版本的Elasticsearch</li>
+<li>在升级生产环境的Elasticsearch集群之前，需要在一个独立的环境测试一下升级更新</li>
+<li>通过快照<code>snapshot</code>的形式进行备份</li>
+</ol>
+<h1 id="准备重启集群"><a href="#准备重启集群" class="headerlink" title="准备重启集群"></a>准备重启集群</h1><p>设置集群重新分配的类型，使用<code>cluster.routing.allocation.enable</code>设置选项。</p>
+<p>启用或禁用分片重新分配的类型：</p>
+<ul>
+<li><code>all</code> - (默认) 允许所有类型分片重新分配.</li>
+<li><code>primaries</code> - 只允许主分片重新分配.</li>
+<li><code>new_primaries</code> - 只允许新索引的主分片重新分配.</li>
+<li><code>none</code> - 所有索引的任何类型分片不被允许重新分配.</li>
+</ul>
+<ol>
+<li>关闭分片分配<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PUT _cluster/settings&#123;</span><br><span class="line">  &quot;persistent&quot;: &#123;</span><br><span class="line">    &quot;cluster.routing.allocation.enable&quot;: &quot;none&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>停止索引并执行同步刷新<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST _flush/synced</span><br></pre></td></tr></table></figure></li>
+<li>暂时停止机器学习和数据仓库相关任务<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST <span class="string">&quot;localhost:9200/_ml/set_upgrade_mode?enabled=true&amp;pretty&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者是</span></span><br><span class="line">POST /_ml/set_upgrade_mode?enabled=<span class="literal">true</span>&amp;pretty</span><br></pre></td></tr></table></figure></li>
+<li>关闭所有节点</li>
+</ol>
+<ul>
+<li>如果是通过<code>systemd</code>运行的Elastiseach<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop elasticsearch.service</span><br></pre></td></tr></table></figure></li>
+<li>如果是用SysV的<code>init</code>运行Elasticsearch<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -i service elasticsearch stop</span><br></pre></td></tr></table></figure></li>
+<li>如果是通过<code>守护进程(daemon)</code>运行elasticsearch<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> $(cat pid)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="5">
+<li><p>执行完更改动作后开始重启elasticsearch</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>  <span class="variable">$ES_HOME</span>/bin ./elasticsearch -d -p <span class="variable">$ES_HOME</span>/pid.txt</span><br></pre></td></tr></table></figure></li>
+<li><p>，启用分片自动分布</p>
+</li>
+</ol>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PUT _cluster/settings &#123; </span><br><span class="line">    &quot;persistent&quot;: &#123;</span><br><span class="line">        &quot;cluster.routing.allocation.enable&quot;: null &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="更新集群"><a href="#更新集群" class="headerlink" title="更新集群"></a>更新集群</h1><ul>
+<li>使用 Debian 或者 RPM 包进行更新:<br>使用<code>rpm</code>或者<code>dpkg</code>全装新包，所有文件安装将会被安装到操作系统上合适的位置，并且<strong>elasticsearch的配置文件将会被保留</strong>，不会被覆盖。<br>&emsp;</li>
+<li>使用 <code> zip</code> 或者是<code>tar</code> 压缩包进行更新:<ol>
+<li>解压压缩包到一个新的或指定的目录，如果你没有使用外部指定的 <code>config</code></li>
+<li>如果<strong>不需要使用外部</strong>的 <code>config</code>目录和 <code>jvm.options</code>，可以复制旧版本的配置文件目录到新安装的配置文件目录。<br>如果<strong>需要指定外部</strong>的 <code>config</code>目录和 <code>jvm.options</code>则需要配置环境变量<code>ES_PATH_CONF</code> Elasticsearch启动时将会在环境脚本<code>elasticsearch-env</code> 中进行调用，如下图：<br><img src="https://images.marcus659.com/typora/update-es-configuration.png" alt="update-es-configuration"></li>
+<li>在<code>elasticsearch.yml</code>中配置指定<code>path.data</code> ，即指定外部data目录路径，如果不使用外部指定<code>data</code>目录，可以把外部data目录复制到新安装的目录中。</li>
+</ol>
+<blockquote>
+<p>如果使用了监控功能，当你更新elasticsearch集群并要<code>复用</code>监控数据时，监控时通过辨认经过持久化的节点<code>UUID</code>（独一无二的）进行区分的，这个<code>UUID</code>值存储在<code>data目录里</code></p>
+</blockquote>
+</li>
+</ul>
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -167,12 +226,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.marcus659.com/2021/11/11/git/git-rebase/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.marcus659.com/2021/11/14/elasticsearch/ESReboot/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/" rel="tag">全文搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">文档型数据库</a></li></ul>
 
     </footer>
   </div>
@@ -180,19 +239,10 @@
    
   <nav class="article-nav">
     
+    
       <a href="/2021/11/14/elasticsearch/ELKCold&HostArchitecture/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            ELK冷热架构实现
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Elasticsearch集群从概念到搭建</div>
+        <div class="article-nav-title">ELK冷热架构实现</div>
       </a>
     
   </nav>

@@ -14,7 +14,7 @@
       <meta name="description" content="Java编程的学习文章博客，在Java框架学习中使用了Spring Framework、Spring Boot、Spring Cloud，覆盖了Elasticsearch、Redis、RocketMQ" />
       
       <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1"/>
-      <title>git rebase 合并 |  技術工程51區</title>
+      <title>Elasticsearch路由routing是个什么鬼 |  技術工程51區</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -56,7 +56,7 @@
       <!-- body引入的是index.ejs -->
       <section class="outer">
   <article
-  id="post-git/git-rebase"
+  id="post-elasticsearch/WhatIsRoute"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  git rebase 合并
+  Elasticsearch路由routing是个什么鬼
 </h1>
  
 
@@ -75,11 +75,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/11/11/git/git-rebase/" class="article-date">
-  <time datetime="2021-11-11T02:56:16.000Z" itemprop="datePublished">2021-11-11</time>
+      <a href="/2021/11/02/elasticsearch/WhatIsRoute/" class="article-date">
+  <time datetime="2021-11-02T15:48:22.000Z" itemprop="datePublished">2021-11-02</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Git%E6%89%8B%E6%9C%AD/">Git手札</a>
+    <a class="article-category-link" href="/categories/Elastcisearch/">Elastcisearch</a>
   </div>
   
 <div class="word_count">
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">660</span>
         </span>
     </span>
 
@@ -96,20 +96,56 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <p>[TOC]</p>
+<h1 id="什么是路由"><a href="#什么是路由" class="headerlink" title="什么是路由"></a>什么是路由</h1><p>routing的默认值是<code>文档id</code>，也可以是自定义值，根据<code>routing</code>计算出分片序号，并指定到该分片上。<br>索引文档时，文档会被存储到一个主分片下，其分片公式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shard_num = <span class="built_in">hash</span>(_routing) % num_primary_shards</span><br></pre></td></tr></table></figure>
+<p>由于<code>number_of_primary_shards</code>会参与路由的计算，因此主分片数量<strong>一经指定就不能改变你</strong>，会使routing值失效。</p>
+<p>客户端查询请求时节点工作步骤</p>
+<ol>
+<li>请求被集群交给主节点</li>
+<li>主节点接收后，将请求广播到指定索引的每一个shard中</li>
+<li>每个分片执行搜索请求，并将结果返回</li>
+<li>结果在<code>主节点上</code>合并，排序后返回给用户</li>
+</ol>
+<h1 id="自定义路由"><a href="#自定义路由" class="headerlink" title="自定义路由"></a>自定义路由</h1><p>多数API均接收<code>routing</code>参数，如：<code>get</code>/<code>index</code>/<code>delete</code>/<code>bulk</code>/<code>update</code>/<code>mget</code><br>强制使用路由，需要在<code>mapping</code>中指定路由 <code>require:true</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;mappings&quot;</span>:&#123;</span><br><span class="line">    <span class="string">&quot;_routing&quot;</span> : &#123;</span><br><span class="line">        <span class="string">&quot;required&quot;</span> : <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在写入文档时，即可配置路由</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 路由指定为 user1</span><br><span class="line">PUT test-index/_doc/1?routing=user1</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;title&quot;</span>:<span class="string">&quot;母猪的保养&quot;</span>,</span><br><span class="line">    <span class="string">&quot;city&quot;</span> : <span class="string">&quot;漳州市&quot;</span>,</span><br><span class="line">    <span class="string">&quot;county&quot;</span> : <span class="string">&quot;红星区&quot;</span>,</span><br><span class="line">    <span class="string">&quot;province&quot;</span> : <span class="string">&quot;河北省&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 查询时指定路由为 routing</span><br><span class="line">GET test-index/_doc/1?routing=user1</span><br><span class="line"></span><br><span class="line">// 或者在term查询时指定元数据 _routing 为 user1</span><br><span class="line">GET my_index/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;query&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;terms&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;_routing&quot;</span>: [ <span class="string">&quot;user1&quot;</span> ] </span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在查询时，若强制使用路由的话，需要指定<code>routing</code>参数，否则会报错<code>routing_missing_exception</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">GET test-index/_doc/111?routing=user1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回响应如下</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;_index&quot;</span> : <span class="string">&quot;test-index&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_type&quot;</span> : <span class="string">&quot;_doc&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_id&quot;</span> : <span class="string">&quot;111&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_version&quot;</span> : 1,</span><br><span class="line">  <span class="string">&quot;_seq_no&quot;</span> : 0,</span><br><span class="line">  <span class="string">&quot;_primary_term&quot;</span> : 1,</span><br><span class="line">  <span class="string">&quot;_routing&quot;</span> : <span class="string">&quot;111&quot;</span>,</span><br><span class="line">  <span class="string">&quot;found&quot;</span> : <span class="literal">true</span>,</span><br><span class="line">  <span class="string">&quot;_source&quot;</span> : &#123;</span><br><span class="line">    <span class="string">&quot;title&quot;</span> : <span class="string">&quot;母猪的保养&quot;</span>,</span><br><span class="line">    <span class="string">&quot;city&quot;</span> : <span class="string">&quot;漳州市&quot;</span>,</span><br><span class="line">    <span class="string">&quot;county&quot;</span> : <span class="string">&quot;红星区&quot;</span>,</span><br><span class="line">    <span class="string">&quot;province&quot;</span> : <span class="string">&quot;河北省&quot;</span>,</span><br><span class="line"> </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意</strong>：<br>当使用自定义路由时，如果索引时使用<code>不同的_routing</code>，那么在<code>不同分片</code>上可能存在<code>相同的_id</code>。索引上所有分片文档<code>_id</code> 的唯一性由<strong>用户自己保证</strong>。</p>
+</blockquote>
+<h1 id="集群分片不平衡"><a href="#集群分片不平衡" class="headerlink" title="集群分片不平衡"></a>集群分片不平衡</h1><p>通过API检查在使用<code>routing</code>路由时，每个分片是否均匀存储数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _cat/shards</span><br></pre></td></tr></table></figure>
+<p><img src="https://images.marcus659.com/typora/es-routing-check-balance.png" alt="es-routing-check-balance"></p>
+<p>如果存在某些分片被指定存储的数据量过大时，可以使用 <code>index.routing_partition_size: 3</code>进行路由指定分片序号计算公式变更：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shard_num = (<span class="built_in">hash</span>(_routing) + <span class="built_in">hash</span>(_id) % routing_partition_size) % num_primary_shards</span><br></pre></td></tr></table></figure>
+<p>在设置<code>index_routing_partitino_size</code>需要注:</p>
+<ol>
+<li><strong><code>index_routing_partition_size</code> 的有效值</strong><br><code>index_routing_partition_size</code> 在(<code>primary_shard_of_number</code>，<code>1</code>)这个开区间内，即<code>primary_shard_of_number</code> &gt; <code>index_routing_partition_size</code>  &gt; 1</li>
+<li>使用<code>index_routing_partition_size</code> 后存在如下限制<ul>
+<li>无法创建 <code>join_field</code> 关系映射</li>
+<li><code>_routing</code> 必须开启</li>
+</ul>
+</li>
+</ol>
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -167,12 +203,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.marcus659.com/2021/11/11/git/git-rebase/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.marcus659.com/2021/11/02/elasticsearch/WhatIsRoute/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/" rel="tag">全文搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">文档型数据库</a></li></ul>
 
     </footer>
   </div>
@@ -180,19 +216,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/11/14/elasticsearch/ELKCold&HostArchitecture/" class="article-nav-link">
+      <a href="/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            ELK冷热架构实现
+            Elasticsearch集群从概念到搭建
           
         </div>
       </a>
     
     
-      <a href="/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/" class="article-nav-link">
+      <a href="/2021/09/15/tools/VS-CodeGettingStrated/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Elasticsearch集群从概念到搭建</div>
+        <div class="article-nav-title">VS Code 开发 Java 指南</div>
       </a>
     
   </nav>
