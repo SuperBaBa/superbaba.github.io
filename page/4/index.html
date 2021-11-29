@@ -159,6 +159,66 @@
     
       
       <article
+  id="post-linux/linux-scp"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/21/linux/linux-scp/"
+    >Linux之间文件传输scp</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/21/linux/linux-scp/" class="article-date">
+  <time datetime="2019-09-21T10:11:09.000Z" itemprop="datePublished">2019-09-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/shell/">shell</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>把本地的source.txt文件拷贝到192.168.0.10机器上的/home/work目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /home/work/source.txt work@192.168.0.10:/home/work/ </span><br></pre></td></tr></table></figure>
+<p>把192.168.0.10机器上的source.txt文件拷贝到本地的/home/work目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp work@192.168.0.10:/home/work/source.txt /home/work/ </span><br></pre></td></tr></table></figure>
+<p>把192.168.0.10机器上的source.txt文件拷贝到192.168.0.11机器的/home/work目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp work@192.168.0.10:/home/work/source.txt work@192.168.0.11:/home/work/ </span><br></pre></td></tr></table></figure>
+<p>拷贝文件夹，加-r参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r /home/work/sourcedir work@192.168.0.10:/home/work/ </span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
   id="post-linux/shell-echo"
   class="article article-type-post"
   itemscope
@@ -345,7 +405,7 @@
        
 <h2 itemprop="name">
   <a class="article-title" href="/2019/03/28/me/"
-    >贾从谦</a> 
+    >关于我</a> 
 </h2>
  
 
@@ -355,11 +415,7 @@
     <div class="article-meta">
       <a href="/2019/03/28/me/" class="article-date">
   <time datetime="2019-03-28T07:47:26.000Z" itemprop="datePublished">2019-03-28</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">云服务器</a>
-  </div>
-   
+</a>    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
@@ -386,8 +442,6 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/biaoqian/" rel="tag">biaoqian</a></li></ul>
-
     </footer>
   </div>
 

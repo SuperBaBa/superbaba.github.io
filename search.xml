@@ -10,7 +10,7 @@
       </tags>
   </entry>
   <entry>
-    <title>贾从谦</title>
+    <title>关于我</title>
     <url>/2019/03/28/me/</url>
     <content><![CDATA[<h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><p>From：长春理工大学<br>专业：经济学<br>岗位：Java开发工程师<br>座右铭：不怕从零开始,只怕从未启程</p>
 <h2 id="收获与感悟"><a href="#收获与感悟" class="headerlink" title="收获与感悟"></a>收获与感悟</h2><blockquote>
@@ -25,12 +25,6 @@
 <li>结合自身专业和技能，实现拟定的目标；</li>
 </ol>
 ]]></content>
-      <categories>
-        <category>云服务器</category>
-      </categories>
-      <tags>
-        <tag>biaoqian</tag>
-      </tags>
   </entry>
   <entry>
     <title>文章版式</title>
@@ -1682,5 +1676,18 @@
       <categories>
         <category>Vim</category>
       </categories>
+  </entry>
+  <entry>
+    <title>JVM内存区域</title>
+    <url>/2021/07/04/MessageQueue/Kafka/WhatIsKafka/</url>
+    <content><![CDATA[<h1 id="Kafka是个啥玩意儿"><a href="#Kafka是个啥玩意儿" class="headerlink" title="Kafka是个啥玩意儿"></a>Kafka是个啥玩意儿</h1><p>根据官网描述kafka是一个<strong>分布式事件流平台</strong>，</p>
+<h1 id="Kafka能为咱们做些什么"><a href="#Kafka能为咱们做些什么" class="headerlink" title="Kafka能为咱们做些什么"></a>Kafka能为咱们做些什么</h1><h1 id="Kafka简单的设计架构"><a href="#Kafka简单的设计架构" class="headerlink" title="Kafka简单的设计架构"></a>Kafka简单的设计架构</h1><h1 id="Kafka快速开始-Docker"><a href="#Kafka快速开始-Docker" class="headerlink" title="Kafka快速开始(Docker)"></a>Kafka快速开始(Docker)</h1>]]></content>
+      <categories>
+        <category>消息队列</category>
+      </categories>
+      <tags>
+        <tag>Kafka</tag>
+        <tag>大数据</tag>
+      </tags>
   </entry>
 </search>
