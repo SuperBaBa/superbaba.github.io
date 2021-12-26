@@ -159,6 +159,72 @@
     
       
       <article
+  id="post-git/git-reset"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/12/26/git/git-reset/"
+    >git reset 三种模式</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/12/26/git/git-reset/" class="article-date">
+  <time datetime="2021-12-26T13:23:16.000Z" itemprop="datePublished">2021-12-26</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>有时候我们在commit提交代码后，发现这一次commit的内容是有错误的，那么有两种处理方法：</p>
+<ol>
+<li>修改错误内容，再次commit一次</li>
+<li>使用git reset 命令撤销这一次错误的commit<br>第一种方法比较直接，但会多次一次commit记录。第二种方法会直接清楚错误的commit，由此咱们也可以知道<code>git reset</code>是一个让HEAD指针指向其他方向的命令。</li>
+</ol>
+<h1 id="git-reset-有哪三种模式"><a href="#git-reset-有哪三种模式" class="headerlink" title="git reset 有哪三种模式"></a>git reset 有哪三种模式</h1><ul>
+<li>reset –hard<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
+不保留工作目录和暂存区，使用这个模式，在重置HEAD和branch的同时，也会重置 stage 和 working tree 中的内容，也就是放弃掉你当前已commit或未commit的所有变动<br><img src="https://images.marcus659.com/typora/gitreset-soft-01.gif" alt="modify HEAD"></li>
+<li>reset –soft<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft</span><br></pre></td></tr></table></figure>
+保留工作目录，并把重置 HEAD 所带来的新的差异放进暂存区</li>
+<li>reset –mixed<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --mixed</span><br></pre></td></tr></table></figure>
+保留工作目录，并清空暂存区</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
   id="post-elasticsearch/ESReboot"
   class="article article-type-post"
   itemscope
@@ -785,85 +851,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kafka/" rel="tag">Kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
-  id="post-tomcat/Tomcat深入分析"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/03/tomcat/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/"
-    >Tomcat的简介</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/07/03/tomcat/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/" class="article-date">
-  <time datetime="2021-07-03T05:48:22.000Z" itemprop="datePublished">2021-07-03</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="1-Tomcat的简介"><a href="#1-Tomcat的简介" class="headerlink" title="1. Tomcat的简介"></a>1. Tomcat的简介</h1><h2 id="web概念"><a href="#web概念" class="headerlink" title="web概念"></a>web概念</h2><ol>
-<li>软件架构</li>
-<li>资源分类<ol>
-<li>静态资源：所有用户访问后得到结果都是一样，可以直接被浏览器解析</li>
-<li>动态资源：每个用户访问都是不一样的，需要进行</li>
-</ol>
-</li>
-<li>网络通信三要素<ol>
-<li>IP地址</li>
-<li>端口号：应用程序在计算机上的唯一标识。0-65536</li>
-<li>传输协议<ul>
-<li>TPC协议：三次握手</li>
-<li>UDP协议</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a>web服务器</h2><ol>
-<li>服务器</li>
-<li>服务器软件：接收用户请求</li>
-<li>web服务器软件：接收用户请求，处理器扭曲做出相应</li>
-<li>常见web服务器<ul>
-<li>webLogic</li>
-<li>webSphere</li>
-<li>JBoss</li>
-<li>Tomcat：Apache基金组织 
-      <a class="article-more-link" href="/2021/07/03/tomcat/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/"
-        >还想看到更多吗？</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/" rel="tag">Java Web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li></ul>
 
     </footer>
   </div>

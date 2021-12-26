@@ -15,7 +15,7 @@
       
       <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1"/>
       <meta name="baidu-site-verification" content="code-FQjBrmXea2" />
-      <title>git add 相关命令学习 |  技術工程51區</title>
+      <title>git reset 三种模式 |  技術工程51區</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -58,7 +58,7 @@
       <!-- body引入的是index.ejs -->
       <section class="outer">
   <article
-  id="post-git/git-add"
+  id="post-git/git-reset"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -69,7 +69,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  git add 相关命令学习
+  git reset 三种模式
 </h1>
  
 
@@ -77,8 +77,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/22/git/git-add/" class="article-date">
-  <time datetime="2019-09-22T02:56:32.000Z" itemprop="datePublished">2019-09-22</time>
+      <a href="/2021/12/26/git/git-reset/" class="article-date">
+  <time datetime="2021-12-26T13:23:16.000Z" itemprop="datePublished">2021-12-26</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">80</span>
+            <span class="post-count">230</span>
         </span>
     </span>
 
@@ -113,11 +113,18 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>[TOC]</p>
-<h1 id="git-add-A-和-git-add-的区别"><a href="#git-add-A-和-git-add-的区别" class="headerlink" title="git add -A 和 git add . 的区别"></a>git add -A 和 git add . 的区别</h1><ul>
-<li>git add -A  提交<strong>所有变化</strong><br>(git add –all 的缩写)<br>&emsp;</li>
-<li>git add -u  提交被<strong>修改(modified)</strong> 和被 <strong>删除(deleted)</strong> 文件，不包括新文件(new)<br>(git add –update 的缩写)<br>&emsp;</li>
-<li>git add   提交 <strong>新文件(new)</strong> 和被 <strong>修改(modified)</strong>  文件，不包括被删除(deleted)文件<span id="more"></span></li>
+  <p>有时候我们在commit提交代码后，发现这一次commit的内容是有错误的，那么有两种处理方法：</p>
+<ol>
+<li>修改错误内容，再次commit一次</li>
+<li>使用git reset 命令撤销这一次错误的commit<br>第一种方法比较直接，但会多次一次commit记录。第二种方法会直接清楚错误的commit，由此咱们也可以知道<code>git reset</code>是一个让HEAD指针指向其他方向的命令。</li>
+</ol>
+<h1 id="git-reset-有哪三种模式"><a href="#git-reset-有哪三种模式" class="headerlink" title="git reset 有哪三种模式"></a>git reset 有哪三种模式</h1><ul>
+<li>reset –hard<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
+不保留工作目录和暂存区，使用这个模式，在重置HEAD和branch的同时，也会重置 stage 和 working tree 中的内容，也就是放弃掉你当前已commit或未commit的所有变动<br><img src="https://images.marcus659.com/typora/gitreset-soft-01.gif" alt="modify HEAD"></li>
+<li>reset –soft<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft</span><br></pre></td></tr></table></figure>
+保留工作目录，并把重置 HEAD 所带来的新的差异放进暂存区</li>
+<li>reset –mixed<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --mixed</span><br></pre></td></tr></table></figure>
+保留工作目录，并清空暂存区</li>
 </ul>
  
       <!-- reward -->
@@ -177,7 +184,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.marcus659.com/2019/09/22/git/git-add/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.marcus659.com/2021/12/26/git/git-reset/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -190,19 +197,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2019/09/22/git/gitmerge-and-gitrebase/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            git merge命令解析
-          
-        </div>
-      </a>
     
-    
-      <a href="/2019/09/22/git/git-pull-push/" class="article-nav-link">
+      <a href="/2021/11/14/elasticsearch/ESReboot/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">git push/pull 远程库学习</div>
+        <div class="article-nav-title">安全并正确地重启Elasticsearch集群</div>
       </a>
     
   </nav>
