@@ -1538,6 +1538,19 @@
       </tags>
   </entry>
   <entry>
+    <title>Windows机器使用SSH免密登录</title>
+    <url>/2022/02/24/ops/openssh-win/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="安装OpenSSH"><a href="#安装OpenSSH" class="headerlink" title="安装OpenSSH"></a>安装OpenSSH</h1><h1 id="客户端生成密钥"><a href="#客户端生成密钥" class="headerlink" title="客户端生成密钥"></a>客户端生成密钥</h1><h1 id="服务端ssh-config配置"><a href="#服务端ssh-config配置" class="headerlink" title="服务端ssh_config配置"></a>服务端ssh_config配置</h1><h1 id="开始免密登录"><a href="#开始免密登录" class="headerlink" title="开始免密登录"></a>开始免密登录</h1>]]></content>
+      <categories>
+        <category>Ops</category>
+      </categories>
+      <tags>
+        <tag>SSH</tag>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Tomcat的简介</title>
     <url>/2021/07/03/tomcat/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h1 id="1-Tomcat的简介"><a href="#1-Tomcat的简介" class="headerlink" title="1. Tomcat的简介"></a>1. Tomcat的简介</h1><h2 id="web概念"><a href="#web概念" class="headerlink" title="web概念"></a>web概念</h2><ol>
