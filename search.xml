@@ -1539,7 +1539,7 @@
   </entry>
   <entry>
     <title>Windows机器使用SSH免密登录</title>
-    <url>/2022/02/24/ops/openssh-win/</url>
+    <url>/2022/03/01/ops/openssh-win/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h1 id="安装OpenSSH"><a href="#安装OpenSSH" class="headerlink" title="安装OpenSSH"></a>安装OpenSSH</h1><h1 id="客户端生成密钥"><a href="#客户端生成密钥" class="headerlink" title="客户端生成密钥"></a>客户端生成密钥</h1><h1 id="服务端ssh-config配置"><a href="#服务端ssh-config配置" class="headerlink" title="服务端ssh_config配置"></a>服务端ssh_config配置</h1><h1 id="开始免密登录"><a href="#开始免密登录" class="headerlink" title="开始免密登录"></a>开始免密登录</h1>]]></content>
       <categories>
