@@ -1,9 +1,10 @@
 ---
 title: Java集合(一) | Map集合之HashMap的介绍-上
 date: 2021-04-04 12:48:22
-tags: Java
-categories:
+tags: 
   - Java基础
+  - 集合框架
+categories: 数据结构
 ---
 [TOC]
 

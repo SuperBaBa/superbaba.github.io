@@ -1,10 +1,14 @@
 <section class="outer">
+  <!-- advertising space -->
   <% if (theme.ads && theme.ads.length != 0){ %>
-  <%- partial('ads') %>
+    <%- partial('ads') %>
   <% } %>
+  <!-- broadcast space -->
   <% if (theme.broadcast.enable && pagination == 2){ %>
-  <%- partial('_partial/broadcast') %>
+    <%- partial('_partial/broadcast') %>
   <% } %>
+
+  <!-- The article space -->
   <article class="articles">
     <%
     var title = '';
@@ -19,16 +23,16 @@
     <h1 class="page-type-title"><%- title %></h1>
     <% } %>
     <% if (pagination == 2){ %>
-    <% page.posts.each(function(post){ %>
-    <%- partial('article', {post: post, index: true}) %>
-    <% }) %>
+      <% page.posts.each(function(post){ %>
+      <%- partial('article', {post: post, index: true}) %>
+      <% }) %>
   </article>
   <% } else { %>
-  <% var last; %>
-  <% page.posts.each(function(post, i){ %>
-  <% var year = post.date.year(); %>
-  <% if (last != year){ %>
-  <% if (last != null){ %>
+    <% var last; %>
+    <% page.posts.each(function(post, i){ %>
+    <% var year = post.date.year(); %>
+    <% if (last != year){ %>
+    <% if (last != null){ %>
   </div>
   </div>
   <% } %>

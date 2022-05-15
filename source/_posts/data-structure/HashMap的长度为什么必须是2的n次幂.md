@@ -1,14 +1,12 @@
 ---
 title: HashMap的长度为什么必须是2的n次方
 date: 2021-06-12 12:48:22
-tags: Java
-categories:
+tags:
   - Java基础
   - 集合框架
+categories: 数据结构
 ---
-# HashMap的长度为什么必须是2的n次方
-
-首先我们看下`HashMap`中的源码当中那里奠定了长度是**2的n次方**，并且是靠近`cap`这个值`最近的2的n次方`
+首先我们看下 `HashMap`中的源码当中那里奠定了长度是**2的n次方**，并且是靠近 `cap`这个值 `最近的2的n次方`
 
 ```java
 static final int tableSizeFor(int cap) {
@@ -27,24 +25,25 @@ static final int tableSizeFor(int cap) {
 }
 ```
 
-由上方代码可以看出，上方的方法是**将`cap`无符号的向右移动，再启动期间，使用`|`运算保证低位全部是1。**
+由上方代码可以看出，上方的方法是**将 `cap`无符号的向右移动，再启动期间，使用 `|`运算保证低位全部是1。**
 
 看起来有点复杂，那咱们举个例子：
+
 <!--more-->
-1. 首先我们传入`cap`初始值为17
-2. 经过`int n = cap -1 `也就是17-1后`n = 16`
-3. 将n进行如下的**位移动和逻辑运算**，最后得到`n = 31`
-4. 返回是根据三目运算符，得值返回值是`n + 1 = 32`，正好是 **2的5次方**
 
-![image-20210629004830300](https://img-blog.csdnimg.cn/20210629011022942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI2MTI1ODY1,size_16,color_FFFFFF,t_70#pic_center)
+1. 首先我们传入 `cap`初始值为17
+2. 经过 `int n = cap -1 `也就是17-1后 `n = 16`
+3. 将n进行如下的**位移动和逻辑运算**，最后得到 `n = 31`
+4. 返回是根据三目运算符，得值返回值是 `n + 1 = 32`，正好是 **2的5次方**
 
-通过上方的容量计算，我们已经确定在HashMap中`capacity `一定是**2的n次方**，那么为什么我们必须要
+通过上方的容量计算，我们已经确定在HashMap中 `capacity `一定是**2的n次方**。
 
-- &运算速度快，至少比%取模运算快
+在进行取模运算时，为什么我们必须要使用位运算进行取模
 
+- `&`运算速度快，至少比 `%`取模运算快
 - 能保证索引值肯定在 capacity 中，不会超出数组长度，`(n - 1) & hash`，当为2的n次方时，会满足一个公式：`(n - 1) & hash = hash % n`
 
-![image-20210628235807090](https://img-blog.csdnimg.cn/20210629011049948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI2MTI1ODY1,size_16,color_FFFFFF,t_70#pic_center)
+![hashmap-calculate02.png](https://img-blog.csdnimg.cn/20210629011049948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI2MTI1ODY1,size_16,color_FFFFFF,t_70#pic_center)
 
 两种运算效率差别到底有多少，这里可以直接做个测试：
 
@@ -75,9 +74,7 @@ public static void main(String[] args) {
 }
 ```
 
-
-
-那么当我们在HashMap初始化时，如果指定非2的n次方整数为初始化容量`initialCapacity`，那么会不会致使HashMap中的数组变更
+那么当我们在HashMap初始化时，如果指定非2的n次方整数为初始化容量 `initialCapacity`，那么会不会致使HashMap中的数组变更
 
 ```java
 public HashMap(int initialCapacity, float loadFactor) {

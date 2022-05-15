@@ -1,7 +1,9 @@
+<!-- 引入头标签模板 -->
 <%- partial('_partial/head') %>
 
 <body>
   <div id="app">
+    <!-- 鼠标点击效果 2：爆炸烟花 -->
     <% if (theme.click_effect===2){ %>
       <canvas class="fireworks"></canvas>
       <style>
@@ -13,13 +15,15 @@
           pointer-events: none;
         }
       </style>
-      <% } %>
-      <% if (theme.click_effect===3){ %>
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
-      <% } %>
+    <% } %>
+      <!-- 鼠标点击效果 3：粒子烟花 -->
+    <% if (theme.click_effect===3){ %>
+      <canvas width="1777" height="841" style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+    <% } %>
     <main class="content on">
+      <!-- body引入的是index.ejs -->
       <%- body %>
+      <!--脚步标签引入-->>
       <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
       <div class="float_btns">
         <%- partial('_partial/totop') %>

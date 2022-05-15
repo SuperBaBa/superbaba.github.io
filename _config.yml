@@ -1,6 +1,6 @@
 # Hexo Configuration
-## Docs: https://hexo.io/docs/configuration.html
-## Source: https://github.com/hexojs/hexo/
+# Docs: https://hexo.io/docs/configuration.html
+# Source: https://github.com/hexojs/hexo/
 
 # Site
 title: 技術工程51區
@@ -131,9 +131,11 @@ feed:
   icon: icon.png
   autodiscovery: true
   template:
-# 使用搜索插件
+
+# 是否启用搜索
+# 需要安装hexo-generator-searchdb(https://github.com/theme-next/hexo-generator-searchdb)
 search:
-  path: blog/search.xml
+  path: search.xml
   field: post
   content: true
   format: html

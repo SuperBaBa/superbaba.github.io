@@ -2,9 +2,9 @@
 title: CentOS 7.0的是firewall防火墙设置
 comments: true
 date: 2019-09-21 18:17:54
-categories:
-	- linux之旅
+categories: shell
 tags:
+  - Linux
 thumbnail: /images/linux.jpg
 ---
 
@@ -92,7 +92,7 @@ public (default)
   icmp-blocks:
   rich rules:
 ```
-  
+
 查询服务的启动状态
 ```
 firewall-cmd --query-service ftp

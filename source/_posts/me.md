@@ -1,10 +1,6 @@
 ---
-title: 贾从谦
+title: 关于我
 date: 2019-03-28 15:47:26
-categories:  #分类
-- 云服务器
-tag:
-- biaoqian
 thumbnail: /images/pic01.jpg
 ---
 

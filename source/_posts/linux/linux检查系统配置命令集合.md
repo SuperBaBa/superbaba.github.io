@@ -2,9 +2,9 @@
 title: Linux下查看CPU型号,内存大小,硬盘空间的命令
 comments: true
 date: 2019-09-21 18:13:13
-categories:
-	- linux之旅
+categories: shell
 tags:
+  - Linux
 thumbnail: /images/linux.jpg
 ---
 

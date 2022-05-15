@@ -2,9 +2,9 @@
 title: echo命令常用方法总结
 comments: true
 date: 2019-09-21 16:11:27
-categories:
-	- linux之旅
+categories: shell
 tags:
+  - Linux
 thumbnail: /images/linux.jpg
 ---
 [TOC]

@@ -2,9 +2,9 @@
 title: git push/pull 远程库学习
 comments: true
 date: 2019-09-22 10:56:16
-categories:
-	- Git手札
+categories: 开发工具
 tags:
+  - Git
 thumbnail: /images/artilce-banner/git.jpg
 ---
 # git push/pull 远程库学习

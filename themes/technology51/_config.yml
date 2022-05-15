@@ -1,13 +1,13 @@
 # 侧边栏菜单
 menu:
   主页: /
-  归档: /archives
+  # 归档: /archives
   分类: /categories
   标签: /tags
   旅行: https://www.ctrip.com
   摄影: /gallery
   友链: /friends
-  关于我们: /about
+  # 关于我: /about
 
 # 站点次标题和打字动效
 # https://github.com/mattboldt/typed.js
@@ -44,7 +44,7 @@ broadcast:
 
 # 文章配置
 # 文章太长，截断按钮文字(在需要截断的行增加此标记：<!--more-->)
-excerpt_link: 阅读更多...
+excerpt_link: 还想看到更多吗？
 # 如果你嫌每篇文章手动加more标记比较麻烦，又不想在首页全文显示，可以把excerpt_all设置成true，这样首页只会显示文章归档
 excerpt_all: false
 
@@ -84,20 +84,13 @@ reward_type: 2
 # 打赏wording
 reward_wording: "请我喝杯咖啡吧~"
 # 支付宝二维码图片地址，跟你设置logo的方式一样。比如：/images/alipay.jpg
-alipay: https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg
+alipay: http://images.marcus659.com/alipay.jpg
 # 微信二维码图片地址
-weixin: https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg
+weixin: http://images.marcus659.com/wechatPay.jpg
 
 # 版权声明
 # 版权声明type设定：0-关闭版权声明； 1-文章对应的md文件里有copyright: true属性，才有版权声明； 2-所有文章均有版权声明
-copyright_type: 2
-
-# 是否启用搜索
-# 需要安装hexo-generator-searchdb(https://github.com/theme-next/hexo-generator-searchdb)
-search:
-  path: blog/search.xml
-  field: post
-  format: html
+copyright_type: 1
 
 # RSS订阅(先安装hexo-generator-feed插件，再去博客根目录config进行配置)
 # 不想显示可以直接留空
@@ -171,7 +164,7 @@ katex:
 
 # mermaid流程图 三个选项缺一不可(https://mermaid-js.github.io/mermaid/)
 mermaid:
-  enable: false
+  enable: true
   cdn: https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js
   theme: forest
 
@@ -179,7 +172,7 @@ mermaid:
 since: 2015
 
 # 是否显示页脚信息(建议保留)
-pageFooter: true
+pageFooter: false
 
 # ICP备案信息尾部显示
 icp:
@@ -263,3 +256,25 @@ minivaline:
   #   img: https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/vultr.png
   #   url: https://www.vultr.com/?ref=8630075
   #   width: 300
+
+
+Gallery :
+    title: 生活总会有那么多精彩
+    description: 在人群中感到孤独，在独处时感到热闹
+Nav:
+    Home_name: 主页
+    is_use_categories : true 
+    categories_name: 分类
+    is_use_archives : false
+    archives_name: 归档
+    
+    #Social
+    # for more icons, please see http://fontawesome.io/icons/#brand
+    icon:
+        github: https://github.com/SuperBaBa
+        #github: https://github.com/miccall/hexo-theme-Mic_Theme
+        #500px: http://500px.com
+        envelope: mailto:marcus163.com
+        qq: http://wpa.qq.com/msgrd?v=3&uin=997676714&site=qq&menu=yes
+vue:
+  enable: true
