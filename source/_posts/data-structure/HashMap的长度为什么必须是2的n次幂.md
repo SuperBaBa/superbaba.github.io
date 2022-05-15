@@ -36,7 +36,7 @@ static final int tableSizeFor(int cap) {
 3. 将n进行如下的**位移动和逻辑运算**，最后得到`n = 31`
 4. 返回是根据三目运算符，得值返回值是`n + 1 = 32`，正好是 **2的5次方**
 
-![image-20210629004830300](C:\Users\Lovel\Desktop\image-20210629004830300.png)
+![image-20210629004830300](https://img-blog.csdnimg.cn/20210629011022942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI2MTI1ODY1,size_16,color_FFFFFF,t_70#pic_center)
 
 通过上方的容量计算，我们已经确定在HashMap中`capacity `一定是**2的n次方**，那么为什么我们必须要
 
@@ -44,7 +44,7 @@ static final int tableSizeFor(int cap) {
 
 - 能保证索引值肯定在 capacity 中，不会超出数组长度，`(n - 1) & hash`，当为2的n次方时，会满足一个公式：`(n - 1) & hash = hash % n`
 
-![image-20210628235807090](C:\Users\Lovel\Desktop\image-20210629004830300.png)
+![image-20210628235807090](https://img-blog.csdnimg.cn/20210629011049948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI2MTI1ODY1,size_16,color_FFFFFF,t_70#pic_center)
 
 两种运算效率差别到底有多少，这里可以直接做个测试：
 
