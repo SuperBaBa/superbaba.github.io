@@ -12,6 +12,11 @@
     "version": "5.4.0"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@ant-design/icons-vue": "^6.1.0",
+    "ant-design-vue": "^3.2.2",
+>>>>>>> 4356eac04aac6435b94871b1c7b283d79dfe7755
     "hexo": "^5.4.0",
     "hexo-deployer-git": "^3.0.0",
     "hexo-generator-archive": "^1.0.0",

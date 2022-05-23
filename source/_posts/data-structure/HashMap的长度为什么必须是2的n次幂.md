@@ -6,7 +6,7 @@ tags:
   - 集合框架
 categories: 数据结构
 ---
-首先我们看下`HashMap`中的源码当中那里奠定了长度是**2的n次方**，并且是靠近`cap`这个值`最近的2的n次方`
+首先我们看下 `HashMap`中的源码当中那里奠定了长度是**2的n次方**，并且是靠近 `cap`这个值 `最近的2的n次方`
 
 ```java
 static final int tableSizeFor(int cap) {
