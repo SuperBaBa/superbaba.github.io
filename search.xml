@@ -27,28 +27,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>文章版式</title>
-    <url>/1999/03/12/%E5%85%AC%E4%BC%97%E5%8F%B7/</url>
-    <content><![CDATA[<p>[TOC]</p>
-<h1 id="文章版式"><a href="#文章版式" class="headerlink" title="文章版式"></a>文章版式</h1><ol>
-<li>文字间距，需要经过调整</li>
-<li>文章插图需要进行二次修整</li>
-<li>公众号发文之前<strong>需要草稿视检</strong></li>
-<li>推文封面图需要风格统一，<strong>简约风格</strong></li>
-<li>推文分类<ul>
-<li>正经八百分享技术推文，<code>简约图文风格</code></li>
-<li>趣味推文</li>
-<li>恰饭卖课</li>
-</ul>
-</li>
-<li>标题得整个标题党！！<strong>营销标题</strong></li>
-</ol>
-<h1 id="工具统一"><a href="#工具统一" class="headerlink" title="工具统一"></a>工具统一</h1>]]></content>
-      <tags>
-        <tag>排版</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>权重随机算法</title>
     <url>/2020/08/08/algorithm/weightRandom/</url>
     <content><![CDATA[<blockquote>
@@ -83,7 +61,6 @@
 <li>权重测试类，<code>声明标识与权重占比</code>,<code>随机</code></li>
 </ol>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> javafx.util.Pair;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Lovel</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/7/8-0:09</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeightRandomTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 权重标识-占比的 key-value 集合</span></span><br><span class="line">    <span class="keyword">static</span> List&lt;Pair&lt;String, Integer&gt;&gt; list;</span><br><span class="line">    <span class="comment">// 随机权重区间</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> WeightRandom&lt;String, Integer&gt; random;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger logger = LoggerFactory.getLogger(WeightRandomTest.class);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, Integer&gt; countMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// 利用 treeMap 的 tailMap 和 lastKey 找到区间</span></span><br><span class="line">            String randomKey = random.random();</span><br><span class="line">            countMap.put(randomKey, countMap.getOrDefault(randomKey, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//遍历100000000次落点后的权重结果</span></span><br><span class="line">        <span class="keyword">for</span> (Pair&lt;String, Integer&gt; pair : list) &#123;</span><br><span class="line">            logger.debug(<span class="string">&quot;&#123;&#125;:&#123;&#125;&quot;</span>, pair.getKey(), countMap.get(pair.getKey()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line"></span><br><span class="line">        list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="keyword">new</span> Pair(<span class="string">&quot;A&quot;</span>, <span class="number">1</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Pair(<span class="string">&quot;B&quot;</span>, <span class="number">2</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Pair(<span class="string">&quot;C&quot;</span>, <span class="number">3</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Pair(<span class="string">&quot;D&quot;</span>, <span class="number">4</span>));</span><br><span class="line">        <span class="comment">//list.add(new Pair(&quot;E&quot;, 0));</span></span><br><span class="line">        random = <span class="keyword">new</span> WeightRandom(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
         <category>算法</category>
@@ -139,7 +116,7 @@
   <entry>
     <title>HashMap的长度为什么必须是2的n次方</title>
     <url>/2021/06/12/data-structure/HashMap%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%98%AF2%E7%9A%84n%E6%AC%A1%E5%B9%82/</url>
-    <content><![CDATA[<p>首先我们看下<code>HashMap</code>中的源码当中那里奠定了长度是<strong>2的n次方</strong>，并且是靠近<code>cap</code>这个值<code>最近的2的n次方</code></p>
+    <content><![CDATA[<p>首先我们看下 <code>HashMap</code>中的源码当中那里奠定了长度是<strong>2的n次方</strong>，并且是靠近 <code>cap</code>这个值 <code>最近的2的n次方</code></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 首先cap-1使得n的最后一位和cap最后一位绝对不一样</span></span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 向右无符号的移动了1位，并使用或运算使n的所有有1的位上全部是1</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 向右无符号移动2位，使用或运算将低位填充为1</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// 同理可得</span></span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="comment">// 已经向右移动多个位，最终 00011111 = 31 那么 +1 既成为了2的n次方</span></span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>由上方代码可以看出，上方的方法是<strong>将<code>cap</code>无符号的向右移动，再启动期间，使用<code>|</code>运算保证低位全部是1。</strong></p>
@@ -1219,6 +1196,111 @@
       </categories>
   </entry>
   <entry>
+    <title>Arthas 简单使用</title>
+    <url>/2022/06/14/java/arthas-guide/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Maven -pl -am -amd 参数学习</title>
+    <url>/2022/06/14/java/maven-package-advanced/</url>
+    <content><![CDATA[<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>每次我们在使用maven管理工程时，可能需要指定编译打包某一个模块，在此时我们就需要使用<code>-pl</code>参数来指定顶层pom的module</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">+- simple-project-parent</span><br><span class="line">|  +- simple-service</span><br><span class="line">|  |  \- simple-core                                                     </span><br><span class="line">|  +- simple-web                                              </span><br><span class="line">|  |  +- simple-core    </span><br><span class="line">|  \- simple-core  </span><br></pre></td></tr></table></figure>
+<p>如上工程结构，如果我们可以发现 <code>simple-service</code>和 <code>simple-web</code> 这两个模块均依赖了<code>simple-core</code>，这时如果需要单独对<code>simple-web</code>进行编译打包部署，那么我们肯定会在<code>simple-parent</code>这个目录下的顶层pom执行<code>mvn clean install -Dmaven.test.skip=true</code>，这时将会对simple-parent所有的module做聚合操作，如果module实在太多也是一个相当漫长的过程，那么我们<strong>能不能只编译打包自己想要的module呢？</strong></p>
+<h1 id="构建指定模块"><a href="#构建指定模块" class="headerlink" title="构建指定模块"></a>构建指定模块</h1><p>参考Maven官网的 <a href="https://maven.apache.org/ref/3-LATEST/maven-embedder/cli.html">maven cli option reference</a> 可以看到 <code>-pl</code>、<code>-am</code>、<code>-amd</code>三个参数</p>
+<table>
+<thead>
+<tr>
+<th>Options</th>
+<th>Description</th>
+<th>简单理解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--am</code>, <code>--also-make</code></td>
+<td>If project list is specified, also build projects required by the list</td>
+<td>指定构建工程后，工程所依赖的模块也会被构建</td>
+</tr>
+<tr>
+<td><code>--amd</code>, <code>--also-make-dependents</code></td>
+<td>If project list is specified, also build projects that depend on projects on the list</td>
+<td>指定构建工程后，依赖这个工程的模块也会被构建</td>
+</tr>
+<tr>
+<td><code>-pl</code>, <code>--projects</code></td>
+<td>Comma-delimited list of specified reactor projects to build instead of all projects. A project can be specified by [groupId]:artifactId or by its relative path</td>
+<td>指定需要构建的模块，或者是pom的相对路径， 可以使用列表用逗号分隔</td>
+</tr>
+<tr>
+<td><code>--amd</code>, <code>--also-make-dependents</code></td>
+<td>If project list is specified, also build projects that depend on projects on the list</td>
+<td>指定构建工程后，依赖这个工程的模块也会被构建</td>
+</tr>
+<tr>
+<td><code>-P</code>, <code>--activate-profiles</code></td>
+<td>Comma-delimited list of profiles to activate</td>
+<td>指定激活环境，如<code>mvn package -P prod</code>打包生产环境的包</td>
+</tr>
+<tr>
+<td><code>-N</code>, <code>--non-recursive</code></td>
+<td>Do not recurse into sub-projects</td>
+<td>不使用递归构建</td>
+</tr>
+<tr>
+<td><code>-rf</code>, <code>--resume-from</code></td>
+<td>Resume reactor from specified project</td>
+<td>根据指定的工程继续构建</td>
+</tr>
+</tbody></table>
+<h1 id="Exmple"><a href="#Exmple" class="headerlink" title="Exmple"></a>Exmple</h1><p>仍然使用上文中的<code>simple-project-parent</code>工程进行构建，依赖结构如上文不变</p>
+<ol>
+<li><strong>构建指定模块并构建其依赖的所有工程</strong>，在顶层pom(simple-project-parent目录下)中运行<code>mvn clean install -pl com.exmple:simple-web -am</code>, 可以看到</li>
+</ol>
+<ul>
+<li><code>simple-project-parent</code>被构建并安装到本地仓库</li>
+<li><code>simple-core</code>被构建并安装到本地仓库</li>
+<li><code>simple-web</code>被构建并安装到本地仓库</li>
+<li><code>simple-service</code>并不被<code>simple-web</code>依赖，因此并没有参与构建打包过程</li>
+</ul>
+<blockquote>
+<p>命令中 com.exmple:simple-web可以改成simple-web，同一groupId无需再写groupId，直接写文件夹名也是可以的，如simple-web模块name是simple-web，但文件夹名为web，那么写web也是可以的</p>
+</blockquote>
+<ol start="2">
+<li><strong>构建指定模块，同时依赖指定工程的模块也进行构建</strong>，在顶层pom(simple-project-parent目录下)中运行<code>mvn clean install -pl com.exmple:simple-core -amd</code>, 可以看到</li>
+</ol>
+<ul>
+<li><code>simple-core</code>被构建并安装到本地仓库</li>
+<li><code>simple-web</code>被构建并安装到本地仓库</li>
+<li><code>simple-service</code>被构建并安装到本地仓库</li>
+<li><code>simple-project-parent</code>并不依赖<code>simple-core</code>，因此不参与打包构建</li>
+</ul>
+<ol start="3">
+<li><strong>指定多个工程</strong>，在顶层pom(simple-project-parent目录下)中运行<code>mvn clean install -pl simple-core,simple-service -amd</code>, 可以看到</li>
+</ol>
+<ul>
+<li><code>simple-core</code>被构建并安装到本地仓库</li>
+<li><code>simple-web</code>被构建并安装到本地仓库</li>
+<li><code>simple-service</code>被构建并安装到本地仓库</li>
+<li><code>simple-project-parent</code>并不依赖任何一个工程，因此不参与打包构建</li>
+</ul>
+<ol start="4">
+<li><strong>不递归构建</strong>，在顶层pom(simple-project-parent目录下)中运行<code>mvn clean install -N</code>, 可以看到</li>
+</ol>
+<ul>
+<li><code>simple-project-parent</code>被构建并安装到本地仓库</li>
+<li>其他工程没有被父pom递归，不参与构建和打包</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Maven</category>
+      </categories>
+  </entry>
+  <entry>
     <title>linux解压打包命令</title>
     <url>/2019/09/21/linux/linux-achriveOrUnzip/</url>
     <content><![CDATA[<p>[TOC]</p>
@@ -1474,6 +1556,150 @@
       </tags>
   </entry>
   <entry>
+    <title>ssh-keygen密钥</title>
+    <url>/2022/04/29/linux/ssh-keygen/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h1 id="ssh-keygen密钥是什么"><a href="#ssh-keygen密钥是什么" class="headerlink" title="ssh-keygen密钥是什么"></a>ssh-keygen密钥是什么</h1><p>密钥是一对由非对称加密方法生成的 <code>公钥(public key)</code> 和 <code>私钥(private key)</code>，且每次生成后的公钥和私钥都是以一一对应，每个公钥有且仅有一个私钥。</p>
+<p>其中<strong>公钥是可以公开发送的</strong>，使用公钥加密的信息<strong>必须使用对应的私钥才可以解密</strong>。</p>
+<p>既然是<strong>非对称加密</strong>，那么这个非对称加密体现在哪里呢？</p>
+<h1 id="使用密钥登录过程"><a href="#使用密钥登录过程" class="headerlink" title="使用密钥登录过程"></a>使用密钥登录过程</h1><ol>
+<li><p>客户端发送请求，带上<code>username</code>、<code>ip</code>等重要信息</p>
+</li>
+<li><p>服务端接收到请求后生成一个随机串，在 <code>authorized_keys</code> 文件中根据<code>username</code>匹配出对应的公钥，并使用公钥加密随机串后回传给客户端</p>
+</li>
+<li><p>客户端接收到密文，使用自己的私钥进行解密，获得随机串，传给服务端以证清白</p>
+</li>
+<li><p>服务端将收到的随机串进行比对，没毛病后放行</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">participant client as 客户端</span><br><span class="line">participant server as 服务端</span><br><span class="line">autonumber</span><br><span class="line">client -&gt;&gt; +server: ssh登录请求&lt;br/&gt;包括username、ip等信息</span><br><span class="line">Note right of server: 1.根据用户名匹配到公钥后&lt;br/&gt;2.生成一个随机数&lt;br/&gt;3.使用公钥加密随机串</span><br><span class="line">server -&gt;&gt; -client: 回应一个加密后的随机串</span><br><span class="line">Note left of client: 1.用私钥解密出随机串</span><br><span class="line">client -&gt;&gt; server: 随机数回传</span><br><span class="line">server --&gt;&gt; server: 字符串比对</span><br><span class="line">server -&gt;&gt; client: 验证没问题可以登录</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="ssh-keygen密钥生成"><a href="#ssh-keygen密钥生成" class="headerlink" title="ssh-keygen密钥生成"></a>ssh-keygen密钥生成</h1><p>在登录之前需要生成一对公私钥，无论是<strong>github鉴权</strong>、<strong>ssh鉴权</strong>都将有可能用到这个。</p>
+<p>打开终端使用<code>ssh-keygen</code>命令生成密钥，<code>-t</code>用于指定密钥的加密算法，一般可使用<code>DSA</code>或<code>RSA</code>算法，<code>-C</code>用来指定标识邮箱</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t dsa -C <span class="string">&quot;youremail@doamin.com&quot;</span></span><br><span class="line">Generating public/private dsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/username/.ssh/id_dsa):  press ENTER</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): ********</span><br><span class="line">Enter same passphrase again: ********</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> /home/username/.ssh/id_dsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /home/username/.ssh/id_dsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">14:ba:06:98:a8:98:ad:27:b5:ce:55:85:ec:64:37:19 youremail@doamin.com</span><br></pre></td></tr></table></figure>
+
+<p>在执行完<code>ssh-keygen -t dsa</code>命令后将会如上所示，需要输入两个东西，当然这两个选项也可以不输入</p>
+<p><code>Enter file in which to save the key (/home/username/.ssh/id_dsa):</code>这里是输入您所期望密钥对生成后的目录，默认情况下可以在<code>$HOME/.ssh</code>目录下找到，需要注意点的是，root用户与其他用户目录稍稍有点不同，其他用户在<code>/home/$username/.ssh</code>目录下，而root目录在<code>/root/.ssh/</code>。</p>
+<p>输入完目录后，<code>Enter passphrase (empty for no passphrase):</code>，输入加密的口令<em>最短五个字符</em>,这里我的理解就是随意输入一个加密的串，当然也可以不输入，默认空串</p>
+<p>最后我们可以看到提示已经生成了密钥对，公钥指纹和邮箱标识，根据<code>/home/username/.ssh/id_dsa.pub</code>我们可以查看一下公钥，这里密钥对都是文本文件，可以使用<code>vi</code>直接打开。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vi /home/username/.ssh/id_dsa.pub</span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEAvpB4lUbAaEbh9u6HLig7amsfywD4fqSZq2ikACIUBn3GyRPfeF93l/</span><br><span class="line">weQh702ofXbDydZAKMcDvBJqRhUotQUwqV6HJxqoqPDlPGUUyo8RDIkLUIPRyq</span><br><span class="line">ypZxmK9aCXokFiHoGCXfQ9imUP/w/jfqb9ByDtG97tUJF6nFMP5WzhM= youremail@doamin.com</span><br></pre></td></tr></table></figure>
+
+<p>由于我们使用的<code>dsa</code>算法，因此公钥名称将会是<code>id_dsa.pub</code>，如果我们使用<code>rsa</code>算法的话，那名称应该是<code>id_rsa.pub</code></p>
+<p>下面的命令可以列出用户所有的公钥。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ls -l ~/.ssh/id_*.pub</span><br></pre></td></tr></table></figure>
+
+<p>生成密钥以后，建议修改它们的权限，防止其他人读取。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ chmod 600 ~/.ssh/id_rsa</span><br><span class="line">$ chmod 600 ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>chmod 是一个更改文件权限的命令，使用数字比较方便但不太好记，每位数字代表不同的域</p>
+<p>第一位代表文件或目录所属用户、第二位代表文件或目录所属用户组、第三位代表其他所有用户</p>
+<ul>
+<li>可运行 +x 数字代表是 1</li>
+<li>可写 +w 数字代表是 2</li>
+<li>可读 +r 数字代表是4</li>
+</ul>
+<p>因此 6=2+4 即为只能读写</p>
+</blockquote>
+<h1 id="使用密钥对免密登录的步骤"><a href="#使用密钥对免密登录的步骤" class="headerlink" title="使用密钥对免密登录的步骤"></a>使用密钥对免密登录的步骤</h1><ol>
+<li>客户端使用<code>ssh-keygen</code>生成密钥对，命令可以使用`ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#x6f;&#x75;&#114;&#101;&#x6d;&#97;&#x69;&#x6c;&#x40;&#x64;&#x6f;&#x61;&#x6d;&#105;&#110;&#x2e;&#99;&#111;&#109;">&#x79;&#x6f;&#x75;&#114;&#101;&#x6d;&#97;&#x69;&#x6c;&#x40;&#x64;&#x6f;&#x61;&#x6d;&#105;&#110;&#x2e;&#99;&#111;&#109;</a>“，输入指纹是可选的。</li>
+<li>将公钥<code>id_rsa.pub</code>复制到目标服务器（服务端）<code>$HOME/.ssh</code>目录下，并更名为 <code>authorized_keys</code></li>
+<li>重启目标服务器的ssh服务，这点很重要，可以使用<code>systemctl restart sshd</code></li>
+<li>客户端再次发送<code>ssh username@hostname</code>即可直接登录</li>
+</ol>
+<h1 id="ssh-copy-id-命令：自动上传公钥一步到位"><a href="#ssh-copy-id-命令：自动上传公钥一步到位" class="headerlink" title="ssh-copy-id 命令：自动上传公钥一步到位"></a>ssh-copy-id 命令：自动上传公钥一步到位</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-copy-id -i key_file username@host</span><br></pre></td></tr></table></figure>
+
+<p>上述命令中<code>key_file</code>就是公钥，<code>username</code>和<code>host</code>可以不用说了吧[手动狗头]，当然如果像我一样懒，不想使用<code>-i</code>去指定公钥，比如只有一个<code>$HOME/.ssh/id_rsa.pub</code>，那么也可以不需要指定<code>key_file</code>，<code>ssh-copy-id</code>会自动在当前<code>$HOME/.ssh/</code>目录下匹配到公钥，然后发送到远程计算机上，命令使用如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-copy-id username@host</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: <span class="string">&quot;/root/.ssh/id_rsa.pub&quot;</span></span><br><span class="line">/usr/bin/ssh-copy-id: INFO: attempting to <span class="built_in">log</span> <span class="keyword">in</span> with the new key(s), to filter out any that are already installed</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- <span class="keyword">if</span> you are prompted now it is to install the new keys</span><br></pre></td></tr></table></figure>
+
+<p>通过上述提示，咱们可以看出来<code>ssh-copy-id</code>命令回去检索需要安装到远程计算机的公钥，并将没安装的密钥进行自动安装，完成了密钥复制、远程计算机内更名公钥为<code>authorized_keys</code>或在<code>authorized_keys</code>文件最后一行追加客户端公钥。</p>
+<p>此处需要注意若<code>authorized_keys</code>文件是存在的，那么需要<strong>保证文件的末尾是换行符</strong>，否则将可能出现多个公钥连在一起，使多个公钥均无法生效</p>
+<h1 id="ssh-agent和ssh-add命令使用"><a href="#ssh-agent和ssh-add命令使用" class="headerlink" title="ssh-agent和ssh-add命令使用"></a>ssh-agent和ssh-add命令使用</h1><h2 id="ssh-agent将口令保存在内存中"><a href="#ssh-agent将口令保存在内存中" class="headerlink" title="ssh-agent将口令保存在内存中"></a>ssh-agent将口令保存在内存中</h2><p>这两个命令可能会陌生一些，但也是咱们使用非对称密钥传输的重要工具，通常是在**密钥对生成时私钥（<code>private key</code>）增加了口令，因此无论是<code>scp</code>/<code>sftp</code>/<code>ssh</code>均需要在私钥解密前，输入对应的口令。</p>
+<p>每次使用私钥均需要输入口令，那不又回到最初的原点了，<code>ssh-agent</code>和<code>ssh-add</code>就是来带你走出原点而设计的。</p>
+<p>第一步，使用下面的命令新建一次命令行对话。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-agent bash</span><br></pre></td></tr></table></figure>
+
+<p>上面命令中，如果你使用的命令行环境不是 Bash，可以用其他的 Shell 命令代替。比如<code>zsh</code>和<code>fish</code>。</p>
+<p>如果想在当前对话启用<code>ssh-agent</code>，可以使用下面的命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> `ssh-agent`</span><br><span class="line">Agent pid 8627</span><br></pre></td></tr></table></figure>
+
+<p>上面命令中，<code>ssh-agent</code>会先自动在后台运行，并将需要设置的环境变量输出在屏幕上，类似下面这样。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-agent</span><br><span class="line">SSH_AUTH_SOCK=/tmp/ssh-8nNIF0cc0eJn/agent.8934; <span class="built_in">export</span> SSH_AUTH_SOCK;</span><br><span class="line">SSH_AGENT_PID=8935; <span class="built_in">export</span> SSH_AGENT_PID;</span><br><span class="line"><span class="built_in">echo</span> Agent pid 8935;</span><br></pre></td></tr></table></figure>
+
+<p><code>eval</code>命令的作用，就是运行上面的<code>ssh-agent</code>命令的输出，设置环境变量。</p>
+<p>第二步，在新建的 Shell 对话里面，使用<code>ssh-add</code>命令添加默认的私钥（比如<code>~/.ssh/id_rsa</code>，或<code>~/.ssh/id_dsa</code>，或<code>~/.ssh/id_ecdsa</code>，或<code>~/.ssh/id_ed25519</code>）。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-add</span><br><span class="line">Enter passphrase <span class="keyword">for</span> /home/you/.ssh/id_dsa: ********</span><br><span class="line">Identity added: /home/you/.ssh/id_dsa (/home/you/.ssh/id_dsa)</span><br></pre></td></tr></table></figure>
+
+<p>上面例子中，添加私钥时，会要求输入密码。以后，在这个对话里面再使用密钥时，就不需要输入私钥的密码了，因为私钥已经加载到内存里面了。</p>
+<p>第三步，使用 ssh 命令正常登录远程服务器。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh username@remoteHost</span><br></pre></td></tr></table></figure>
+
+<p>上面命令中，<code>remoteHost</code>是远程服务器的地址，ssh 使用的是默认的私钥。这时如果私钥设有密码，ssh 将不再询问密码，而是直接取出内存里面的私钥。</p>
+<p>如果要使用其他私钥登录服务器，需要使用 ssh 命令的<code>-i</code>参数指定私钥文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh –i OpenSSHPrivateKey remoteHost</span><br></pre></td></tr></table></figure>
+
+<p>最后，如果要退出<code>ssh-agent</code>，可以直接退出子 Shell（按下 Ctrl + d），也可以使用下面的命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-agent -k</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh-add对私钥口令的操作"><a href="#ssh-add对私钥口令的操作" class="headerlink" title="ssh-add对私钥口令的操作"></a>ssh-add对私钥口令的操作</h2><p>如果添加的不是默认私钥，<code>ssh-add</code>命令需要显式指定私钥文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-add my-other-key-file</span><br></pre></td></tr></table></figure>
+
+<p><code>my-other-key-file</code>就是用户指定的私钥文件。</p>
+<ol>
+<li><strong><code>-d</code>参数从内存中删除指定的私钥。</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-add -d name-of-key-file</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong><code>-D</code>参数从内存中删除所有已经添加的私钥。</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-add -D</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong><code>-l</code>参数列出所有已经添加的私钥。</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-add -l</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ssh-login</title>
+    <url>/2022/04/29/linux/ssh-login/</url>
+    <content><![CDATA[<h1 id="What’s-SSH"><a href="#What’s-SSH" class="headerlink" title="What’s SSH"></a>What’s SSH</h1><p>  SSH(Secure Shell)是一种<strong>应用层网络协议</strong>(OSI七层网络模型)，与FTP（文件传送协议）、Telnet（远程登录协议）、DNS（域名解析协议）、SMTP（邮件传送协议），POP3协议（邮局协议），HTTP协议（Hyper Text Transfer Protocol）等协议一样，用于提供安全的 用于计算机之间的加密登录。如果一个用户从本地计算机，使用SSH协议登录另一台远程计算机，我们就可以认为，这种登录是安全的，即使被中途截获，密码也不会泄露。</p>
+<p>  SSH只是一种协议，存在多种实现，既有商业实现，也有开源实现。本文针对的实现是OpenSSH，它是自由软件，应用非常广泛，这里只讨论SSH的登录方式，其他用法后续文章中讨论。如果要在Windows系统中使用SSH可以安装OpenSSH，<br>  可以<a href="https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse">单击此处</a>查看OpenSSH的是使用文档。</p>
+<blockquote>
+<p>最早的时候，互联网通信都是明文通信，一旦被截获，内容就暴露无疑。1995年，芬兰学者Tatu Ylonen设计了SSH协议，将登录信息全部加密，成为互联网安全的一个基本解决方案，迅速在全世界获得推广，目前已经成为Linux系统的标准配置。</p>
+</blockquote>
+<h1 id="SSH登录过程"><a href="#SSH登录过程" class="headerlink" title="SSH登录过程"></a>SSH登录过程</h1><ol>
+<li>TCP三次握手后进行SSH协议版本协商</li>
+<li>服务端收到用户的登录请求，把自己的公钥发给用户</li>
+<li>客户端获取到公钥，并使用MD5计算出一个128位的公钥指纹，让用户确认是否是真实主机(这就是为什么登录时需要输入yes/no进行确认)</li>
+<li>加密算法协商后，客户端使用这个公钥，将登录密码加密后，发送到服务端</li>
+<li>服务器端收到后用自己的私钥解密后得到用户名密码，与本地密码对比，如果密码正确，就同意用户登录。</li>
+</ol>
+<p>  在上述过程中还是会发生中间人攻击的风险，(<em><strong>如果有时间或条件后续可更新</strong></em>)由于没有像HTTPS一样的第三方证书中心，如果被登录请求被拦截后，中间攻击人可能会发送自己伪造的公钥给客户端，客户端再进行密码输入，那么在中间人再通过伪造公钥对应的私钥进行解密，那么密码就暴露于光天化日之下，安全性荡然无存。</p>
+<h1 id="SSH的基本用法-登录"><a href="#SSH的基本用法-登录" class="headerlink" title="SSH的基本用法-登录"></a>SSH的基本用法-登录</h1><h2 id="口令登录"><a href="#口令登录" class="headerlink" title="口令登录"></a>口令登录</h2><p>  假设你要以用户名user，登录远程主机为 login.test.com<br>  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh user@login.test.com </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">接下来会让用户确认公钥指纹，如下：</span></span><br><span class="line">The authenticity of host \&#x27;host (login.test.com)\&#x27; can\&#x27;t be established.</span><br><span class="line">RSA key fingerprint is 98:3e:d7:e0:de:9e:ac:67:28:c2:42:2d:37:16:58:4d.</span><br><span class="line">　Are you sure you want to continue connecting (yes/no)?</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">输入yes后在输入登录口令即可</span></span><br><span class="line">Password: (enter password)</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  如果确认远程主机(服务端)是用户所需要的登录的机器，那么远程主机的公钥将会保存在<code>$HOME/.ssh/konwn_hosts</code>文件中，可以根据远程主机的域名或者IP定位到保存的公钥，<strong>下次再登录同一台远程主机的时候就无需再确认公钥指纹了</strong></p>
+<p>  假设服务端设置的ssh协议端口为2324<br>  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh user@login.test.com -p 2324</span><br></pre></td></tr></table></figure></p>
+<p>  假设客户端(用户主机)当前用户为logger，需要使用服务端(远程主机)logger用户进行登录<br>  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">无需在前面添加user用户名</span></span><br><span class="line">ssh login.test.com </span><br></pre></td></tr></table></figure></p>
+<h2 id="公钥登录-免密登录"><a href="#公钥登录-免密登录" class="headerlink" title="公钥登录(免密登录)"></a>公钥登录(免密登录)</h2><p>  公钥登录免去了每次输入口令的麻烦，可以通过<code>ssh user@host</code>命令直接登录，无需输入密码。原理：<strong>客户端将自己公钥存储在服务端<code>$HOME/.ssh/authorized_keys</code>，登录是服务端会响应一串随机字符串，客户端使用私钥加密后，远程主机使用公钥进行解密，若成功则允许登录</strong></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>top命令的使用</title>
+    <url>/2019/09/21/linux/top-monitor/</url>
+    <content><![CDATA[<h1 id="top命令信息解释"><a href="#top命令信息解释" class="headerlink" title="top命令信息解释"></a>top命令信息解释</h1><h1 id="top命令排序"><a href="#top命令排序" class="headerlink" title="top命令排序"></a>top命令排序</h1>]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JVM内存区域</title>
     <url>/2021/07/04/memory-area/JVM-Memory-Region/</url>
     <content><![CDATA[<h1 id="JVM内存区域"><a href="#JVM内存区域" class="headerlink" title="JVM内存区域"></a>JVM内存区域</h1><h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><p>定义：JVM在执行Java程序过程中，会将其所管理的内存分为多个区域，同时会有一些<strong>直接内存</strong>不在运行时数据区，但JVM也会使用一些工具对其进行频繁使用。</p>
@@ -1539,7 +1765,7 @@
   </entry>
   <entry>
     <title>Windows机器使用SSH免密登录</title>
-    <url>/2022/03/19/ops/openssh-win/</url>
+    <url>/2022/06/16/ops/openssh-win/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h1 id="安装OpenSSH"><a href="#安装OpenSSH" class="headerlink" title="安装OpenSSH"></a>安装OpenSSH</h1><h1 id="客户端生成密钥"><a href="#客户端生成密钥" class="headerlink" title="客户端生成密钥"></a>客户端生成密钥</h1><h1 id="服务端ssh-config配置"><a href="#服务端ssh-config配置" class="headerlink" title="服务端ssh_config配置"></a>服务端ssh_config配置</h1><h1 id="开始免密登录"><a href="#开始免密登录" class="headerlink" title="开始免密登录"></a>开始免密登录</h1>]]></content>
       <categories>
@@ -1724,6 +1950,16 @@
       <categories>
         <category>Vim</category>
       </categories>
+  </entry>
+  <entry>
+    <title>servlet-filter</title>
+    <url>/2022/05/01/web/servlet-filter/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>spring-websocket</title>
+    <url>/2022/05/01/web/spring-websocket/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>JVM内存区域</title>

@@ -15,7 +15,7 @@
       
       <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1"/>
       <meta name="baidu-site-verification" content="code-FQjBrmXea2" />
-      <title>文章版式 |  技術工程51區</title>
+      <title>ssh-login |  技術工程51區</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -58,7 +58,7 @@
       <!-- body引入的是index.ejs -->
       <section class="outer">
   <article
-  id="post-公众号"
+  id="post-linux/ssh-login"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -69,7 +69,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  文章版式
+  ssh-login
 </h1>
  
 
@@ -77,15 +77,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/1999/03/12/%E5%85%AC%E4%BC%97%E5%8F%B7/" class="article-date">
-  <time datetime="1999-03-12T04:48:22.000Z" itemprop="datePublished">1999-03-12</time>
+      <a href="/2022/04/29/linux/ssh-login/" class="article-date">
+  <time datetime="2022-04-29T05:06:10.000Z" itemprop="datePublished">2022-04-29</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">99</span>
+            <span class="post-count">1k</span>
         </span>
     </span>
 
@@ -94,7 +94,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -109,21 +109,24 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>[TOC]</p>
-<h1 id="文章版式"><a href="#文章版式" class="headerlink" title="文章版式"></a>文章版式</h1><ol>
-<li>文字间距，需要经过调整</li>
-<li>文章插图需要进行二次修整</li>
-<li>公众号发文之前<strong>需要草稿视检</strong></li>
-<li>推文封面图需要风格统一，<strong>简约风格</strong></li>
-<li>推文分类<ul>
-<li>正经八百分享技术推文，<code>简约图文风格</code></li>
-<li>趣味推文</li>
-<li>恰饭卖课</li>
-</ul>
-</li>
-<li>标题得整个标题党！！<strong>营销标题</strong></li>
+  <h1 id="What’s-SSH"><a href="#What’s-SSH" class="headerlink" title="What’s SSH"></a>What’s SSH</h1><p>  SSH(Secure Shell)是一种<strong>应用层网络协议</strong>(OSI七层网络模型)，与FTP（文件传送协议）、Telnet（远程登录协议）、DNS（域名解析协议）、SMTP（邮件传送协议），POP3协议（邮局协议），HTTP协议（Hyper Text Transfer Protocol）等协议一样，用于提供安全的 用于计算机之间的加密登录。如果一个用户从本地计算机，使用SSH协议登录另一台远程计算机，我们就可以认为，这种登录是安全的，即使被中途截获，密码也不会泄露。</p>
+<p>  SSH只是一种协议，存在多种实现，既有商业实现，也有开源实现。本文针对的实现是OpenSSH，它是自由软件，应用非常广泛，这里只讨论SSH的登录方式，其他用法后续文章中讨论。如果要在Windows系统中使用SSH可以安装OpenSSH，<br>  可以<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse">单击此处</a>查看OpenSSH的是使用文档。</p>
+<blockquote>
+<p>最早的时候，互联网通信都是明文通信，一旦被截获，内容就暴露无疑。1995年，芬兰学者Tatu Ylonen设计了SSH协议，将登录信息全部加密，成为互联网安全的一个基本解决方案，迅速在全世界获得推广，目前已经成为Linux系统的标准配置。</p>
+</blockquote>
+<h1 id="SSH登录过程"><a href="#SSH登录过程" class="headerlink" title="SSH登录过程"></a>SSH登录过程</h1><ol>
+<li>TCP三次握手后进行SSH协议版本协商</li>
+<li>服务端收到用户的登录请求，把自己的公钥发给用户</li>
+<li>客户端获取到公钥，并使用MD5计算出一个128位的公钥指纹，让用户确认是否是真实主机(这就是为什么登录时需要输入yes/no进行确认)</li>
+<li>加密算法协商后，客户端使用这个公钥，将登录密码加密后，发送到服务端</li>
+<li>服务器端收到后用自己的私钥解密后得到用户名密码，与本地密码对比，如果密码正确，就同意用户登录。</li>
 </ol>
-<h1 id="工具统一"><a href="#工具统一" class="headerlink" title="工具统一"></a>工具统一</h1> 
+<p>  在上述过程中还是会发生中间人攻击的风险，(<em><strong>如果有时间或条件后续可更新</strong></em>)由于没有像HTTPS一样的第三方证书中心，如果被登录请求被拦截后，中间攻击人可能会发送自己伪造的公钥给客户端，客户端再进行密码输入，那么在中间人再通过伪造公钥对应的私钥进行解密，那么密码就暴露于光天化日之下，安全性荡然无存。</p>
+<h1 id="SSH的基本用法-登录"><a href="#SSH的基本用法-登录" class="headerlink" title="SSH的基本用法-登录"></a>SSH的基本用法-登录</h1><h2 id="口令登录"><a href="#口令登录" class="headerlink" title="口令登录"></a>口令登录</h2><p>  假设你要以用户名user，登录远程主机为 login.test.com<br>  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ssh user@login.test.com </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">接下来会让用户确认公钥指纹，如下：</span></span><br><span class="line">The authenticity of host \&#x27;host (login.test.com)\&#x27; can\&#x27;t be established.</span><br><span class="line">RSA key fingerprint is 98:3e:d7:e0:de:9e:ac:67:28:c2:42:2d:37:16:58:4d.</span><br><span class="line">　Are you sure you want to continue connecting (yes/no)?</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">输入yes后在输入登录口令即可</span></span><br><span class="line">Password: (enter password)</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  如果确认远程主机(服务端)是用户所需要的登录的机器，那么远程主机的公钥将会保存在<code>$HOME/.ssh/konwn_hosts</code>文件中，可以根据远程主机的域名或者IP定位到保存的公钥，<strong>下次再登录同一台远程主机的时候就无需再确认公钥指纹了</strong></p>
+<p>  假设服务端设置的ssh协议端口为2324<br>  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@login.test.com -p 2324</span><br></pre></td></tr></table></figure></p>
+<p>  假设客户端(用户主机)当前用户为logger，需要使用服务端(远程主机)logger用户进行登录<br>  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">无需在前面添加user用户名</span></span><br><span class="line">ssh login.test.com </span><br></pre></td></tr></table></figure></p>
+<h2 id="公钥登录-免密登录"><a href="#公钥登录-免密登录" class="headerlink" title="公钥登录(免密登录)"></a>公钥登录(免密登录)</h2><p>  公钥登录免去了每次输入口令的麻烦，可以通过<code>ssh user@host</code>命令直接登录，无需输入密码。原理：<strong>客户端将自己公钥存储在服务端<code>$HOME/.ssh/authorized_keys</code>，登录是服务端会响应一串随机字符串，客户端使用私钥加密后，远程主机使用公钥进行解密，若成功则允许登录</strong></p>
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -181,28 +184,31 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.marcus659.com/1999/03/12/%E5%85%AC%E4%BC%97%E5%8F%B7/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.marcus659.com/2022/04/29/linux/ssh-login/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E7%89%88/" rel="tag">排版</a></li></ul>
-
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2019/03/28/me/" class="article-nav-link">
+      <a href="/2022/04/29/linux/ssh-keygen/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            关于我
+            ssh-keygen密钥
           
         </div>
       </a>
     
+    
+      <a href="/2021/12/26/git/git-reset/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">git reset 三种模式</div>
+      </a>
     
   </nav>
 

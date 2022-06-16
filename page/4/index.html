@@ -159,6 +159,384 @@
     
       
       <article
+  id="post-concurrent-programming/AQS到底是什么"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/12/concurrent-programming/AQS%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/"
+    >AQS到底是什么</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/12/concurrent-programming/AQS%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/" class="article-date">
+  <time datetime="2021-03-12T04:48:22.000Z" itemprop="datePublished">2021-03-12</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[TOC]</p>
+<h1 id="AQS到底是什么"><a href="#AQS到底是什么" class="headerlink" title="AQS到底是什么"></a>AQS到底是什么</h1> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="tag">并发编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
+  id="post-algorithm/weightRandom"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/08/08/algorithm/weightRandom/"
+    >权重随机算法</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/08/08/algorithm/weightRandom/" class="article-date">
+  <time datetime="2020-08-08T13:34:36.000Z" itemprop="datePublished">2020-08-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>  在平时生活中我们往往会遇到一些权重选择的场景，如<strong>广告投放</strong>按照不同广告的权重比进行投放，<strong>流量负载</strong>也需要根据不同的权重选择不同策略。</p>
+</blockquote>
+<p>假如有4个元素A,B,C,D权重分别是1,2,3,4 ，随机请求的结果，命中各个元素的比例需要是1:2:3:4，那么我们可以先绘制一个第一象限的数轴，然后依据权重比例，分别在坐标轴上找出每个权重累加后对应的点。</p>
+<p><img src="http://images.marcus659.com/typora/weight-section.png" alt="image-20210812193417818"></p>
+<p>试想一下，如果我们的所有请求均散落在区间[0,10)中，那么每个区间散落的散点比例，则应该正好是我们每个元素之间的权重比例。</p>
+<p>根据上面的绘图和思考，我们来总结一下思路：</p>
+<ol>
+<li><p>依次累加权重，在散落区间中确定在数轴上的坐标点</p>
+</li>
+<li><p>绘制一条第一象限坐标，此处我们使用<code>SortedMap</code>的实现类<code>TreeMap</code>进行实现</p>
+</li>
+<li><p>按照顺序在坐标轴上进行标点，也就是每个点都是<code>TreeMap</code>中的一个Entry，且是从小到大的排列顺序(<code>TreeMap</code>是红黑树)</p>
+</li>
+<li><p>在<code>TreeMap</code>中key为权重叠加的值，value是权重的标识</p>
+</li>
+<li><p>使用随机函数进行区间落点，请求散点期待正态分布，散点均匀</p>
+</li>
+<li><p>利用treemap.tailMap().firstKey()即可找到目标元素</p>
+</li>
+<li><p>也可以使用数组+二分法实现</p> 
+      <a class="article-more-link" href="/2020/08/08/algorithm/weightRandom/"
+        >还想看到更多吗？</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
+  id="post-git/gitmerge-and-gitrebase"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/22/git/gitmerge-and-gitrebase/"
+    >git merge命令解析</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/22/git/gitmerge-and-gitrebase/" class="article-date">
+  <time datetime="2019-09-22T02:56:45.000Z" itemprop="datePublished">2019-09-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[TOC]</p>
+<h2 id="git-merge用途："><a href="#git-merge用途：" class="headerlink" title="git-merge用途："></a>git-merge用途：</h2><ol>
+<li>用于git-pull中，来整合另一代码仓库中的变化（即：git pull = git fetch + git merge）</li>
+<li>用于从一个分支到另一个分支的合并<blockquote>
+<p>警告：运行git-merge时含有大量的未commit文件很容易让你陷入困境，这将使你在冲突中难以回退。因此非常不鼓励在使用git-merge时存在未commit的文件，建议使用git-stash命令将这些未commit文件暂存起来，并在解决冲突以后使用git stash pop把这些未commit文件还原出来。</p>
+</blockquote>
+</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
+  id="post-git/git-add"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/22/git/git-add/"
+    >git add 相关命令学习</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/22/git/git-add/" class="article-date">
+  <time datetime="2019-09-22T02:56:32.000Z" itemprop="datePublished">2019-09-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[TOC]</p>
+<h1 id="git-add-A-和-git-add-的区别"><a href="#git-add-A-和-git-add-的区别" class="headerlink" title="git add -A 和 git add . 的区别"></a>git add -A 和 git add . 的区别</h1><ul>
+<li>git add -A  提交<strong>所有变化</strong><br>(git add –all 的缩写)<br>&emsp;</li>
+<li>git add -u  提交被<strong>修改(modified)</strong> 和被 <strong>删除(deleted)</strong> 文件，不包括新文件(new)<br>(git add –update 的缩写)<br>&emsp;</li>
+<li>git add   提交 <strong>新文件(new)</strong> 和被 <strong>修改(modified)</strong>  文件，不包括被删除(deleted)文件 
+      <a class="article-more-link" href="/2019/09/22/git/git-add/"
+        >还想看到更多吗？</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
+  id="post-git/git-pull-push"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/22/git/git-pull-push/"
+    >git push/pull 远程库学习</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/22/git/git-pull-push/" class="article-date">
+  <time datetime="2019-09-22T02:56:16.000Z" itemprop="datePublished">2019-09-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="git-push-pull-远程库学习"><a href="#git-push-pull-远程库学习" class="headerlink" title="git push/pull 远程库学习"></a>git push/pull 远程库学习</h1><p>git push 命令用于将本地分支更新，推送到远程主机。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong> ： 分支推送顺序写法是&lt;来源地&gt;:&lt;目的地&gt;</p>
+<ul>
+<li>git pull 是&lt;远程分支&gt;:&lt;本地分支&gt;</li>
+<li>git push 是&lt;本地分支&gt;:&lt;远程分支&gt;<h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3></li>
+</ul>
+<p>1.本地分支与远程分支存在追踪关系</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push origin master</span></span><br></pre></td></tr></table></figure>
+<p>以上命令，将本地master分支推送到origin主机的master分支。<br>&nbsp;<br>2.省略本地分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push origin :master</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 等同于</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push origin --delete master</span></span><br></pre></td></tr></table></figure>
+<p>以上推送一个空的本地分支到远程分支，表示删除远程分支<br>&nbsp;<br>3.使用-u选项制定一个默认主机，这样在后面就可以不添加任何参数，使用git push</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master</span></span><br></pre></td></tr></table></figure>
+<p>以上表示将本地的master分支推送到origin主机，同时指定origin为默认主机，</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
+  id="post-linux/linux-firewall-config"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/21/linux/linux-firewall-config/"
+    >CentOS 7.0的是firewall防火墙设置</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/21/linux/linux-firewall-config/" class="article-date">
+  <time datetime="2019-09-21T10:17:54.000Z" itemprop="datePublished">2019-09-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/shell/">shell</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>CentOS 7.0默认使用的是firewall作为防火墙，使用iptables必须重新设置一下</p>
+<ol>
+<li>直接关闭防火墙<br>&emsp;<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service <span class="comment">#停止firewall</span></span><br></pre></td></tr></table></figure>
+&emsp;<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> firewalld.service <span class="comment">#禁止firewall开机启动</span></span><br></pre></td></tr></table></figure> 
+      <a class="article-more-link" href="/2019/09/21/linux/linux-firewall-config/"
+        >还想看到更多吗？</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
   id="post-linux/linux-chown"
   class="article article-type-post"
   itemscope
@@ -277,6 +655,59 @@
 
       
       <article
+  id="post-linux/top-monitor"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/21/linux/top-monitor/"
+    >top命令的使用</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/21/linux/top-monitor/" class="article-date">
+  <time datetime="2019-09-21T10:15:50.000Z" itemprop="datePublished">2019-09-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/shell/">shell</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="top命令信息解释"><a href="#top命令信息解释" class="headerlink" title="top命令信息解释"></a>top命令信息解释</h1><h1 id="top命令排序"><a href="#top命令排序" class="headerlink" title="top命令排序"></a>top命令排序</h1> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
   id="post-linux/linux检查系统配置命令集合"
   class="article article-type-post"
   itemscope
@@ -339,369 +770,13 @@
 </article>
 
       
-      <article
-  id="post-linux/linux-scp"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/21/linux/linux-scp/"
-    >Linux之间文件传输scp</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/21/linux/linux-scp/" class="article-date">
-  <time datetime="2019-09-21T10:11:09.000Z" itemprop="datePublished">2019-09-21</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/shell/">shell</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>把本地的source.txt文件拷贝到192.168.0.10机器上的/home/work目录下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /home/work/source.txt work@192.168.0.10:/home/work/ </span><br></pre></td></tr></table></figure>
-<p>把192.168.0.10机器上的source.txt文件拷贝到本地的/home/work目录下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp work@192.168.0.10:/home/work/source.txt /home/work/ </span><br></pre></td></tr></table></figure>
-<p>把192.168.0.10机器上的source.txt文件拷贝到192.168.0.11机器的/home/work目录下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp work@192.168.0.10:/home/work/source.txt work@192.168.0.11:/home/work/ </span><br></pre></td></tr></table></figure>
-<p>拷贝文件夹，加-r参数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r /home/work/sourcedir work@192.168.0.10:/home/work/ </span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
-  id="post-linux/shell-echo"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/21/linux/shell-echo/"
-    >echo命令常用方法总结</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/21/linux/shell-echo/" class="article-date">
-  <time datetime="2019-09-21T08:11:27.000Z" itemprop="datePublished">2019-09-21</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/shell/">shell</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>[TOC]</p>
-<p>echo 用于字符串的输出。命令格式：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> string</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不带-e选项的 echo，将 \n 认为是普通字符；</span></span><br><span class="line">[roc@roclinux ~]$ <span class="built_in">echo</span> <span class="string">&quot;Hello World\n&quot;</span></span><br><span class="line">Hello World\n</span><br><span class="line"><span class="comment"># 使用了-e选项的 echo，会将 \n 认为是换行符。</span></span><br><span class="line">[roc@roclinux ~]$ <span class="built_in">echo</span> -e <span class="string">&quot;Hello World\n&quot;</span></span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure> 
-      <a class="article-more-link" href="/2019/09/21/linux/shell-echo/"
-        >还想看到更多吗？</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
-  id="post-git/git-commond-collection"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/08/08/git/git-commond-collection/"
-    >常用Git命令</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/08/08/git/git-commond-collection/" class="article-date">
-  <time datetime="2019-08-08T13:37:56.000Z" itemprop="datePublished">2019-08-08</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>[TOC]</p>
-<h4 id="0-日常操作"><a href="#0-日常操作" class="headerlink" title="0. 日常操作"></a>0. 日常操作</h4><ol>
-<li><p>拉取项目(默认master)<br>git clonse 地址</p>
-</li>
-<li><p>抓取远程仓库代码到本地<br>git pull</p>
-</li>
-<li><p>推送本地代码到仓库<br>git push</p>
-</li>
-<li><p>查看所有分支<br>git branch -a </p> 
-      <a class="article-more-link" href="/2019/08/08/git/git-commond-collection/"
-        >还想看到更多吗？</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
-  id="post-CommentArea"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/08/08/CommentArea/"
-    >树洞</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/08/08/CommentArea/" class="article-date">
-  <time datetime="2019-08-08T13:34:36.000Z" itemprop="datePublished">2019-08-08</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="此处可以随意留言"><a href="#此处可以随意留言" class="headerlink" title="此处可以随意留言"></a>此处可以随意留言</h1><p>留下自己那些曾经想说却说不出口的话吧<br><strong>匿名留言</strong><br><strong>当然大爷们也可以留下自己的邮箱哟</strong></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E6%B4%9E/" rel="tag">树洞</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
-  id="post-me"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/03/28/me/"
-    >关于我</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/03/28/me/" class="article-date">
-  <time datetime="2019-03-28T07:47:26.000Z" itemprop="datePublished">2019-03-28</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><p>From：长春理工大学<br>专业：经济学<br>岗位：Java开发工程师<br>座右铭：不怕从零开始,只怕从未启程</p>
-<h2 id="收获与感悟"><a href="#收获与感悟" class="headerlink" title="收获与感悟"></a>收获与感悟</h2><blockquote>
-<p><strong>客服</strong>：<br>感悟：在客服实践时，开始只是单纯以为接电话或者是挨挨骂，实际证实，还是我太单纯了。客服的工作一方面得保证公司形象，另一方面得解决客户的问题，在工作过程当中备受煎熬，但也有一些客户和我聊得很开心，有欢笑也有憋屈。<br>收获：沟通基本上是客服的全部工作内容了，在客服实践过程中，磨了脾气、历了性子。耐心、细心、敢于直面问题是我在客服工作中最大的收获。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p><strong>转运中心</strong>：<br>感悟：在转运中心实践过程中，我感受到了夜班的艰辛，同时也能感受到了信息化技术对生产效率的提升。在很多工作中都需要团队进行执行，有的团队配合默契，也有的团队存在内部问题（譬如:堵多头领导）。<br>收获：坚持和稳定是工作的根基，同时也要学会为人处世，办事多考虑。</p>
-</blockquote>
-<h2 id="职业规划"><a href="#职业规划" class="headerlink" title="职业规划"></a>职业规划</h2><ol>
-<li>掌握工作必备技能，规划学习计划，弥补自身专业缺陷；</li>
-<li>结合自身专业和技能，实现拟定的目标；</li>
-</ol>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
-  id="post-公众号"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/1999/03/12/%E5%85%AC%E4%BC%97%E5%8F%B7/"
-    >文章版式</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/1999/03/12/%E5%85%AC%E4%BC%97%E5%8F%B7/" class="article-date">
-  <time datetime="1999-03-12T04:48:22.000Z" itemprop="datePublished">1999-03-12</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>[TOC]</p>
-<h1 id="文章版式"><a href="#文章版式" class="headerlink" title="文章版式"></a>文章版式</h1><ol>
-<li>文字间距，需要经过调整</li>
-<li>文章插图需要进行二次修整</li>
-<li>公众号发文之前<strong>需要草稿视检</strong></li>
-<li>推文封面图需要风格统一，<strong>简约风格</strong></li>
-<li>推文分类<ul>
-<li>正经八百分享技术推文，<code>简约图文风格</code></li>
-<li>趣味推文</li>
-<li>恰饭卖课</li>
-</ul>
-</li>
-<li>标题得整个标题党！！<strong>营销标题</strong></li>
-</ol>
-<h1 id="工具统一"><a href="#工具统一" class="headerlink" title="工具统一"></a>工具统一</h1> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E7%89%88/" rel="tag">排版</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
   </nav>
   
 </section>

@@ -6,7 +6,7 @@
   <link href="http://www.marcus659.com/atom.xml" rel="self"/>
   
   <link href="http://www.marcus659.com/"/>
-  <updated>2022-03-19T11:28:05.041Z</updated>
+  <updated>2022-06-16T04:46:04.714Z</updated>
   <id>http://www.marcus659.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Windows机器使用SSH免密登录</title>
-    <link href="http://www.marcus659.com/2022/03/19/ops/openssh-win/"/>
-    <id>http://www.marcus659.com/2022/03/19/ops/openssh-win/</id>
-    <published>2022-03-19T11:28:05.041Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <link href="http://www.marcus659.com/2022/06/16/ops/openssh-win/"/>
+    <id>http://www.marcus659.com/2022/06/16/ops/openssh-win/</id>
+    <published>2022-06-16T04:46:04.714Z</published>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
       
@@ -45,11 +45,122 @@
   </entry>
   
   <entry>
+    <title>Arthas 简单使用</title>
+    <link href="http://www.marcus659.com/2022/06/14/java/arthas-guide/"/>
+    <id>http://www.marcus659.com/2022/06/14/java/arthas-guide/</id>
+    <published>2022-06-14T10:15:50.000Z</published>
+    <updated>2022-06-16T04:46:04.714Z</updated>
+    
+    
+    
+    
+    <category term="java" scheme="http://www.marcus659.com/categories/java/"/>
+    
+    
+    <category term="Linux" scheme="http://www.marcus659.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Maven -pl -am -amd 参数学习</title>
+    <link href="http://www.marcus659.com/2022/06/14/java/maven-package-advanced/"/>
+    <id>http://www.marcus659.com/2022/06/14/java/maven-package-advanced/</id>
+    <published>2022-06-14T05:00:00.000Z</published>
+    <updated>2022-06-16T04:46:04.714Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Maven" scheme="http://www.marcus659.com/categories/Maven/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>servlet-filter</title>
+    <link href="http://www.marcus659.com/2022/05/01/web/servlet-filter/"/>
+    <id>http://www.marcus659.com/2022/05/01/web/servlet-filter/</id>
+    <published>2022-05-01T07:27:55.000Z</published>
+    <updated>2022-06-16T04:46:04.714Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>spring-websocket</title>
+    <link href="http://www.marcus659.com/2022/05/01/web/spring-websocket/"/>
+    <id>http://www.marcus659.com/2022/05/01/web/spring-websocket/</id>
+    <published>2022-05-01T07:23:20.000Z</published>
+    <updated>2022-06-16T04:46:04.714Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ssh-keygen密钥</title>
+    <link href="http://www.marcus659.com/2022/04/29/linux/ssh-keygen/"/>
+    <id>http://www.marcus659.com/2022/04/29/linux/ssh-keygen/</id>
+    <published>2022-04-29T06:04:33.000Z</published>
+    <updated>2022-06-16T04:46:04.714Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;ssh-keygen密钥是什么&quot;&gt;&lt;a href=&quot;#ssh-keygen密钥是什么&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="ssh" scheme="http://www.marcus659.com/tags/ssh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ssh-login</title>
+    <link href="http://www.marcus659.com/2022/04/29/linux/ssh-login/"/>
+    <id>http://www.marcus659.com/2022/04/29/linux/ssh-login/</id>
+    <published>2022-04-29T05:06:10.000Z</published>
+    <updated>2022-06-16T04:46:04.714Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;What’s-SSH&quot;&gt;&lt;a href=&quot;#What’s-SSH&quot; class=&quot;headerlink&quot; title=&quot;What’s SSH&quot;&gt;&lt;/a&gt;What’s SSH&lt;/h1&gt;&lt;p&gt;  SSH(Secure</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>git reset 三种模式</title>
     <link href="http://www.marcus659.com/2021/12/26/git/git-reset/"/>
     <id>http://www.marcus659.com/2021/12/26/git/git-reset/</id>
     <published>2021-12-26T13:23:16.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
       
@@ -77,7 +188,7 @@
     <link href="http://www.marcus659.com/2021/11/14/elasticsearch/ESReboot/"/>
     <id>http://www.marcus659.com/2021/11/14/elasticsearch/ESReboot/</id>
     <published>2021-11-14T15:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
       
@@ -107,7 +218,7 @@
     <link href="http://www.marcus659.com/2021/11/14/elasticsearch/ELKCold&amp;HostArchitecture/"/>
     <id>http://www.marcus659.com/2021/11/14/elasticsearch/ELKCold&amp;HostArchitecture/</id>
     <published>2021-11-14T12:22:12.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
       
@@ -141,7 +252,7 @@
     <link href="http://www.marcus659.com/2021/11/11/git/git-rebase/"/>
     <id>http://www.marcus659.com/2021/11/11/git/git-rebase/</id>
     <published>2021-11-11T02:56:16.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
     
@@ -158,7 +269,7 @@
     <link href="http://www.marcus659.com/2021/11/10/vim/VimCursorMove/"/>
     <id>http://www.marcus659.com/2021/11/10/vim/VimCursorMove/</id>
     <published>2021-11-10T06:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
       
@@ -182,7 +293,7 @@
     <link href="http://www.marcus659.com/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/"/>
     <id>http://www.marcus659.com/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/</id>
     <published>2021-11-04T04:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
@@ -207,7 +318,7 @@
     <link href="http://www.marcus659.com/2021/11/02/elasticsearch/WhatIsRoute/"/>
     <id>http://www.marcus659.com/2021/11/02/elasticsearch/WhatIsRoute/</id>
     <published>2021-11-02T15:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
       
@@ -237,7 +348,7 @@
     <link href="http://www.marcus659.com/2021/09/15/tools/VS-CodeGettingStrated/"/>
     <id>http://www.marcus659.com/2021/09/15/tools/VS-CodeGettingStrated/</id>
     <published>2021-09-15T04:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
       
@@ -262,7 +373,7 @@
     <link href="http://www.marcus659.com/2021/07/04/memory-area/JVM-Memory-Region/"/>
     <id>http://www.marcus659.com/2021/07/04/memory-area/JVM-Memory-Region/</id>
     <published>2021-07-04T05:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;JVM内存区域&quot;&gt;&lt;a href=&quot;#JVM内存区域&quot; class=&quot;headerlink&quot; title=&quot;JVM内存区域&quot;&gt;&lt;/a&gt;JVM内存区域&lt;/h1&gt;&lt;h2 id=&quot;运行时数据区域&quot;&gt;&lt;a href=&quot;#运行时数据区域&quot; class=&quot;headerlink&quot; title=&quot;运行时数据区域&quot;&gt;&lt;/a&gt;运行时数据区域&lt;/h2&gt;&lt;p&gt;定义：JVM在执行Java程序过程中，会将其所管理的内存分为多个区域，同时会有一些&lt;strong&gt;直接内存&lt;/strong&gt;不在运行时数据区，但JVM也会使用一些工具对其进行频繁使用。&lt;/p&gt;
@@ -284,7 +395,7 @@
     <link href="http://www.marcus659.com/2021/07/04/MessageQueue/Kafka/WhatIsKafka/"/>
     <id>http://www.marcus659.com/2021/07/04/MessageQueue/Kafka/WhatIsKafka/</id>
     <published>2021-07-04T05:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
       
@@ -311,7 +422,7 @@
     <link href="http://www.marcus659.com/2021/07/03/tomcat/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/"/>
     <id>http://www.marcus659.com/2021/07/03/tomcat/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</id>
     <published>2021-07-03T05:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-Tomcat的简介&quot;&gt;&lt;a href=&quot;#1-Tomcat的简介&quot; class=&quot;headerlink&quot; title=&quot;1. Tomcat的简介&quot;&gt;&lt;/a&gt;1. Tomcat的简介&lt;/h1&gt;&lt;h2 id=&quot;web概念&quot;&gt;&lt;a href=&quot;#web概念&quot; class=&quot;headerlink&quot; title=&quot;web概念&quot;&gt;&lt;/a&gt;web概念&lt;/h2&gt;&lt;ol&gt;
@@ -356,7 +467,7 @@
     <link href="http://www.marcus659.com/2021/06/12/concurrent-programming/Reentrantlock%E9%87%8D%E5%85%A5%E9%94%81/"/>
     <id>http://www.marcus659.com/2021/06/12/concurrent-programming/Reentrantlock%E9%87%8D%E5%85%A5%E9%94%81/</id>
     <published>2021-06-12T04:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
       
@@ -382,7 +493,7 @@
     <link href="http://www.marcus659.com/2021/06/12/concurrent-programming/Synchronized%E5%85%B3%E9%94%AE%E5%AD%97/"/>
     <id>http://www.marcus659.com/2021/06/12/concurrent-programming/Synchronized%E5%85%B3%E9%94%AE%E5%AD%97/</id>
     <published>2021-06-12T04:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
+    <updated>2022-06-16T04:46:04.714Z</updated>
     
     
     
@@ -391,167 +502,6 @@
     
     
     <category term="并发编程" scheme="http://www.marcus659.com/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Volatiel关键字使用</title>
-    <link href="http://www.marcus659.com/2021/06/12/concurrent-programming/WhatIsVolatiel/"/>
-    <id>http://www.marcus659.com/2021/06/12/concurrent-programming/WhatIsVolatiel/</id>
-    <published>2021-06-12T04:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Volatiel关键字使用&quot;&gt;&lt;a href=&quot;#Volatiel关键字使用&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Java" scheme="http://www.marcus659.com/categories/Java/"/>
-    
-    
-    <category term="并发编程" scheme="http://www.marcus659.com/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HashMap的长度为什么必须是2的n次方</title>
-    <link href="http://www.marcus659.com/2021/06/12/data-structure/HashMap%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%98%AF2%E7%9A%84n%E6%AC%A1%E5%B9%82/"/>
-    <id>http://www.marcus659.com/2021/06/12/data-structure/HashMap%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%98%AF2%E7%9A%84n%E6%AC%A1%E5%B9%82/</id>
-    <published>2021-06-12T04:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;首先我们看下&lt;code&gt;HashMap&lt;/code&gt;中的源码当中那里奠定了长度是&lt;strong&gt;2的n次方&lt;/strong&gt;，并且是靠近&lt;code&gt;cap&lt;/code&gt;这个值&lt;code&gt;最近的2的n次方&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;tableSizeFor&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; cap)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 首先cap-1使得n的最后一位和cap最后一位绝对不一样&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; n = cap - &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 向右无符号的移动了1位，并使用或运算使n的所有有1的位上全部是1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    n |= n &amp;gt;&amp;gt;&amp;gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 向右无符号移动2位，使用或运算将低位填充为1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    n |= n &amp;gt;&amp;gt;&amp;gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 同理可得&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    n |= n &amp;gt;&amp;gt;&amp;gt; &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    n |= n &amp;gt;&amp;gt;&amp;gt; &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    n |= n &amp;gt;&amp;gt;&amp;gt; &lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 已经向右移动多个位，最终 00011111 = 31 那么 +1 既成为了2的n次方&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; (n &amp;lt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) ? &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; : (n &amp;gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;由上方代码可以看出，上方的方法是&lt;strong&gt;将&lt;code&gt;cap&lt;/code&gt;无符号的向右移动，再启动期间，使用&lt;code&gt;|&lt;/code&gt;运算保证低位全部是1。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;看起来有点复杂，那咱们举个例子：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="数据结构" scheme="http://www.marcus659.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-    <category term="Java基础" scheme="http://www.marcus659.com/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
-    <category term="集合框架" scheme="http://www.marcus659.com/tags/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>美团社招(上海)Java开发面经</title>
-    <link href="http://www.marcus659.com/2021/06/12/interview-experience/%E7%BE%8E%E5%9B%A2%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/"/>
-    <id>http://www.marcus659.com/2021/06/12/interview-experience/%E7%BE%8E%E5%9B%A2%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/</id>
-    <published>2021-06-12T04:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;美团社招-上海-Java开发面经&quot;&gt;&lt;a href=&quot;#美团社招-上海-Java开发面经&quot; class=&quot;headerlink&quot; title=&quot;美团社招(上海)Java开发面经&quot;&gt;&lt;/a&gt;美团社招(上海)Java开发面经&lt;/h1&gt;&lt;p&gt;先搞个前提，各位同学可以根据自身情况仅做参考，本人非计算机专业，学历一般吧，工作目前两年左右，因为工作日实在没有时间，所以和HR约定的是视频面试。&lt;/p&gt;
-&lt;p&gt;招聘的岗位描述：Java开发工程师，但可能需要学习Go语言，非业务开发部门&lt;/p&gt;
-&lt;p&gt;地点：上海市长宁区北新泾地铁站附近吧，一年之后极有可能搬到杨浦区&lt;/p&gt;
-&lt;h3 id=&quot;技术一面&quot;&gt;&lt;a href=&quot;#技术一面&quot; class=&quot;headerlink&quot; title=&quot;技术一面&quot;&gt;&lt;/a&gt;技术一面&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;项目相关的一些问题，主要是阐述了下项目是什么业务场景，解决什么问题，在进行项目描述过程汇总面试官比较关注的貌似是&lt;strong&gt;并发量&lt;/strong&gt;和&lt;strong&gt;业务总量&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;因为我在项目中使用了很多的ES作为持久层，所以面试官就针对我熟悉的中间件进行了提问&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;ES在写入时它是怎么完成一次写入操作的？&lt;/p&gt;
-&lt;p&gt;此处我给出了两种层面的回答&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;架构层面&lt;/p&gt;
-&lt;p&gt;在架构层面，由于ES分为了&lt;code&gt;master&lt;/code&gt;、&lt;code&gt;client&lt;/code&gt;、&lt;code&gt;data&lt;/code&gt;、&lt;code&gt;ingest&lt;/code&gt;四种角色，每次写入和读取的HTTP请求都会先落到client角色的节点上，然后再&lt;strong&gt;负载&lt;/strong&gt;到各个data节点上，完成写入和读取的操作后又将响应给应用程序。其中需要注意的是&lt;code&gt;data&lt;/code&gt;节点在进行查询时，是由多个分片进行查询后，在内存中拼接而成的，所系查询时也需要很大的内存，&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;持久化操作层面&lt;/p&gt;
-&lt;p&gt;这层面的话就只是在写入操作上进行了藐视，首先是数据请求到达了data节点进行存储，存储时刷盘存在了两种方式，&lt;code&gt;buffer&lt;/code&gt;刷入磁盘和&lt;code&gt;translog&lt;/code&gt;进行存储&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="面经" scheme="http://www.marcus659.com/categories/%E9%9D%A2%E7%BB%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MYSQL数据库索引为什么要用B+树</title>
-    <link href="http://www.marcus659.com/2021/06/12/mysql/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8B+%E6%A0%91/"/>
-    <id>http://www.marcus659.com/2021/06/12/mysql/MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8B+%E6%A0%91/</id>
-    <published>2021-06-12T04:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;MYSQL数据库索引为什么要用B-树&quot;&gt;&lt;a href=&quot;#MYSQL数据库索引为什么要用B-树&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Database" scheme="http://www.marcus659.com/categories/Database/"/>
-    
-    
-    <category term="MySQL" scheme="http://www.marcus659.com/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>携程社招(上海)Java开发面经20210517</title>
-    <link href="http://www.marcus659.com/2021/05/18/interview-experience/%E6%90%BA%E7%A8%8B%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/"/>
-    <id>http://www.marcus659.com/2021/05/18/interview-experience/%E6%90%BA%E7%A8%8B%E7%A4%BE%E6%8B%9B(%E4%B8%8A%E6%B5%B7)Java%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F/</id>
-    <published>2021-05-18T04:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;携程社招-上海-Java开发面经20210517&quot;&gt;&lt;a href=&quot;#携程社招-上海-Java开发面经20210517&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="面经" scheme="http://www.marcus659.com/categories/%E9%9D%A2%E7%BB%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>得物社招(上海)Java开发面经(凉)</title>
-    <link href="http://www.marcus659.com/2021/05/12/interview-experience/%E5%BE%97%E7%89%A9%E9%9D%A2%E7%BB%8F20210323/"/>
-    <id>http://www.marcus659.com/2021/05/12/interview-experience/%E5%BE%97%E7%89%A9%E9%9D%A2%E7%BB%8F20210323/</id>
-    <published>2021-05-12T04:48:22.000Z</published>
-    <updated>2022-03-19T11:28:05.041Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;集合Map简单介绍&quot;&gt;&lt;a href=&quot;#集合Map简单介绍&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="面经" scheme="http://www.marcus659.com/categories/%E9%9D%A2%E7%BB%8F/"/>
-    
     
   </entry>
   

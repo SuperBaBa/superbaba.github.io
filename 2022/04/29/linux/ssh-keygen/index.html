@@ -1,0 +1,715 @@
+<!-- 引入头标签模板 -->
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+    <head>
+      <meta charset="utf-8" />
+       
+      
+      <meta name="keywords" content="喜马拉雅以南,技術工程51區,技术工程51区,杨双龙,贾从谦,塔里木以南" />
+       
+      <meta name="description" content="Java编程的学习文章博客，在Java框架学习中使用了Spring Framework、Spring Boot、Spring Cloud，覆盖了Elasticsearch、Redis、RocketMQ" />
+      
+      <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1"/>
+      <meta name="baidu-site-verification" content="code-FQjBrmXea2" />
+      <title>ssh-keygen密钥 |  技術工程51區</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+      
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js"></script>
+      
+      <!--enable vue-->
+      
+      <!-- 生产环境版本，优化了尺寸和速度 -->
+      <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+      
+    <link rel="alternate" href="/atom.xml" title="技術工程51區" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="app">
+    <!-- 鼠标点击效果 2：爆炸烟花 -->
+    
+      <!-- 鼠标点击效果 3：粒子烟花 -->
+    
+      <canvas width="1777" height="841" style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+    
+    <main class="content on">
+      <!-- body引入的是index.ejs -->
+      <section class="outer">
+  <article
+  id="post-linux/ssh-keygen"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  ssh-keygen密钥
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/29/linux/ssh-keygen/" class="article-date">
+  <time datetime="2022-04-29T06:04:33.000Z" itemprop="datePublished">2022-04-29</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">8 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[TOC]</p>
+<h1 id="ssh-keygen密钥是什么"><a href="#ssh-keygen密钥是什么" class="headerlink" title="ssh-keygen密钥是什么"></a>ssh-keygen密钥是什么</h1><p>密钥是一对由非对称加密方法生成的 <code>公钥(public key)</code> 和 <code>私钥(private key)</code>，且每次生成后的公钥和私钥都是以一一对应，每个公钥有且仅有一个私钥。</p>
+<p>其中<strong>公钥是可以公开发送的</strong>，使用公钥加密的信息<strong>必须使用对应的私钥才可以解密</strong>。</p>
+<p>既然是<strong>非对称加密</strong>，那么这个非对称加密体现在哪里呢？</p>
+<h1 id="使用密钥登录过程"><a href="#使用密钥登录过程" class="headerlink" title="使用密钥登录过程"></a>使用密钥登录过程</h1><ol>
+<li><p>客户端发送请求，带上<code>username</code>、<code>ip</code>等重要信息</p>
+</li>
+<li><p>服务端接收到请求后生成一个随机串，在 <code>authorized_keys</code> 文件中根据<code>username</code>匹配出对应的公钥，并使用公钥加密随机串后回传给客户端</p>
+</li>
+<li><p>客户端接收到密文，使用自己的私钥进行解密，获得随机串，传给服务端以证清白</p>
+</li>
+<li><p>服务端将收到的随机串进行比对，没毛病后放行</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">participant client as 客户端</span><br><span class="line">participant server as 服务端</span><br><span class="line">autonumber</span><br><span class="line">client -&gt;&gt; +server: ssh登录请求&lt;br/&gt;包括username、ip等信息</span><br><span class="line">Note right of server: 1.根据用户名匹配到公钥后&lt;br/&gt;2.生成一个随机数&lt;br/&gt;3.使用公钥加密随机串</span><br><span class="line">server -&gt;&gt; -client: 回应一个加密后的随机串</span><br><span class="line">Note left of client: 1.用私钥解密出随机串</span><br><span class="line">client -&gt;&gt; server: 随机数回传</span><br><span class="line">server --&gt;&gt; server: 字符串比对</span><br><span class="line">server -&gt;&gt; client: 验证没问题可以登录</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="ssh-keygen密钥生成"><a href="#ssh-keygen密钥生成" class="headerlink" title="ssh-keygen密钥生成"></a>ssh-keygen密钥生成</h1><p>在登录之前需要生成一对公私钥，无论是<strong>github鉴权</strong>、<strong>ssh鉴权</strong>都将有可能用到这个。</p>
+<p>打开终端使用<code>ssh-keygen</code>命令生成密钥，<code>-t</code>用于指定密钥的加密算法，一般可使用<code>DSA</code>或<code>RSA</code>算法，<code>-C</code>用来指定标识邮箱</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t dsa -C <span class="string">&quot;youremail@doamin.com&quot;</span></span><br><span class="line">Generating public/private dsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/username/.ssh/id_dsa):  press ENTER</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): ********</span><br><span class="line">Enter same passphrase again: ********</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> /home/username/.ssh/id_dsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /home/username/.ssh/id_dsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">14:ba:06:98:a8:98:ad:27:b5:ce:55:85:ec:64:37:19 youremail@doamin.com</span><br></pre></td></tr></table></figure>
+
+<p>在执行完<code>ssh-keygen -t dsa</code>命令后将会如上所示，需要输入两个东西，当然这两个选项也可以不输入</p>
+<p><code>Enter file in which to save the key (/home/username/.ssh/id_dsa):</code>这里是输入您所期望密钥对生成后的目录，默认情况下可以在<code>$HOME/.ssh</code>目录下找到，需要注意点的是，root用户与其他用户目录稍稍有点不同，其他用户在<code>/home/$username/.ssh</code>目录下，而root目录在<code>/root/.ssh/</code>。</p>
+<p>输入完目录后，<code>Enter passphrase (empty for no passphrase):</code>，输入加密的口令<em>最短五个字符</em>,这里我的理解就是随意输入一个加密的串，当然也可以不输入，默认空串</p>
+<p>最后我们可以看到提示已经生成了密钥对，公钥指纹和邮箱标识，根据<code>/home/username/.ssh/id_dsa.pub</code>我们可以查看一下公钥，这里密钥对都是文本文件，可以使用<code>vi</code>直接打开。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vi /home/username/.ssh/id_dsa.pub</span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEAvpB4lUbAaEbh9u6HLig7amsfywD4fqSZq2ikACIUBn3GyRPfeF93l/</span><br><span class="line">weQh702ofXbDydZAKMcDvBJqRhUotQUwqV6HJxqoqPDlPGUUyo8RDIkLUIPRyq</span><br><span class="line">ypZxmK9aCXokFiHoGCXfQ9imUP/w/jfqb9ByDtG97tUJF6nFMP5WzhM= youremail@doamin.com</span><br></pre></td></tr></table></figure>
+
+<p>由于我们使用的<code>dsa</code>算法，因此公钥名称将会是<code>id_dsa.pub</code>，如果我们使用<code>rsa</code>算法的话，那名称应该是<code>id_rsa.pub</code></p>
+<p>下面的命令可以列出用户所有的公钥。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l ~/.ssh/id_*.pub</span><br></pre></td></tr></table></figure>
+
+<p>生成密钥以后，建议修改它们的权限，防止其他人读取。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 600 ~/.ssh/id_rsa</span><br><span class="line">$ chmod 600 ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>chmod 是一个更改文件权限的命令，使用数字比较方便但不太好记，每位数字代表不同的域</p>
+<p>第一位代表文件或目录所属用户、第二位代表文件或目录所属用户组、第三位代表其他所有用户</p>
+<ul>
+<li>可运行 +x 数字代表是 1</li>
+<li>可写 +w 数字代表是 2</li>
+<li>可读 +r 数字代表是4</li>
+</ul>
+<p>因此 6=2+4 即为只能读写</p>
+</blockquote>
+<h1 id="使用密钥对免密登录的步骤"><a href="#使用密钥对免密登录的步骤" class="headerlink" title="使用密钥对免密登录的步骤"></a>使用密钥对免密登录的步骤</h1><ol>
+<li>客户端使用<code>ssh-keygen</code>生成密钥对，命令可以使用`ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#x6f;&#x75;&#114;&#101;&#x6d;&#97;&#x69;&#x6c;&#x40;&#x64;&#x6f;&#x61;&#x6d;&#105;&#110;&#x2e;&#99;&#111;&#109;">&#x79;&#x6f;&#x75;&#114;&#101;&#x6d;&#97;&#x69;&#x6c;&#x40;&#x64;&#x6f;&#x61;&#x6d;&#105;&#110;&#x2e;&#99;&#111;&#109;</a>“，输入指纹是可选的。</li>
+<li>将公钥<code>id_rsa.pub</code>复制到目标服务器（服务端）<code>$HOME/.ssh</code>目录下，并更名为 <code>authorized_keys</code></li>
+<li>重启目标服务器的ssh服务，这点很重要，可以使用<code>systemctl restart sshd</code></li>
+<li>客户端再次发送<code>ssh username@hostname</code>即可直接登录</li>
+</ol>
+<h1 id="ssh-copy-id-命令：自动上传公钥一步到位"><a href="#ssh-copy-id-命令：自动上传公钥一步到位" class="headerlink" title="ssh-copy-id 命令：自动上传公钥一步到位"></a>ssh-copy-id 命令：自动上传公钥一步到位</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-copy-id -i key_file username@host</span><br></pre></td></tr></table></figure>
+
+<p>上述命令中<code>key_file</code>就是公钥，<code>username</code>和<code>host</code>可以不用说了吧[手动狗头]，当然如果像我一样懒，不想使用<code>-i</code>去指定公钥，比如只有一个<code>$HOME/.ssh/id_rsa.pub</code>，那么也可以不需要指定<code>key_file</code>，<code>ssh-copy-id</code>会自动在当前<code>$HOME/.ssh/</code>目录下匹配到公钥，然后发送到远程计算机上，命令使用如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-copy-id username@host</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: <span class="string">&quot;/root/.ssh/id_rsa.pub&quot;</span></span><br><span class="line">/usr/bin/ssh-copy-id: INFO: attempting to <span class="built_in">log</span> <span class="keyword">in</span> with the new key(s), to filter out any that are already installed</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- <span class="keyword">if</span> you are prompted now it is to install the new keys</span><br></pre></td></tr></table></figure>
+
+<p>通过上述提示，咱们可以看出来<code>ssh-copy-id</code>命令回去检索需要安装到远程计算机的公钥，并将没安装的密钥进行自动安装，完成了密钥复制、远程计算机内更名公钥为<code>authorized_keys</code>或在<code>authorized_keys</code>文件最后一行追加客户端公钥。</p>
+<p>此处需要注意若<code>authorized_keys</code>文件是存在的，那么需要<strong>保证文件的末尾是换行符</strong>，否则将可能出现多个公钥连在一起，使多个公钥均无法生效</p>
+<h1 id="ssh-agent和ssh-add命令使用"><a href="#ssh-agent和ssh-add命令使用" class="headerlink" title="ssh-agent和ssh-add命令使用"></a>ssh-agent和ssh-add命令使用</h1><h2 id="ssh-agent将口令保存在内存中"><a href="#ssh-agent将口令保存在内存中" class="headerlink" title="ssh-agent将口令保存在内存中"></a>ssh-agent将口令保存在内存中</h2><p>这两个命令可能会陌生一些，但也是咱们使用非对称密钥传输的重要工具，通常是在**密钥对生成时私钥（<code>private key</code>）增加了口令，因此无论是<code>scp</code>/<code>sftp</code>/<code>ssh</code>均需要在私钥解密前，输入对应的口令。</p>
+<p>每次使用私钥均需要输入口令，那不又回到最初的原点了，<code>ssh-agent</code>和<code>ssh-add</code>就是来带你走出原点而设计的。</p>
+<p>第一步，使用下面的命令新建一次命令行对话。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent bash</span><br></pre></td></tr></table></figure>
+
+<p>上面命令中，如果你使用的命令行环境不是 Bash，可以用其他的 Shell 命令代替。比如<code>zsh</code>和<code>fish</code>。</p>
+<p>如果想在当前对话启用<code>ssh-agent</code>，可以使用下面的命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> `ssh-agent`</span><br><span class="line">Agent pid 8627</span><br></pre></td></tr></table></figure>
+
+<p>上面命令中，<code>ssh-agent</code>会先自动在后台运行，并将需要设置的环境变量输出在屏幕上，类似下面这样。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent</span><br><span class="line">SSH_AUTH_SOCK=/tmp/ssh-8nNIF0cc0eJn/agent.8934; <span class="built_in">export</span> SSH_AUTH_SOCK;</span><br><span class="line">SSH_AGENT_PID=8935; <span class="built_in">export</span> SSH_AGENT_PID;</span><br><span class="line"><span class="built_in">echo</span> Agent pid 8935;</span><br></pre></td></tr></table></figure>
+
+<p><code>eval</code>命令的作用，就是运行上面的<code>ssh-agent</code>命令的输出，设置环境变量。</p>
+<p>第二步，在新建的 Shell 对话里面，使用<code>ssh-add</code>命令添加默认的私钥（比如<code>~/.ssh/id_rsa</code>，或<code>~/.ssh/id_dsa</code>，或<code>~/.ssh/id_ecdsa</code>，或<code>~/.ssh/id_ed25519</code>）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add</span><br><span class="line">Enter passphrase <span class="keyword">for</span> /home/you/.ssh/id_dsa: ********</span><br><span class="line">Identity added: /home/you/.ssh/id_dsa (/home/you/.ssh/id_dsa)</span><br></pre></td></tr></table></figure>
+
+<p>上面例子中，添加私钥时，会要求输入密码。以后，在这个对话里面再使用密钥时，就不需要输入私钥的密码了，因为私钥已经加载到内存里面了。</p>
+<p>第三步，使用 ssh 命令正常登录远程服务器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh username@remoteHost</span><br></pre></td></tr></table></figure>
+
+<p>上面命令中，<code>remoteHost</code>是远程服务器的地址，ssh 使用的是默认的私钥。这时如果私钥设有密码，ssh 将不再询问密码，而是直接取出内存里面的私钥。</p>
+<p>如果要使用其他私钥登录服务器，需要使用 ssh 命令的<code>-i</code>参数指定私钥文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh –i OpenSSHPrivateKey remoteHost</span><br></pre></td></tr></table></figure>
+
+<p>最后，如果要退出<code>ssh-agent</code>，可以直接退出子 Shell（按下 Ctrl + d），也可以使用下面的命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent -k</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh-add对私钥口令的操作"><a href="#ssh-add对私钥口令的操作" class="headerlink" title="ssh-add对私钥口令的操作"></a>ssh-add对私钥口令的操作</h2><p>如果添加的不是默认私钥，<code>ssh-add</code>命令需要显式指定私钥文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add my-other-key-file</span><br></pre></td></tr></table></figure>
+
+<p><code>my-other-key-file</code>就是用户指定的私钥文件。</p>
+<ol>
+<li><strong><code>-d</code>参数从内存中删除指定的私钥。</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add -d name-of-key-file</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong><code>-D</code>参数从内存中删除所有已经添加的私钥。</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add -D</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong><code>-l</code>参数列出所有已经添加的私钥。</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add -l</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.marcus659.com/2022/04/29/linux/ssh-keygen/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/05/01/web/spring-websocket/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            spring-websocket
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/04/29/linux/ssh-login/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">ssh-login</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "wt5diD2a7Ty5R1nazvYl1Flg-9Nh9j0Va",
+    app_key: "c2NgwzpipAPk5HCfR8rlq4ej",
+    path: window.location.pathname,
+    avatar: "robohash",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <!--脚步标签引入-->>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2022
+        <i class="ri-heart-fill heart_icon"></i> 喜马拉雅以南 &amp; Yoni
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://v1.cnzz.com/z_stat.php?id=1280081107&amp;web_id=1280081107'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side-51.svg" alt="技術工程51區"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.ctrip.com">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="http://images.marcus659.com/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="http://images.marcus659.com/wechatPay.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+  </div>
+</body>
+
+</html>
