@@ -39,7 +39,7 @@ import java.util.TreeMap;
 /**
  * 权重随机算法
  *
- * @author Lovel
+ * @author marcus
  * @date 2021/7/8-0:06
  */
 public class WeightRandom<K, V extends Number> {
