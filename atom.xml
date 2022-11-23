@@ -6,11 +6,11 @@
   <link href="http://www.marcus659.com/atom.xml" rel="self"/>
   
   <link href="http://www.marcus659.com/"/>
-  <updated>2022-06-16T04:46:04.714Z</updated>
+  <updated>2022-11-23T07:55:17.769Z</updated>
   <id>http://www.marcus659.com/</id>
   
   <author>
-    <name>喜马拉雅以南 &amp; Yoni</name>
+    <name>喜马拉雅以南</name>
     
   </author>
   
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Windows机器使用SSH免密登录</title>
-    <link href="http://www.marcus659.com/2022/06/16/ops/openssh-win/"/>
-    <id>http://www.marcus659.com/2022/06/16/ops/openssh-win/</id>
-    <published>2022-06-16T04:46:04.714Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <link href="http://www.marcus659.com/2022/11/23/ops/openssh-win/"/>
+    <id>http://www.marcus659.com/2022/11/23/ops/openssh-win/</id>
+    <published>2022-11-23T07:55:17.769Z</published>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
       
@@ -45,12 +45,91 @@
   </entry>
   
   <entry>
-    <title>Arthas 简单使用</title>
+    <title>Java8 Stream 使用 groupingBy</title>
+    <link href="http://www.marcus659.com/2022/07/19/java/Java8-Stream-groupingBy/"/>
+    <id>http://www.marcus659.com/2022/07/19/java/Java8-Stream-groupingBy/</id>
+    <published>2022-07-19T10:15:50.000Z</published>
+    <updated>2022-11-23T07:55:17.769Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;groupingBy只进行分组&quot;&gt;&lt;a href=&quot;#groupingBy只进行分组&quot; class=&quot;headerlink&quot; title=&quot;groupingBy只进行分组&quot;&gt;&lt;/a&gt;groupingBy只进行分组&lt;/h1&gt;&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="java" scheme="http://www.marcus659.com/categories/java/"/>
+    
+    
+    <category term="Stream" scheme="http://www.marcus659.com/tags/Stream/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>限流</title>
+    <link href="http://www.marcus659.com/2022/07/15/java/Throttling-in-java/"/>
+    <id>http://www.marcus659.com/2022/07/15/java/Throttling-in-java/</id>
+    <published>2022-07-15T04:15:50.000Z</published>
+    <updated>2022-11-23T07:55:17.769Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;固定窗口算法&quot;&gt;&lt;a href=&quot;#固定窗口算法&quot; class=&quot;headerlink&quot; title=&quot;固定窗口算法&quot;&gt;&lt;/a&gt;固定窗口算法&lt;/h1&gt;&lt;p&gt;固定窗口算法又叫计数器算法，是一种简单方便的限流算法。主要通过一个支持原子操作的计数器来累计 1</summary>
+        
+      
+    
+    
+    
+    <category term="java" scheme="http://www.marcus659.com/categories/java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>线程间的通信</title>
+    <link href="http://www.marcus659.com/2022/07/07/java/thread-communication/"/>
+    <id>http://www.marcus659.com/2022/07/07/java/thread-communication/</id>
+    <published>2022-07-07T04:15:50.000Z</published>
+    <updated>2022-11-23T07:55:17.769Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;问题背景&quot;&gt;&lt;a href=&quot;#问题背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="java" scheme="http://www.marcus659.com/categories/java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Arthas分析OOM的问题</title>
     <link href="http://www.marcus659.com/2022/06/14/java/arthas-guide/"/>
     <id>http://www.marcus659.com/2022/06/14/java/arthas-guide/</id>
     <published>2022-06-14T10:15:50.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;OOM是什么问题&quot;&gt;&lt;a href=&quot;#OOM是什么问题&quot; class=&quot;headerlink&quot; title=&quot;OOM是什么问题&quot;&gt;&lt;/a&gt;OOM是什么问题&lt;/h1&gt;&lt;h1 id=&quot;Arthas是什么东西&quot;&gt;&lt;a href=&quot;#Arthas是什么东西&quot;</summary>
+        
+      
     
     
     
@@ -66,7 +145,7 @@
     <link href="http://www.marcus659.com/2022/06/14/java/maven-package-advanced/"/>
     <id>http://www.marcus659.com/2022/06/14/java/maven-package-advanced/</id>
     <published>2022-06-14T05:00:00.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
       
@@ -85,11 +164,35 @@
   </entry>
   
   <entry>
+    <title>ssh使用 -L -R -D 作为代理的三种方式</title>
+    <link href="http://www.marcus659.com/2022/05/16/linux/ssh-proxy/"/>
+    <id>http://www.marcus659.com/2022/05/16/linux/ssh-proxy/</id>
+    <published>2022-05-16T00:53:34.000Z</published>
+    <updated>2022-11-23T07:55:17.769Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;ssh-L-正向代理&quot;&gt;&lt;a href=&quot;#ssh-L-正向代理&quot; class=&quot;headerlink&quot; title=&quot;ssh -L 正向代理&quot;&gt;&lt;/a&gt;ssh -L 正向代理&lt;/h1&gt;&lt;h1 id=&quot;ssh-R-反向代理&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="ssh" scheme="http://www.marcus659.com/tags/ssh/"/>
+    
+  </entry>
+  
+  <entry>
     <title>servlet-filter</title>
     <link href="http://www.marcus659.com/2022/05/01/web/servlet-filter/"/>
     <id>http://www.marcus659.com/2022/05/01/web/servlet-filter/</id>
     <published>2022-05-01T07:27:55.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
     
@@ -102,7 +205,7 @@
     <link href="http://www.marcus659.com/2022/05/01/web/spring-websocket/"/>
     <id>http://www.marcus659.com/2022/05/01/web/spring-websocket/</id>
     <published>2022-05-01T07:23:20.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
     
@@ -115,7 +218,7 @@
     <link href="http://www.marcus659.com/2022/04/29/linux/ssh-keygen/"/>
     <id>http://www.marcus659.com/2022/04/29/linux/ssh-keygen/</id>
     <published>2022-04-29T06:04:33.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
       
@@ -139,7 +242,7 @@
     <link href="http://www.marcus659.com/2022/04/29/linux/ssh-login/"/>
     <id>http://www.marcus659.com/2022/04/29/linux/ssh-login/</id>
     <published>2022-04-29T05:06:10.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
       
@@ -160,7 +263,7 @@
     <link href="http://www.marcus659.com/2021/12/26/git/git-reset/"/>
     <id>http://www.marcus659.com/2021/12/26/git/git-reset/</id>
     <published>2021-12-26T13:23:16.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
       
@@ -188,7 +291,7 @@
     <link href="http://www.marcus659.com/2021/11/14/elasticsearch/ESReboot/"/>
     <id>http://www.marcus659.com/2021/11/14/elasticsearch/ESReboot/</id>
     <published>2021-11-14T15:48:22.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.765Z</updated>
     
     
       
@@ -218,7 +321,7 @@
     <link href="http://www.marcus659.com/2021/11/14/elasticsearch/ELKCold&amp;HostArchitecture/"/>
     <id>http://www.marcus659.com/2021/11/14/elasticsearch/ELKCold&amp;HostArchitecture/</id>
     <published>2021-11-14T12:22:12.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.765Z</updated>
     
     
       
@@ -252,7 +355,7 @@
     <link href="http://www.marcus659.com/2021/11/11/git/git-rebase/"/>
     <id>http://www.marcus659.com/2021/11/11/git/git-rebase/</id>
     <published>2021-11-11T02:56:16.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
     
@@ -269,7 +372,7 @@
     <link href="http://www.marcus659.com/2021/11/10/vim/VimCursorMove/"/>
     <id>http://www.marcus659.com/2021/11/10/vim/VimCursorMove/</id>
     <published>2021-11-10T06:48:22.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
       
@@ -293,7 +396,7 @@
     <link href="http://www.marcus659.com/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/"/>
     <id>http://www.marcus659.com/2021/11/04/elasticsearch/Elasticsearch%E7%9A%84%E9%9B%86%E7%BE%A4%E4%BB%8E%E6%A6%82%E5%BF%B5%E5%88%B0%E6%90%AD%E5%BB%BA/</id>
     <published>2021-11-04T04:48:22.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
@@ -318,7 +421,7 @@
     <link href="http://www.marcus659.com/2021/11/02/elasticsearch/WhatIsRoute/"/>
     <id>http://www.marcus659.com/2021/11/02/elasticsearch/WhatIsRoute/</id>
     <published>2021-11-02T15:48:22.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
       
@@ -348,7 +451,7 @@
     <link href="http://www.marcus659.com/2021/09/15/tools/VS-CodeGettingStrated/"/>
     <id>http://www.marcus659.com/2021/09/15/tools/VS-CodeGettingStrated/</id>
     <published>2021-09-15T04:48:22.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
       
@@ -370,10 +473,10 @@
   
   <entry>
     <title>JVM内存区域</title>
-    <link href="http://www.marcus659.com/2021/07/04/memory-area/JVM-Memory-Region/"/>
-    <id>http://www.marcus659.com/2021/07/04/memory-area/JVM-Memory-Region/</id>
+    <link href="http://www.marcus659.com/2021/07/04/java/JVM-Memory-Region/"/>
+    <id>http://www.marcus659.com/2021/07/04/java/JVM-Memory-Region/</id>
     <published>2021-07-04T05:48:22.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
+    <updated>2022-11-23T07:55:17.769Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;JVM内存区域&quot;&gt;&lt;a href=&quot;#JVM内存区域&quot; class=&quot;headerlink&quot; title=&quot;JVM内存区域&quot;&gt;&lt;/a&gt;JVM内存区域&lt;/h1&gt;&lt;h2 id=&quot;运行时数据区域&quot;&gt;&lt;a href=&quot;#运行时数据区域&quot; class=&quot;headerlink&quot; title=&quot;运行时数据区域&quot;&gt;&lt;/a&gt;运行时数据区域&lt;/h2&gt;&lt;p&gt;定义：JVM在执行Java程序过程中，会将其所管理的内存分为多个区域，同时会有一些&lt;strong&gt;直接内存&lt;/strong&gt;不在运行时数据区，但JVM也会使用一些工具对其进行频繁使用。&lt;/p&gt;
@@ -387,121 +490,6 @@
     
     
     <category term="JVM" scheme="http://www.marcus659.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM内存区域</title>
-    <link href="http://www.marcus659.com/2021/07/04/MessageQueue/Kafka/WhatIsKafka/"/>
-    <id>http://www.marcus659.com/2021/07/04/MessageQueue/Kafka/WhatIsKafka/</id>
-    <published>2021-07-04T05:48:22.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Kafka是个啥玩意儿&quot;&gt;&lt;a href=&quot;#Kafka是个啥玩意儿&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="消息队列" scheme="http://www.marcus659.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
-    
-    
-    <category term="Kafka" scheme="http://www.marcus659.com/tags/Kafka/"/>
-    
-    <category term="大数据" scheme="http://www.marcus659.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tomcat的简介</title>
-    <link href="http://www.marcus659.com/2021/07/03/tomcat/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/"/>
-    <id>http://www.marcus659.com/2021/07/03/tomcat/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</id>
-    <published>2021-07-03T05:48:22.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;1-Tomcat的简介&quot;&gt;&lt;a href=&quot;#1-Tomcat的简介&quot; class=&quot;headerlink&quot; title=&quot;1. Tomcat的简介&quot;&gt;&lt;/a&gt;1. Tomcat的简介&lt;/h1&gt;&lt;h2 id=&quot;web概念&quot;&gt;&lt;a href=&quot;#web概念&quot; class=&quot;headerlink&quot; title=&quot;web概念&quot;&gt;&lt;/a&gt;web概念&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;软件架构&lt;/li&gt;
-&lt;li&gt;资源分类&lt;ol&gt;
-&lt;li&gt;静态资源：所有用户访问后得到结果都是一样，可以直接被浏览器解析&lt;/li&gt;
-&lt;li&gt;动态资源：每个用户访问都是不一样的，需要进行&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;网络通信三要素&lt;ol&gt;
-&lt;li&gt;IP地址&lt;/li&gt;
-&lt;li&gt;端口号：应用程序在计算机上的唯一标识。0-65536&lt;/li&gt;
-&lt;li&gt;传输协议&lt;ul&gt;
-&lt;li&gt;TPC协议：三次握手&lt;/li&gt;
-&lt;li&gt;UDP协议&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;web服务器&quot;&gt;&lt;a href=&quot;#web服务器&quot; class=&quot;headerlink&quot; title=&quot;web服务器&quot;&gt;&lt;/a&gt;web服务器&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;服务器&lt;/li&gt;
-&lt;li&gt;服务器软件：接收用户请求&lt;/li&gt;
-&lt;li&gt;web服务器软件：接收用户请求，处理器扭曲做出相应&lt;/li&gt;
-&lt;li&gt;常见web服务器&lt;ul&gt;
-&lt;li&gt;webLogic&lt;/li&gt;
-&lt;li&gt;webSphere&lt;/li&gt;
-&lt;li&gt;JBoss&lt;/li&gt;
-&lt;li&gt;Tomcat：Apache基金组织</summary>
-    
-    
-    
-    
-    <category term="Tomcat" scheme="http://www.marcus659.com/tags/Tomcat/"/>
-    
-    <category term="Java Web" scheme="http://www.marcus659.com/tags/Java-Web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Reentrantlock重入锁</title>
-    <link href="http://www.marcus659.com/2021/06/12/concurrent-programming/Reentrantlock%E9%87%8D%E5%85%A5%E9%94%81/"/>
-    <id>http://www.marcus659.com/2021/06/12/concurrent-programming/Reentrantlock%E9%87%8D%E5%85%A5%E9%94%81/</id>
-    <published>2021-06-12T04:48:22.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;Reentrantlock重入锁&quot;&gt;&lt;a href=&quot;#Reentrantlock重入锁&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Java" scheme="http://www.marcus659.com/categories/Java/"/>
-    
-    
-    <category term="并发编程" scheme="http://www.marcus659.com/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Synchronized关键字</title>
-    <link href="http://www.marcus659.com/2021/06/12/concurrent-programming/Synchronized%E5%85%B3%E9%94%AE%E5%AD%97/"/>
-    <id>http://www.marcus659.com/2021/06/12/concurrent-programming/Synchronized%E5%85%B3%E9%94%AE%E5%AD%97/</id>
-    <published>2021-06-12T04:48:22.000Z</published>
-    <updated>2022-06-16T04:46:04.714Z</updated>
-    
-    
-    
-    
-    <category term="Java" scheme="http://www.marcus659.com/categories/Java/"/>
-    
-    
-    <category term="并发编程" scheme="http://www.marcus659.com/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   

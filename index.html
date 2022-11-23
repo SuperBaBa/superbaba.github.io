@@ -9,7 +9,7 @@
       <meta charset="utf-8" />
        
       
-      <meta name="keywords" content="喜马拉雅以南,技術工程51區,技术工程51区,杨双龙,贾从谦,塔里木以南" />
+      <meta name="keywords" content="喜马拉雅以南,技術工程51區,技术工程51区,杨双龙,贾从谦" />
        
       <meta name="description" content="Java编程的学习文章博客，在Java框架学习中使用了Spring Framework、Spring Boot、Spring Cloud，覆盖了Elasticsearch、Redis、RocketMQ" />
       
@@ -170,7 +170,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/06/16/ops/openssh-win/"
+  <a class="article-title" href="/2022/11/23/ops/openssh-win/"
     >Windows机器使用SSH免密登录</a> 
 </h2>
  
@@ -179,8 +179,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/06/16/ops/openssh-win/" class="article-date">
-  <time datetime="2022-06-16T04:46:04.714Z" itemprop="datePublished">2022-06-16</time>
+      <a href="/2022/11/23/ops/openssh-win/" class="article-date">
+  <time datetime="2022-11-23T07:55:17.769Z" itemprop="datePublished">2022-11-23</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/Ops/">Ops</a>
@@ -213,6 +213,171 @@
 
       
       <article
+  id="post-java/Java8-Stream-groupingBy"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/07/19/java/Java8-Stream-groupingBy/"
+    >Java8 Stream 使用 groupingBy</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/19/java/Java8-Stream-groupingBy/" class="article-date">
+  <time datetime="2022-07-19T10:15:50.000Z" itemprop="datePublished">2022-07-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="groupingBy只进行分组"><a href="#groupingBy只进行分组" class="headerlink" title="groupingBy只进行分组"></a>groupingBy只进行分组</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="groupingBy分组并进行统计"><a href="#groupingBy分组并进行统计" class="headerlink" title="groupingBy分组并进行统计"></a>groupingBy分组并进行统计</h1><h1 id="groupingBy分组后针对进行求和"><a href="#groupingBy分组后针对进行求和" class="headerlink" title="groupingBy分组后针对进行求和"></a>groupingBy分组后针对进行求和</h1> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Stream/" rel="tag">Stream</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
+  id="post-java/Throttling-in-java"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/07/15/java/Throttling-in-java/"
+    >限流</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/15/java/Throttling-in-java/" class="article-date">
+  <time datetime="2022-07-15T04:15:50.000Z" itemprop="datePublished">2022-07-15</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="固定窗口算法"><a href="#固定窗口算法" class="headerlink" title="固定窗口算法"></a>固定窗口算法</h1><p>固定窗口算法又叫计数器算法，是一种简单方便的限流算法。主要通过一个支持原子操作的计数器来累计 1 秒内的请求次数，当 1 秒内计数达到限流阈值时触发拒绝策略。每过 1 秒，计数器重置为 0 开始重新计数。</p>
+<p>临界突变<br><img src="https://images.marcus659.com/typora/fixed-window-critical-mutation.png" alt="临界突变问题"></p>
+<h1 id="滑动窗口算法"><a href="#滑动窗口算法" class="headerlink" title="滑动窗口算法"></a>滑动窗口算法</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wdbyte.rate.limiter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.time.LocalTime;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 滑动窗口限流工具类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> https://www.wdbyte.com</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RateLimiterSlidingWindow</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 阈值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> qps = <span class="number">2</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 时间窗口总大小（毫秒）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> windowSize = <span class="number">1000</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 多少个子窗口</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Integer windowCount = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 窗口列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> WindowInfo[] windowArray = <span class="keyword">new</span> WindowInfo[windowCount];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RateLimiterSlidingWindow</span><span class="params">(<span class="keyword">int</span> qps)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.qps = qps;</span><br><span class="line">        <span class="keyword">long</span> currentTimeMillis = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; windowArray.length; i++) &#123;</span><br><span class="line">            windowArray[i] = <span class="keyword">new</span> WindowInfo(currentTimeMillis, <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 1. 计算当前时间窗口</span></span><br><span class="line"><span class="comment">     * 2. 更新当前窗口计数 &amp; 重置过期窗口计数</span></span><br><span class="line"><span class="comment">     * 3. 当前 QPS 是否超过限制</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> currentTimeMillis = System.currentTimeMillis();</span><br><span class="line">        <span class="comment">// 1. 计算当前时间窗口</span></span><br><span class="line">        <span class="keyword">int</span> currentIndex = (<span class="keyword">int</span>)(currentTimeMillis % windowSize / (windowSize / windowCount));</span><br><span class="line">        <span class="comment">// 2.  更新当前窗口计数 &amp; 重置过期窗口计数</span></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; windowArray.length; i++) &#123;</span><br><span class="line">            WindowInfo windowInfo = windowArray[i];</span><br><span class="line">            <span class="keyword">if</span> ((currentTimeMillis - windowInfo.getTime()) &gt; windowSize) &#123;</span><br><span class="line">                windowInfo.getNumber().set(<span class="number">0</span>);</span><br><span class="line">                windowInfo.setTime(currentTimeMillis);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (currentIndex == i &amp;&amp; windowInfo.getNumber().get() &lt; qps) &#123;</span><br><span class="line">                windowInfo.getNumber().incrementAndGet();</span><br><span class="line">            &#125;</span><br><span class="line">            sum = sum + windowInfo.getNumber().get();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 3. 当前 QPS 是否超过限制</span></span><br><span class="line">        <span class="keyword">return</span> sum &lt;= qps;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">WindowInfo</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 窗口开始时间</span></span><br><span class="line">        <span class="keyword">private</span> Long time;</span><br><span class="line">        <span class="comment">// 计数器</span></span><br><span class="line">        <span class="keyword">private</span> AtomicInteger number;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">WindowInfo</span><span class="params">(<span class="keyword">long</span> time, AtomicInteger number)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.time = time;</span><br><span class="line">            <span class="keyword">this</span>.number = number;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// get...set...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
+  id="post-java/thread-communication"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/07/07/java/thread-communication/"
+    >线程间的通信</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/07/java/thread-communication/" class="article-date">
+  <time datetime="2022-07-07T04:15:50.000Z" itemprop="datePublished">2022-07-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>在同一个进程中，咱们可能存在多线程对同一个东西进行修改，比如一个全局变量标识，后面的线程根据这标识。</p>
+<p>例如当前有多个线程进行滚动查询，每次查询通信都会返回一个<code>lastRecordId</code>，也就是本次翻页查询最后一条记录的Id，下次请求需要带上这个字段才能顺利翻到下一页</p>
+<h1 id="使用Volatile关键字"><a href="#使用Volatile关键字" class="headerlink" title="使用Volatile关键字"></a>使用Volatile关键字</h1><p><code>volatile</code>关键字多线程见可见，线程能够感知到同一个变量的变化<br>Arthas 是Alibaba开源的Java诊断工具。采用命令行交互模式，提供了较为丰富的功能，主要还是他是免费里面的算是好用且功能比较强大的一个JVM排查的插件。</p>
+<h1 id="使用Object类的wait-notify"><a href="#使用Object类的wait-notify" class="headerlink" title="使用Object类的wait()/notify()"></a>使用Object类的wait()/notify()</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSync</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//定义一个锁对象</span></span><br><span class="line">        Object lock = <span class="keyword">new</span> Object();</span><br><span class="line">        List&lt;String&gt;  list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">// 线程A</span></span><br><span class="line">        Thread threadA = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    list.add(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">                    System.out.println(<span class="string">&quot;线程A添加元素，此时list的size为：&quot;</span> + list.size());</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">500</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (list.size() == <span class="number">5</span>)</span><br><span class="line">                        lock.notify();<span class="comment">//唤醒B线程</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//线程B</span></span><br><span class="line">        Thread threadB = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (list.size() != <span class="number">5</span>) &#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            lock.wait();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println(<span class="string">&quot;线程B收到通知，开始执行自己的业务...&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//需要先启动线程B</span></span><br><span class="line">        threadB.start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//再启动线程A</span></span><br><span class="line">        threadA.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h2><h2 id="字节码反编译"><a href="#字节码反编译" class="headerlink" title="字节码反编译"></a>字节码反编译</h2><h2 id="Thread信息捕获"><a href="#Thread信息捕获" class="headerlink" title="Thread信息捕获"></a>Thread信息捕获</h2><h2 id="查看JVM信息"><a href="#查看JVM信息" class="headerlink" title="查看JVM信息"></a>查看JVM信息</h2><h2 id="堆内存快照信息分析"><a href="#堆内存快照信息分析" class="headerlink" title="堆内存快照信息分析"></a>堆内存快照信息分析</h2> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
   id="post-java/arthas-guide"
   class="article article-type-post"
   itemscope
@@ -225,7 +390,7 @@
        
 <h2 itemprop="name">
   <a class="article-title" href="/2022/06/14/java/arthas-guide/"
-    >Arthas 简单使用</a> 
+    >Arthas分析OOM的问题</a> 
 </h2>
  
 
@@ -244,7 +409,8 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h1 id="OOM是什么问题"><a href="#OOM是什么问题" class="headerlink" title="OOM是什么问题"></a>OOM是什么问题</h1><h1 id="Arthas是什么东西"><a href="#Arthas是什么东西" class="headerlink" title="Arthas是什么东西"></a>Arthas是什么东西</h1><p>Arthas 是Alibaba开源的Java诊断工具。采用命令行交互模式，提供了较为丰富的功能，主要还是他是免费里面的算是好用且功能比较强大的一个JVM排查的插件。</p>
+<h1 id="Arthas可以做什么"><a href="#Arthas可以做什么" class="headerlink" title="Arthas可以做什么"></a>Arthas可以做什么</h1><h2 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h2><h2 id="字节码反编译"><a href="#字节码反编译" class="headerlink" title="字节码反编译"></a>字节码反编译</h2><h2 id="Thread信息捕获"><a href="#Thread信息捕获" class="headerlink" title="Thread信息捕获"></a>Thread信息捕获</h2><h2 id="查看JVM信息"><a href="#查看JVM信息" class="headerlink" title="查看JVM信息"></a>查看JVM信息</h2><h2 id="堆内存快照信息分析"><a href="#堆内存快照信息分析" class="headerlink" title="堆内存快照信息分析"></a>堆内存快照信息分析</h2> 
       <!-- reward -->
       
     </div>
@@ -393,6 +559,57 @@
     
     <footer class="article-footer">
        
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+      
+      <article
+  id="post-linux/ssh-proxy"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/05/16/linux/ssh-proxy/"
+    >ssh使用 -L -R -D 作为代理的三种方式</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/05/16/linux/ssh-proxy/" class="article-date">
+  <time datetime="2022-05-16T00:53:34.000Z" itemprop="datePublished">2022-05-16</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[toc]</p>
+<h1 id="ssh-L-正向代理"><a href="#ssh-L-正向代理" class="headerlink" title="ssh -L 正向代理"></a>ssh -L 正向代理</h1><h1 id="ssh-R-反向代理"><a href="#ssh-R-反向代理" class="headerlink" title="ssh -R 反向代理"></a>ssh -R 反向代理</h1><h1 id="ssh-D-socket代理"><a href="#ssh-D-socket代理" class="headerlink" title="ssh -D socket代理"></a>ssh -D socket代理</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li></ul>
+
     </footer>
   </div>
 
@@ -570,7 +787,7 @@
 <p>因此 6=2+4 即为只能读写</p>
 </blockquote>
 <h1 id="使用密钥对免密登录的步骤"><a href="#使用密钥对免密登录的步骤" class="headerlink" title="使用密钥对免密登录的步骤"></a>使用密钥对免密登录的步骤</h1><ol>
-<li>客户端使用<code>ssh-keygen</code>生成密钥对，命令可以使用`ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#x6f;&#x75;&#114;&#101;&#x6d;&#97;&#x69;&#x6c;&#x40;&#x64;&#x6f;&#x61;&#x6d;&#105;&#110;&#x2e;&#99;&#111;&#109;">&#x79;&#x6f;&#x75;&#114;&#101;&#x6d;&#97;&#x69;&#x6c;&#x40;&#x64;&#x6f;&#x61;&#x6d;&#105;&#110;&#x2e;&#99;&#111;&#109;</a>“，输入指纹是可选的。</li>
+<li>客户端使用<code>ssh-keygen</code>生成密钥对，命令可以使用`ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#111;&#117;&#x72;&#x65;&#x6d;&#x61;&#105;&#108;&#64;&#100;&#111;&#x61;&#109;&#105;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#x79;&#111;&#117;&#x72;&#x65;&#x6d;&#x61;&#105;&#108;&#64;&#100;&#111;&#x61;&#109;&#105;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a>“，输入指纹是可选的。</li>
 <li>将公钥<code>id_rsa.pub</code>复制到目标服务器（服务端）<code>$HOME/.ssh</code>目录下，并更名为 <code>authorized_keys</code></li>
 <li>重启目标服务器的ssh服务，这点很重要，可以使用<code>systemctl restart sshd</code></li>
 <li>客户端再次发送<code>ssh username@hostname</code>即可直接登录</li>
@@ -648,330 +865,6 @@
 </article>
 
       
-      <article
-  id="post-linux/ssh-login"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/04/29/linux/ssh-login/"
-    >ssh-login</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/04/29/linux/ssh-login/" class="article-date">
-  <time datetime="2022-04-29T05:06:10.000Z" itemprop="datePublished">2022-04-29</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="What’s-SSH"><a href="#What’s-SSH" class="headerlink" title="What’s SSH"></a>What’s SSH</h1><p>  SSH(Secure Shell)是一种<strong>应用层网络协议</strong>(OSI七层网络模型)，与FTP（文件传送协议）、Telnet（远程登录协议）、DNS（域名解析协议）、SMTP（邮件传送协议），POP3协议（邮局协议），HTTP协议（Hyper Text Transfer Protocol）等协议一样，用于提供安全的 用于计算机之间的加密登录。如果一个用户从本地计算机，使用SSH协议登录另一台远程计算机，我们就可以认为，这种登录是安全的，即使被中途截获，密码也不会泄露。</p>
-<p>  SSH只是一种协议，存在多种实现，既有商业实现，也有开源实现。本文针对的实现是OpenSSH，它是自由软件，应用非常广泛，这里只讨论SSH的登录方式，其他用法后续文章中讨论。如果要在Windows系统中使用SSH可以安装OpenSSH，<br>  可以<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse">单击此处</a>查看OpenSSH的是使用文档。</p>
-<blockquote>
-<p>最早的时候，互联网通信都是明文通信，一旦被截获，内容就暴露无疑。1995年，芬兰学者Tatu Ylonen设计了SSH协议，将登录信息全部加密，成为互联网安全的一个基本解决方案，迅速在全世界获得推广，目前已经成为Linux系统的标准配置。</p>
-</blockquote>
-<h1 id="SSH登录过程"><a href="#SSH登录过程" class="headerlink" title="SSH登录过程"></a>SSH登录过程</h1><ol>
-<li>TCP三次握手后进行SSH协议版本协商</li>
-<li>服务端收到用户的登录请求，把自己的公钥发给用户</li>
-<li>客户端获取到公钥，并使用MD5计算出一个128位的公钥指纹，让用户确认是否是真实主机(这就是为什么登录时需要输入yes/no进行确认)</li>
-<li>加密算法协商后，客户端使用这个公钥，将登录密码加密后，发送到服务端</li>
-<li>服务器端收到后用自己的私钥解密后得到用户名密码，与本地密码对比，如果密码正确，就同意用户登录。</li>
-</ol>
-<p>  在上述过程中还是会发生中间人攻击的风险，(<em><strong>如果有时间或条件后续可更新</strong></em>)由于没有像HTTPS一样的第三方证书中心，如果被登录请求被拦截后，中间攻击人可能会发送自己伪造的公钥给客户端，客户端再进行密码输入，那么在中间人再通过伪造公钥对应的私钥进行解密，那么密码就暴露于光天化日之下，安全性荡然无存。</p>
-<h1 id="SSH的基本用法-登录"><a href="#SSH的基本用法-登录" class="headerlink" title="SSH的基本用法-登录"></a>SSH的基本用法-登录</h1><h2 id="口令登录"><a href="#口令登录" class="headerlink" title="口令登录"></a>口令登录</h2><p>  假设你要以用户名user，登录远程主机为 login.test.com<br>  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ssh user@login.test.com </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">接下来会让用户确认公钥指纹，如下：</span></span><br><span class="line">The authenticity of host \&#x27;host (login.test.com)\&#x27; can\&#x27;t be established.</span><br><span class="line">RSA key fingerprint is 98:3e:d7:e0:de:9e:ac:67:28:c2:42:2d:37:16:58:4d.</span><br><span class="line">　Are you sure you want to continue connecting (yes/no)?</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">输入yes后在输入登录口令即可</span></span><br><span class="line">Password: (enter password)</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  如果确认远程主机(服务端)是用户所需要的登录的机器，那么远程主机的公钥将会保存在<code>$HOME/.ssh/konwn_hosts</code>文件中，可以根据远程主机的域名或者IP定位到保存的公钥，<strong>下次再登录同一台远程主机的时候就无需再确认公钥指纹了</strong></p>
-<p>  假设服务端设置的ssh协议端口为2324<br>  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@login.test.com -p 2324</span><br></pre></td></tr></table></figure></p>
-<p>  假设客户端(用户主机)当前用户为logger，需要使用服务端(远程主机)logger用户进行登录<br>  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">无需在前面添加user用户名</span></span><br><span class="line">ssh login.test.com </span><br></pre></td></tr></table></figure></p>
-<h2 id="公钥登录-免密登录"><a href="#公钥登录-免密登录" class="headerlink" title="公钥登录(免密登录)"></a>公钥登录(免密登录)</h2><p>  公钥登录免去了每次输入口令的麻烦，可以通过<code>ssh user@host</code>命令直接登录，无需输入密码。原理：<strong>客户端将自己公钥存储在服务端<code>$HOME/.ssh/authorized_keys</code>，登录是服务端会响应一串随机字符串，客户端使用私钥加密后，远程主机使用公钥进行解密，若成功则允许登录</strong></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
-  id="post-git/git-reset"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/12/26/git/git-reset/"
-    >git reset 三种模式</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/12/26/git/git-reset/" class="article-date">
-  <time datetime="2021-12-26T13:23:16.000Z" itemprop="datePublished">2021-12-26</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>有时候我们在commit提交代码后，发现这一次commit的内容是有错误的，那么有两种处理方法：</p>
-<ol>
-<li>修改错误内容，再次commit一次</li>
-<li>使用git reset 命令撤销这一次错误的commit<br>第一种方法比较直接，但会多次一次commit记录。第二种方法会直接清楚错误的commit，由此咱们也可以知道<code>git reset</code>是一个让HEAD指针指向其他方向的命令。</li>
-</ol>
-<h1 id="git-reset-有哪三种模式"><a href="#git-reset-有哪三种模式" class="headerlink" title="git reset 有哪三种模式"></a>git reset 有哪三种模式</h1><ul>
-<li>reset –hard<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
-不保留工作目录和暂存区，使用这个模式，在重置HEAD和branch的同时，也会重置 stage 和 working tree 中的内容，也就是放弃掉你当前已commit或未commit的所有变动<br><img src="https://images.marcus659.com/typora/gitreset-soft-01.gif" alt="modify HEAD"></li>
-<li>reset –soft<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft</span><br></pre></td></tr></table></figure>
-保留工作目录，并把重置 HEAD 所带来的新的差异放进暂存区</li>
-<li>reset –mixed<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --mixed</span><br></pre></td></tr></table></figure>
-保留工作目录，并清空暂存区</li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
-  id="post-elasticsearch/ESReboot"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/11/14/elasticsearch/ESReboot/"
-    >安全并正确地重启Elasticsearch集群</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/11/14/elasticsearch/ESReboot/" class="article-date">
-  <time datetime="2021-11-14T15:48:22.000Z" itemprop="datePublished">2021-11-14</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Elastcisearch/">Elastcisearch</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>[TOC]</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>elasticsearch本身具有高可用性，可以做到停机不停服务，在重启elasticsearch后可能存在数据丢失，或者是“启动ES后，怎么一直有大量的数据在迁移？”</p>
-<h1 id="问题原因其本质"><a href="#问题原因其本质" class="headerlink" title="问题原因其本质"></a>问题原因其本质</h1><p><strong>原因有两点：</strong></p>
-<ol>
-<li>ES中的数据<code>不是实时写入</code>磁盘的。<br>数据进入ES后先进入data buffer <code>segment</code>和<code>transientLog</code>这两个buffer，（此处又涉及到数据防丢失的机制）然后进入操作系统文件系统缓存的数据段，最后再特定时机（两个条件，一个是segment到达容量，一个是到达refresh时间间隔）下才刷入磁盘。即在内存中有很多数据是没写入磁盘的。</li>
-<li>ES的分片自动分配迁移机制。<br>当集群发现经过<code>一分钟</code>后（index.unassigned.node_left.delayed_timeout参数设置）还连接不上某个节点，就会把集群内的数据重新进行分布，即使后来节点重新连接上，原来的数据因为重新分布也无效了。</li>
-</ol>
-<h1 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h1><ol>
-<li>检查废弃日志查看你使用的所有废弃功能，并更新相关的代码</li>
-<li>检阅Elasticsearch的迭代变更，并对代码和新版本的配置有必要更改的地方进行更改</li>
-<li>如果你有使用插件，确保每一个插件能够兼容新版本的Elasticsearch</li>
-<li>在升级生产环境的Elasticsearch集群之前，需要在一个独立的环境测试一下升级更新</li>
-<li>通过快照<code>snapshot</code>的形式进行备份</li>
-</ol>
-<h1 id="准备重启集群"><a href="#准备重启集群" class="headerlink" title="准备重启集群"></a>准备重启集群</h1><p>设置集群重新分配的类型，使用<code>cluster.routing.allocation.enable</code>设置选项。</p>
-<p>启用或禁用分片重新分配的类型：</p>
-<ul>
-<li><code>all</code> - (默认) 允许所有类型分片重新分配.</li>
-<li><code>primaries</code> - 只允许主分片重新分配.</li>
-<li><code>new_primaries</code> - 只允许新索引的主分片重新分配.</li>
-<li><code>none</code> - 所有索引的任何类型分片不被允许重新分配.</li>
-</ul>
-<ol>
-<li>关闭分片分配<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PUT _cluster/settings&#123;</span><br><span class="line">  &quot;persistent&quot;: &#123;</span><br><span class="line">    &quot;cluster.routing.allocation.enable&quot;: &quot;none&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>停止索引并执行同步刷新<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST _flush/synced</span><br></pre></td></tr></table></figure></li>
-<li>暂时停止机器学习和数据仓库相关任务<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST <span class="string">&quot;localhost:9200/_ml/set_upgrade_mode?enabled=true&amp;pretty&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者是</span></span><br><span class="line">POST /_ml/set_upgrade_mode?enabled=<span class="literal">true</span>&amp;pretty</span><br></pre></td></tr></table></figure></li>
-<li>关闭所有节点</li>
-</ol>
-<ul>
-<li>如果是通过<code>systemd</code>运行的Elastiseach<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop elasticsearch.service</span><br></pre></td></tr></table></figure></li>
-<li>如果是用SysV的<code>init</code>运行Elasticsearch<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -i service elasticsearch stop</span><br></pre></td></tr></table></figure></li>
-<li>如果是通过<code>守护进程(daemon)</code>运行elasticsearch<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> $(cat pid)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ol start="5">
-<li><p>执行完更改动作后开始重启elasticsearch</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>  <span class="variable">$ES_HOME</span>/bin ./elasticsearch -d -p <span class="variable">$ES_HOME</span>/pid.txt</span><br></pre></td></tr></table></figure></li>
-<li><p>，启用分片自动分布</p>
-</li>
-</ol>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PUT _cluster/settings &#123; </span><br><span class="line">    &quot;persistent&quot;: &#123;</span><br><span class="line">        &quot;cluster.routing.allocation.enable&quot;: null &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="更新集群"><a href="#更新集群" class="headerlink" title="更新集群"></a>更新集群</h1><ul>
-<li>使用 Debian 或者 RPM 包进行更新:<br>使用<code>rpm</code>或者<code>dpkg</code>全装新包，所有文件安装将会被安装到操作系统上合适的位置，并且<strong>elasticsearch的配置文件将会被保留</strong>，不会被覆盖。<br>&emsp;</li>
-<li>使用 <code> zip</code> 或者是<code>tar</code> 压缩包进行更新:<ol>
-<li>解压压缩包到一个新的或指定的目录，如果你没有使用外部指定的 <code>config</code></li>
-<li>如果<strong>不需要使用外部</strong>的 <code>config</code>目录和 <code>jvm.options</code>，可以复制旧版本的配置文件目录到新安装的配置文件目录。<br>如果<strong>需要指定外部</strong>的 <code>config</code>目录和 <code>jvm.options</code>则需要配置环境变量<code>ES_PATH_CONF</code> Elasticsearch启动时将会在环境脚本<code>elasticsearch-env</code> 中进行调用，如下图：<br><img src="https://images.marcus659.com/typora/update-es-configuration.png" alt="update-es-configuration"></li>
-<li>在<code>elasticsearch.yml</code>中配置指定<code>path.data</code> ，即指定外部data目录路径，如果不使用外部指定<code>data</code>目录，可以把外部data目录复制到新安装的目录中。</li>
-</ol>
-<blockquote>
-<p>如果使用了监控功能，当你更新elasticsearch集群并要<code>复用</code>监控数据时，监控时通过辨认经过持久化的节点<code>UUID</code>（独一无二的）进行区分的，这个<code>UUID</code>值存储在<code>data目录里</code></p>
-</blockquote>
-</li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/" rel="tag">全文搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">文档型数据库</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
-      <article
-  id="post-elasticsearch/ELKCold&amp;HostArchitecture"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/11/14/elasticsearch/ELKCold&HostArchitecture/"
-    >ELK冷热架构实现</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/11/14/elasticsearch/ELKCold&HostArchitecture/" class="article-date">
-  <time datetime="2021-11-14T12:22:12.000Z" itemprop="datePublished">2021-11-14</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Elastcisearch/">Elastcisearch</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>[TOC]<br>在使用ELK做日志中心时，经常会遇到这种情况：</p>
-<ul>
-<li>今天的日志正在被频繁的索引，同时也有很频繁的搜索，<strong>前几日的日志虽然没有那么频繁的搜索，但是也需要保存相当一段时间</strong>。</li>
-</ul>
-<ul>
-<li>随着时间的推移，数据量越来越大，<strong>需要去手动或使用定时任务删除一批数据</strong>，释放出内存和磁盘空间</li>
-<li>索引越来越多，分片和segment不断增加，<strong>ES为了快速访问磁盘上的索引文件，需要在内存中驻留一些数据</strong>，即segment memory，大量的segment和segment memory占据着内存空间，同时也会消耗越来越多的CPU，分片过多带来的影响</li>
-<li>稍微熟悉ES的同学知道，<strong>JVM heap分配不能超过32GB</strong>，当我们一台机器配置128GB RAM, 48TB磁盘空间时，如果跑一个ES实例的话，那么只能用到<strong>不到32GB Memory</strong>，但是<strong>磁盘可能保存的文件还不到10T</strong></li>
-<li>当用户做跨度较大的查询时，过多的磁盘IO和CPU消耗会对写入造成影响。</li>
-<li>想要聚合分析日志，<strong>却发现日志中输出的字段无法定制化</strong>，只能将日志这些个性化字段输出在某一个字段中<blockquote>
-<p><strong>扩展阅读</strong>：<br>当分片过多时，查询时汇总排序的数据将会引起过多的并发，过多并发带来的线程切换造成大量的CPU损耗；索引的删除和配置更新更慢可以参考这个<a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch/issues/18776">Issue#18776</a>;</p>
-<p>过多的shard也带来更多小的segment，而过多的小segment会带来非常显著的heap内存消耗，特别是如果查询线程配置得很多的情况下。</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="冷热集群的搭建"><a href="#冷热集群的搭建" class="headerlink" title="冷热集群的搭建"></a>冷热集群的搭建</h1><p>对于日志或指标（metric）类时序性强的ES索引，因为数据量大，并且写入和查询大多都是近期时间内的数据。我们可以采用hot-warm-cold架构将索引数据切分成hot/warm/cold的索引。hot索引负责最新数据的读写，可使用内存存储；warm索引负责较旧数据的读取，可使用内存或SSD存储；cold索引很少被读取，可使用大容量磁盘存储。随着时间的推移，数据不断从hot索引-&gt;warm索引-&gt;cold索引迁移。针对不同阶段的索引我们还可以调整索引的主分片数，副本数，单分片的segment数等等，更好的利用机器资源。<br><img src="https://images.marcus659.com/typora/elk-clod-hot-architecture.png" alt="elk-clod-hot-architecture"></p>
-<h1 id="ILM生命周期的划分"><a href="#ILM生命周期的划分" class="headerlink" title="ILM生命周期的划分"></a>ILM生命周期的划分</h1><p>ILM 一共将索引生命周期分为四个阶段(Phase)：</p>
-<ul>
-<li><p><strong>Hot 阶段</strong><br>  在这个阶段，它会不断地进行查询和写入(数据读写)，数据量也会不断增加(副本虽然可以提高查询速率但也会影响写入速度)。由于该阶段需要进行大量的数据读写，因此需要高配置的节点，一般建议将节点内存与磁盘比控制在 32 左右，比如 64GB 内存搭配 2TB 的 SSD 硬盘。</p>
-</li>
-<li><p><strong>Warm 阶段</strong><br>  Warm 阶段，基本不会再进行数据的索引，相对来说查询 <code>search</code> 回比较多一点。由于该阶段主要负责数据的读取，中等配置的节点即可满足需求，可以将节点内存与磁盘比提高到 64<del>96 之间，比如 64GB 内存搭配 4</del>6TB 的 HDD 磁盘。</p>
-</li>
-<li><p><strong>Cold 阶段</strong><br>  Cold 阶段可类别比为人类中年到老年的阶段，在这个阶段，它退休了，在社会有需要的时候才出来输出下知识(数据读取)，大部分情况都是静静地待着。由于该阶段只负责少量的数据读取工作，低等配置的节点即可满足要求，可以将节点内存与磁盘比进一步提高到 96 以上，比如128，即 64GB 内存搭配 8 TB 的 HDD 磁盘。</p>
-</li>
-<li><p><strong>Delete 阶段</strong><br>  Delete 阶段可类比为人类寿终正寝的阶段，在发光发热之后，静静地逝去，Rest in Peace~ILM 对于索引的生命周期进行了非常详细的划分，但它并不强制要求必须有这个4个阶段，用户可以根据自己的需求组合成自己的生命周期。</p>
-<h1 id="Logstash读取数据"><a href="#Logstash读取数据" class="headerlink" title="Logstash读取数据"></a>Logstash读取数据</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> output &#123;</span><br><span class="line">      elasticsearch &#123;</span><br><span class="line">//发生rollover时的写入索引的别名</span><br><span class="line">        ilm_rollover_alias =&gt; <span class="string">&quot;myindex&quot;</span></span><br><span class="line">//将会附在ilm_rollover_alias的值后面共同构成索引名，myindex-00001</span><br><span class="line">        ilm_pattern =&gt; <span class="string">&quot;00001&quot;</span></span><br><span class="line">//使用的索引策略</span><br><span class="line">        ilm_policy =&gt; <span class="string">&quot;my_policy&quot;</span></span><br><span class="line">//使用的索引模版名称</span><br><span class="line">        template_name =&gt; <span class="string">&quot;my_template&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="索引生命周期管理"><a href="#索引生命周期管理" class="headerlink" title="索引生命周期管理"></a>索引生命周期管理</h1><p>索引策略控制这一个索引的生命从Hot -&gt; Warm -&gt; Cold -&gt; Delete 阶段，每个阶段都可以配置不同的转化行为（Action）。下面我们看下几个常用的Action:<br>Rollover<br>当写入索引达到了一定的大小，文档数量或创建时间时，Rollover可创建一个新的写入索引，将旧的写入索引的别名去掉，并把别名赋给新的写入索引。所以便可以通过切换别名控制写入的索引是谁。它可用于Hot阶段。<br>Shrink<br>减少一个索引的主分片数，可用于Warm阶段。需要注意的是当shink完成后索引名会由原来的<origin-index-name>变为shrink-<origin-index-name>.<br>Force merge<br>可触发一个索引分片的segment merge，同时释放掉被删除文档的占用空间。用于Warm阶段。<br>Allocate<br>可指定一个索引的副本数，用于warm, cold阶段。</p>
-<h2 id="索引模板创建"><a href="#索引模板创建" class="headerlink" title="索引模板创建"></a>索引模板创建</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">PUT _ilm/policy/my_policy</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;policy&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;phases&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;hot&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;actions&quot;</span>: &#123;</span><br><span class="line">          <span class="string">&quot;rollover&quot;</span>: &#123;</span><br><span class="line">//rollover前距离索引的创建时间最大为7天</span><br><span class="line">            <span class="string">&quot;max_age&quot;</span>: <span class="string">&quot;7d&quot;</span>,</span><br><span class="line">//rollover前索引的最大大小不超过50G</span><br><span class="line">            <span class="string">&quot;max_size&quot;</span>: <span class="string">&quot;50G&quot;</span>,</span><br><span class="line">//rollover前索引的最大文档数不超过1个（测试用）</span><br><span class="line">            <span class="string">&quot;max_docs&quot;</span>: 1,</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">&quot;warm&quot;</span>: &#123;</span><br><span class="line">//rollover之后进入warm阶段的时间不小于30天</span><br><span class="line">        <span class="string">&quot;min_age&quot;</span>: <span class="string">&quot;30d&quot;</span>,</span><br><span class="line">        <span class="string">&quot;actions&quot;</span>: &#123;</span><br><span class="line">          <span class="string">&quot;forcemerge&quot;</span>: &#123;</span><br><span class="line">//强制分片merge到segment为1</span><br><span class="line">            <span class="string">&quot;max_num_segments&quot;</span>: 1</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="string">&quot;shrink&quot;</span>: &#123;</span><br><span class="line">//收缩分片数为1</span><br><span class="line">            <span class="string">&quot;number_of_shards&quot;</span>: 1</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="string">&quot;allocate&quot;</span>: &#123;</span><br><span class="line">//副本数为2</span><br><span class="line">            <span class="string">&quot;number_of_replicas&quot;</span>: 2</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">&quot;cold&quot;</span>: &#123;</span><br><span class="line">//rollover之后进入cold阶段的时间不小于60天</span><br><span class="line">        <span class="string">&quot;min_age&quot;</span>: <span class="string">&quot;60d&quot;</span>,</span><br><span class="line">        <span class="string">&quot;actions&quot;</span>: &#123;</span><br><span class="line">          <span class="string">&quot;allocate&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;require&quot;</span>: &#123;</span><br><span class="line">//分配到cold 节点，ES可根据机器资源配置不同类型的节点</span><br><span class="line">              <span class="string">&quot;type&quot;</span>: <span class="string">&quot;cold&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">&quot;delete&quot;</span>: &#123;</span><br><span class="line">//rollover之后进入cold阶段的时间不小于60天</span><br><span class="line">        <span class="string">&quot;min_age&quot;</span>: <span class="string">&quot;90d&quot;</span>,</span><br><span class="line">        <span class="string">&quot;actions&quot;</span>: &#123;</span><br><span class="line">          <span class="string">&quot;delete&quot;</span>: &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">PUT _template/my_template</span><br><span class="line">&#123;</span><br><span class="line">//模版匹配的索引名以<span class="string">&quot;index-&quot;</span>开头</span><br><span class="line">  <span class="string">&quot;index_patterns&quot;</span>: [<span class="string">&quot;myindex-*&quot;</span>],                 </span><br><span class="line">  <span class="string">&quot;settings&quot;</span>: &#123;</span><br><span class="line">//索引分片数为2</span><br><span class="line">    <span class="string">&quot;number_of_shards&quot;</span>:2 ,</span><br><span class="line">//索引副本数为1 </span><br><span class="line">    <span class="string">&quot;number_of_replicas&quot;</span>: 1,</span><br><span class="line">//索引使用的索引策略为my_policy</span><br><span class="line">    <span class="string">&quot;index.lifecycle.name&quot;</span>: <span class="string">&quot;full_policy&quot;</span>,    </span><br><span class="line">//索引rollover后切换的索引别名为  test-alias</span><br><span class="line">    <span class="string">&quot;index.lifecycle.rollover_alias&quot;</span>: <span class="string">&quot;myindex&quot;</span>    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PUT index-000001</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;aliases&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;myindex&quot;</span>:&#123; //别名为 myindex</span><br><span class="line">//允许索引被写入数据</span><br><span class="line">      <span class="string">&quot;is_write_index&quot;</span>: <span class="literal">true</span> </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="索引证明周期策略"><a href="#索引证明周期策略" class="headerlink" title="索引证明周期策略"></a>索引证明周期策略</h2><h1 id="日志结构化"><a href="#日志结构化" class="headerlink" title="日志结构化"></a>日志结构化</h1> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/" rel="tag">全文搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E6%A1%A3%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">文档型数据库</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-      
   </article>
   
 
@@ -990,7 +883,7 @@
       <li>
         Copyrights &copy;
         2015-2022
-        <i class="ri-heart-fill heart_icon"></i> 喜马拉雅以南 &amp; Yoni
+        <i class="ri-heart-fill heart_icon"></i> 喜马拉雅以南
       </li>
     </ul>
     <ul>
@@ -1060,11 +953,15 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.ctrip.com">旅行</a>
+      <a class="nav-item-link" href="/algorithm-practice">算法</a>
     </li>
     
     <li class="nav-item">
       <a class="nav-item-link" href="/gallery">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/online-sql">SQL</a>
     </li>
     
     <li class="nav-item">

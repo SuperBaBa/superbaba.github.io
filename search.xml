@@ -55,7 +55,7 @@
 <li><p>声明一个权重随机类，<code>累加权重值</code>，<code>构建顺序区间</code>，<code>区间随机落点</code></p>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> javafx.util.Pair;</span><br><span class="line"><span class="keyword">import</span> org.assertj.core.util.Preconditions;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Objects;</span><br><span class="line"><span class="keyword">import</span> java.util.SortedMap;</span><br><span class="line"><span class="keyword">import</span> java.util.TreeMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 权重随机算法</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Lovel</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/7/8-0:06</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeightRandom</span>&lt;<span class="title">K</span>, <span class="title">V</span> <span class="keyword">extends</span> <span class="title">Number</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// 顺序区间构建</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> TreeMap&lt;Double, K&gt; weightMap = <span class="keyword">new</span> TreeMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(WeightRandom.class);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WeightRandom</span><span class="params">(List&lt;Pair&lt;K, V&gt;&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 权重和标识的 key-value 集合校验</span></span><br><span class="line">        Objects.requireNonNull(list, <span class="string">&quot;list can NOT be null!&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Pair&lt;K, V&gt; pair : list) &#123;</span><br><span class="line">            Preconditions.checkArgument(pair.getValue().doubleValue() &gt; <span class="number">0</span>, String.format(<span class="string">&quot;非法权重值：pair=%s&quot;</span>, pair));</span><br><span class="line">            <span class="keyword">double</span> lastWeight = <span class="keyword">this</span>.weightMap.size() == <span class="number">0</span> ? <span class="number">0</span> : <span class="keyword">this</span>.weightMap.lastKey();<span class="comment">// 权重值统一转为double</span></span><br><span class="line">            <span class="keyword">this</span>.weightMap.put(pair.getValue().doubleValue() + lastWeight, pair.getKey());<span class="comment">// 权重值累加</span></span><br><span class="line">        &#125;</span><br><span class="line">        logger.info(<span class="string">&quot;Weight interval construction is completed. &#123;&#125;&quot;</span>, weightMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> K <span class="title">random</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 延伸 [0,1) 区间到权重区间</span></span><br><span class="line">        <span class="keyword">double</span> randomWeight = <span class="keyword">this</span>.weightMap.lastKey() * Math.random();</span><br><span class="line">        <span class="comment">// 根据随机散落区间的坐标，找到落点值到区间最大值的子区间，以下两行代码主要利用treemap.tailMap().firstKey()即可找到目标元素</span></span><br><span class="line">        SortedMap&lt;Double, K&gt; tailMap = <span class="keyword">this</span>.weightMap.tailMap(randomWeight);</span><br><span class="line">        <span class="comment">// 返回子区间最小值的标的</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.weightMap.get(tailMap.firstKey());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> javafx.util.Pair;</span><br><span class="line"><span class="keyword">import</span> org.assertj.core.util.Preconditions;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Objects;</span><br><span class="line"><span class="keyword">import</span> java.util.SortedMap;</span><br><span class="line"><span class="keyword">import</span> java.util.TreeMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 权重随机算法</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> marcus</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/7/8-0:06</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeightRandom</span>&lt;<span class="title">K</span>, <span class="title">V</span> <span class="keyword">extends</span> <span class="title">Number</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// 顺序区间构建</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> TreeMap&lt;Double, K&gt; weightMap = <span class="keyword">new</span> TreeMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(WeightRandom.class);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WeightRandom</span><span class="params">(List&lt;Pair&lt;K, V&gt;&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 权重和标识的 key-value 集合校验</span></span><br><span class="line">        Objects.requireNonNull(list, <span class="string">&quot;list can NOT be null!&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Pair&lt;K, V&gt; pair : list) &#123;</span><br><span class="line">            Preconditions.checkArgument(pair.getValue().doubleValue() &gt; <span class="number">0</span>, String.format(<span class="string">&quot;非法权重值：pair=%s&quot;</span>, pair));</span><br><span class="line">            <span class="keyword">double</span> lastWeight = <span class="keyword">this</span>.weightMap.size() == <span class="number">0</span> ? <span class="number">0</span> : <span class="keyword">this</span>.weightMap.lastKey();<span class="comment">// 权重值统一转为double</span></span><br><span class="line">            <span class="keyword">this</span>.weightMap.put(pair.getValue().doubleValue() + lastWeight, pair.getKey());<span class="comment">// 权重值累加</span></span><br><span class="line">        &#125;</span><br><span class="line">        logger.info(<span class="string">&quot;Weight interval construction is completed. &#123;&#125;&quot;</span>, weightMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> K <span class="title">random</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 延伸 [0,1) 区间到权重区间</span></span><br><span class="line">        <span class="keyword">double</span> randomWeight = <span class="keyword">this</span>.weightMap.lastKey() * Math.random();</span><br><span class="line">        <span class="comment">// 根据随机散落区间的坐标，找到落点值到区间最大值的子区间，以下两行代码主要利用treemap.tailMap().firstKey()即可找到目标元素</span></span><br><span class="line">        SortedMap&lt;Double, K&gt; tailMap = <span class="keyword">this</span>.weightMap.tailMap(randomWeight);</span><br><span class="line">        <span class="comment">// 返回子区间最小值的标的</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.weightMap.get(tailMap.firstKey());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>权重测试类，<code>声明标识与权重占比</code>,<code>随机</code></li>
@@ -1196,9 +1196,216 @@
       </categories>
   </entry>
   <entry>
-    <title>Arthas 简单使用</title>
+    <title>JVM内存区域</title>
+    <url>/2021/07/04/java/JVM-Memory-Region/</url>
+    <content><![CDATA[<h1 id="JVM内存区域"><a href="#JVM内存区域" class="headerlink" title="JVM内存区域"></a>JVM内存区域</h1><h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><p>定义：JVM在执行Java程序过程中，会将其所管理的内存分为多个区域，同时会有一些<strong>直接内存</strong>不在运行时数据区，但JVM也会使用一些工具对其进行频繁使用。</p>
+<ul>
+<li><p>线程私有区</p>
+<p>每一个线程都有一份单独的内存区域，即线程栈。包括虚拟机栈(内含栈帧)、程序计数器</p>
+<span id="more"></span></li>
+<li><p>线程共享区</p>
+<p>被所有线程共享，且只有一份，如：方法区、堆内存区域</p>
+<p><img src="http://images.marcus659.com/blog/jvm_memory_region.jpg" alt="运行时数据区"></p>
+</li>
+</ul>
+<h1 id="Java方法和虚拟机栈"><a href="#Java方法和虚拟机栈" class="headerlink" title="Java方法和虚拟机栈"></a>Java方法和虚拟机栈</h1><ul>
+<li><p>虚拟机栈</p>
+<p>虚拟机栈的生命周期和线程生命周期是一样的，虚拟机栈默认大小为<code>1M</code>，可用参数<code>-Xss</code>调整大小</p>
+<p><strong>数据结构</strong>：是先进先出的数据结构</p>
+<p><strong>作用</strong>：存储当前线程运行方法所需的数据(<code>局部变量</code>)，指令、返回地址</p>
+</li>
+<li><p>栈帧</p>
+<p>在每个Java方法被调用是，都会创建一个栈帧，并入栈，完成调用则出栈，栈帧大体包含所含区域：<strong>局部变量表</strong>、<strong>操作数栈</strong>、<strong>动态连接</strong>、<strong>返回地址</strong>。</p>
+<ul>
+<li><p>局部变量表</p>
+</li>
+<li><p>操作数栈</p>
+</li>
+<li><p>动态连接</p>
+<p>动态分派，多见于方法重写使其具有多态性，重写时使用<code>invokevirtual</code>指令，器解析过程如下</p>
+<ol>
+<li>找到操作数栈第一个元素所指向的对象实际类型，记做A</li>
+<li></li>
+</ol>
+</li>
+<li><p>返回地址</p>
+</li>
+</ul>
+</li>
+<li><p>程序计数器</p>
+</li>
+<li><p>栈帧与内存区域</p>
+<p>使用<code>javap -c XXXX.class</code>对class文件进行反汇编，<a href="https://cloud.tencent.com/developer/article/1333540">字节码助记地址</a></p>
+<p><img src="http://images.marcus659.com/typora/visualstackandmemory" alt="visualstackandmemory"></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java8 Stream 使用 groupingBy</title>
+    <url>/2022/07/19/java/Java8-Stream-groupingBy/</url>
+    <content><![CDATA[<h1 id="groupingBy只进行分组"><a href="#groupingBy只进行分组" class="headerlink" title="groupingBy只进行分组"></a>groupingBy只进行分组</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="groupingBy分组并进行统计"><a href="#groupingBy分组并进行统计" class="headerlink" title="groupingBy分组并进行统计"></a>groupingBy分组并进行统计</h1><h1 id="groupingBy分组后针对进行求和"><a href="#groupingBy分组后针对进行求和" class="headerlink" title="groupingBy分组后针对进行求和"></a>groupingBy分组后针对进行求和</h1>]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>Stream</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>限流</title>
+    <url>/2022/07/15/java/Throttling-in-java/</url>
+    <content><![CDATA[<h1 id="固定窗口算法"><a href="#固定窗口算法" class="headerlink" title="固定窗口算法"></a>固定窗口算法</h1><p>固定窗口算法又叫计数器算法，是一种简单方便的限流算法。主要通过一个支持原子操作的计数器来累计 1 秒内的请求次数，当 1 秒内计数达到限流阈值时触发拒绝策略。每过 1 秒，计数器重置为 0 开始重新计数。</p>
+<p>临界突变<br><img src="https://images.marcus659.com/typora/fixed-window-critical-mutation.png" alt="临界突变问题"></p>
+<h1 id="滑动窗口算法"><a href="#滑动窗口算法" class="headerlink" title="滑动窗口算法"></a>滑动窗口算法</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wdbyte.rate.limiter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.time.LocalTime;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 滑动窗口限流工具类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> https://www.wdbyte.com</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RateLimiterSlidingWindow</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 阈值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> qps = <span class="number">2</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 时间窗口总大小（毫秒）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> windowSize = <span class="number">1000</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 多少个子窗口</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Integer windowCount = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 窗口列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> WindowInfo[] windowArray = <span class="keyword">new</span> WindowInfo[windowCount];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RateLimiterSlidingWindow</span><span class="params">(<span class="keyword">int</span> qps)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.qps = qps;</span><br><span class="line">        <span class="keyword">long</span> currentTimeMillis = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; windowArray.length; i++) &#123;</span><br><span class="line">            windowArray[i] = <span class="keyword">new</span> WindowInfo(currentTimeMillis, <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 1. 计算当前时间窗口</span></span><br><span class="line"><span class="comment">     * 2. 更新当前窗口计数 &amp; 重置过期窗口计数</span></span><br><span class="line"><span class="comment">     * 3. 当前 QPS 是否超过限制</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> currentTimeMillis = System.currentTimeMillis();</span><br><span class="line">        <span class="comment">// 1. 计算当前时间窗口</span></span><br><span class="line">        <span class="keyword">int</span> currentIndex = (<span class="keyword">int</span>)(currentTimeMillis % windowSize / (windowSize / windowCount));</span><br><span class="line">        <span class="comment">// 2.  更新当前窗口计数 &amp; 重置过期窗口计数</span></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; windowArray.length; i++) &#123;</span><br><span class="line">            WindowInfo windowInfo = windowArray[i];</span><br><span class="line">            <span class="keyword">if</span> ((currentTimeMillis - windowInfo.getTime()) &gt; windowSize) &#123;</span><br><span class="line">                windowInfo.getNumber().set(<span class="number">0</span>);</span><br><span class="line">                windowInfo.setTime(currentTimeMillis);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (currentIndex == i &amp;&amp; windowInfo.getNumber().get() &lt; qps) &#123;</span><br><span class="line">                windowInfo.getNumber().incrementAndGet();</span><br><span class="line">            &#125;</span><br><span class="line">            sum = sum + windowInfo.getNumber().get();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 3. 当前 QPS 是否超过限制</span></span><br><span class="line">        <span class="keyword">return</span> sum &lt;= qps;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">WindowInfo</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 窗口开始时间</span></span><br><span class="line">        <span class="keyword">private</span> Long time;</span><br><span class="line">        <span class="comment">// 计数器</span></span><br><span class="line">        <span class="keyword">private</span> AtomicInteger number;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">WindowInfo</span><span class="params">(<span class="keyword">long</span> time, AtomicInteger number)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.time = time;</span><br><span class="line">            <span class="keyword">this</span>.number = number;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// get...set...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Tomcat的简介</title>
+    <url>/2021/07/03/java/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="1-Tomcat的简介"><a href="#1-Tomcat的简介" class="headerlink" title="1. Tomcat的简介"></a>1. Tomcat的简介</h1><h2 id="web概念"><a href="#web概念" class="headerlink" title="web概念"></a>web概念</h2><ol>
+<li>软件架构</li>
+<li>资源分类<ol>
+<li>静态资源：所有用户访问后得到结果都是一样，可以直接被浏览器解析</li>
+<li>动态资源：每个用户访问都是不一样的，需要进行</li>
+</ol>
+</li>
+<li>网络通信三要素<ol>
+<li>IP地址</li>
+<li>端口号：应用程序在计算机上的唯一标识。0-65536</li>
+<li>传输协议<ul>
+<li>TPC协议：三次握手</li>
+<li>UDP协议</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a>web服务器</h2><ol>
+<li>服务器</li>
+<li>服务器软件：接收用户请求</li>
+<li>web服务器软件：接收用户请求，处理器扭曲做出相应</li>
+<li>常见web服务器<ul>
+<li>webLogic</li>
+<li>webSphere</li>
+<li>JBoss</li>
+<li>Tomcat：Apache基金组织<span id="more"></span>
+<h1 id="2-Tomcat的架构"><a href="#2-Tomcat的架构" class="headerlink" title="2. Tomcat的架构"></a>2. Tomcat的架构</h1></li>
+</ul>
+</li>
+</ol>
+<h2 id="HTTP工作原理"><a href="#HTTP工作原理" class="headerlink" title="HTTP工作原理"></a>HTTP工作原理</h2><p>HTTP协议是浏览器与服务器之间的数据传输协议，作为应用层协议，HTTP是基于TCP/IP协议，因此传输数据包都是由TCP/IP协议进行传输，HTTP只是定义了数据包的封装格式。</p>
+<h2 id="HTTP服务器请求处理"><a href="#HTTP服务器请求处理" class="headerlink" title="HTTP服务器请求处理"></a>HTTP服务器请求处理</h2><p>浏览器发送个服务端一个HTTP格式请求，HTTP服务器接收到请求后，需要调用服务端程序</p>
+<h2 id="Servlet容器工作流程"><a href="#Servlet容器工作流程" class="headerlink" title="Servlet容器工作流程"></a>Servlet容器工作流程</h2><p>HTTP服务器不直接调用Servlet，而且将请求交给Servlet容器，具体步骤如下：</p>
+<ol>
+<li>客户端请求资源，HTTP服务器凤凰组昂成一个ServletRequest队形</li>
+<li>然后调用Servlet容器的<code>service</code>方法</li>
+<li>Servlet容器拿到请求后，根据<code>URL和Servlet的映射关系</code>找到相应的Servlet</li>
+<li>加载Servlet，使用反射创建这个Servlet，并调动<code>init</code>方法初始化</li>
+<li>调用Servlet的<code>service</code>方法用来处理请求</li>
+</ol>
+<h2 id="Tomcat的两个核心功能"><a href="#Tomcat的两个核心功能" class="headerlink" title="Tomcat的两个核心功能"></a>Tomcat的两个核心功能</h2><ol>
+<li>处理Socket连接，负责网络字节流与Request和Response对象的转化</li>
+<li>加载和管理Servlet，以及具体处理Request请求</li>
+</ol>
+<p>两个核心组件连接器<code>Connector</code>和<code>Container</code>来分别做两件事情。</p>
+<h2 id="连接器-coyote"><a href="#连接器-coyote" class="headerlink" title="连接器 - coyote"></a>连接器 - coyote</h2><p>coyote是Tomcat的连接器框架名称，是Tomcat服务器提供的客户端访问外部接口，客户端通过coyote月服务器建立连接、发送请求并接受响应。</p>
+<p><strong>coyote封装了底层网络通信</strong>，并未Catalina容器提供了统一的接口，是Catalina容器月具体的请求协议及IO操作方式完全解耦。Coyote将Socket输入封装为Request对象，交由Catalina容器进行处理，处理完后，Catalina通过Coyote提供的Response对象将结果写入到输出流。</p>
+<p>Coyote负责接受请求并进行封装响应，作为独立的模块只负责具体的协议解析和IO相关操作，与Servlet规范实现没有直接关系，因此Request和Response对象也并未实现Servlet规范的对应接口。</p>
+<p><strong>一个容器支持多个连接器</strong></p>
+<h2 id="IO模型与协议"><a href="#IO模型与协议" class="headerlink" title="IO模型与协议"></a>IO模型与协议</h2><p>在Coyote中，Tomcat支持多种I/O模型和应用层协议，在Tomcat 8.5/9.0版本起，移除了对<code>BIO</code>的支持。</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>IO模型</strong></th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">NIO</td>
+<td>非阻塞I/O，采用Java NIO类库实现</td>
+</tr>
+<tr>
+<td align="left">NIO2</td>
+<td>异步I/O，采用JDK 7的NIO2类库实现</td>
+</tr>
+<tr>
+<td align="left">APR</td>
+<td>采用Apache可移植运行库实现，是C/C++编写的本地库，</td>
+</tr>
+</tbody></table>
+<p>Tomcat支持的应用层协议：</p>
+<table>
+<thead>
+<tr>
+<th>应用层协议</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTP/1.1</td>
+<td>大部分web应用采用的访问协议</td>
+</tr>
+<tr>
+<td>AJP</td>
+<td>在用于和Apache Web服务器集成，已实现对静态资源优化及集群部署</td>
+</tr>
+<tr>
+<td>HTTP/2</td>
+<td>HTTP 2.0大幅提升Web性能，下一代HTTP协议，自8.5及9.0版本后支持</td>
+</tr>
+</tbody></table>
+<h2 id="Tomcat启动流程"><a href="#Tomcat启动流程" class="headerlink" title="Tomcat启动流程"></a>Tomcat启动流程</h2><ol>
+<li>启动tomcat，运行bin/startup.bat（如果是linux环境，则需要调用bin/startup.sh），在startup.bat脚本中，调用了catalina.bat脚本</li>
+<li>在<code>catalina.bat</code>脚本中进行了<code>JAVA_OPTS</code>参数的配置，然后调用了<code>org.apache.catalina.startup.Bootstrap</code>类中的<code>main</code>方法</li>
+<li>在<code>Bootstrap</code>的<code>main</code>方法中调用了<code>init</code>方法，用于初始化<code>Catalina</code>类并调用<code>setParentClassLoader()</code>方法设置其<strong>类加载器</strong></li>
+<li>在<code>Bootstrap</code>的<code>main</code>方法中调用了<code>load</code>方法，然后分别调用三个方法<code>setAwait(true)</code>、<code>load(args)</code>、<code>start()</code><ul>
+<li><code>setAwait(true)</code>方法，用于设置<code>Catalina</code>对象是阻塞的</li>
+<li><code>load(args)</code>方法，调用<code>Catalina</code>对象<code>load()</code>方法，使用流去加载Catalina配置，如<code>conf/server.xml</code>，然后由交付于<code>Digester</code>对象进行拆解xml，<code>Server</code>对象就是在解析中进行初始化的</li>
+<li><code>start()</code>方法，调用<code>Server</code>对象的<code>start()</code>方法，并同步代码执行<code>Lifecycle</code>、<code>LifecycleBase</code>的方法实现。</li>
+</ul>
+</li>
+</ol>
+<p><img src="http://images.marcus659.com/blog/tomcat_sequence_chart.png" alt="tomcat_sequence_chart"></p>
+<h3 id="Lifecycle接口定义"><a href="#Lifecycle接口定义" class="headerlink" title="Lifecycle接口定义"></a>Lifecycle接口定义</h3><p>在Tomcat中的所有组件均存在<strong>初始化</strong>、<strong>启动</strong>、<strong>停止</strong>等生命周期方法，所以在Tomcat设计时，便基于生命周期管理抽象出一个<code>Lifecycle</code>接口，而组件Server、Service、Container、Executor、Connector都实现了<code>Lifecycle</code>接口，其中部分方法有使用<strong>模板设计模式</strong>抽取出公共逻辑，进行复用。</p>
+<ol>
+<li><code>init()</code>：初始化组件</li>
+<li><code>start()</code>：启动组件</li>
+<li><code>stop()</code>：停止组件</li>
+<li><code>destroy()</code>：销毁组件</li>
+</ol>
+<p><img src="https://images.marcus659.com/blog/tomcat_standard_engine.png" alt="StandardEngine"></p>
+<h2 id="Tomcat请求处理流程"><a href="#Tomcat请求处理流程" class="headerlink" title="Tomcat请求处理流程"></a>Tomcat请求处理流程</h2><h1 id="3-Tomcat服务器配置"><a href="#3-Tomcat服务器配置" class="headerlink" title="3. Tomcat服务器配置"></a>3. Tomcat服务器配置</h1><h1 id="4-Tomcat的管理配置"><a href="#4-Tomcat的管理配置" class="headerlink" title="4. Tomcat的管理配置"></a>4. Tomcat的管理配置</h1><h1 id="5-Tomcat集群"><a href="#5-Tomcat集群" class="headerlink" title="5. Tomcat集群"></a>5. Tomcat集群</h1><h2 id="tomcat集群简介"><a href="#tomcat集群简介" class="headerlink" title="tomcat集群简介"></a>tomcat集群简介</h2><p>tomcat集群是由多个tomcat进程，通过<code>ngnix</code>进行反向代理，使用<code>轮询</code>、<code>权重</code>、<code>ip_hash</code>的方式去进行负载策略，</p>
+<h2 id="session共享-保持-问题"><a href="#session共享-保持-问题" class="headerlink" title="session共享(保持)问题"></a>session共享(保持)问题</h2><ol>
+<li><p>ip_hash策略</p>
+<p>同一个ip的hash值肯定是相同的，顾可以使用此类方式将用户请求负载到之前有session的那个tomcat进程上。</p>
+</li>
+<li><p>session复制</p>
+<p>session复制可以在小型集群中进行session复制，官方建议此方案适用于四及四个以下tomcat集群</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Tomcat</tag>
+        <tag>Java Web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Arthas分析OOM的问题</title>
     <url>/2022/06/14/java/arthas-guide/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="OOM是什么问题"><a href="#OOM是什么问题" class="headerlink" title="OOM是什么问题"></a>OOM是什么问题</h1><h1 id="Arthas是什么东西"><a href="#Arthas是什么东西" class="headerlink" title="Arthas是什么东西"></a>Arthas是什么东西</h1><p>Arthas 是Alibaba开源的Java诊断工具。采用命令行交互模式，提供了较为丰富的功能，主要还是他是免费里面的算是好用且功能比较强大的一个JVM排查的插件。</p>
+<h1 id="Arthas可以做什么"><a href="#Arthas可以做什么" class="headerlink" title="Arthas可以做什么"></a>Arthas可以做什么</h1><h2 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h2><h2 id="字节码反编译"><a href="#字节码反编译" class="headerlink" title="字节码反编译"></a>字节码反编译</h2><h2 id="Thread信息捕获"><a href="#Thread信息捕获" class="headerlink" title="Thread信息捕获"></a>Thread信息捕获</h2><h2 id="查看JVM信息"><a href="#查看JVM信息" class="headerlink" title="查看JVM信息"></a>查看JVM信息</h2><h2 id="堆内存快照信息分析"><a href="#堆内存快照信息分析" class="headerlink" title="堆内存快照信息分析"></a>堆内存快照信息分析</h2>]]></content>
       <categories>
         <category>java</category>
       </categories>
@@ -1298,6 +1505,19 @@
 ]]></content>
       <categories>
         <category>Maven</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>线程间的通信</title>
+    <url>/2022/07/07/java/thread-communication/</url>
+    <content><![CDATA[<h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>在同一个进程中，咱们可能存在多线程对同一个东西进行修改，比如一个全局变量标识，后面的线程根据这标识。</p>
+<p>例如当前有多个线程进行滚动查询，每次查询通信都会返回一个<code>lastRecordId</code>，也就是本次翻页查询最后一条记录的Id，下次请求需要带上这个字段才能顺利翻到下一页</p>
+<h1 id="使用Volatile关键字"><a href="#使用Volatile关键字" class="headerlink" title="使用Volatile关键字"></a>使用Volatile关键字</h1><p><code>volatile</code>关键字多线程见可见，线程能够感知到同一个变量的变化<br>Arthas 是Alibaba开源的Java诊断工具。采用命令行交互模式，提供了较为丰富的功能，主要还是他是免费里面的算是好用且功能比较强大的一个JVM排查的插件。</p>
+<h1 id="使用Object类的wait-notify"><a href="#使用Object类的wait-notify" class="headerlink" title="使用Object类的wait()/notify()"></a>使用Object类的wait()/notify()</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSync</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//定义一个锁对象</span></span><br><span class="line">        Object lock = <span class="keyword">new</span> Object();</span><br><span class="line">        List&lt;String&gt;  list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">// 线程A</span></span><br><span class="line">        Thread threadA = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    list.add(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">                    System.out.println(<span class="string">&quot;线程A添加元素，此时list的size为：&quot;</span> + list.size());</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">500</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (list.size() == <span class="number">5</span>)</span><br><span class="line">                        lock.notify();<span class="comment">//唤醒B线程</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//线程B</span></span><br><span class="line">        Thread threadB = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (list.size() != <span class="number">5</span>) &#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            lock.wait();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println(<span class="string">&quot;线程B收到通知，开始执行自己的业务...&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//需要先启动线程B</span></span><br><span class="line">        threadB.start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//再启动线程A</span></span><br><span class="line">        threadA.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h2><h2 id="字节码反编译"><a href="#字节码反编译" class="headerlink" title="字节码反编译"></a>字节码反编译</h2><h2 id="Thread信息捕获"><a href="#Thread信息捕获" class="headerlink" title="Thread信息捕获"></a>Thread信息捕获</h2><h2 id="查看JVM信息"><a href="#查看JVM信息" class="headerlink" title="查看JVM信息"></a>查看JVM信息</h2><h2 id="堆内存快照信息分析"><a href="#堆内存快照信息分析" class="headerlink" title="堆内存快照信息分析"></a>堆内存快照信息分析</h2>]]></content>
+      <categories>
+        <category>java</category>
       </categories>
   </entry>
   <entry>
@@ -1604,7 +1824,7 @@
 <p>因此 6=2+4 即为只能读写</p>
 </blockquote>
 <h1 id="使用密钥对免密登录的步骤"><a href="#使用密钥对免密登录的步骤" class="headerlink" title="使用密钥对免密登录的步骤"></a>使用密钥对免密登录的步骤</h1><ol>
-<li>客户端使用<code>ssh-keygen</code>生成密钥对，命令可以使用`ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#x6f;&#x75;&#114;&#101;&#x6d;&#97;&#x69;&#x6c;&#x40;&#x64;&#x6f;&#x61;&#x6d;&#105;&#110;&#x2e;&#99;&#111;&#109;">&#x79;&#x6f;&#x75;&#114;&#101;&#x6d;&#97;&#x69;&#x6c;&#x40;&#x64;&#x6f;&#x61;&#x6d;&#105;&#110;&#x2e;&#99;&#111;&#109;</a>“，输入指纹是可选的。</li>
+<li>客户端使用<code>ssh-keygen</code>生成密钥对，命令可以使用`ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#111;&#117;&#x72;&#x65;&#x6d;&#x61;&#105;&#108;&#64;&#100;&#111;&#x61;&#109;&#105;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#x79;&#111;&#117;&#x72;&#x65;&#x6d;&#x61;&#105;&#108;&#64;&#100;&#111;&#x61;&#109;&#105;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a>“，输入指纹是可选的。</li>
 <li>将公钥<code>id_rsa.pub</code>复制到目标服务器（服务端）<code>$HOME/.ssh</code>目录下，并更名为 <code>authorized_keys</code></li>
 <li>重启目标服务器的ssh服务，这点很重要，可以使用<code>systemctl restart sshd</code></li>
 <li>客户端再次发送<code>ssh username@hostname</code>即可直接登录</li>
@@ -1689,6 +1909,16 @@
 ]]></content>
   </entry>
   <entry>
+    <title>ssh使用 -L -R -D 作为代理的三种方式</title>
+    <url>/2022/05/16/linux/ssh-proxy/</url>
+    <content><![CDATA[<p>[toc]</p>
+<h1 id="ssh-L-正向代理"><a href="#ssh-L-正向代理" class="headerlink" title="ssh -L 正向代理"></a>ssh -L 正向代理</h1><h1 id="ssh-R-反向代理"><a href="#ssh-R-反向代理" class="headerlink" title="ssh -R 反向代理"></a>ssh -R 反向代理</h1><h1 id="ssh-D-socket代理"><a href="#ssh-D-socket代理" class="headerlink" title="ssh -D socket代理"></a>ssh -D socket代理</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>top命令的使用</title>
     <url>/2019/09/21/linux/top-monitor/</url>
     <content><![CDATA[<h1 id="top命令信息解释"><a href="#top命令信息解释" class="headerlink" title="top命令信息解释"></a>top命令信息解释</h1><h1 id="top命令排序"><a href="#top命令排序" class="headerlink" title="top命令排序"></a>top命令排序</h1>]]></content>
@@ -1697,58 +1927,6 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JVM内存区域</title>
-    <url>/2021/07/04/memory-area/JVM-Memory-Region/</url>
-    <content><![CDATA[<h1 id="JVM内存区域"><a href="#JVM内存区域" class="headerlink" title="JVM内存区域"></a>JVM内存区域</h1><h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><p>定义：JVM在执行Java程序过程中，会将其所管理的内存分为多个区域，同时会有一些<strong>直接内存</strong>不在运行时数据区，但JVM也会使用一些工具对其进行频繁使用。</p>
-<ul>
-<li><p>线程私有区</p>
-<p>每一个线程都有一份单独的内存区域，即线程栈。包括虚拟机栈(内含栈帧)、程序计数器</p>
-<span id="more"></span></li>
-<li><p>线程共享区</p>
-<p>被所有线程共享，且只有一份，如：方法区、堆内存区域</p>
-<p><img src="http://images.marcus659.com/blog/jvm_memory_region.jpg" alt="运行时数据区"></p>
-</li>
-</ul>
-<h1 id="Java方法和虚拟机栈"><a href="#Java方法和虚拟机栈" class="headerlink" title="Java方法和虚拟机栈"></a>Java方法和虚拟机栈</h1><ul>
-<li><p>虚拟机栈</p>
-<p>虚拟机栈的生命周期和线程生命周期是一样的，虚拟机栈默认大小为<code>1M</code>，可用参数<code>-Xss</code>调整大小</p>
-<p><strong>数据结构</strong>：是先进先出的数据结构</p>
-<p><strong>作用</strong>：存储当前线程运行方法所需的数据(<code>局部变量</code>)，指令、返回地址</p>
-</li>
-<li><p>栈帧</p>
-<p>在每个Java方法被调用是，都会创建一个栈帧，并入栈，完成调用则出栈，栈帧大体包含所含区域：<strong>局部变量表</strong>、<strong>操作数栈</strong>、<strong>动态连接</strong>、<strong>返回地址</strong>。</p>
-<ul>
-<li><p>局部变量表</p>
-</li>
-<li><p>操作数栈</p>
-</li>
-<li><p>动态连接</p>
-<p>动态分派，多见于方法重写使其具有多态性，重写时使用<code>invokevirtual</code>指令，器解析过程如下</p>
-<ol>
-<li>找到操作数栈第一个元素所指向的对象实际类型，记做A</li>
-<li></li>
-</ol>
-</li>
-<li><p>返回地址</p>
-</li>
-</ul>
-</li>
-<li><p>程序计数器</p>
-</li>
-<li><p>栈帧与内存区域</p>
-<p>使用<code>javap -c XXXX.class</code>对class文件进行反汇编，<a href="https://cloud.tencent.com/developer/article/1333540">字节码助记地址</a></p>
-<p><img src="http://images.marcus659.com/typora/visualstackandmemory" alt="visualstackandmemory"></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -1765,7 +1943,7 @@
   </entry>
   <entry>
     <title>Windows机器使用SSH免密登录</title>
-    <url>/2022/06/16/ops/openssh-win/</url>
+    <url>/2022/11/23/ops/openssh-win/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h1 id="安装OpenSSH"><a href="#安装OpenSSH" class="headerlink" title="安装OpenSSH"></a>安装OpenSSH</h1><h1 id="客户端生成密钥"><a href="#客户端生成密钥" class="headerlink" title="客户端生成密钥"></a>客户端生成密钥</h1><h1 id="服务端ssh-config配置"><a href="#服务端ssh-config配置" class="headerlink" title="服务端ssh_config配置"></a>服务端ssh_config配置</h1><h1 id="开始免密登录"><a href="#开始免密登录" class="headerlink" title="开始免密登录"></a>开始免密登录</h1>]]></content>
       <categories>
@@ -1774,136 +1952,6 @@
       <tags>
         <tag>SSH</tag>
         <tag>Windows</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Tomcat的简介</title>
-    <url>/2021/07/03/tomcat/Tomcat%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h1 id="1-Tomcat的简介"><a href="#1-Tomcat的简介" class="headerlink" title="1. Tomcat的简介"></a>1. Tomcat的简介</h1><h2 id="web概念"><a href="#web概念" class="headerlink" title="web概念"></a>web概念</h2><ol>
-<li>软件架构</li>
-<li>资源分类<ol>
-<li>静态资源：所有用户访问后得到结果都是一样，可以直接被浏览器解析</li>
-<li>动态资源：每个用户访问都是不一样的，需要进行</li>
-</ol>
-</li>
-<li>网络通信三要素<ol>
-<li>IP地址</li>
-<li>端口号：应用程序在计算机上的唯一标识。0-65536</li>
-<li>传输协议<ul>
-<li>TPC协议：三次握手</li>
-<li>UDP协议</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a>web服务器</h2><ol>
-<li>服务器</li>
-<li>服务器软件：接收用户请求</li>
-<li>web服务器软件：接收用户请求，处理器扭曲做出相应</li>
-<li>常见web服务器<ul>
-<li>webLogic</li>
-<li>webSphere</li>
-<li>JBoss</li>
-<li>Tomcat：Apache基金组织<span id="more"></span>
-<h1 id="2-Tomcat的架构"><a href="#2-Tomcat的架构" class="headerlink" title="2. Tomcat的架构"></a>2. Tomcat的架构</h1></li>
-</ul>
-</li>
-</ol>
-<h2 id="HTTP工作原理"><a href="#HTTP工作原理" class="headerlink" title="HTTP工作原理"></a>HTTP工作原理</h2><p>HTTP协议是浏览器与服务器之间的数据传输协议，作为应用层协议，HTTP是基于TCP/IP协议，因此传输数据包都是由TCP/IP协议进行传输，HTTP只是定义了数据包的封装格式。</p>
-<h2 id="HTTP服务器请求处理"><a href="#HTTP服务器请求处理" class="headerlink" title="HTTP服务器请求处理"></a>HTTP服务器请求处理</h2><p>浏览器发送个服务端一个HTTP格式请求，HTTP服务器接收到请求后，需要调用服务端程序</p>
-<h2 id="Servlet容器工作流程"><a href="#Servlet容器工作流程" class="headerlink" title="Servlet容器工作流程"></a>Servlet容器工作流程</h2><p>HTTP服务器不直接调用Servlet，而且将请求交给Servlet容器，具体步骤如下：</p>
-<ol>
-<li>客户端请求资源，HTTP服务器凤凰组昂成一个ServletRequest队形</li>
-<li>然后调用Servlet容器的<code>service</code>方法</li>
-<li>Servlet容器拿到请求后，根据<code>URL和Servlet的映射关系</code>找到相应的Servlet</li>
-<li>加载Servlet，使用反射创建这个Servlet，并调动<code>init</code>方法初始化</li>
-<li>调用Servlet的<code>service</code>方法用来处理请求</li>
-</ol>
-<h2 id="Tomcat的两个核心功能"><a href="#Tomcat的两个核心功能" class="headerlink" title="Tomcat的两个核心功能"></a>Tomcat的两个核心功能</h2><ol>
-<li>处理Socket连接，负责网络字节流与Request和Response对象的转化</li>
-<li>加载和管理Servlet，以及具体处理Request请求</li>
-</ol>
-<p>两个核心组件连接器<code>Connector</code>和<code>Container</code>来分别做两件事情。</p>
-<h2 id="连接器-coyote"><a href="#连接器-coyote" class="headerlink" title="连接器 - coyote"></a>连接器 - coyote</h2><p>coyote是Tomcat的连接器框架名称，是Tomcat服务器提供的客户端访问外部接口，客户端通过coyote月服务器建立连接、发送请求并接受响应。</p>
-<p><strong>coyote封装了底层网络通信</strong>，并未Catalina容器提供了统一的接口，是Catalina容器月具体的请求协议及IO操作方式完全解耦。Coyote将Socket输入封装为Request对象，交由Catalina容器进行处理，处理完后，Catalina通过Coyote提供的Response对象将结果写入到输出流。</p>
-<p>Coyote负责接受请求并进行封装响应，作为独立的模块只负责具体的协议解析和IO相关操作，与Servlet规范实现没有直接关系，因此Request和Response对象也并未实现Servlet规范的对应接口。</p>
-<p><strong>一个容器支持多个连接器</strong></p>
-<h2 id="IO模型与协议"><a href="#IO模型与协议" class="headerlink" title="IO模型与协议"></a>IO模型与协议</h2><p>在Coyote中，Tomcat支持多种I/O模型和应用层协议，在Tomcat 8.5/9.0版本起，移除了对<code>BIO</code>的支持。</p>
-<table>
-<thead>
-<tr>
-<th align="left"><strong>IO模型</strong></th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">NIO</td>
-<td>非阻塞I/O，采用Java NIO类库实现</td>
-</tr>
-<tr>
-<td align="left">NIO2</td>
-<td>异步I/O，采用JDK 7的NIO2类库实现</td>
-</tr>
-<tr>
-<td align="left">APR</td>
-<td>采用Apache可移植运行库实现，是C/C++编写的本地库，</td>
-</tr>
-</tbody></table>
-<p>Tomcat支持的应用层协议：</p>
-<table>
-<thead>
-<tr>
-<th>应用层协议</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>HTTP/1.1</td>
-<td>大部分web应用采用的访问协议</td>
-</tr>
-<tr>
-<td>AJP</td>
-<td>在用于和Apache Web服务器集成，已实现对静态资源优化及集群部署</td>
-</tr>
-<tr>
-<td>HTTP/2</td>
-<td>HTTP 2.0大幅提升Web性能，下一代HTTP协议，自8.5及9.0版本后支持</td>
-</tr>
-</tbody></table>
-<h2 id="Tomcat启动流程"><a href="#Tomcat启动流程" class="headerlink" title="Tomcat启动流程"></a>Tomcat启动流程</h2><ol>
-<li>启动tomcat，运行bin/startup.bat（如果是linux环境，则需要调用bin/startup.sh），在startup.bat脚本中，调用了catalina.bat脚本</li>
-<li>在<code>catalina.bat</code>脚本中进行了<code>JAVA_OPTS</code>参数的配置，然后调用了<code>org.apache.catalina.startup.Bootstrap</code>类中的<code>main</code>方法</li>
-<li>在<code>Bootstrap</code>的<code>main</code>方法中调用了<code>init</code>方法，用于初始化<code>Catalina</code>类并调用<code>setParentClassLoader()</code>方法设置其<strong>类加载器</strong></li>
-<li>在<code>Bootstrap</code>的<code>main</code>方法中调用了<code>load</code>方法，然后分别调用三个方法<code>setAwait(true)</code>、<code>load(args)</code>、<code>start()</code><ul>
-<li><code>setAwait(true)</code>方法，用于设置<code>Catalina</code>对象是阻塞的</li>
-<li><code>load(args)</code>方法，调用<code>Catalina</code>对象<code>load()</code>方法，使用流去加载Catalina配置，如<code>conf/server.xml</code>，然后由交付于<code>Digester</code>对象进行拆解xml，<code>Server</code>对象就是在解析中进行初始化的</li>
-<li><code>start()</code>方法，调用<code>Server</code>对象的<code>start()</code>方法，并同步代码执行<code>Lifecycle</code>、<code>LifecycleBase</code>的方法实现。</li>
-</ul>
-</li>
-</ol>
-<p><img src="http://images.marcus659.com/blog/tomcat_sequence_chart.png" alt="tomcat_sequence_chart"></p>
-<h3 id="Lifecycle接口定义"><a href="#Lifecycle接口定义" class="headerlink" title="Lifecycle接口定义"></a>Lifecycle接口定义</h3><p>在Tomcat中的所有组件均存在<strong>初始化</strong>、<strong>启动</strong>、<strong>停止</strong>等生命周期方法，所以在Tomcat设计时，便基于生命周期管理抽象出一个<code>Lifecycle</code>接口，而组件Server、Service、Container、Executor、Connector都实现了<code>Lifecycle</code>接口，其中部分方法有使用<strong>模板设计模式</strong>抽取出公共逻辑，进行复用。</p>
-<ol>
-<li><code>init()</code>：初始化组件</li>
-<li><code>start()</code>：启动组件</li>
-<li><code>stop()</code>：停止组件</li>
-<li><code>destroy()</code>：销毁组件</li>
-</ol>
-<p><img src="https://images.marcus659.com/blog/tomcat_standard_engine.png" alt="StandardEngine"></p>
-<h2 id="Tomcat请求处理流程"><a href="#Tomcat请求处理流程" class="headerlink" title="Tomcat请求处理流程"></a>Tomcat请求处理流程</h2><h1 id="3-Tomcat服务器配置"><a href="#3-Tomcat服务器配置" class="headerlink" title="3. Tomcat服务器配置"></a>3. Tomcat服务器配置</h1><h1 id="4-Tomcat的管理配置"><a href="#4-Tomcat的管理配置" class="headerlink" title="4. Tomcat的管理配置"></a>4. Tomcat的管理配置</h1><h1 id="5-Tomcat集群"><a href="#5-Tomcat集群" class="headerlink" title="5. Tomcat集群"></a>5. Tomcat集群</h1><h2 id="tomcat集群简介"><a href="#tomcat集群简介" class="headerlink" title="tomcat集群简介"></a>tomcat集群简介</h2><p>tomcat集群是由多个tomcat进程，通过<code>ngnix</code>进行反向代理，使用<code>轮询</code>、<code>权重</code>、<code>ip_hash</code>的方式去进行负载策略，</p>
-<h2 id="session共享-保持-问题"><a href="#session共享-保持-问题" class="headerlink" title="session共享(保持)问题"></a>session共享(保持)问题</h2><ol>
-<li><p>ip_hash策略</p>
-<p>同一个ip的hash值肯定是相同的，顾可以使用此类方式将用户请求负载到之前有session的那个tomcat进程上。</p>
-</li>
-<li><p>session复制</p>
-<p>session复制可以在小型集群中进行session复制，官方建议此方案适用于四及四个以下tomcat集群</p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Tomcat</tag>
-        <tag>Java Web</tag>
       </tags>
   </entry>
   <entry>
