@@ -1,0 +1,68 @@
+<section class="outer">
+    <div id="online-sql">
+        <el-container>
+            <el-header>Header</el-header>
+            <el-main>
+                <el-form :model="form" label-width="120px">
+                    <el-form-item label="Activity form">
+                        <el-input v-model="sql_statement" type="textarea" />
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="execute_sql">Run</el-button>
+                        <el-button>Clear</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-main>
+            <el-footer>{{sql_statement}}</el-footer>
+        </el-container>
+
+    </div>
+</section>
+
+<script>
+    // a) SQL on array of objects
+    var data = [{ a: 1, b: 10 }, { a: 2, b: 20 }, { a: 1, b: 30 }];
+    var res = alasql('SELECT a, SUM(b) AS b FROM ? GROUP BY a', [data]);
+    console.log(res);
+    const { createApp, reactive, toRefs, ref, onMounted } = Vue;
+    // b) Async promise notation
+    // alasql
+    //     .promise('SELECT * FROM XLS("mydata.xls") GROUP BY name WHERE lastname LIKE "A%" and city = "London"')
+    //     .then(function (res) {
+    //         console.log(res);
+    //     }).catch(function (err) {
+    //         console.log('error:', err);
+    //     });
+    const form = reactive({
+        name: '',
+        region: '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: '',
+    })
+
+    const App = {
+        data() {
+            return {
+                message: "Hello Element Plus",
+                sql_statement: '',
+                sql_data: [{ a: 1, b: 10 }, { a: 2, b: 20 }, { a: 1, b: 30 }],
+                table_data: {}
+            };
+        },
+        method: {
+            execute_sql() {
+                console.log(this.sql_statement)
+                let res = alasql(this.sql_statement, [sql_data])
+                table_data = res;
+            }
+        }
+    };
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#online-sql");
+
+</script>

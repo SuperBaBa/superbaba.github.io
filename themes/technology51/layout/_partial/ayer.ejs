@@ -2,8 +2,8 @@
 <section class="cover">
     <% if (theme.github.enable && theme.github.url){ %>
       <%# "GitHub Ribbons" %>
-      <a class="forkMe" href="<%=theme.github.url%>"
-        target="_blank"><img width="149" height="149" src="<%- url_for('images/forkme.png') %>"
+      <a class="forkMe" href="<%=theme.github.url%>" target="_blank">
+        <img width="149" height="149" src="<%- url_for('images/forkme.png') %>"
           class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     <% } %>
   <div class="cover-frame">
@@ -36,24 +36,21 @@
 </section>
 <% } %>
 
-<% if (theme.subtitle.enable){ %>
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
-<% } %>
-
 <!-- Subtitle -->
 <% if (theme.subtitle.enable){ %>
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['<%= theme.subtitle.text %>', '<%= theme.subtitle.text2 %>', '<%= theme.subtitle.text3 %>'],
-        startDelay: <%= theme.subtitle.startDelay %>,
-        typeSpeed: <%= theme.subtitle.typeSpeed %>,
-        loop: <%= theme.subtitle.loop %>,
-        backSpeed: <%= theme.subtitle.backSpeed %>,
-        showCursor: <%= theme.subtitle.showCursor %>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['<%= theme.subtitle.text %>', '<%= theme.subtitle.text2 %>', '<%= theme.subtitle.text3 %>'],
+      startDelay: <%= theme.subtitle.startDelay %>,
+      typeSpeed: <%= theme.subtitle.typeSpeed %>,
+      loop: <%= theme.subtitle.loop %>,
+      backSpeed: <%= theme.subtitle.backSpeed %>,
+      showCursor: <%= theme.subtitle.showCursor %>
       });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
+  } catch (err) {
+    console.log(err)
+  }
+</script>
   <% } %>

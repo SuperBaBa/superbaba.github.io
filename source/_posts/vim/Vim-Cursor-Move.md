@@ -1,8 +1,8 @@
 ---
 title: Vim的光标移动
 date: 2021-11-10 14:48:22
-tags: 
-categories: Vim
+tags: vim
+categories: 开发工具
 ---
 [TOC]
 # 单位级

@@ -23,7 +23,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 滑动窗口限流工具类
  *
- * @author https://www.wdbyte.com
  */
 public class RateLimiterSlidingWindow {
     /**
