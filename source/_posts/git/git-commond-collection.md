@@ -8,6 +8,13 @@ tags:
 thumbnail: /images/artilce-banner/git.jpg
 ---
 [TOC]
+### Git 下载和安装
+
+- 下载地址： https://git-scm.com/downloads
+- 使用默认值安装
+- 资源管理器内单击鼠标右键选择 `Git Bash Here`
+- 输入`git --version` 检查是否安装成功
+
 #### 0. 日常操作
 1. 拉取项目(默认master)
 git clonse 地址

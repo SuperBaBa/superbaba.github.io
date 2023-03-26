@@ -15,7 +15,7 @@ class Solution:
                 letter_list.append(ch)
         i = 1
         reversed_str = ''
-        for index, ch in enumerate(s):
+        for ch in enumerate(s):
             if (ord(ch) >= 65 and ord(ch) <= 90) or (ord(ch) >= 97 and ord(ch) <= 122):
                 reversed_str += letter_list[len(letter_list)-i]
                 i+=1
