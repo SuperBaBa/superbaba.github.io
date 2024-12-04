@@ -32,5 +32,8 @@
     "rollup-plugin-styles": "^3.14.1",
     "rollup-plugin-terser": "^7.0.2",
     "stylint": "^2.0.0"
+  },
+  "dependencies": {
+    "hexo-theme-ayer": "file:"
   }
 }
