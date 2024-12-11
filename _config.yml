@@ -1,19 +1,20 @@
 # Hexo Configuration
 # Docs: https://hexo.io/docs/configuration.html
 # Source: https://github.com/hexojs/hexo/
+# 这里是站点的基础配置，如果没有的话会从_config.anzhiyu.yml中读取
 
 # Site
 title: 技術工程51區
 subtitle: "一个专注于Java技术写作的博客"
 description: "Java编程的学习文章博客，在Java框架学习中使用了Spring Framework、Spring Boot、Spring Cloud，覆盖了Elasticsearch、Redis、RocketMQ"
-keywords: 喜马拉雅以南,技術工程51區,技术工程51区,杨双龙,贾从谦
-author: 喜马拉雅以南
+keywords: 喜马拉雅以南,技術工程51區,技术工程51区,杨双龙,贾从谦,marcus659,marcus
+author: marcus
 language: zh-CN
 timezone: "Asia/Shanghai"
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://www.marcus659.com
+# url: http://www.marcus659.com
 # 文章的 永久链接 格式
 permalink: :year/:month/:day/:title/
 permalink_defaults:

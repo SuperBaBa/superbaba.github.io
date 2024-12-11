@@ -1,7 +1,7 @@
 ---
 title: 双向链表
 date: 2020-08-08 21:34:36
-categories: 算法
+categories: LeetCode刷题
 ---
 ### 解题思路
 没有哨兵节点的双向链表
